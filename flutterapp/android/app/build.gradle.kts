@@ -12,13 +12,19 @@ android {
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
+    flavorDimensions += "default"
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    buildFeatures {
+        buildConfig = true
+        resValues = true
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.testapk.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
@@ -26,6 +32,24 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+    }
+
+    productFlavors {
+        create("dev") {
+            dimension = "default"
+            resValue("string", "app_name", "TestAPK")
+            buildConfigField("String", "BASE_URL", "\"https://testapkapi.clipboux.online/api/v1\"")
+        }
+        create("local") {
+            dimension = "default"
+            resValue("string", "app_name", "TestAPK")
+            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:3000/api/v1\"")
+        }
+        create("prod") {
+            dimension = "default"
+            resValue("string", "app_name", "TestAPK")
+            buildConfigField("String", "BASE_URL", "\"https://testapkapi.clipboux.online/api/v1\"")
+        }
     }
 
     buildTypes {

@@ -1,6 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'core/api_service.dart';
 
 class NotificationManager {
@@ -50,7 +51,7 @@ class NotificationManager {
 
       _instance._notifyListeners();
 
-      const channel = MethodChannel("com.testapk.app/app_launcher");
+      const channel = MethodChannel(kMethodChannelName);
       await channel.invokeMethod("showNotification", {
         "title": message.notification?.title ?? "",
         "body": message.notification?.body ?? "",

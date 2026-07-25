@@ -19,7 +19,7 @@ import android.content.IntentFilter
 import android.os.Bundle
 
 class MainActivity : FlutterActivity() {
-    private val channelLink:String = "com.testapk.app/app_launcher"
+    private val channelLink: String = "com.testapk.app/app_launcher"
     private var channel: MethodChannel? = null
 
     private val installStatusReceiver = object : BroadcastReceiver() {
@@ -66,6 +66,10 @@ class MainActivity : FlutterActivity() {
         channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelLink)
         channel?.setMethodCallHandler { call, result ->
             when (call.method) {
+                "getBaseUrl" -> {
+                    val baseUrl: String = BuildConfig.BASE_URL
+                    result.success(baseUrl)
+                }
                 "isAppInstalled" -> {
                     val packageName = call.argument<String>("packageName")
                     if (packageName != null) {

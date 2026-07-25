@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterapp/configs.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/firebase_options.dart';
 import 'package:flutterapp/notification_manager.dart';
@@ -12,6 +13,8 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light),
   );
+
+  await ConfigService.getBaseUrl();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await NotificationManager.initialize();
