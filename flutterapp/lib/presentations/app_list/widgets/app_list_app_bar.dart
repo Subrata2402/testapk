@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/user_model.dart';
-import 'package:flutterapp/presentations/profile/screens/profile_screen.dart';
+import 'package:flutterapp/presentations/menu/profile/screens/profile_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 

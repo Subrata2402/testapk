@@ -24,7 +24,7 @@ class ReleaseActionButton extends StatefulWidget {
 }
 
 class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsBindingObserver {
-  static const _platform = MethodChannel('com.testapk.app/app_launcher');
+  static const _platform = MethodChannel(kMethodChannelName);
 
   static final List<_ReleaseActionButtonState> _activeStates = [];
 

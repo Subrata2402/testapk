@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       ..onTap = () {
         LegalDocumentViewer.showModal(
           context,
-          title: 'Terms of Service',
+          title: kLabelTermsOfService,
           lastUpdated: LegalTexts.termsOfServiceLastUpdated,
           sections: LegalTexts.termsOfService,
         );
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       ..onTap = () {
         LegalDocumentViewer.showModal(
           context,
-          title: 'Privacy Policy',
+          title: kLabelPrivacyPolicy,
           lastUpdated: LegalTexts.privacyPolicyLastUpdated,
           sections: LegalTexts.privacyPolicy,
         );
@@ -252,13 +252,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                           children: [
                             const TextSpan(text: 'By signing in, you agree to our '),
                             TextSpan(
-                              text: 'Terms of Service',
+                              text: kLabelTermsOfService,
                               style: const TextStyle(color: AppColors.accentLight, fontWeight: FontWeight.w600),
                               recognizer: _termsRecognizer,
                             ),
                             const TextSpan(text: ' and '),
                             TextSpan(
-                              text: 'Privacy Policy',
+                              text: kLabelPrivacyPolicy,
                               style: const TextStyle(color: AppColors.accentLight, fontWeight: FontWeight.w600),
                               recognizer: _privacyRecognizer,
                             ),
