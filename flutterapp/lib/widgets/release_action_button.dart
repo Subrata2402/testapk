@@ -8,7 +8,7 @@ import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/models/release_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -224,11 +224,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       try {
         final bool success = await _platform.invokeMethod('installApk', {'apkPath': _apkFile!.path});
         if (!success && mounted) {
-          CustomSnackBar.show(context, 'Failed to start installation', isError: true);
+          CustomSnackBar.show(context, kErrorInstallStartFailed, isError: true);
         }
       } catch (e) {
         if (mounted) {
-          CustomSnackBar.show(context, 'Installation error: $e', isError: true);
+          CustomSnackBar.show(context, '$kErrorInstallPrefix$e', isError: true);
         }
       }
     }
@@ -373,13 +373,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
                         else if (buttonIcon != null)
                           Icon(buttonIcon, size: iconSize, color: Colors.white),
                         if (_isDownloading || _isInstalling || buttonIcon != null) SizedBox(width: context.scale(8)),
-                        Text(
+                        TextViewer(
                           buttonText,
-                          style: GoogleFonts.inter(
-                            fontSize: fontSize,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
                         ),
                       ],
                     ),

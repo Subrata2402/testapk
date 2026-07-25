@@ -1,12 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/core/legal_texts.dart';
 import 'package:flutterapp/presentations/profile/screens/about_screen.dart';
 import 'package:flutterapp/presentations/profile/screens/feedback_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/legal_document_viewer.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ProfileLegalCard extends StatelessWidget {
   const ProfileLegalCard({super.key});
@@ -29,7 +30,7 @@ class ProfileLegalCard extends StatelessWidget {
               _legalRow(
                 context,
                 icon: Icons.feedback_outlined,
-                label: 'Send Feedback',
+                label: kLabelSendFeedback,
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const FeedbackScreen()));
                 },
@@ -38,11 +39,11 @@ class ProfileLegalCard extends StatelessWidget {
               _legalRow(
                 context,
                 icon: Icons.description_outlined,
-                label: 'Terms of Service',
+                label: kLabelTermsOfService,
                 onTap: () {
                   LegalDocumentViewer.pushScreen(
                     context,
-                    title: 'Terms of Service',
+                    title: kLabelTermsOfService,
                     lastUpdated: LegalTexts.termsOfServiceLastUpdated,
                     sections: LegalTexts.termsOfService,
                   );
@@ -52,11 +53,11 @@ class ProfileLegalCard extends StatelessWidget {
               _legalRow(
                 context,
                 icon: Icons.privacy_tip_outlined,
-                label: 'Privacy Policy',
+                label: kLabelPrivacyPolicy,
                 onTap: () {
                   LegalDocumentViewer.pushScreen(
                     context,
-                    title: 'Privacy Policy',
+                    title: kLabelPrivacyPolicy,
                     lastUpdated: LegalTexts.privacyPolicyLastUpdated,
                     sections: LegalTexts.privacyPolicy,
                   );
@@ -66,7 +67,7 @@ class ProfileLegalCard extends StatelessWidget {
               _legalRow(
                 context,
                 icon: Icons.info_outline_rounded,
-                label: 'About TestAPK',
+                label: kLabelAboutTestApk,
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AboutScreen()));
                 },
@@ -90,13 +91,11 @@ class ProfileLegalCard extends StatelessWidget {
               Icon(icon, color: AppColors.accentLight.withValues(alpha: 0.70), size: context.scale(18)),
               SizedBox(width: context.scale(14)),
               Expanded(
-                child: Text(
+                child: TextViewer(
                   label,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(14),
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  fontSize: context.scale(14),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               Icon(Icons.chevron_right_rounded, color: Colors.white.withValues(alpha: 0.40), size: context.scale(20)),

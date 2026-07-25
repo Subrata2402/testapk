@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class CustomSnackBar {
   static OverlayEntry? _currentEntry;
@@ -154,13 +154,11 @@ class _CustomSnackBarWidgetState extends State<_CustomSnackBarWidget> with Singl
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: context.scale(4), vertical: context.scale(12)),
-                              child: Text(
+                              child: TextViewer(
                                 widget.message,
-                                style: GoogleFonts.inter(
-                                  color: Colors.white.withValues(alpha: 0.9),
-                                  fontSize: context.scale(13),
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                color: Colors.white.withValues(alpha: 0.9),
+                                fontSize: context.scale(13),
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),

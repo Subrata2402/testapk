@@ -6,8 +6,8 @@ import 'package:flutterapp/presentations/profile/widgets/about_platform_info_car
 import 'package:flutterapp/presentations/profile/widgets/about_support_card.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -20,12 +20,12 @@ class AboutScreen extends StatelessWidget {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
         if (context.mounted) {
-          CustomSnackBar.show(context, 'Could not launch $urlString', isError: true);
+          CustomSnackBar.show(context, '$kAboutLaunchError$urlString', isError: true);
         }
       }
     } catch (e) {
       if (context.mounted) {
-        CustomSnackBar.show(context, 'Error: $e', isError: true);
+        CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
       }
     }
   }
@@ -84,14 +84,12 @@ class AboutScreen extends StatelessWidget {
                               icon: Icon(Icons.arrow_back_rounded, color: Colors.white, size: context.scale(22)),
                               onPressed: () => Navigator.of(context).pop(),
                             ),
-                            Text(
-                              'About TestAPK',
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(18),
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textPrimary,
-                                letterSpacing: -0.5,
-                              ),
+                            TextViewer(
+                              kAboutTitle,
+                              fontSize: context.scale(18),
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textPrimary,
+                              letterSpacing: -0.5,
                             ),
                           ],
                         ),
@@ -133,44 +131,41 @@ class AboutScreen extends StatelessWidget {
                         SizedBox(height: context.scale(20)),
 
                         // App Name
-                        Text(
+                        TextViewer(
                           kAppName,
-                          style: GoogleFonts.inter(
-                            fontSize: context.scale(24),
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.textPrimary,
-                            letterSpacing: -0.5,
-                          ),
+                          fontSize: context.scale(24),
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textPrimary,
+                          letterSpacing: -0.5,
                         ),
                         SizedBox(height: context.scale(4)),
 
                         // Version
-                        Text(
-                          'Version 1.0.0+3',
-                          style: GoogleFonts.inter(fontSize: context.scale(13), color: AppColors.textSecondary),
+                        TextViewer(
+                          kAboutVersion,
+                          fontSize: context.scale(13),
+                          color: AppColors.textSecondary,
                         ),
                         SizedBox(height: context.scale(12)),
 
                         // Description
-                        Text(
-                          'A modern, secure, and self-hosted APK release management platform.',
-                          style: GoogleFonts.inter(
-                            fontSize: context.scale(14),
-                            color: Colors.white.withValues(alpha: 0.75),
-                            height: 1.4,
-                          ),
+                        TextViewer(
+                          kAboutDescription,
+                          fontSize: context.scale(14),
+                          color: Colors.white.withValues(alpha: 0.75),
+                          height: 1.4,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: context.scale(32)),
 
                         // Platform Info Card
-                        _buildSectionHeader('PLATFORM INFO'),
+                        _buildSectionHeader(kAboutPlatformInfoLabel),
                         SizedBox(height: context.scale(10)),
                         AboutPlatformInfoCard(onLaunchURL: _launchURL),
                         SizedBox(height: context.scale(28)),
 
                         // Support Channels Card
-                        _buildSectionHeader('SUPPORT CHANNELS'),
+                        _buildSectionHeader(kAboutSupportChannelsLabel),
                         SizedBox(height: context.scale(10)),
                         AboutSupportCard(onLaunchURL: _launchURL),
                       ],
@@ -190,14 +185,12 @@ class AboutScreen extends StatelessWidget {
       alignment: Alignment.centerLeft,
       child: Padding(
         padding: const EdgeInsets.only(left: 4),
-        child: Text(
+        child: TextViewer(
           title,
-          style: GoogleFonts.inter(
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            color: Colors.white.withValues(alpha: 0.45),
-            letterSpacing: 1.2,
-          ),
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+          color: Colors.white.withValues(alpha: 0.45),
+          letterSpacing: 1.2,
         ),
       ),
     );

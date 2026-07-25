@@ -95,3 +95,32 @@ const String kErrorInstallConflictingVersion =
     'Installation failed: A conflicting version of the app is already installed.';
 const String kErrorInstallInvalidApk = 'Installation failed: The APK file is invalid or corrupted.';
 const String kErrorInstallInsufficientStorage = 'Installation failed: Insufficient storage space on the device.';
+const String kErrorInstallStartFailed = 'Failed to start installation';
+const String kErrorInstallPrefix = 'Installation error: ';
+
+/// Feedback Screen
+const String kFeedbackSubmitTitle = 'Submit Feedback';
+const String kFeedbackCategoryLabel = 'CATEGORY';
+const String kFeedbackRatingLabel = 'RATING';
+const String kFeedbackTitleLabel = 'TITLE';
+const String kFeedbackDescriptionLabel = 'DESCRIPTION';
+const String kFeedbackTitleHint = 'Brief summary of your feedback';
+const String kFeedbackTitleRequired = 'Title is required';
+const String kFeedbackDescriptionHint = 'Provide details about your experience, bug, or feature request...';
+const String kFeedbackDescriptionRequired = 'Description is required';
+const String kFeedbackSuccessMsg = 'Thank you for your feedback!';
+const String kFeedbackErrorMsg = 'Failed to submit feedback';
+
+/// About Screen
+const String kAboutTitle = 'About TestAPK';
+const String kAboutVersion = 'Version 1.0.0+3';
+const String kAboutDescription = 'A modern, secure, and self-hosted APK release management platform.';
+const String kAboutPlatformInfoLabel = 'PLATFORM INFO';
+const String kAboutSupportChannelsLabel = 'SUPPORT CHANNELS';
+const String kAboutLaunchError = 'Could not launch ';
+
+/// Legal & Profile Labels
+const String kLabelSendFeedback = 'Send Feedback';
+const String kLabelTermsOfService = 'Terms of Service';
+const String kLabelPrivacyPolicy = 'Privacy Policy';
+const String kLabelAboutTestApk = 'About TestAPK';

@@ -3,14 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/api_client.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/presentations/profile/widgets/feedback_category_selector.dart';
 import 'package:flutterapp/presentations/profile/widgets/feedback_glass_text_field.dart';
 import 'package:flutterapp/presentations/profile/widgets/feedback_rating_selector.dart';
 import 'package:flutterapp/presentations/profile/widgets/feedback_submit_button.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FeedbackScreen extends StatefulWidget {
   const FeedbackScreen({super.key});
@@ -58,11 +59,11 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
       if (response.statusCode == 201) {
         if (mounted) {
-          CustomSnackBar.show(context, 'Thank you for your feedback!', isSuccess: true);
+          CustomSnackBar.show(context, kFeedbackSuccessMsg, isSuccess: true);
           Navigator.of(context).pop();
         }
       } else {
-        throw Exception('Failed to submit feedback');
+        throw Exception(kFeedbackErrorMsg);
       }
     } catch (e) {
       if (mounted) {
@@ -129,14 +130,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               icon: Icon(Icons.arrow_back_rounded, color: Colors.white, size: context.scale(22)),
                               onPressed: () => Navigator.of(context).pop(),
                             ),
-                            Text(
-                              'Submit Feedback',
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(18),
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textPrimary,
-                                letterSpacing: -0.5,
-                              ),
+                            TextViewer(
+                              kFeedbackSubmitTitle,
+                              fontSize: context.scale(18),
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textPrimary,
+                              letterSpacing: -0.5,
                             ),
                           ],
                         ),
@@ -157,7 +156,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Category Selector
-                          _buildSectionHeader('CATEGORY'),
+                          _buildSectionHeader(kFeedbackCategoryLabel),
                           SizedBox(height: context.scale(10)),
                           FeedbackCategorySelector(
                             selectedCategory: _category,
@@ -166,7 +165,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           SizedBox(height: context.scale(24)),
 
                           // Rating Selector
-                          _buildSectionHeader('RATING'),
+                          _buildSectionHeader(kFeedbackRatingLabel),
                           SizedBox(height: context.scale(10)),
                           FeedbackRatingSelector(
                             rating: _rating,
@@ -175,23 +174,23 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           SizedBox(height: context.scale(24)),
 
                           // Title Input
-                          _buildSectionHeader('TITLE'),
+                          _buildSectionHeader(kFeedbackTitleLabel),
                           SizedBox(height: context.scale(10)),
                           FeedbackGlassTextField(
                             controller: _titleController,
-                            hintText: 'Brief summary of your feedback',
-                            validator: (val) => val == null || val.trim().isEmpty ? 'Title is required' : null,
+                            hintText: kFeedbackTitleHint,
+                            validator: (val) => val == null || val.trim().isEmpty ? kFeedbackTitleRequired : null,
                           ),
                           SizedBox(height: context.scale(24)),
 
                           // Description Input
-                          _buildSectionHeader('DESCRIPTION'),
+                          _buildSectionHeader(kFeedbackDescriptionLabel),
                           SizedBox(height: context.scale(10)),
                           FeedbackGlassTextField(
                             controller: _descriptionController,
-                            hintText: 'Provide details about your experience, bug, or feature request...',
+                            hintText: kFeedbackDescriptionHint,
                             maxLines: 6,
-                            validator: (val) => val == null || val.trim().isEmpty ? 'Description is required' : null,
+                            validator: (val) => val == null || val.trim().isEmpty ? kFeedbackDescriptionRequired : null,
                           ),
                           SizedBox(height: context.scale(32)),
 
@@ -213,14 +212,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget _buildSectionHeader(String title) {
     return Padding(
       padding: const EdgeInsets.only(left: 4),
-      child: Text(
+      child: TextViewer(
         title,
-        style: GoogleFonts.inter(
-          fontSize: 11,
-          fontWeight: FontWeight.w700,
-          color: Colors.white.withValues(alpha: 0.45),
-          letterSpacing: 1.2,
-        ),
+        fontSize: 11,
+        fontWeight: FontWeight.w700,
+        color: Colors.white.withValues(alpha: 0.45),
+        letterSpacing: 1.2,
       ),
     );
   }
