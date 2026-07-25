@@ -91,12 +91,7 @@ class ProfileLegalCard extends StatelessWidget {
               Icon(icon, color: AppColors.accentLight.withValues(alpha: 0.70), size: context.scale(18)),
               SizedBox(width: context.scale(14)),
               Expanded(
-                child: TextViewer(
-                  label,
-                  fontSize: context.scale(14),
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                child: TextViewer(label, fontSize: context.scale(14), color: Colors.white, fontWeight: FontWeight.w500),
               ),
               Icon(Icons.chevron_right_rounded, color: Colors.white.withValues(alpha: 0.40), size: context.scale(20)),
             ],

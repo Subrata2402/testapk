@@ -141,11 +141,7 @@ class AboutScreen extends StatelessWidget {
                         SizedBox(height: context.scale(4)),
 
                         // Version
-                        TextViewer(
-                          kAboutVersion,
-                          fontSize: context.scale(13),
-                          color: AppColors.textSecondary,
-                        ),
+                        TextViewer(kAboutVersion, fontSize: context.scale(13), color: AppColors.textSecondary),
                         SizedBox(height: context.scale(12)),
 
                         // Description

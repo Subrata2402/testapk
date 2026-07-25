@@ -33,13 +33,16 @@ class GlassButton extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.scale(18), vertical: context.scale(10)),
               child: isLoading
-                  ? SizedBox(
-                      width: context.scale(16),
-                      height: context.scale(16),
-                      child: const CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                  ? Center(
+                      child: SizedBox(
+                        width: context.scale(16),
+                        height: context.scale(16),
+                        child: const CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                      ),
                     )
                   : Text(
                       label,
+                      textAlign: .center,
                       style: GoogleFonts.inter(
                         fontSize: context.scale(13),
                         fontWeight: FontWeight.w600,

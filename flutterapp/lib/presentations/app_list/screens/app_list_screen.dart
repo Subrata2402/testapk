@@ -45,12 +45,12 @@ class _AppListScreenState extends State<AppListScreen> {
   }
 
   void _onNotificationReceived() {
-    _fetchData();
+    _fetchData(showLoader: false);
   }
 
-  Future<void> _fetchData() async {
+  Future<void> _fetchData({bool showLoader = true}) async {
     setState(() {
-      _isLoading = true;
+      _isLoading = showLoader;
       _error = null;
     });
     try {
@@ -203,7 +203,7 @@ class _AppListScreenState extends State<AppListScreen> {
                             onAppTap: (app) {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (_) => ReleaseListScreen(app: app)))
-                                  .then((_) => _fetchData());
+                                  .then((_) => _fetchData(showLoader: false));
                             },
                           ),
                   ),

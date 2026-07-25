@@ -64,28 +64,34 @@ class InvitationCard extends StatelessWidget {
               ),
             ],
           ),
-          if (app.description.isNotEmpty) ...[
-            SizedBox(height: context.scale(10)),
-            Text(
-              app.description,
-              style: GoogleFonts.inter(fontSize: context.scale(13), color: AppColors.textSecondary),
-            ),
-          ],
+          // if (app.description.isNotEmpty) ...[
+          //   SizedBox(height: context.scale(10)),
+          //   Text(
+          //     app.description,
+          //     style: GoogleFonts.inter(fontSize: context.scale(13), color: AppColors.textSecondary),
+          //   ),
+          // ],
+          SizedBox(height: context.scale(14)),
+          Container(height: 0.5, color: Colors.white.withValues(alpha: 0.12)),
           SizedBox(height: context.scale(14)),
           Row(
             children: [
-              GlassButton(
-                label: kDeclineBtnLabel,
-                isLoading: isRejecting,
-                onPressed: isProcessing ? null : onReject,
-                gradient: const LinearGradient(colors: [AppColors.error, AppColors.errorDark]),
+              Expanded(
+                child: GlassButton(
+                  label: kDeclineBtnLabel,
+                  isLoading: isRejecting,
+                  onPressed: isProcessing ? null : onReject,
+                  gradient: const LinearGradient(colors: [AppColors.error, AppColors.errorDark]),
+                ),
               ),
               SizedBox(width: context.scale(8)),
-              GlassButton(
-                label: kAcceptBtnLabel,
-                isLoading: isAccepting,
-                onPressed: isProcessing ? null : onAccept,
-                gradient: const LinearGradient(colors: [AppColors.warning, AppColors.warning]),
+              Expanded(
+                child: GlassButton(
+                  label: kAcceptBtnLabel,
+                  isLoading: isAccepting,
+                  onPressed: isProcessing ? null : onAccept,
+                  gradient: const LinearGradient(colors: [AppColors.warning, AppColors.warning]),
+                ),
               ),
             ],
           ),

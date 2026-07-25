@@ -39,12 +39,6 @@ class TextViewer extends StatelessWidget {
 
     final finalStyle = style != null ? baseStyle.merge(style) : baseStyle;
 
-    return Text(
-      text,
-      style: finalStyle,
-      textAlign: textAlign,
-      maxLines: maxLines,
-      overflow: overflow,
-    );
+    return Text(text, style: finalStyle, textAlign: textAlign, maxLines: maxLines, overflow: overflow);
   }
 }

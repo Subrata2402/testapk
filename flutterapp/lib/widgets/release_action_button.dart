@@ -373,12 +373,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
                         else if (buttonIcon != null)
                           Icon(buttonIcon, size: iconSize, color: Colors.white),
                         if (_isDownloading || _isInstalling || buttonIcon != null) SizedBox(width: context.scale(8)),
-                        TextViewer(
-                          buttonText,
-                          fontSize: fontSize,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
+                        TextViewer(buttonText, fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.white),
                       ],
                     ),
                   ),
