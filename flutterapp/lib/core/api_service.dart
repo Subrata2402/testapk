@@ -53,6 +53,7 @@ class ApiService {
       ApiEndpoints.downloadRelease(appId, buildNumber),
       savePath,
       onReceiveProgress: onReceiveProgress,
+      options: Options(receiveTimeout: Duration.zero),
     );
   }
 }

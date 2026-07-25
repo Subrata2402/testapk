@@ -14,6 +14,7 @@ import 'package:flutterapp/presentations/release_list/screens/release_list_scree
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/notification_manager.dart';
+import 'package:flutterapp/widgets/custom_snack_bar.dart';
 
 class AppListScreen extends StatefulWidget {
   const AppListScreen({super.key});
@@ -100,20 +101,14 @@ class _AppListScreenState extends State<AppListScreen> {
       final response = await ApiService.instance.acceptInvitation(appId);
       if (!mounted) return;
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text(kInviteAcceptedMsg), backgroundColor: AppColors.success));
+        CustomSnackBar.show(context, kInviteAcceptedMsg, isSuccess: true);
         _fetchData();
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text(kInviteAcceptFailedMsg), backgroundColor: AppColors.error));
+        CustomSnackBar.show(context, kInviteAcceptFailedMsg, isError: true);
       }
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('$kErrorPrefix$e'), backgroundColor: AppColors.error));
+      CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
     } finally {
       if (mounted) setState(() => _processingActions.remove(appId));
     }
@@ -125,20 +120,14 @@ class _AppListScreenState extends State<AppListScreen> {
       final response = await ApiService.instance.rejectInvitation(appId);
       if (!mounted) return;
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text(kInviteRejectedMsg), backgroundColor: AppColors.warning));
+        CustomSnackBar.show(context, kInviteRejectedMsg, isWarning: true);
         _fetchData();
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text(kInviteRejectFailedMsg), backgroundColor: AppColors.error));
+        CustomSnackBar.show(context, kInviteRejectFailedMsg, isError: true);
       }
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('$kErrorPrefix$e'), backgroundColor: AppColors.error));
+      CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
     } finally {
       if (mounted) setState(() => _processingActions.remove(appId));
     }

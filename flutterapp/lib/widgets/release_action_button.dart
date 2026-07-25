@@ -9,6 +9,7 @@ import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/models/release_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ReleaseActionButton extends StatefulWidget {
@@ -29,7 +30,6 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
 
   bool _isDownloading = false;
   double _downloadProgress = 0;
-  String? _errorMessage;
   bool _isDownloaded = false;
   int _installedVersionCode = -1;
   File? _apkFile;
@@ -100,8 +100,22 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
           if (mounted) {
             setState(() {
               _isInstalling = false;
-              _errorMessage = message ?? 'Installation failed';
             });
+
+            String displayMessage = message ?? 'Installation failed';
+            if (displayMessage.contains('INSTALL_FAILED_ABORTED') ||
+                displayMessage.contains('User rejected permissions') ||
+                displayMessage.contains('user_rejected')) {
+              displayMessage = kErrorInstallCancelled;
+            } else if (displayMessage.contains('INSTALL_FAILED_ALREADY_EXISTS')) {
+              displayMessage = kErrorInstallConflictingVersion;
+            } else if (displayMessage.contains('INSTALL_FAILED_INVALID_APK')) {
+              displayMessage = kErrorInstallInvalidApk;
+            } else if (displayMessage.contains('INSTALL_FAILED_INSUFFICIENT_STORAGE')) {
+              displayMessage = kErrorInstallInsufficientStorage;
+            }
+
+            CustomSnackBar.show(context, displayMessage, isError: true);
           }
         }
       }
@@ -151,7 +165,6 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     setState(() {
       _isDownloading = true;
       _downloadProgress = 0;
-      _errorMessage = null;
     });
 
     try {
@@ -169,21 +182,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       });
 
       if (response.statusCode != 200) {
-        if (widget.compact && mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.red.shade800,
-              behavior: SnackBarBehavior.floating,
-              content: Text(
-                '$kDownloadFailedMsg${response.statusCode})',
-                style: GoogleFonts.inter(color: Colors.white),
-              ),
-            ),
-          );
+        if (mounted) {
+          CustomSnackBar.show(context, '$kDownloadFailedMsg${response.statusCode})', isError: true);
         }
         setState(() {
           _isDownloading = false;
-          _errorMessage = widget.compact ? null : '$kDownloadFailedMsg${response.statusCode})';
         });
         return;
       }
@@ -197,30 +200,15 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       }
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green.shade800,
-          behavior: SnackBarBehavior.floating,
-          content: Text('$kDownloadedMsg${file.path.split('/').last}', style: GoogleFonts.inter(color: Colors.white)),
-        ),
-      );
+      CustomSnackBar.show(context, '$kDownloadedMsg${file.path.split('/').last}', isSuccess: true);
 
       // Automatically trigger installation after successful download
       await _installApk();
     } catch (e) {
       if (mounted) {
-        if (widget.compact) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.red.shade800,
-              behavior: SnackBarBehavior.floating,
-              content: Text('$kErrorPrefix${e.toString()}', style: GoogleFonts.inter(color: Colors.white)),
-            ),
-          );
-        }
+        CustomSnackBar.show(context, '$kErrorPrefix${e.toString()}', isError: true);
         setState(() {
           _isDownloading = false;
-          _errorMessage = widget.compact ? null : '$kErrorPrefix${e.toString()}';
         });
       }
     }
@@ -236,11 +224,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       try {
         final bool success = await _platform.invokeMethod('installApk', {'apkPath': _apkFile!.path});
         if (!success && mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Failed to start installation')));
+          CustomSnackBar.show(context, 'Failed to start installation', isError: true);
         }
       } catch (e) {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Installation error: $e')));
+          CustomSnackBar.show(context, 'Installation error: $e', isError: true);
         }
       }
     }
@@ -250,11 +238,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     try {
       final bool success = await _platform.invokeMethod('launchApp', {'packageName': widget.app.packageName});
       if (!success && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text(kLaunchFailedMsg)));
+        CustomSnackBar.show(context, kLaunchFailedMsg, isError: true);
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$kLaunchErrorMsg$e')));
+        CustomSnackBar.show(context, '$kLaunchErrorMsg$e', isError: true);
       }
     }
   }
@@ -333,25 +321,6 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (_errorMessage != null) ...[
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(widget.compact ? context.scale(8) : context.scale(12)),
-            margin: EdgeInsets.only(bottom: context.scale(8)),
-            decoration: BoxDecoration(
-              color: Colors.red.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(borderRadius),
-              border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
-            ),
-            child: Text(
-              _errorMessage!,
-              style: GoogleFonts.inter(
-                color: Colors.red.shade300,
-                fontSize: widget.compact ? context.scale(11) : context.scale(13),
-              ),
-            ),
-          ),
-        ],
         ClipRRect(
           borderRadius: BorderRadius.circular(borderRadius),
           child: BackdropFilter(

@@ -9,6 +9,7 @@ import 'package:flutterapp/presentations/profile/widgets/feedback_rating_selecto
 import 'package:flutterapp/presentations/profile/widgets/feedback_submit_button.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
+import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FeedbackScreen extends StatefulWidget {
@@ -57,9 +58,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
       if (response.statusCode == 201) {
         if (mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('Thank you for your feedback!'), backgroundColor: Colors.green));
+          CustomSnackBar.show(context, 'Thank you for your feedback!', isSuccess: true);
           Navigator.of(context).pop();
         }
       } else {
@@ -67,9 +66,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Error: ${e.toString()}'), backgroundColor: Colors.redAccent));
+        CustomSnackBar.show(context, 'Error: ${e.toString()}', isError: true);
       }
     } finally {
       if (mounted) {

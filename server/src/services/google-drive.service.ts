@@ -94,6 +94,18 @@ export const getFileStreamFromDrive = async (
 
   const driveClient = getDriveClient(credentials);
 
+  // Fetch file size from metadata first to ensure we have content-length (since alt=media might use chunked transfer encoding)
+  let contentLength: string | undefined;
+  try {
+    const metadata = await driveClient.files.get({
+      fileId,
+      fields: 'size',
+    });
+    contentLength = metadata.data.size || undefined;
+  } catch (err) {
+    console.error('Failed to fetch file size from Google Drive metadata:', err);
+  }
+
   const response = await driveClient.files.get(
     {
       fileId,
@@ -104,7 +116,7 @@ export const getFileStreamFromDrive = async (
 
   return {
     stream: response.data as Readable,
-    contentLength: response.headers['content-length'] as string | undefined,
+    contentLength: contentLength || (response.headers['content-length'] as string | undefined),
   };
 };
 

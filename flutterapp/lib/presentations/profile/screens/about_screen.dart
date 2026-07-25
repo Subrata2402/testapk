@@ -7,6 +7,7 @@ import 'package:flutterapp/presentations/profile/widgets/about_support_card.dart
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatelessWidget {
@@ -19,12 +20,12 @@ class AboutScreen extends StatelessWidget {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Could not launch $urlString')));
+          CustomSnackBar.show(context, 'Could not launch $urlString', isError: true);
         }
       }
     } catch (e) {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error: $e')));
+        CustomSnackBar.show(context, 'Error: $e', isError: true);
       }
     }
   }

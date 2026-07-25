@@ -88,3 +88,10 @@ const String kDownloadApkBtnLabel = 'Download APK';
 const String kRetryBtnLabel = 'Retry';
 const String kDeclineBtnLabel = 'Decline';
 const String kAcceptBtnLabel = 'Accept';
+
+/// Installation Errors
+const String kErrorInstallCancelled = 'Installation cancelled: Please grant permission to install the app.';
+const String kErrorInstallConflictingVersion =
+    'Installation failed: A conflicting version of the app is already installed.';
+const String kErrorInstallInvalidApk = 'Installation failed: The APK file is invalid or corrupted.';
+const String kErrorInstallInsufficientStorage = 'Installation failed: Insufficient storage space on the device.';
