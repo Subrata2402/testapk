@@ -34,6 +34,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
   int _installedVersionCode = -1;
   File? _apkFile;
   bool _isInstalling = false;
+  AppLifecycleState _lifecycleState = AppLifecycleState.resumed;
 
   bool get _isAppInstalled => _installedVersionCode > -1;
   bool get _isUpdateAvailable => _isAppInstalled && !(_installedVersionCode >= widget.release.buildNumber);
@@ -62,6 +63,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    _lifecycleState = state;
     if (state == AppLifecycleState.resumed) {
       _checkIfDownloaded();
       _checkIfAppInstalled();
@@ -161,13 +163,32 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     }
   }
 
+  String _formatSize(int bytes) {
+    final mb = bytes / (1024 * 1024);
+    return '${mb.toStringAsFixed(1)} MB';
+  }
+
   Future<void> _downloadApk() async {
     setState(() {
       _isDownloading = true;
       _downloadProgress = 0;
     });
 
+    final notificationId = widget.release.buildNumber;
+    final notificationTitle = 'Downloading ${widget.app.name}';
+    int lastProgress = -1;
+
     try {
+      // Show initial indeterminate progress notification
+      await _platform.invokeMethod('showProgressNotification', {
+        'id': notificationId,
+        'title': notificationTitle,
+        'contentText': 'Connecting...',
+        'progress': 0,
+        'max': 100,
+        'indeterminate': true,
+      });
+
       final file = await _getApkFile();
 
       final response = await ApiService.instance.downloadRelease(widget.app.id, widget.release.buildNumber, file.path, (
@@ -175,11 +196,27 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
         total,
       ) {
         if (total > 0 && mounted) {
+          final progress = (received / total * 100).toInt();
           setState(() {
             _downloadProgress = received / total;
           });
+          if (progress != lastProgress) {
+            lastProgress = progress;
+            final contentText = '${_formatSize(received)} / ${_formatSize(total)} ($progress%)';
+            _platform.invokeMethod('showProgressNotification', {
+              'id': notificationId,
+              'title': notificationTitle,
+              'contentText': contentText,
+              'progress': progress,
+              'max': 100,
+              'indeterminate': false,
+            });
+          }
         }
       });
+
+      // Dismiss notification on completion
+      await _platform.invokeMethod('dismissNotification', {'id': notificationId});
 
       if (response.statusCode != 200) {
         if (mounted) {
@@ -202,9 +239,13 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       if (!mounted) return;
       CustomSnackBar.show(context, '$kDownloadedMsg${file.path.split('/').last}', type: CustomSnackBarType.success);
 
-      // Automatically trigger installation after successful download
-      await _installApk();
+      // Automatically trigger installation after successful download only if the app is in the foreground
+      if (_lifecycleState == AppLifecycleState.resumed) {
+        await _installApk();
+      }
     } catch (e) {
+      // Dismiss notification on error
+      await _platform.invokeMethod('dismissNotification', {'id': notificationId});
       if (mounted) {
         setState(() {
           _isDownloading = false;

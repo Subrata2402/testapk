@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -109,6 +110,29 @@ class MainActivity : FlutterActivity() {
                         result.error("BAD_ARGS", "Title or body is null", null)
                     }
                 }
+                "showProgressNotification" -> {
+                    val id = call.argument<Int>("id")
+                    val title = call.argument<String>("title")
+                    val contentText = call.argument<String>("contentText")
+                    val progress = call.argument<Int>("progress")
+                    val max = call.argument<Int>("max")
+                    val indeterminate = call.argument<Boolean>("indeterminate")
+                    if (id != null && title != null && contentText != null && progress != null && max != null && indeterminate != null) {
+                        showProgressNotification(id, title, contentText, progress, max, indeterminate)
+                        result.success(true)
+                    } else {
+                        result.error("BAD_ARGS", "Missing arguments for showProgressNotification", null)
+                    }
+                }
+                "dismissNotification" -> {
+                    val id = call.argument<Int>("id")
+                    if (id != null) {
+                        dismissNotification(id)
+                        result.success(true)
+                    } else {
+                        result.error("BAD_ARGS", "ID is null", null)
+                    }
+                }
                 "installApk" -> {
                     val apkPath = call.argument<String>("apkPath")
                     if (apkPath != null) {
@@ -194,6 +218,26 @@ class MainActivity : FlutterActivity() {
             .build()
 
         manager.notify(1, notification)
+    }
+
+    private fun showProgressNotification(id: Int, title: String, contentText: String, progress: Int, max: Int, indeterminate: Boolean) {
+        val intent = Intent(this, DownloadService::class.java).apply {
+            action = "START"
+            putExtra("id", id)
+            putExtra("title", title)
+            putExtra("contentText", contentText)
+            putExtra("progress", progress)
+            putExtra("max", max)
+            putExtra("indeterminate", indeterminate)
+        }
+        ContextCompat.startForegroundService(this, intent)
+    }
+
+    private fun dismissNotification(id: Int) {
+        val intent = Intent(this, DownloadService::class.java).apply {
+            action = "STOP"
+        }
+        startService(intent)
     }
 
     private fun installApk(apkPath: String, result: MethodChannel.Result) {
