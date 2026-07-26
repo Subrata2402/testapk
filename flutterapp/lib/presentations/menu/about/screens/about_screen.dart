@@ -20,12 +20,12 @@ class AboutScreen extends StatelessWidget {
         await launchUrl(url, mode: LaunchMode.externalApplication);
       } else {
         if (context.mounted) {
-          CustomSnackBar.show(context, '$kAboutLaunchError$urlString', isError: true);
+          CustomSnackBar.show(context, '$kAboutLaunchError$urlString', type: CustomSnackBarType.error);
         }
       }
     } catch (e) {
       if (context.mounted) {
-        CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
+        CustomSnackBar.show(context, '$kErrorPrefix$e', type: CustomSnackBarType.error);
       }
     }
   }

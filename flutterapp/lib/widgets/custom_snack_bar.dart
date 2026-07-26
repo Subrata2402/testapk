@@ -4,27 +4,40 @@ import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/text_viewer.dart';
 
+enum CustomSnackBarType {
+  info,
+  success,
+  warning,
+  error,
+}
+
 class CustomSnackBar {
   static OverlayEntry? _currentEntry;
 
   static void show(
     BuildContext context,
     String message, {
-    bool isError = false,
-    bool isSuccess = false,
-    bool isWarning = false,
+    CustomSnackBarType type = CustomSnackBarType.info,
     OverlayState? overlayState,
   }) {
     // Dismiss previous snackbar immediately
     dismiss();
 
-    final Color accentColor = isError
-        ? Colors.redAccent
-        : isSuccess
-        ? Colors.greenAccent
-        : isWarning
-        ? Colors.amberAccent
-        : AppColors.accent;
+    final Color accentColor;
+    switch (type) {
+      case CustomSnackBarType.error:
+        accentColor = Colors.redAccent;
+        break;
+      case CustomSnackBarType.success:
+        accentColor = Colors.greenAccent;
+        break;
+      case CustomSnackBarType.warning:
+        accentColor = Colors.amberAccent;
+        break;
+      case CustomSnackBarType.info:
+        accentColor = AppColors.accent;
+        break;
+    }
 
     final overlay = overlayState ?? Overlay.of(context);
     late final OverlayEntry entry;

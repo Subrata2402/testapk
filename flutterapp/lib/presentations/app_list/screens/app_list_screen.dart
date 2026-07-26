@@ -101,14 +101,14 @@ class _AppListScreenState extends State<AppListScreen> {
       final response = await ApiService.instance.acceptInvitation(appId);
       if (!mounted) return;
       if (response.statusCode == 200) {
-        CustomSnackBar.show(context, kInviteAcceptedMsg, isSuccess: true);
+        CustomSnackBar.show(context, kInviteAcceptedMsg, type: CustomSnackBarType.success);
         _fetchData();
       } else {
-        CustomSnackBar.show(context, kInviteAcceptFailedMsg, isError: true);
+        CustomSnackBar.show(context, kInviteAcceptFailedMsg, type: CustomSnackBarType.error);
       }
     } catch (e) {
       if (!mounted) return;
-      CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
+      CustomSnackBar.show(context, '$kErrorPrefix$e', type: CustomSnackBarType.error);
     } finally {
       if (mounted) setState(() => _processingActions.remove(appId));
     }
@@ -120,14 +120,14 @@ class _AppListScreenState extends State<AppListScreen> {
       final response = await ApiService.instance.rejectInvitation(appId);
       if (!mounted) return;
       if (response.statusCode == 200) {
-        CustomSnackBar.show(context, kInviteRejectedMsg, isWarning: true);
+        CustomSnackBar.show(context, kInviteRejectedMsg, type: CustomSnackBarType.warning);
         _fetchData();
       } else {
-        CustomSnackBar.show(context, kInviteRejectFailedMsg, isError: true);
+        CustomSnackBar.show(context, kInviteRejectFailedMsg, type: CustomSnackBarType.error);
       }
     } catch (e) {
       if (!mounted) return;
-      CustomSnackBar.show(context, '$kErrorPrefix$e', isError: true);
+      CustomSnackBar.show(context, '$kErrorPrefix$e', type: CustomSnackBarType.error);
     } finally {
       if (mounted) setState(() => _processingActions.remove(appId));
     }

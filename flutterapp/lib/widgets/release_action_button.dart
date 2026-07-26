@@ -115,7 +115,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
               displayMessage = kErrorInstallInsufficientStorage;
             }
 
-            CustomSnackBar.show(context, displayMessage, isError: true);
+            CustomSnackBar.show(context, displayMessage, type: CustomSnackBarType.error);
           }
         }
       }
@@ -183,7 +183,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
 
       if (response.statusCode != 200) {
         if (mounted) {
-          CustomSnackBar.show(context, '$kDownloadFailedMsg${response.statusCode})', isError: true);
+          CustomSnackBar.show(context, '$kDownloadFailedMsg${response.statusCode})', type: CustomSnackBarType.error);
         }
         setState(() {
           _isDownloading = false;
@@ -200,7 +200,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       }
 
       if (!mounted) return;
-      CustomSnackBar.show(context, '$kDownloadedMsg${file.path.split('/').last}', isSuccess: true);
+      CustomSnackBar.show(context, '$kDownloadedMsg${file.path.split('/').last}', type: CustomSnackBarType.success);
 
       // Automatically trigger installation after successful download
       await _installApk();
@@ -223,11 +223,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       try {
         final bool success = await _platform.invokeMethod('installApk', {'apkPath': _apkFile!.path});
         if (!success && mounted) {
-          CustomSnackBar.show(context, kErrorInstallStartFailed, isError: true);
+          CustomSnackBar.show(context, kErrorInstallStartFailed, type: CustomSnackBarType.error);
         }
       } catch (e) {
         if (mounted) {
-          CustomSnackBar.show(context, '$kErrorInstallPrefix$e', isError: true);
+          CustomSnackBar.show(context, '$kErrorInstallPrefix$e', type: CustomSnackBarType.error);
         }
       }
     }
@@ -237,11 +237,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     try {
       final bool success = await _platform.invokeMethod('launchApp', {'packageName': widget.app.packageName});
       if (!success && mounted) {
-        CustomSnackBar.show(context, kLaunchFailedMsg, isError: true);
+        CustomSnackBar.show(context, kLaunchFailedMsg, type: CustomSnackBarType.error);
       }
     } catch (e) {
       if (mounted) {
-        CustomSnackBar.show(context, '$kLaunchErrorMsg$e', isError: true);
+        CustomSnackBar.show(context, '$kLaunchErrorMsg$e', type: CustomSnackBarType.error);
       }
     }
   }

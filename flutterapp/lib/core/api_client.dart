@@ -128,7 +128,7 @@ class ApiClient {
     final context = navigatorKey.currentContext;
     final overlayState = navigatorKey.currentState?.overlay;
     if (context != null) {
-      CustomSnackBar.show(context, errorMessage, isError: true, overlayState: overlayState);
+      CustomSnackBar.show(context, errorMessage, type: CustomSnackBarType.error, overlayState: overlayState);
     }
   }
 }

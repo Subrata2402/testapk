@@ -59,7 +59,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
       if (response.statusCode == 201) {
         if (mounted) {
-          CustomSnackBar.show(context, kFeedbackSuccessMsg, isSuccess: true);
+          CustomSnackBar.show(context, kFeedbackSuccessMsg, type: CustomSnackBarType.success);
           Navigator.of(context).pop();
         }
       } else {
@@ -67,7 +67,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       }
     } catch (e) {
       if (mounted) {
-        CustomSnackBar.show(context, 'Error: ${e.toString()}', isError: true);
+        CustomSnackBar.show(context, 'Error: ${e.toString()}', type: CustomSnackBarType.error);
       }
     } finally {
       if (mounted) {
