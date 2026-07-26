@@ -190,8 +190,14 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       });
 
       final file = await _getApkFile();
+      final tempFile = File('${file.path}.part');
 
-      final response = await ApiService.instance.downloadRelease(widget.app.id, widget.release.buildNumber, file.path, (
+      // Clean up any existing temp file from a previous failed attempt
+      if (await tempFile.exists()) {
+        await tempFile.delete();
+      }
+
+      final response = await ApiService.instance.downloadRelease(widget.app.id, widget.release.buildNumber, tempFile.path, (
         received,
         total,
       ) {
@@ -219,6 +225,9 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       await _platform.invokeMethod('dismissNotification', {'id': notificationId});
 
       if (response.statusCode != 200) {
+        if (await tempFile.exists()) {
+          await tempFile.delete();
+        }
         if (mounted) {
           CustomSnackBar.show(context, '$kDownloadFailedMsg${response.statusCode})', type: CustomSnackBarType.error);
         }
@@ -226,6 +235,11 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
           _isDownloading = false;
         });
         return;
+      }
+
+      // Rename temp file to final apk file
+      if (await tempFile.exists()) {
+        await tempFile.rename(file.path);
       }
 
       if (mounted) {
@@ -246,6 +260,16 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     } catch (e) {
       // Dismiss notification on error
       await _platform.invokeMethod('dismissNotification', {'id': notificationId});
+      
+      // Clean up temp file on error
+      try {
+        final file = await _getApkFile();
+        final tempFile = File('${file.path}.part');
+        if (await tempFile.exists()) {
+          await tempFile.delete();
+        }
+      } catch (_) {}
+
       if (mounted) {
         setState(() {
           _isDownloading = false;
