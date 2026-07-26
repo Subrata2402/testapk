@@ -119,7 +119,8 @@ export const getApps = async (
       { members: 0 }
     ).populate({
       path: 'releases',
-      options: { limit: 1, sort: { buildNumber: -1 } },
+      options: { sort: { buildNumber: -1 } },
+      perDocumentLimit: 1,
     }).populate('releasesCount');
 
     res.status(200).json({
@@ -666,7 +667,8 @@ export const getInvitations = async (
       { members: 0 }
     ).populate({
       path: 'releases',
-      options: { limit: 1, sort: { buildNumber: -1 } },
+      options: { sort: { buildNumber: -1 } },
+      perDocumentLimit: 1,
     }).populate('releasesCount');
 
     res.status(200).json({

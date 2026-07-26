@@ -9,7 +9,7 @@
           "request": "launch",
           "type": "dart",
           "flutterMode": "debug",
-          "program": "lib/main.dart",
+          "program": "flutterapp/lib/main.dart",
           "args": [
               "--flavor",
               "dev"
@@ -20,7 +20,7 @@
           "request": "launch",
           "type": "dart",
           "flutterMode": "debug",
-          "program": "lib/main.dart",
+          "program": "flutterapp/lib/main.dart",
           "args": [
               "--flavor",
               "local"
@@ -31,7 +31,7 @@
           "request": "launch",
           "type": "dart",
           "flutterMode": "release",
-          "program": "lib/main.dart",
+          "program": "flutterapp/lib/main.dart",
           "args": [
               "--flavor",
               "prod"
