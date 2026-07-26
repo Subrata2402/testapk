@@ -206,7 +206,6 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       await _installApk();
     } catch (e) {
       if (mounted) {
-        CustomSnackBar.show(context, '$kErrorPrefix${e.toString()}', isError: true);
         setState(() {
           _isDownloading = false;
         });

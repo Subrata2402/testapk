@@ -77,11 +77,13 @@ class AuthService {
     return null;
   }
 
-  Future<void> signOut() async {
-    try {
-      final token = await FirebaseMessaging.instance.getToken();
-      await ApiService.instance.logout(token);
-    } catch (_) {}
+  Future<void> signOut({bool localOnly = false}) async {
+    if (!localOnly) {
+      try {
+        final token = await FirebaseMessaging.instance.getToken();
+        await ApiService.instance.logout(token);
+      } catch (_) {}
+    }
     await _googleSignIn.signOut();
     await StorageService.instance.deleteToken();
     _currentUser = null;

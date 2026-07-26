@@ -2,9 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapp/configs.dart';
+import 'package:flutterapp/core/api_client.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/auth_service.dart';
+import 'package:flutterapp/core/navigation.dart';
 import 'package:flutterapp/firebase_options.dart';
 import 'package:flutterapp/notification_manager.dart';
+import 'package:flutterapp/presentations/login/screens/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'presentations/splash/screens/splash_screen.dart';
 
@@ -19,6 +23,15 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await NotificationManager.initialize();
 
+  // Set up unauthorized callback for API client
+  ApiClient.instance.onUnauthorized = () async {
+    await AuthService.instance.signOut(localOnly: true);
+    navigatorKey.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+      (route) => false,
+    );
+  };
+
   runApp(const TestApkApp());
 }
 
@@ -28,6 +41,7 @@ class TestApkApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'TestAPK',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -25,7 +25,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
   bool _isLoading = false;
-  String? _errorMessage;
 
   late AnimationController _ctrl;
   late Animation<double> _fade;
@@ -75,7 +74,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   Future<void> _handleGoogleSignIn() async {
     setState(() {
       _isLoading = true;
-      _errorMessage = null;
     });
     final user = await AuthService.instance.signInWithGoogle();
     if (!mounted) return;
@@ -84,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     } else {
       setState(() {
         _isLoading = false;
-        _errorMessage = kLoginErrorMsg;
       });
     }
   }
@@ -216,26 +213,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       ),
 
                       SizedBox(height: context.scale(32)),
-
-                      // Error
-                      if (_errorMessage != null) ...[
-                        GlassPanel(
-                          padding: EdgeInsets.symmetric(horizontal: context.scale(20), vertical: context.scale(20)),
-                          tint: AppColors.error.withValues(alpha: 0.18),
-                          borderRadius: 20,
-                          borderColor: AppColors.glass.withValues(alpha: 0.22),
-                          child: Text(
-                            _errorMessage!,
-                            style: GoogleFonts.inter(
-                              color: const Color(0xFFFF6B6B),
-                              fontSize: context.scale(13),
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        SizedBox(height: context.scale(14)),
-                      ],
 
                       // Sign-in button
                       LoginSignInButton(isLoading: _isLoading, onPressed: _isLoading ? null : _handleGoogleSignIn),

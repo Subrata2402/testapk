@@ -13,6 +13,7 @@ class CustomSnackBar {
     bool isError = false,
     bool isSuccess = false,
     bool isWarning = false,
+    OverlayState? overlayState,
   }) {
     // Dismiss previous snackbar immediately
     dismiss();
@@ -25,7 +26,7 @@ class CustomSnackBar {
         ? Colors.amberAccent
         : AppColors.accent;
 
-    final overlay = Overlay.of(context);
+    final overlay = overlayState ?? Overlay.of(context);
     late final OverlayEntry entry;
 
     entry = OverlayEntry(
@@ -77,14 +78,14 @@ class _CustomSnackBarWidgetState extends State<_CustomSnackBarWidget> with Singl
     _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeOut);
 
     _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 1.5),
+      begin: const Offset(0, -1.5),
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward();
 
-    // Auto-dismiss after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
+    // Auto-dismiss after 8 seconds
+    Future.delayed(const Duration(seconds: 8), () {
       if (mounted) {
         _dismiss();
       }
@@ -107,9 +108,10 @@ class _CustomSnackBarWidgetState extends State<_CustomSnackBarWidget> with Singl
 
   @override
   Widget build(BuildContext context) {
-    final double bottomPadding = MediaQuery.of(context).padding.bottom;
+    final double topPadding = MediaQuery.of(context).padding.top;
+    debugPrint("Message: ${widget.message}");
     return Positioned(
-      bottom: context.scale(24) + bottomPadding,
+      top: context.scale(24) + topPadding,
       left: context.scale(16),
       right: context.scale(16),
       child: Material(
@@ -162,6 +164,15 @@ class _CustomSnackBarWidgetState extends State<_CustomSnackBarWidget> with Singl
                               ),
                             ),
                           ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.close,
+                              color: Colors.white.withValues(alpha: 0.6),
+                              size: context.scale(18),
+                            ),
+                            onPressed: _dismiss,
+                          ),
+                          SizedBox(width: context.scale(4)),
                         ],
                       ),
                     ),

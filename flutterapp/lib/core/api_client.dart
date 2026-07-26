@@ -1,10 +1,14 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'storage_service.dart';
 import 'constants.dart';
+import 'navigation.dart';
 
 class ApiClient {
   late final Dio _dio;
+  Future<void> Function()? onUnauthorized;
 
   ApiClient._() {
     _dio = Dio(
@@ -24,6 +28,15 @@ class ApiClient {
             options.headers['Authorization'] = 'Bearer $token';
           }
           return handler.next(options);
+        },
+        onError: (DioException e, handler) async {
+          if (e.response?.statusCode == 401) {
+            if (onUnauthorized != null) {
+              await onUnauthorized!();
+            }
+          }
+          _handleDioError(e);
+          return handler.next(e);
         },
       ),
     );
@@ -57,5 +70,65 @@ class ApiClient {
 
   Future<Response> delete(String path) async {
     return _dio.delete(path);
+  }
+
+  void _handleDioError(DioException e) {
+    String errorMessage = kErrorUnexpected;
+
+    if (e.response != null) {
+      final statusCode = e.response!.statusCode;
+      if (statusCode == 401) {
+        errorMessage = kErrorSessionExpired;
+      } else if (statusCode == 400) {
+        if (e.response?.data is Map<String, dynamic>) {
+          final data = e.response!.data as Map<String, dynamic>;
+          errorMessage = data['message'] ?? data['error'] ?? kErrorBadRequest;
+        } else {
+          errorMessage = kErrorBadRequest;
+        }
+      } else if (statusCode == 403) {
+        if (e.response?.data is Map<String, dynamic>) {
+          final data = e.response!.data as Map<String, dynamic>;
+          errorMessage = data['message'] ?? data['error'] ?? kErrorForbidden;
+        } else {
+          errorMessage = kErrorForbidden;
+        }
+      } else if (statusCode != null && statusCode >= 500) {
+        errorMessage = kErrorServerError;
+      } else if (e.response?.data is Map<String, dynamic>) {
+        final data = e.response!.data as Map<String, dynamic>;
+        errorMessage = data['message'] ?? data['error'] ?? '$kErrorRequestFailedPrefix$statusCode';
+      } else {
+        errorMessage = '$kErrorRequestFailedPrefix$statusCode';
+      }
+    } else {
+      switch (e.type) {
+        case DioExceptionType.connectionTimeout:
+        case DioExceptionType.sendTimeout:
+        case DioExceptionType.receiveTimeout:
+          errorMessage = kErrorTimeout;
+          break;
+        case DioExceptionType.connectionError:
+          errorMessage = kErrorNoInternet;
+          break;
+        case DioExceptionType.cancel:
+          errorMessage = kErrorRequestCancelled;
+          break;
+        case DioExceptionType.unknown:
+        default:
+          if (e.error is SocketException) {
+            errorMessage = kErrorNoInternet;
+          } else {
+            errorMessage = e.message ?? kErrorUnexpected;
+          }
+          break;
+      }
+    }
+
+    final context = navigatorKey.currentContext;
+    final overlayState = navigatorKey.currentState?.overlay;
+    if (context != null) {
+      CustomSnackBar.show(context, errorMessage, isError: true, overlayState: overlayState);
+    }
   }
 }

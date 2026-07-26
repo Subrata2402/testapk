@@ -124,3 +124,14 @@ const String kLabelSendFeedback = 'Send Feedback';
 const String kLabelTermsOfService = 'Terms of Service';
 const String kLabelPrivacyPolicy = 'Privacy Policy';
 const String kLabelAboutTestApk = 'About TestAPK';
+
+/// API Error Messages
+const String kErrorUnexpected = 'An unexpected error occurred. Please try again.';
+const String kErrorTimeout = 'Connection timed out. Please check your internet connection.';
+const String kErrorSessionExpired = 'Session expired. Please sign in again.';
+const String kErrorServerError = 'Server error. Please try again later.';
+const String kErrorNoInternet = 'No internet connection. Please check your network settings.';
+const String kErrorRequestCancelled = 'Request was cancelled.';
+const String kErrorRequestFailedPrefix = 'Request failed: ';
+const String kErrorBadRequest = 'Bad request. Please check your input.';
+const String kErrorForbidden = 'Access denied. You do not have permission to perform this action.';
