@@ -182,6 +182,16 @@ export default function LandingPage({ user, onLoginClick, onContactClick, onNavi
                 <span><strong>Drive Upload Status:</strong> Real-time feedback while the server transfers the APK to Google Drive.</span>
               </li>
             </ul>
+            <a
+              href="https://www.npmjs.com/package/testapk-cli"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-sm flex-center gap-2 mt-4"
+              style={{ textDecoration: 'none', width: 'fit-content' }}
+            >
+              <Icons.ExternalLink size={14} />
+              <span>View on npm</span>
+            </a>
           </div>
         </div>
       </div>
