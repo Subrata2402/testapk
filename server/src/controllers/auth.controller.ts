@@ -3,6 +3,7 @@ import { OAuth2Client } from 'google-auth-library';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { User } from '../models/user.model.js';
+import { sendWelcomeEmail } from '../services/email.service.js';
 
 const client = new OAuth2Client(env.GOOGLE_CLIENT_ID);
 
@@ -86,6 +87,10 @@ export const googleLogin = async (
         name,
         picture,
         googleId,
+      });
+      // Send welcome email asynchronously
+      sendWelcomeEmail(user.email, user.name).catch(err => {
+        console.error('Failed to send welcome email:', err);
       });
     }
 

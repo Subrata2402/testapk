@@ -11,6 +11,7 @@ export default function ContactSupport() {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,16 +19,34 @@ export default function ContactSupport() {
       return;
     }
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setName('');
-    setEmail('');
-    setSubject('');
-    setMessage('');
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/support/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data.status !== 'success') {
+        throw new Error(data.message || 'Failed to send message');
+      }
+
+      setIsSubmitted(true);
+      setName('');
+      setEmail('');
+      setSubject('');
+      setMessage('');
+    } catch (err) {
+      console.error('Contact Support Error:', err);
+      setError(err.message || 'Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,6 +79,13 @@ export default function ContactSupport() {
               <h2>Contact Support</h2>
               <p>Have questions or need help with TestAPK? Send us a message.</p>
             </div>
+
+            {error && (
+              <div className="error-banner" style={{ margin: '0 0 16px 0', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px', borderRadius: '8px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', color: '#ef4444', fontSize: '0.9rem' }}>
+                <Icons.AlertCircle size={16} />
+                <span>{error}</span>
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
