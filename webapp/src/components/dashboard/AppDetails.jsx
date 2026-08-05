@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import * as Icons from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
+import { appService, API_BASE_URL } from '../../services/api';
 import './AppDetails.css';
 
 export default function AppDetails({ app, user, onUpdateApp, showAlert, showConfirm }) {
@@ -67,18 +68,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
   const [isLoadingReleases, setIsLoadingReleases] = useState(false);
 
   const fetchReleases = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
     setIsLoadingReleases(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/releases`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await appService.getReleases(app._id || app.id);
+      if (data.status === 'success') {
         setReleases(data.data.releases);
       }
     } catch (err) {
@@ -89,18 +82,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
   };
 
   const fetchMembers = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
     setIsLoadingMembers(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/members`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await appService.getMembers(app._id || app.id);
+      if (data.status === 'success') {
         setMembers(data.data.members);
       }
     } catch (err) {
@@ -182,7 +167,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
     try {
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/releases`);
+      xhr.open('POST', `${API_BASE_URL}/apps/${app._id || app.id}/releases`);
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
 
       xhr.upload.onprogress = (event) => {
@@ -229,16 +214,9 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
   };
 
   const handleDownload = async (buildNumber, version) => {
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
     setDownloadingBuild(buildNumber);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/releases/${buildNumber}/download`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+      const response = await appService.getDownloadBlob(app._id || app.id, buildNumber);
 
       if (!response.ok) {
         const data = await response.json();
@@ -274,25 +252,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
       return;
     }
 
-    const token = localStorage.getItem('token');
-    if (!token) return;
-
     setIsInviting(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/members`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: inviteEmail,
-          role: inviteRole,
-        }),
-      });
-
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await appService.inviteMember(app._id || app.id, inviteEmail, inviteRole);
+      if (data.status === 'success') {
         onUpdateApp(data.data.app);
         setMembers(data.data.app.members);
         setInviteEmail('');
@@ -317,20 +280,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
     showConfirm(
       `Are you sure you want to remove ${emailToRemove}?`,
       async () => {
-        const token = localStorage.getItem('token');
-        if (!token) return;
-
         setIsRemoving(true);
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/members/${emailToRemove}`, {
-            method: 'DELETE',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          });
-
-          const data = await response.json();
-          if (response.ok && data.status === 'success') {
+          const data = await appService.removeMember(app._id || app.id, emailToRemove);
+          if (data.status === 'success') {
             onUpdateApp(data.data.app);
             setMembers(data.data.app.members);
             showAlert('Member removed successfully.', 'Success', 'success');
@@ -352,20 +305,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
     showConfirm(
       'Are you sure you want to delete this release? This action cannot be undone.',
       async () => {
-        const token = localStorage.getItem('token');
-        if (!token) return;
-
         setIsDeleting(true);
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/apps/${app._id || app.id}/releases/${buildNumberToDelete}`, {
-            method: 'DELETE',
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          });
-
-          const data = await response.json();
-          if (response.ok && data.status === 'success') {
+          const data = await appService.deleteRelease(app._id || app.id, buildNumberToDelete);
+          if (data.status === 'success') {
             onUpdateApp(data.data.app);
             setReleases(prev => prev.filter(r => r.buildNumber !== buildNumberToDelete));
             showAlert('Release deleted successfully.', 'Success', 'success');

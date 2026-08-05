@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { GoogleLogin } from '@react-oauth/google';
 import googleIcon from '../../assets/google-icon-logo.svg';
+import { authService } from '../../services/api';
 import './GoogleLoginModal.css';
 
 export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
@@ -15,21 +16,7 @@ export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
     setError(null);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/google`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          idToken: credentialResponse.credential,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || data.status !== 'success') {
-        throw new Error(data.message || 'Authentication failed');
-      }
+      const data = await authService.loginWithGoogle(credentialResponse.credential);
 
       // Save token to localStorage
       localStorage.setItem('token', data.token);

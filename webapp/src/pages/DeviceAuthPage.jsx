@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
+import { deviceAuthService } from '../services/api';
 import './DeviceAuthPage.css';
 
 // States: 'checking' | 'form' | 'expired' | 'success'
@@ -19,9 +20,8 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
         return;
       }
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/device/check-url?token=${token}`);
-        const data = await response.json();
-        if (response.ok && data.status === 'success') {
+        const data = await deviceAuthService.checkUrl(token);
+        if (data.status === 'success') {
           setPageState('form');
         } else {
           setPageState('expired');
@@ -40,32 +40,22 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
 
     setIsAuthorizing(true);
     try {
-      const authToken = localStorage.getItem('token');
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/device/authorize`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`,
-        },
-        body: JSON.stringify({ userCode }),
-      });
-
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await deviceAuthService.authorize(userCode);
+      if (data.status === 'success') {
         setPageState('success');
         setTimeout(() => {
           onGoToDashboard();
         }, 3000);
-      } else if (response.status === 410 || data.code === 'expired_code') {
-        // Code expired — show expired state
-        setPageState('expired');
       } else {
-        // Invalid code (typo) or other error — show alert and stay on form
         showAlert(data.message || 'Failed to authorize device', 'Error', 'error');
       }
     } catch (err) {
       console.error('Failed to authorize device:', err);
-      showAlert('Failed to authorize device', 'Error', 'error');
+      if (err.message === 'Device code expired' || err.message === 'expired_code') {
+        setPageState('expired');
+      } else {
+        showAlert(err.message || 'Failed to authorize device', 'Error', 'error');
+      }
     } finally {
       setIsAuthorizing(false);
     }

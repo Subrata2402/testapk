@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { useGoogleLogin } from '@react-oauth/google';
+import { userService } from '../../services/api';
 import './CreateAppModal.css'; // Reuse CreateAppModal styles
 
 export default function DriveConfigModal({ isOpen, onClose, user, showAlert, onDriveConfigured }) {
@@ -10,18 +11,8 @@ export default function DriveConfigModal({ isOpen, onClose, user, showAlert, onD
     onSuccess: async (codeResponse) => {
       setIsConfiguring(true);
       try {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/users/configure-drive`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({ code: codeResponse.code }),
-        });
-
-        const data = await response.json();
-        if (response.ok && data.status === 'success') {
+        const data = await userService.configureDrive(codeResponse.code);
+        if (data.status === 'success') {
           showAlert('Google Drive configured successfully!', 'Success', 'success');
           onDriveConfigured();
           onClose();

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import { supportService } from '../../services/api';
 import './ContactSupportModal.css';
 
 export default function ContactSupportModal({ isOpen, onClose }) {
@@ -34,19 +35,7 @@ export default function ContactSupportModal({ isOpen, onClose }) {
     setError(null);
     
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/support/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, subject, message }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok || data.status !== 'success') {
-        throw new Error(data.message || 'Failed to send message');
-      }
+      await supportService.contactSupport(name, email, subject, message);
 
       setIsSubmitted(true);
       setName('');

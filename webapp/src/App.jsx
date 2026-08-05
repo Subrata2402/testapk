@@ -10,6 +10,7 @@ import Navbar from './components/layout/Navbar';
 import AlertModal from './components/common/AlertModal';
 import ConfirmModal from './components/common/ConfirmModal';
 import AppRoutes from './routes/AppRoutes';
+import { authService, userService, appService } from './services/api';
 import './App.css';
 
 export default function App() {
@@ -26,16 +27,11 @@ export default function App() {
   const [isLoadingApps, setIsLoadingApps] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const fetchApps = async (token) => {
+  const fetchApps = async () => {
     setIsLoadingApps(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await appService.getApps();
+      if (data.status === 'success') {
         setApps(data.data.apps);
         if (data.data.apps.length > 0) {
           setSelectedAppId(data.data.apps[0]._id || data.data.apps[0].id);
@@ -59,15 +55,9 @@ export default function App() {
       }
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/users/me`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        const data = await userService.getCurrentUser();
 
-        const data = await response.json();
-
-        if (response.ok && data.status === 'success') {
+        if (data.status === 'success') {
           setUser({
             name: data.data.user.name,
             email: data.data.user.email,
@@ -76,7 +66,7 @@ export default function App() {
             role: data.data.user.role,
             isDriveConfigured: data.data.user.isDriveConfigured,
           });
-          await fetchApps(token);
+          await fetchApps();
           
           if (window.location.pathname === '/device') {
             const urlParams = new URLSearchParams(window.location.search);
@@ -110,15 +100,10 @@ export default function App() {
     const token = localStorage.getItem('token');
     if (token) {
       // Fetch apps (which sets isLoadingApps to true, showing the loading screen)
-      fetchApps(token);
+      fetchApps();
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/users/me`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        if (response.ok && data.status === 'success') {
+        const data = await userService.getCurrentUser();
+        if (data.status === 'success') {
           setUser({
             name: data.data.user.name,
             email: data.data.user.email,
@@ -139,12 +124,7 @@ export default function App() {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        await authService.logout();
       } catch (err) {
         console.error('Logout API call failed:', err);
       }
@@ -182,21 +162,12 @@ export default function App() {
       if (!token) return false;
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/apps`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name: newAppOrUpdatedApp.name,
-            packageName: newAppOrUpdatedApp.packageName,
-            description: newAppOrUpdatedApp.description,
-          }),
+        const data = await appService.createApp({
+          name: newAppOrUpdatedApp.name,
+          packageName: newAppOrUpdatedApp.packageName,
+          description: newAppOrUpdatedApp.description,
         });
-
-        const data = await response.json();
-        if (response.ok && data.status === 'success') {
+        if (data.status === 'success') {
           const createdApp = data.data.app;
           setApps([...apps, createdApp]);
           setSelectedAppId(createdApp._id);
