@@ -5,7 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
+    "dev:local": "vite --host --mode development",
+    "dev:staging": "vite --host --mode staging",
+    "dev:prod": "vite --host --mode production",
     "build": "vite build",
+    "build:local": "vite build --mode development",
+    "build:staging": "vite build --mode staging",
+    "build:prod": "vite build --mode production",
     "lint": "oxlint",
     "preview": "vite preview"
   },
