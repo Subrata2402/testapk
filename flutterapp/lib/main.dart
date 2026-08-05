@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,6 +57,9 @@ class TestApkApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       title: 'TestAPK',
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
+      ],
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
