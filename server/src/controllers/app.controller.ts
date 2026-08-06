@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { App } from '../models/app.model.js';
 import { User } from '../models/user.model.js';
 import { Release } from '../models/release.model.js';
+import { STRINGS } from '../constants/strings.js';
 
 const populateMemberNames = async (apps: any[]): Promise<any[]> => {
   const emails = apps.flatMap(app => app.members.map((m: any) => m.email.toLowerCase()));
@@ -42,16 +43,16 @@ export const createApp = async (
 
     if (!name || !packageName || !description) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Application name, package name, and description are required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.FIELDS_REQUIRED,
       });
       return;
     }
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -60,8 +61,8 @@ export const createApp = async (
     const existingApp = await App.findOne({ packageName });
     if (existingApp) {
       res.status(400).json({
-        status: 'fail',
-        message: 'An application with this package name already exists',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.PACKAGE_ALREADY_EXISTS,
       });
       return;
     }
@@ -82,7 +83,7 @@ export const createApp = async (
     await newApp.populate('releases');
 
     res.status(201).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         app: (await populateMemberNames([newApp]))[0],
       },
@@ -100,8 +101,8 @@ export const getApps = async (
   try {
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -124,7 +125,7 @@ export const getApps = async (
     }).populate('releasesCount');
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       results: apps.length,
       data: {
         apps,
@@ -146,16 +147,16 @@ export const uploadApk = async (
 
     if (!req.file) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Please upload an APK file',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.UPLOAD_REQUIRED,
       });
       return;
     }
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -163,8 +164,8 @@ export const uploadApk = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -173,8 +174,8 @@ export const uploadApk = async (
     const member = app.members.find(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!member || (member.role !== 'Owner' && member.role !== 'Developer')) {
       res.status(403).json({
-        status: 'fail',
-        message: 'Only Owners and Developers are allowed to upload APKs',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.UPLOAD_ONLY_OWNERS_DEVELOPERS,
       });
       return;
     }
@@ -184,10 +185,10 @@ export const uploadApk = async (
     try {
       const { parseApk } = await import('../services/apk.service.js');
       parsed = await parseApk(req.file.buffer);
-    } catch (err) {
+    } catch {
       res.status(400).json({
-        status: 'fail',
-        message: 'Failed to parse APK file. Make sure it is a valid Android package.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.PARSE_FAILED,
       });
       return;
     }
@@ -195,8 +196,8 @@ export const uploadApk = async (
     // Verify package name matches
     if (parsed.packageName !== app.packageName) {
       res.status(400).json({
-        status: 'fail',
-        message: `Package name mismatch. Expected: ${app.packageName}, Found: ${parsed.packageName}`,
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.PACKAGE_MISMATCH(app.packageName, parsed.packageName),
       });
       return;
     }
@@ -205,8 +206,8 @@ export const uploadApk = async (
     const buildExists = await Release.findOne({ appId: app._id, buildNumber: parsed.versionCode });
     if (buildExists) {
       res.status(400).json({
-        status: 'fail',
-        message: `A release with build number #${parsed.versionCode} already exists`,
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.BUILD_ALREADY_EXISTS(parsed.versionCode),
       });
       return;
     }
@@ -216,8 +217,8 @@ export const uploadApk = async (
     if (latestRelease) {
       if (parsed.versionCode <= latestRelease.buildNumber) {
         res.status(400).json({
-          status: 'fail',
-          message: `Build number #${parsed.versionCode} cannot be used because the latest published build number is #${latestRelease.buildNumber}. Please increment the build number and try again.`,
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.BUILD_NUMBER_TOO_LOW(parsed.versionCode, latestRelease.buildNumber),
         });
         return;
       }
@@ -229,8 +230,8 @@ export const uploadApk = async (
       const credentials = await getOwnerCredentials(app);
       if (!credentials) {
         res.status(400).json({
-          status: 'fail',
-          message: 'Google Drive is not configured for the owner of this application.',
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.DRIVE_NOT_CONFIGURED,
         });
         return;
       }
@@ -241,13 +242,13 @@ export const uploadApk = async (
       const errMsg = err.message || String(err);
       if (errMsg.includes('invalid_grant')) {
         res.status(400).json({
-          status: 'fail',
-          message: 'Google Drive access has been revoked or is invalid. Please re-configure Google Drive in your application settings.',
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.DRIVE_REVOKED,
         });
       } else {
         res.status(500).json({
-          status: 'error',
-          message: `Failed to upload APK to Google Drive: ${errMsg}`,
+          status: STRINGS.COMMON.STATUS_ERROR,
+          message: STRINGS.RELEASE.DRIVE_UPLOAD_FAILED(errMsg),
         });
       }
       return;
@@ -262,7 +263,7 @@ export const uploadApk = async (
       appId: app._id,
       version: parsed.versionName,
       buildNumber: parsed.versionCode,
-      releaseNotes: releaseNotes || 'No release notes provided',
+      releaseNotes: releaseNotes || STRINGS.RELEASE.NO_RELEASE_NOTES,
       date: new Date().toISOString(),
       size: `${(req.file.size / (1024 * 1024)).toFixed(1)} MB`,
       apkUrl: driveFileId,
@@ -295,8 +296,8 @@ export const uploadApk = async (
         if (tokens.length > 0) {
           const { sendPushNotificationToMultiple } = await import('../services/notification.service.js');
           await sendPushNotificationToMultiple(tokens, {
-            title: `New Release for ${app.name}`,
-            body: `Version ${newRelease.version} (Build #${newRelease.buildNumber}) is now available.`,
+            title: STRINGS.RELEASE.NEW_RELEASE_NOTIFICATION_TITLE(app.name),
+            body: STRINGS.RELEASE.NEW_RELEASE_NOTIFICATION_BODY(newRelease.version, newRelease.buildNumber),
             data: {
               appId: app._id.toString(),
               buildNumber: newRelease.buildNumber.toString(),
@@ -310,7 +311,7 @@ export const uploadApk = async (
     }
 
     res.status(201).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         release: newRelease,
         app: (await populateMemberNames([app]))[0],
@@ -340,8 +341,8 @@ export const downloadApk = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -350,8 +351,8 @@ export const downloadApk = async (
     const isMember = app.members.some(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!isMember) {
       res.status(403).json({
-        status: 'fail',
-        message: 'You are not a member of this application',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_MEMBER,
       });
       return;
     }
@@ -360,8 +361,8 @@ export const downloadApk = async (
     const release = await Release.findOne({ appId: app._id, buildNumber: parseInt(buildNumber as string) });
     if (!release) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Release not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.NOT_FOUND,
       });
       return;
     }
@@ -374,8 +375,8 @@ export const downloadApk = async (
       const credentials = await getOwnerCredentials(app);
       if (!credentials) {
         res.status(400).json({
-          status: 'fail',
-          message: 'Google Drive is not configured for the owner of this application.',
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.DRIVE_NOT_CONFIGURED,
         });
         return;
       }
@@ -383,8 +384,8 @@ export const downloadApk = async (
     } catch (err: any) {
       if (err.code === 404 || err.status === 404 || (err.message && err.message.includes('File not found'))) {
         res.status(404).json({
-          status: 'fail',
-          message: 'The APK file was not found on Google Drive. It may have been deleted.',
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.DRIVE_FILE_NOT_FOUND,
         });
         return;
       }
@@ -418,8 +419,8 @@ export const deleteRelease = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -427,8 +428,8 @@ export const deleteRelease = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -437,8 +438,8 @@ export const deleteRelease = async (
     const member = app.members.find(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!member || (member.role !== 'Owner' && member.role !== 'Developer')) {
       res.status(403).json({
-        status: 'fail',
-        message: 'Only Owners and Developers are allowed to delete releases',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.DELETE_ONLY_OWNERS_DEVELOPERS,
       });
       return;
     }
@@ -474,7 +475,7 @@ export const deleteRelease = async (
     await app.populate('releases');
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         app: (await populateMemberNames([app]))[0],
       },
@@ -495,8 +496,8 @@ export const inviteMember = async (
 
     if (!email || !role) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Email and role are required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITE_FIELDS_REQUIRED,
       });
       return;
     }
@@ -504,8 +505,8 @@ export const inviteMember = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -514,8 +515,8 @@ export const inviteMember = async (
     const requester = app.members.find(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!requester || (requester.role !== 'Owner' && requester.role !== 'Developer')) {
       res.status(403).json({
-        status: 'fail',
-        message: 'Only Owners and Developers can invite members',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITE_ONLY_OWNERS_DEVELOPERS,
       });
       return;
     }
@@ -523,8 +524,8 @@ export const inviteMember = async (
     // Check if invited user is the requester
     if (email.toLowerCase() === req.user!.email.toLowerCase()) {
       res.status(400).json({
-        status: 'fail',
-        message: 'You cannot invite yourself',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITE_YOURSELF,
       });
       return;
     }
@@ -533,8 +534,8 @@ export const inviteMember = async (
     const invitedUser = await User.findOne({ email: email.toLowerCase() });
     if (!invitedUser) {
       res.status(400).json({
-        status: 'fail',
-        message: 'User is not registered. Only registered users can be invited.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITE_NOT_REGISTERED,
       });
       return;
     }
@@ -543,8 +544,8 @@ export const inviteMember = async (
     const existingMember = app.members.find(m => m.email.toLowerCase() === email.toLowerCase());
     if (existingMember) {
       res.status(400).json({
-        status: 'fail',
-        message: 'User is already a member or has a pending invitation',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITE_ALREADY_MEMBER,
       });
       return;
     }
@@ -564,8 +565,8 @@ export const inviteMember = async (
       if (invitedUser && invitedUser.fcmTokens && invitedUser.fcmTokens.length > 0) {
         const { sendPushNotificationToMultiple } = await import('../services/notification.service.js');
         await sendPushNotificationToMultiple(invitedUser.fcmTokens, {
-          title: `Invitation to join ${app.name}`,
-          body: `You have been invited to join ${app.name} as a ${role}.`,
+          title: STRINGS.APP.INVITATION_NOTIFICATION_TITLE(app.name),
+          body: STRINGS.APP.INVITATION_NOTIFICATION_BODY(app.name, role),
           data: {
             appId: app._id.toString(),
             type: 'invitation',
@@ -577,7 +578,7 @@ export const inviteMember = async (
     }
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         app: (await populateMemberNames([app]))[0],
       },
@@ -598,8 +599,8 @@ export const removeMember = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -608,8 +609,8 @@ export const removeMember = async (
     const requester = app.members.find(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!requester || (requester.role !== 'Owner' && requester.role !== 'Developer')) {
       res.status(403).json({
-        status: 'fail',
-        message: 'Only Owners and Developers can remove members',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.REMOVE_ONLY_OWNERS_DEVELOPERS,
       });
       return;
     }
@@ -620,8 +621,8 @@ export const removeMember = async (
     const memberToRemove = app.members.find(m => m.email.toLowerCase() === emailStr.toLowerCase());
     if (memberToRemove && memberToRemove.role === 'Owner') {
       res.status(400).json({
-        status: 'fail',
-        message: 'Cannot remove the application owner',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.REMOVE_OWNER_RESTRICTED,
       });
       return;
     }
@@ -631,7 +632,7 @@ export const removeMember = async (
     await app.populate('releases');
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         app: (await populateMemberNames([app]))[0],
       },
@@ -649,8 +650,8 @@ export const getInvitations = async (
   try {
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -672,7 +673,7 @@ export const getInvitations = async (
     }).populate('releasesCount');
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       results: apps.length,
       data: {
         apps,
@@ -694,8 +695,8 @@ export const acceptInvitation = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -703,8 +704,8 @@ export const acceptInvitation = async (
     const member = app.members.find(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!member) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Invitation not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.INVITATION_NOT_FOUND,
       });
       return;
     }
@@ -714,7 +715,7 @@ export const acceptInvitation = async (
     await app.populate('releases');
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         app: (await populateMemberNames([app]))[0],
       },
@@ -735,8 +736,8 @@ export const rejectInvitation = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -746,8 +747,8 @@ export const rejectInvitation = async (
     await app.populate('releases');
 
     res.status(200).json({
-      status: 'success',
-      message: 'Invitation rejected successfully',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.APP.INVITATION_REJECTED,
     });
   } catch (error) {
     next(error);
@@ -764,8 +765,8 @@ export const getReleases = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -773,8 +774,8 @@ export const getReleases = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -783,8 +784,8 @@ export const getReleases = async (
     const isMember = app.members.some(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!isMember) {
       res.status(403).json({
-        status: 'fail',
-        message: 'You are not a member of this application',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_MEMBER,
       });
       return;
     }
@@ -792,7 +793,7 @@ export const getReleases = async (
     const releases = await Release.find({ appId }).sort({ buildNumber: -1 });
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       results: releases.length,
       data: {
         releases,
@@ -813,8 +814,8 @@ export const getMembers = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -822,8 +823,8 @@ export const getMembers = async (
     const app = await App.findById(appId);
     if (!app) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Application not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_FOUND,
       });
       return;
     }
@@ -842,7 +843,7 @@ export const getMembers = async (
     const members = populatedApps[0].members;
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       results: members.length,
       data: {
         members,

@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { IRelease } from './release.model.js';
+import { STRINGS } from '../constants/strings.js';
 
 export interface IMember {
   email: string;
@@ -37,17 +38,14 @@ const AppSchema = new Schema<IApp>(
     name: { type: String, required: true, trim: true },
     packageName: { type: String, required: true, unique: true, trim: true },
     description: { type: String, required: true },
-    category: { type: String, default: 'Android App' },
-    icon: { type: String, default: 'Android' },
-    downloads: { type: String, default: '0' },
-    rating: { type: String, default: '0.0' },
-    activeUsers: { type: String, default: '0' },
+    category: { type: String, default: STRINGS.MODELS.APP.DEFAULT_CATEGORY },
+    icon: { type: String, default: STRINGS.MODELS.APP.DEFAULT_ICON },
+    downloads: { type: String, default: STRINGS.MODELS.APP.DEFAULT_DOWNLOADS },
+    rating: { type: String, default: STRINGS.MODELS.APP.DEFAULT_RATING },
+    activeUsers: { type: String, default: STRINGS.MODELS.APP.DEFAULT_ACTIVE_USERS },
     screenshots: {
       type: [String],
-      default: [
-        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'linear-gradient(135deg, #2af598 0%, #009efd 100%)',
-      ],
+      default: STRINGS.MODELS.APP.DEFAULT_SCREENSHOTS as unknown as string[],
     },
     members: { type: [MemberSchema], required: true },
   },

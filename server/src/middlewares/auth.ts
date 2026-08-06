@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { User, IUser } from '../models/user.model.js';
+import { STRINGS } from '../constants/strings.js';
 
 // Extend Express Request interface to include user
 declare global {
@@ -33,8 +34,8 @@ export const protect = async (
 
     if (!token) {
       res.status(401).json({
-        status: 'fail',
-        message: 'You are not logged in! Please log in to get access.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.NOT_LOGGED_IN,
       });
       return;
     }
@@ -43,10 +44,10 @@ export const protect = async (
     let decoded: JwtPayload;
     try {
       decoded = jwt.verify(token, env.JWT_SECRET) as JwtPayload;
-    } catch (error) {
+    } catch {
       res.status(401).json({
-        status: 'fail',
-        message: 'Invalid or expired token. Please log in again.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.INVALID_EXPIRED_TOKEN,
       });
       return;
     }
@@ -55,8 +56,8 @@ export const protect = async (
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {
       res.status(401).json({
-        status: 'fail',
-        message: 'The user belonging to this token no longer exists.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.USER_NOT_FOUND,
       });
       return;
     }

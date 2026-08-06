@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { logger } from '../config/logger.js';
 import { AppError } from '../utils/appError.js';
 import { sendSupportEmail as sendEmail } from '../services/email.service.js';
+import { STRINGS } from '../constants/strings.js';
 
 export const sendSupportEmail = async (
   req: Request,
@@ -12,7 +13,7 @@ export const sendSupportEmail = async (
     const { name, email, subject, message } = req.body;
 
     if (!name || !email || !subject || !message) {
-      next(new AppError('Please provide name, email, subject, and message', 400));
+      next(new AppError(STRINGS.SUPPORT.FIELDS_REQUIRED, 400));
       return;
     }
 
@@ -21,11 +22,11 @@ export const sendSupportEmail = async (
     await sendEmail(name, email, subject, message);
 
     res.status(200).json({
-      status: 'success',
-      message: 'Message sent successfully.',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.SUPPORT.SENT_SUCCESS,
     });
   } catch (error) {
     logger.error('Error sending support email:', error);
-    next(new AppError('Error sending support email. Please try again later.', 500));
+    next(new AppError(STRINGS.SUPPORT.SENT_ERROR, 500));
   }
 };

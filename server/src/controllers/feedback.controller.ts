@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { Feedback } from '../models/feedback.model.js';
+import { STRINGS } from '../constants/strings.js';
 
 export const createFeedback = async (
   req: Request,
@@ -11,16 +12,16 @@ export const createFeedback = async (
 
     if (!category || !rating || !title || !description) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Category, rating, title, and description are required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.FEEDBACK.FIELDS_REQUIRED,
       });
       return;
     }
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -35,7 +36,7 @@ export const createFeedback = async (
     });
 
     res.status(201).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         feedback,
       },
@@ -53,8 +54,8 @@ export const getFeedback = async (
   try {
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -66,7 +67,7 @@ export const getFeedback = async (
       .sort({ createdAt: -1 });
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       results: feedbacks.length,
       data: {
         feedbacks,

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { env } from '../config/env.js';
 import { logger } from '../config/logger.js';
 import { AppError } from '../utils/appError.js';
+import { STRINGS } from '../constants/strings.js';
 
 export const errorHandler: ErrorRequestHandler = (
   err: Error | AppError,
@@ -10,8 +11,8 @@ export const errorHandler: ErrorRequestHandler = (
   next: NextFunction
 ): void => {
   let statusCode = 500;
-  let status = 'error';
-  let message = 'Something went wrong';
+  let status: string = STRINGS.COMMON.STATUS_ERROR;
+  let message: string = STRINGS.COMMON.SOMETHING_WENT_WRONG;
 
   if (err instanceof AppError) {
     statusCode = err.statusCode;

@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 import { Readable } from 'stream';
 import { env } from '../config/env.js';
+import { STRINGS } from '../constants/strings.js';
 
 export interface DriveCredentials {
   refreshToken: string;
@@ -9,7 +10,7 @@ export interface DriveCredentials {
 
 const getDriveClient = (credentials: DriveCredentials) => {
   if (!credentials || !credentials.refreshToken) {
-    throw new Error('Google Drive credentials are not configured.');
+    throw new Error(STRINGS.DRIVE.NOT_CONFIGURED);
   }
   const oauth2Client = new google.auth.OAuth2(
     env.GOOGLE_CLIENT_ID,
@@ -43,7 +44,7 @@ export const createFolderInDrive = async (
   });
 
   if (!response.data.id) {
-    throw new Error('Failed to create folder in Google Drive');
+    throw new Error(STRINGS.DRIVE.FOLDER_CREATE_FAILED);
   }
 
   return response.data.id;
@@ -56,7 +57,7 @@ export const uploadFileToDrive = async (
   credentials: DriveCredentials
 ): Promise<string> => {
   if (!credentials || !credentials.refreshToken || !credentials.folderId) {
-    throw new Error('Google Drive credentials are not configured.');
+    throw new Error(STRINGS.DRIVE.NOT_CONFIGURED);
   }
 
   const driveClient = getDriveClient(credentials);
@@ -78,7 +79,7 @@ export const uploadFileToDrive = async (
   });
 
   if (!response.data.id) {
-    throw new Error('Failed to upload file to Google Drive: No ID returned');
+    throw new Error(STRINGS.DRIVE.UPLOAD_FAILED_NO_ID);
   }
 
   return response.data.id;
@@ -89,7 +90,7 @@ export const getFileStreamFromDrive = async (
   credentials: DriveCredentials
 ): Promise<{ stream: Readable; contentLength?: string }> => {
   if (!credentials || !credentials.refreshToken) {
-    throw new Error('Google Drive credentials are not configured.');
+    throw new Error(STRINGS.DRIVE.NOT_CONFIGURED);
   }
 
   const driveClient = getDriveClient(credentials);
@@ -125,7 +126,7 @@ export const deleteFileFromDrive = async (
   credentials: DriveCredentials
 ): Promise<void> => {
   if (!credentials || !credentials.refreshToken) {
-    throw new Error('Google Drive credentials are not configured.');
+    throw new Error(STRINGS.DRIVE.NOT_CONFIGURED);
   }
 
   const driveClient = getDriveClient(credentials);

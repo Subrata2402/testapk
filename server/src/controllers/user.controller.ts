@@ -3,18 +3,19 @@ import { google } from 'googleapis';
 import { env } from '../config/env.js';
 import { User } from '../models/user.model.js';
 import { createFolderInDrive } from '../services/google-drive.service.js';
+import { STRINGS } from '../constants/strings.js';
 
 export const getMe = (req: Request, res: Response, next: NextFunction): void => {
-  if (!req.user) {
-    res.status(401).json({
-      status: 'fail',
-      message: 'User not authenticated',
-    });
-    return;
-  }
+    if (!req.user) {
+      res.status(401).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
+      });
+      return;
+    }
 
   res.status(200).json({
-    status: 'success',
+    status: STRINGS.COMMON.STATUS_SUCCESS,
     data: {
       user: {
         id: req.user._id,
@@ -38,8 +39,8 @@ export const configureDrive = async (
 
     if (!code) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Authorization code is required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.AUTH_CODE_REQUIRED,
       });
       return;
     }
@@ -64,8 +65,8 @@ export const configureDrive = async (
 
     if (!refreshToken) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Failed to obtain refresh token. Please ensure you grant offline access and consent.',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.REFRESH_TOKEN_FAILED,
       });
       return;
     }
@@ -77,8 +78,8 @@ export const configureDrive = async (
     const user = await User.findById(req.user._id);
     if (!user) {
       res.status(404).json({
-        status: 'fail',
-        message: 'User not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.NOT_FOUND,
       });
       return;
     }
@@ -88,8 +89,8 @@ export const configureDrive = async (
     await user.save();
 
     res.status(200).json({
-      status: 'success',
-      message: 'Google Drive configured successfully',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.USER.DRIVE_CONFIGURED,
       data: {
         isDriveConfigured: true,
       },
@@ -109,8 +110,8 @@ export const updateFcmToken = async (
 
     if (!token) {
       res.status(400).json({
-        status: 'fail',
-        message: 'FCM token is required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.FCM_TOKEN_REQUIRED,
       });
       return;
     }
@@ -126,8 +127,8 @@ export const updateFcmToken = async (
     const user = await User.findById(req.user._id);
     if (!user) {
       res.status(404).json({
-        status: 'fail',
-        message: 'User not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.NOT_FOUND,
       });
       return;
     }
@@ -142,8 +143,8 @@ export const updateFcmToken = async (
     }
 
     res.status(200).json({
-      status: 'success',
-      message: 'FCM token updated successfully',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.USER.FCM_TOKEN_UPDATED,
     });
   } catch (error) {
     next(error);

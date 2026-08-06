@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
+import { STRINGS } from '../constants/strings.js';
 
 export const validate =
   (schema: ZodSchema) =>
@@ -18,8 +19,8 @@ export const validate =
             message: issue.message,
           }));
           res.status(400).json({
-            status: 'fail',
-            message: 'Validation failed',
+            status: STRINGS.COMMON.STATUS_FAIL,
+            message: STRINGS.COMMON.VALIDATION_FAILED,
             errors,
           });
           return;

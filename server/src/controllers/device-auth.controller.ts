@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { DeviceCode } from '../models/device-code.model.js';
 import { User } from '../models/user.model.js';
 import { env } from '../config/env.js';
+import { STRINGS } from '../constants/strings.js';
 
 const generateUserCode = (): string => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -40,7 +41,7 @@ export const generateDeviceCode = async (
     const verificationUri = `${origin}/device?token=${urlToken}`;
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         deviceCode,
         userCode,
@@ -64,7 +65,7 @@ export const checkUrlToken = async (
     const { token } = req.query;
 
     if (!token || typeof token !== 'string') {
-      res.status(400).json({ status: 'fail', code: 'missing', message: 'Token is required' });
+      res.status(400).json({ status: STRINGS.COMMON.STATUS_FAIL, code: 'missing', message: STRINGS.DEVICE.TOKEN_REQUIRED });
       return;
     }
 
@@ -72,22 +73,22 @@ export const checkUrlToken = async (
 
     if (!doc) {
       // Token never existed or already cleaned up
-      res.status(404).json({ status: 'fail', code: 'not_found', message: 'Invalid or already used token' });
+      res.status(404).json({ status: STRINGS.COMMON.STATUS_FAIL, code: 'not_found', message: STRINGS.DEVICE.INVALID_USED_TOKEN });
       return;
     }
 
     if (doc.expiresAt < new Date()) {
-      res.status(410).json({ status: 'fail', code: 'expired', message: 'This authorization link has expired' });
+      res.status(410).json({ status: STRINGS.COMMON.STATUS_FAIL, code: 'expired', message: STRINGS.DEVICE.LINK_EXPIRED });
       return;
     }
 
     if (doc.isAuthorized) {
       // Already authorized — treat as used
-      res.status(410).json({ status: 'fail', code: 'used', message: 'This link has already been used' });
+      res.status(410).json({ status: STRINGS.COMMON.STATUS_FAIL, code: 'used', message: STRINGS.DEVICE.LINK_ALREADY_USED });
       return;
     }
 
-    res.status(200).json({ status: 'success', code: 'valid' });
+    res.status(200).json({ status: STRINGS.COMMON.STATUS_SUCCESS, code: 'valid' });
   } catch (error) {
     next(error);
   }
@@ -105,16 +106,16 @@ export const authorizeDeviceCode = async (
 
     if (!userCode) {
       res.status(400).json({
-        status: 'fail',
-        message: 'User code is required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.DEVICE.USER_CODE_REQUIRED,
       });
       return;
     }
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -131,18 +132,18 @@ export const authorizeDeviceCode = async (
 
     if (!deviceCodeDoc) {
       res.status(404).json({
-        status: 'fail',
+        status: STRINGS.COMMON.STATUS_FAIL,
         code: 'invalid_code',
-        message: 'Invalid authorization code. Please check the code and try again.',
+        message: STRINGS.DEVICE.INVALID_CODE,
       });
       return;
     }
 
     if (deviceCodeDoc.expiresAt < new Date()) {
       res.status(410).json({
-        status: 'fail',
+        status: STRINGS.COMMON.STATUS_FAIL,
         code: 'expired_code',
-        message: 'This authorization code has expired. Please generate a new one.',
+        message: STRINGS.DEVICE.CODE_EXPIRED,
       });
       return;
     }
@@ -152,8 +153,8 @@ export const authorizeDeviceCode = async (
     await deviceCodeDoc.save();
 
     res.status(200).json({
-      status: 'success',
-      message: 'Device successfully authorized',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.DEVICE.SUCCESSFULLY_AUTHORIZED,
     });
   } catch (error) {
     next(error);
@@ -170,8 +171,8 @@ export const pollDeviceToken = async (
 
     if (!deviceCode) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Device code is required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.DEVICE.DEVICE_CODE_REQUIRED,
       });
       return;
     }
@@ -183,7 +184,7 @@ export const pollDeviceToken = async (
     if (!deviceCodeDoc || deviceCodeDoc.expiresAt < new Date()) {
       res.status(400).json({
         error: 'expired_token',
-        message: 'The device code has expired. Please request a new one.',
+        message: STRINGS.DEVICE.DEVICE_CODE_EXPIRED,
       });
       return;
     }
@@ -191,7 +192,7 @@ export const pollDeviceToken = async (
     if (!deviceCodeDoc.isAuthorized) {
       res.status(400).json({
         error: 'authorization_pending',
-        message: 'The user has not yet authorized the device.',
+        message: STRINGS.DEVICE.AUTHORIZATION_PENDING,
       });
       return;
     }
@@ -204,8 +205,8 @@ export const pollDeviceToken = async (
     const user = await User.findById(deviceCodeDoc.userId);
     if (!user) {
       res.status(404).json({
-        status: 'fail',
-        message: 'User not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.DEVICE.USER_NOT_FOUND,
       });
       return;
     }
@@ -214,7 +215,7 @@ export const pollDeviceToken = async (
     await DeviceCode.deleteOne({ _id: deviceCodeDoc._id });
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       token,
       data: {
         user: {

@@ -1,5 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 import { encrypt, decrypt } from '../utils/crypto.js';
+import { STRINGS } from '../constants/strings.js';
 
 export interface IUser extends Document {
   email: string;
@@ -18,14 +19,14 @@ const userSchema = new Schema<IUser>(
   {
     email: {
       type: String,
-      required: [true, 'Email is required'],
+      required: [true, STRINGS.MODELS.USER.EMAIL_REQUIRED],
       unique: true,
       lowercase: true,
       trim: true,
     },
     name: {
       type: String,
-      required: [true, 'Name is required'],
+      required: [true, STRINGS.MODELS.USER.NAME_REQUIRED],
       trim: true,
     },
     picture: {

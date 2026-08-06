@@ -2,6 +2,7 @@ import { GoogleAuth } from 'google-auth-library';
 import { env } from '../config/env.js';
 import fs from 'fs';
 import path from 'path';
+import { STRINGS } from '../constants/strings.js';
 
 let auth: GoogleAuth | null = null;
 let projectId: string | null = null;
@@ -12,7 +13,7 @@ const initAuth = () => {
   try {
     const keyPath = path.resolve(env.FIREBASE_SERVICE_ACCOUNT_PATH);
     if (!fs.existsSync(keyPath)) {
-      console.warn(`⚠️ Firebase service account file not found at ${keyPath}. Push notifications will be disabled.`);
+      console.warn(STRINGS.NOTIFICATIONS.FCM_KEY_NOT_FOUND(keyPath));
       return;
     }
 
@@ -23,9 +24,9 @@ const initAuth = () => {
       keyFile: keyPath,
       scopes: ['https://www.googleapis.com/auth/firebase.messaging'],
     });
-    console.log('✅ Firebase Cloud Messaging initialized successfully.');
+    console.log(STRINGS.NOTIFICATIONS.FCM_INIT_SUCCESS);
   } catch (error) {
-    console.error('❌ Failed to initialize Firebase Cloud Messaging:', error);
+    console.error(STRINGS.NOTIFICATIONS.FCM_INIT_FAILED, error);
   }
 };
 
@@ -42,7 +43,7 @@ export const sendPushNotification = async (
   initAuth();
 
   if (!auth || !projectId) {
-    console.warn('⚠️ FCM not initialized. Skipping notification.');
+    console.warn(STRINGS.NOTIFICATIONS.FCM_NOT_INITIALIZED);
     return false;
   }
 
@@ -67,7 +68,7 @@ export const sendPushNotification = async (
 
     return response.status === 200;
   } catch (error: any) {
-    console.error(`❌ Failed to send push notification to token ${fcmToken}:`, error.message || error);
+    console.error(STRINGS.NOTIFICATIONS.FCM_SEND_FAILED(fcmToken), error.message || error);
     return false;
   }
 };

@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { User } from '../models/user.model.js';
 import { sendWelcomeEmail } from '../services/email.service.js';
+import { STRINGS } from '../constants/strings.js';
 
 const client = new OAuth2Client(env.GOOGLE_CLIENT_ID);
 
@@ -23,8 +24,8 @@ export const googleLogin = async (
 
     if (!idToken) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Google ID Token is required',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.GOOGLE_ID_TOKEN_REQUIRED,
       });
       return;
     }
@@ -38,8 +39,8 @@ export const googleLogin = async (
       });
     } catch (error) {
       res.status(401).json({
-        status: 'fail',
-        message: 'Invalid Google ID Token',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.INVALID_GOOGLE_ID_TOKEN,
         error: (error as Error).message,
       });
       return;
@@ -48,8 +49,8 @@ export const googleLogin = async (
     const payload = ticket.getPayload();
     if (!payload) {
       res.status(401).json({
-        status: 'fail',
-        message: 'Invalid Google ID Token payload',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.INVALID_GOOGLE_ID_TOKEN_PAYLOAD,
       });
       return;
     }
@@ -58,8 +59,8 @@ export const googleLogin = async (
 
     if (!email || !name) {
       res.status(400).json({
-        status: 'fail',
-        message: 'Google account is missing email or name',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.MISSING_EMAIL_OR_NAME,
       });
       return;
     }
@@ -98,7 +99,7 @@ export const googleLogin = async (
     const token = signToken(user._id.toString());
 
     res.status(200).json({
-      status: 'success',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
       token,
       data: {
         user: {
@@ -127,8 +128,8 @@ export const logout = async (
       await req.user.save();
     }
     res.status(200).json({
-      status: 'success',
-      message: 'Logged out successfully',
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.AUTH.LOGGED_OUT,
     });
   } catch (error) {
     next(error);

@@ -1,5 +1,6 @@
 import rateLimit from 'express-rate-limit';
 import { env } from '../config/env.js';
+import { STRINGS } from '../constants/strings.js';
 
 export const rateLimiter = rateLimit({
   windowMs: env.RATE_LIMIT_WINDOW_MS,
@@ -8,6 +9,6 @@ export const rateLimiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: {
     status: 429,
-    message: 'Too many requests from this IP, please try again later.',
+    message: STRINGS.COMMON.TOO_MANY_REQUESTS,
   },
 });
