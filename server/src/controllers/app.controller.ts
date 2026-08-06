@@ -577,6 +577,14 @@ export const inviteMember = async (
       console.error('Failed to send invitation push notification:', err);
     }
 
+    // Send invitation email
+    try {
+      const { sendInvitationEmail } = await import('../services/email.service.js');
+      sendInvitationEmail(email.toLowerCase(), app.name, role);
+    } catch (err) {
+      console.error('Failed to send invitation email:', err);
+    }
+
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {

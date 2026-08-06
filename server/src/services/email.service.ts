@@ -75,3 +75,31 @@ export const sendSupportEmail = async (
   await transporter.sendMail(mailOptions);
   logger.info(STRINGS.EMAIL.SUPPORT_SENT(env.SUPPORT_EMAIL));
 };
+
+export const sendInvitationEmail = async (
+  toEmail: string,
+  appName: string,
+  role: string
+): Promise<void> => {
+  const transporter = getTransporter();
+  if (!transporter) {
+    logger.warn(STRINGS.EMAIL.SMTP_NOT_CONFIGURED_INVITATION(toEmail));
+    logger.info(`--- INVITATION EMAIL ---`);
+    logger.info(`To: ${toEmail}`);
+    logger.info(`Subject: ${STRINGS.EMAIL.INVITATION_SUBJECT(appName)}`);
+    logger.info(`Body: You have been invited to join ${appName} as a ${role}.`);
+    logger.info(`----------------------`);
+    return;
+  }
+
+  const mailOptions = {
+    from: `"TestAPK Team" <${env.SMTP_USER}>`,
+    to: toEmail,
+    subject: STRINGS.EMAIL.INVITATION_SUBJECT(appName),
+    text: STRINGS.EMAIL.INVITATION_TEXT(appName, role),
+    html: STRINGS.EMAIL.INVITATION_HTML(appName, role),
+  };
+
+  await transporter.sendMail(mailOptions);
+  logger.info(STRINGS.EMAIL.INVITATION_SENT(toEmail));
+};

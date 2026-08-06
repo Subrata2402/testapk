@@ -118,6 +118,20 @@ export const STRINGS = {
     SMTP_NOT_CONFIGURED_SUPPORT: 'SMTP is not configured. Support message logged to console:',
     WELCOME_SENT: (toEmail: string) => `Welcome email sent to ${toEmail}`,
     SUPPORT_SENT: (supportEmail: string) => `Support email sent to ${supportEmail}`,
+    INVITATION_SUBJECT: (appName: string) => `Invitation to join ${appName} on TestAPK`,
+    INVITATION_TEXT: (appName: string, role: string) =>
+      `Hi,\n\nYou have been invited to join the application "${appName}" as a ${role} on TestAPK.\n\nPlease log in to the TestAPK app to accept or reject the invitation.\n\nBest regards,\nThe TestAPK Team`,
+    INVITATION_HTML: (appName: string, role: string) => `
+      <h3>Invitation to join ${appName} on TestAPK</h3>
+      <p>Hi,</p>
+      <p>You have been invited to join the application <strong>${appName}</strong> as a <strong>${role}</strong> on TestAPK.</p>
+      <p>Please log in to the TestAPK app to accept or reject the invitation.</p>
+      <br/>
+      <p>Best regards,</p>
+      <p><strong>The TestAPK Team</strong></p>
+    `,
+    SMTP_NOT_CONFIGURED_INVITATION: (toEmail: string) => `SMTP is not configured. Invitation email to ${toEmail} simulated.`,
+    INVITATION_SENT: (toEmail: string) => `Invitation email sent to ${toEmail}`,
   },
   DRIVE: {
     NOT_CONFIGURED: 'Google Drive credentials are not configured.',
