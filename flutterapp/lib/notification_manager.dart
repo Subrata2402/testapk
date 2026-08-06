@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutterapp/core/constants.dart';
-import 'core/api_service.dart';
+import 'package:flutterapp/core/api_service.dart';
 
 class NotificationManager {
   static final NotificationManager _instance = NotificationManager._internal();

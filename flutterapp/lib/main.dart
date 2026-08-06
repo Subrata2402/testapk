@@ -12,8 +12,8 @@ import 'package:flutterapp/core/navigation.dart';
 import 'package:flutterapp/firebase_options.dart';
 import 'package:flutterapp/notification_manager.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
+import 'package:flutterapp/presentations/splash/screens/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'presentations/splash/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

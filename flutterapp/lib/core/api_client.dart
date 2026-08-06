@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'storage_service.dart';
-import 'constants.dart';
-import 'navigation.dart';
+import 'package:flutterapp/core/storage_service.dart';
+import 'package:flutterapp/core/navigation.dart';
 
 class ApiClient {
   late final Dio _dio;
