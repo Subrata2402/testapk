@@ -248,6 +248,7 @@ export default function App() {
       <ContactSupportModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+        user={user}
       />
 
       <AlertModal config={alertConfig} onClose={() => setAlertConfig(null)} />

@@ -3,7 +3,7 @@ import * as Icons from 'lucide-react';
 import { supportService } from '../../services/api';
 import './ContactSupportModal.css';
 
-export default function ContactSupportModal({ isOpen, onClose }) {
+export default function ContactSupportModal({ isOpen, onClose, user }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -14,15 +14,15 @@ export default function ContactSupportModal({ isOpen, onClose }) {
 
   React.useEffect(() => {
     if (isOpen) {
-      setName('');
-      setEmail('');
+      setName(user?.name || '');
+      setEmail(user?.email || '');
       setSubject('');
       setMessage('');
       setIsSubmitting(false);
       setIsSubmitted(false);
       setError(null);
     }
-  }, [isOpen]);
+  }, [isOpen, user]);
 
   if (!isOpen) return null;
 

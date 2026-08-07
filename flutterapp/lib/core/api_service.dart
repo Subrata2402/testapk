@@ -56,4 +56,18 @@ class ApiService {
       options: Options(receiveTimeout: Duration.zero),
     );
   }
+
+  Future<Response> contactSupport({
+    required String name,
+    required String email,
+    required String subject,
+    required String message,
+  }) {
+    return _client.post(ApiEndpoints.supportContact, {
+      'name': name,
+      'email': email,
+      'subject': subject,
+      'message': message,
+    });
+  }
 }

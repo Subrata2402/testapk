@@ -111,6 +111,17 @@ const String kFeedbackDescriptionRequired = 'Description is required';
 const String kFeedbackSuccessMsg = 'Thank you for your feedback!';
 const String kFeedbackErrorMsg = 'Failed to submit feedback';
 
+/// Contact Support Screen
+const String kSupportTitle = 'Contact Support';
+const String kSupportSubjectLabel = 'SUBJECT';
+const String kSupportMessageLabel = 'MESSAGE';
+const String kSupportSubjectHint = 'What is this regarding?';
+const String kSupportSubjectRequired = 'Subject is required';
+const String kSupportMessageHint = 'Describe your issue or question in detail...';
+const String kSupportMessageRequired = 'Message is required';
+const String kSupportSuccessMsg = 'Support request sent successfully!';
+const String kSupportErrorMsg = 'Failed to send support request';
+
 /// About Screen
 const String kAboutTitle = 'About TestAPK';
 const String kAboutVersion = 'Version 1.0.0+3';

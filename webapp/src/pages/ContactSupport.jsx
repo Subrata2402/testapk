@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { supportService } from '../services/api';
+import { supportService, userService } from '../services/api';
 import './ContactSupport.css';
 
-export default function ContactSupport() {
+export default function ContactSupport({ user }) {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,6 +13,29 @@ export default function ContactSupport() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState(null);
+
+  React.useEffect(() => {
+    if (user) {
+      setName(user.name || '');
+      setEmail(user.email || '');
+    } else {
+      const fetchUser = async () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          try {
+            const data = await userService.getCurrentUser();
+            if (data.status === 'success') {
+              setName(data.data.user.name || '');
+              setEmail(data.data.user.email || '');
+            }
+          } catch (err) {
+            console.error('Failed to fetch user in ContactSupport:', err);
+          }
+        }
+      };
+      fetchUser();
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
