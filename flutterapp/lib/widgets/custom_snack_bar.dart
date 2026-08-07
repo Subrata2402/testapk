@@ -4,12 +4,7 @@ import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/text_viewer.dart';
 
-enum CustomSnackBarType {
-  info,
-  success,
-  warning,
-  error,
-}
+enum CustomSnackBarType { info, success, warning, error }
 
 class CustomSnackBar {
   static OverlayEntry? _currentEntry;

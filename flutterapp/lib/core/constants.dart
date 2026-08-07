@@ -137,9 +137,17 @@ const String kLabelPrivacyPolicy = 'Privacy Policy';
 const String kLabelAboutTestApk = 'About TestAPK';
 const String kDeleteAccountLabel = 'Delete Account';
 
+/// Profile Screen
+const String kProfileTitle = 'Profile';
+const String kSignOutLabel = 'Sign Out';
+const String kSignOutConfirmTitle = 'Sign Out';
+const String kSignOutConfirmMessage = 'Are you sure you want to sign out of your account?';
+const String kDeleteLabel = 'Delete';
+
 /// Delete Account Dialog
 const String kDeleteAccountConfirmTitle = 'Delete Account?';
-const String kDeleteAccountConfirmMessage = 'Are you sure you want to delete your account? This action is permanent and cannot be undone.';
+const String kDeleteAccountConfirmMessage =
+    'Are you sure you want to delete your account? This action is permanent and cannot be undone.';
 const String kDeleteAccountSuccessMsg = 'Account deleted successfully';
 const String kDeleteAccountErrorMsg = 'Failed to delete account';
 

@@ -190,7 +190,10 @@ class _ContactSupportScreenState extends State<ContactSupportScreen> {
                                     )
                                   : Text(
                                       'Submit Support Request',
-                                      style: GoogleFonts.inter(fontSize: context.scale(15), fontWeight: FontWeight.w600),
+                                      style: GoogleFonts.inter(
+                                        fontSize: context.scale(15),
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                             ),
                           ),

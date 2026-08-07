@@ -1,12 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ProfileLogoutButton extends StatelessWidget {
+class ProfileDeleteAccountButton extends StatelessWidget {
   final VoidCallback onTap;
 
-  const ProfileLogoutButton({super.key, required this.onTap});
+  const ProfileDeleteAccountButton({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +31,28 @@ class ProfileLogoutButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.logout_rounded, color: Colors.redAccent, size: context.scale(18)),
+                  Icon(
+                    Icons.delete_forever_rounded,
+                    color: Colors.redAccent.withValues(alpha: 0.7),
+                    size: context.scale(18),
+                  ),
                   SizedBox(width: context.scale(10)),
                   Expanded(
                     child: Text(
-                      'Sign Out',
+                      kDeleteAccountLabel,
                       style: GoogleFonts.inter(
                         fontSize: context.scale(15),
                         fontWeight: FontWeight.w600,
-                        color: Colors.redAccent,
+                        color: Colors.redAccent.withValues(alpha: 0.7),
                       ),
                     ),
                   ),
                   SizedBox(width: context.scale(10)),
-                  Icon(Icons.chevron_right_rounded, color: Colors.redAccent, size: context.scale(18)),
+                  Icon(
+                    Icons.chevron_right_rounded,
+                    color: Colors.redAccent.withValues(alpha: 0.7),
+                    size: context.scale(18),
+                  ),
                 ],
               ),
             ),

@@ -12,6 +12,7 @@ import 'package:flutterapp/presentations/menu/profile/widgets/profile_avatar.dar
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_info_card.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_legal_card.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_logout_button.dart';
+import 'package:flutterapp/presentations/menu/profile/widgets/profile_delete_account_button.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
@@ -38,9 +39,9 @@ class ProfileScreen extends StatelessWidget {
           child: FadeTransition(
             opacity: anim1,
             child: const ActionConfirmationDialog(
-              title: 'Sign Out',
-              message: 'Are you sure you want to sign out of your account?',
-              confirmLabel: 'Sign Out',
+              title: kSignOutConfirmTitle,
+              message: kSignOutConfirmMessage,
+              confirmLabel: kSignOutLabel,
               icon: Icons.logout_rounded,
             ),
           ),
@@ -80,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
             child: const ActionConfirmationDialog(
               title: kDeleteAccountConfirmTitle,
               message: kDeleteAccountConfirmMessage,
-              confirmLabel: 'Delete',
+              confirmLabel: kDeleteLabel,
               icon: Icons.delete_forever_rounded,
             ),
           ),
@@ -103,10 +104,9 @@ class ProfileScreen extends StatelessWidget {
           if (context.mounted) {
             Navigator.of(context).pop(); // Dismiss the loading dialog
             CustomSnackBar.show(context, kDeleteAccountSuccessMsg, type: CustomSnackBarType.success);
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => const LoginScreen()),
-              (_) => false,
-            );
+            Navigator.of(
+              context,
+            ).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginScreen()), (_) => false);
           }
         } else {
           throw Exception(kDeleteAccountErrorMsg);
@@ -175,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
                               onPressed: () => Navigator.of(context).pop(),
                             ),
                             Text(
-                              'Profile',
+                              kProfileTitle,
                               style: GoogleFonts.inter(
                                 fontSize: context.scale(18),
                                 fontWeight: FontWeight.w700,
@@ -256,13 +256,13 @@ class ProfileScreen extends StatelessWidget {
 
                         SizedBox(height: context.scale(32)),
 
-                        // Logout button
-                        ProfileLogoutButton(onTap: () => _handleSignOut(context)),
+                        // Delete Account button
+                        ProfileDeleteAccountButton(onTap: () => _handleDeleteAccount(context)),
 
                         SizedBox(height: context.scale(16)),
-
-                        // Delete Account button
-                        _buildDeleteAccountButton(context),
+                        
+                        // Logout button
+                        ProfileLogoutButton(onTap: () => _handleSignOut(context)),
                       ],
                     ),
                   ),
@@ -271,46 +271,6 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildDeleteAccountButton(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(context.scale(14)),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () => _handleDeleteAccount(context),
-            borderRadius: BorderRadius.circular(context.scale(14)),
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: context.scale(16)),
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.05),
-                borderRadius: BorderRadius.circular(context.scale(14)),
-                border: Border.all(color: Colors.red.withValues(alpha: 0.15), width: 0.8),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.delete_forever_rounded, color: Colors.redAccent.withValues(alpha: 0.7), size: context.scale(18)),
-                  SizedBox(width: context.scale(10)),
-                  Text(
-                    kDeleteAccountLabel,
-                    style: GoogleFonts.inter(
-                      fontSize: context.scale(15),
-                      fontWeight: FontWeight.w600,
-                      color: Colors.redAccent.withValues(alpha: 0.7),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }

@@ -197,29 +197,31 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
         await tempFile.delete();
       }
 
-      final response = await ApiService.instance.downloadRelease(widget.app.id, widget.release.buildNumber, tempFile.path, (
-        received,
-        total,
-      ) {
-        if (total > 0 && mounted) {
-          final progress = (received / total * 100).toInt();
-          setState(() {
-            _downloadProgress = received / total;
-          });
-          if (progress != lastProgress) {
-            lastProgress = progress;
-            final contentText = '${_formatSize(received)} / ${_formatSize(total)} ($progress%)';
-            _platform.invokeMethod('showProgressNotification', {
-              'id': notificationId,
-              'title': notificationTitle,
-              'contentText': contentText,
-              'progress': progress,
-              'max': 100,
-              'indeterminate': false,
+      final response = await ApiService.instance.downloadRelease(
+        widget.app.id,
+        widget.release.buildNumber,
+        tempFile.path,
+        (received, total) {
+          if (total > 0 && mounted) {
+            final progress = (received / total * 100).toInt();
+            setState(() {
+              _downloadProgress = received / total;
             });
+            if (progress != lastProgress) {
+              lastProgress = progress;
+              final contentText = '${_formatSize(received)} / ${_formatSize(total)} ($progress%)';
+              _platform.invokeMethod('showProgressNotification', {
+                'id': notificationId,
+                'title': notificationTitle,
+                'contentText': contentText,
+                'progress': progress,
+                'max': 100,
+                'indeterminate': false,
+              });
+            }
           }
-        }
-      });
+        },
+      );
 
       // Dismiss notification on completion
       await _platform.invokeMethod('dismissNotification', {'id': notificationId});
@@ -260,7 +262,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     } catch (e) {
       // Dismiss notification on error
       await _platform.invokeMethod('dismissNotification', {'id': notificationId});
-      
+
       // Clean up temp file on error
       try {
         final file = await _getApkFile();

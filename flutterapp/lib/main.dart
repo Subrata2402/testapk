@@ -57,9 +57,7 @@ class TestApkApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       title: 'TestAPK',
       debugShowCheckedModeBanner: false,
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
-      ],
+      navigatorObservers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
