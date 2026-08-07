@@ -17,6 +17,7 @@ export const STRINGS = {
     NOT_LOGGED_IN: 'You are not logged in! Please log in to get access.',
     INVALID_EXPIRED_TOKEN: 'Invalid or expired token. Please log in again.',
     USER_NOT_FOUND: 'The user belonging to this token no longer exists.',
+    ACCOUNT_DELETED_CONTACT_SUPPORT: 'Your account has been deleted. Please contact support to reopen your account.',
   },
   APP: {
     FIELDS_REQUIRED: 'Application name, package name, and description are required',
@@ -89,6 +90,7 @@ export const STRINGS = {
     FCM_TOKEN_REQUIRED: 'FCM token is required',
     FCM_TOKEN_UPDATED: 'FCM token updated successfully',
     NOT_FOUND: 'User not found',
+    DELETED_SUCCESS: 'Account deleted successfully',
   },
   EMAIL: {
     WELCOME_SUBJECT: 'Welcome to TestAPK!',

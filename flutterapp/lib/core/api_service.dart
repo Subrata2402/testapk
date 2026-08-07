@@ -70,4 +70,8 @@ class ApiService {
       'message': message,
     });
   }
+
+  Future<Response> deleteAccount() {
+    return _client.delete(ApiEndpoints.deleteMe);
+  }
 }

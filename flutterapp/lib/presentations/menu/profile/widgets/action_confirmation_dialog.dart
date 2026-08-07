@@ -3,8 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogoutConfirmationDialog extends StatelessWidget {
-  const LogoutConfirmationDialog({super.key});
+class ActionConfirmationDialog extends StatelessWidget {
+  final String title;
+  final String message;
+  final String confirmLabel;
+  final IconData icon;
+
+  const ActionConfirmationDialog({
+    super.key,
+    required this.title,
+    required this.message,
+    required this.confirmLabel,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +40,12 @@ class LogoutConfirmationDialog extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(context.scale(12)),
                   decoration: BoxDecoration(color: Colors.red.withValues(alpha: 0.15), shape: BoxShape.circle),
-                  child: Icon(Icons.logout_rounded, color: Colors.redAccent, size: context.scale(28)),
+                  child: Icon(icon, color: Colors.redAccent, size: context.scale(28)),
                 ),
                 SizedBox(height: context.scale(16)),
                 // Title
                 Text(
-                  'Sign Out',
+                  title,
                   style: GoogleFonts.inter(
                     fontSize: context.scale(18),
                     fontWeight: FontWeight.w700,
@@ -44,7 +55,7 @@ class LogoutConfirmationDialog extends StatelessWidget {
                 SizedBox(height: context.scale(8)),
                 // Content
                 Text(
-                  'Are you sure you want to sign out of your account?',
+                  message,
                   style: GoogleFonts.inter(
                     fontSize: context.scale(13),
                     color: Colors.white.withValues(alpha: 0.60),
@@ -88,7 +99,7 @@ class LogoutConfirmationDialog extends StatelessWidget {
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(context.scale(10))),
                         ),
                         child: Text(
-                          'Sign Out',
+                          confirmLabel,
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: context.scale(14)),
                         ),
                       ),

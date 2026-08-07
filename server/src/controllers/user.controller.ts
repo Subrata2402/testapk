@@ -150,3 +150,38 @@ export const updateFcmToken = async (
     next(error);
   }
 };
+
+export const deleteMe = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    if (!req.user) {
+      res.status(401).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
+      });
+      return;
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      res.status(404).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.USER.NOT_FOUND,
+      });
+      return;
+    }
+
+    user.isDeleted = true;
+    await user.save();
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.USER.DELETED_SUCCESS,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

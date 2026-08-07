@@ -135,6 +135,13 @@ const String kLabelSendFeedback = 'Send Feedback';
 const String kLabelTermsOfService = 'Terms of Service';
 const String kLabelPrivacyPolicy = 'Privacy Policy';
 const String kLabelAboutTestApk = 'About TestAPK';
+const String kDeleteAccountLabel = 'Delete Account';
+
+/// Delete Account Dialog
+const String kDeleteAccountConfirmTitle = 'Delete Account?';
+const String kDeleteAccountConfirmMessage = 'Are you sure you want to delete your account? This action is permanent and cannot be undone.';
+const String kDeleteAccountSuccessMsg = 'Account deleted successfully';
+const String kDeleteAccountErrorMsg = 'Failed to delete account';
 
 /// API Error Messages
 const String kErrorUnexpected = 'An unexpected error occurred. Please try again.';

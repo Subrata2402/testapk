@@ -11,6 +11,7 @@ export interface IUser extends Document {
   googleDriveFolderId?: string;
   role: 'user' | 'admin';
   fcmTokens?: string[];
+  isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -55,6 +56,10 @@ const userSchema = new Schema<IUser>(
     fcmTokens: {
       type: [String],
       default: [],
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   {

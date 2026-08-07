@@ -69,6 +69,13 @@ export const googleLogin = async (
     let user = await User.findOne({ email });
 
     if (user) {
+      if (user.isDeleted) {
+        res.status(403).json({
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.AUTH.ACCOUNT_DELETED_CONTACT_SUPPORT,
+        });
+        return;
+      }
       // Update googleId and picture if not present or changed
       let updated = false;
       if (!user.googleId) {

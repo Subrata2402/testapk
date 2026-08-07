@@ -54,7 +54,7 @@ export const protect = async (
 
     // 3) Check if user still exists
     const currentUser = await User.findById(decoded.id);
-    if (!currentUser) {
+    if (!currentUser || currentUser.isDeleted) {
       res.status(401).json({
         status: STRINGS.COMMON.STATUS_FAIL,
         message: STRINGS.AUTH.USER_NOT_FOUND,
