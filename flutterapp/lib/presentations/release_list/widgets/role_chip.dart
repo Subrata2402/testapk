@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,19 +33,23 @@ class RoleChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late Color color, bg, border;
+    late String label;
     if (role == 'Owner') {
+      label = kRoleOwner;
       color = AppColors.accentLight;
       bg = AppColors.accent.withValues(alpha: 0.15);
       border = AppColors.accent.withValues(alpha: 0.30);
     } else if (role == 'Developer') {
+      label = kRoleDeveloper;
       color = AppColors.orb2;
       bg = AppColors.orb2.withValues(alpha: 0.15);
       border = AppColors.orb2.withValues(alpha: 0.30);
     } else {
+      label = kRoleTester;
       color = AppColors.success;
       bg = AppColors.success.withValues(alpha: 0.15);
       border = AppColors.success.withValues(alpha: 0.30);
     }
-    return TagChip(label: role, color: color, bg: bg, border: border);
+    return TagChip(label: label, color: color, bg: bg, border: border);
   }
 }

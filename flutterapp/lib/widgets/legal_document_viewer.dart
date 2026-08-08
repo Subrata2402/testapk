@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/core/legal_texts.dart';
+import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,6 +54,7 @@ class LegalDocumentViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context);
     if (isFullScreen) {
       return Scaffold(
         backgroundColor: AppColors.bg3,
@@ -120,7 +123,7 @@ class LegalDocumentViewer extends StatelessWidget {
                                     ),
                                     SizedBox(height: context.scale(2)),
                                     Text(
-                                      'Last Updated: $lastUpdated',
+                                      kLegalLastUpdated(lastUpdated),
                                       style: GoogleFonts.inter(
                                         fontSize: context.scale(11),
                                         color: AppColors.textTertiary,
@@ -244,7 +247,7 @@ class LegalDocumentViewer extends StatelessWidget {
                           ),
                           SizedBox(height: context.scale(4)),
                           Text(
-                            'Last Updated: $lastUpdated',
+                            kLegalLastUpdated(lastUpdated),
                             style: GoogleFonts.inter(fontSize: context.scale(12), color: AppColors.textTertiary),
                           ),
                         ],

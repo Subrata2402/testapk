@@ -60,7 +60,7 @@ class _ContactSupportScreenState extends State<ContactSupportScreen> {
       }
     } catch (e) {
       if (mounted) {
-        CustomSnackBar.show(context, 'Error: ${e.toString()}', type: CustomSnackBarType.error);
+        CustomSnackBar.show(context, '$kErrorPrefix${e.toString()}', type: CustomSnackBarType.error);
       }
     } finally {
       if (mounted) {
@@ -189,7 +189,7 @@ class _ContactSupportScreenState extends State<ContactSupportScreen> {
                                       child: const CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
                                     )
                                   : Text(
-                                      'Submit Support Request',
+                                      kSupportSubmitButton,
                                       style: GoogleFonts.inter(
                                         fontSize: context.scale(15),
                                         fontWeight: FontWeight.w600,

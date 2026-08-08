@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,14 +26,14 @@ class ProfileInfoCard extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _infoRow(context, icon: Icons.person_outline_rounded, label: 'Full Name', value: user.name),
+              _infoRow(context, icon: Icons.person_outline_rounded, label: kProfileFullName, value: user.name),
               Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),
-              _infoRow(context, icon: Icons.email_outlined, label: 'Email', value: user.email),
+              _infoRow(context, icon: Icons.email_outlined, label: kProfileEmail, value: user.email),
               Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),
               _infoRow(
                 context,
                 icon: Icons.shield_outlined,
-                label: 'Role',
+                label: kProfileRole,
                 value: user.role[0].toUpperCase() + user.role.substring(1),
               ),
             ],

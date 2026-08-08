@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,23 +20,23 @@ class AboutPlatformInfoCard extends StatelessWidget {
           _infoTile(
             context,
             icon: Icons.language_rounded,
-            title: 'Web Dashboard',
-            subtitle: 'Google Drive Storage, Team Management, Release History',
+            title: kAboutWebDashboardTitle,
+            subtitle: kAboutWebDashboardSubtitle,
             onTap: () => onLaunchURL(context, 'https://testapk.clipboux.online/'),
           ),
           Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),
           _infoTile(
             context,
             icon: Icons.smartphone_rounded,
-            title: 'Flutter Client',
-            subtitle: 'Glassmorphic UI, One-Tap Install, Version Detection',
+            title: kAboutFlutterClientTitle,
+            subtitle: kAboutFlutterClientSubtitle,
           ),
           Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),
           _infoTile(
             context,
             icon: Icons.terminal_rounded,
-            title: 'CLI Tool',
-            subtitle: 'Device Auth Flow, Real-Time Progress, Drive Upload Status',
+            title: kAboutCliToolTitle,
+            subtitle: kAboutCliToolSubtitle,
             onTap: () => onLaunchURL(context, 'https://www.npmjs.com/package/testapk-cli'),
           ),
         ],

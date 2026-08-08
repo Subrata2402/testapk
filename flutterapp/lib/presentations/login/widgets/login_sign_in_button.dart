@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -63,7 +64,7 @@ class LoginSignInButton extends StatelessWidget {
                       ),
                     SizedBox(width: context.scale(10)),
                     Text(
-                      isLoading ? 'Signing in…' : 'Continue with Google',
+                      isLoading ? kSigningIn : kContinueWithGoogle,
                       style: GoogleFonts.inter(
                         fontSize: context.scale(15),
                         fontWeight: FontWeight.w600,

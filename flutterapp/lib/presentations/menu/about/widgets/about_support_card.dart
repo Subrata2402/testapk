@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +20,7 @@ class AboutSupportCard extends StatelessWidget {
           _supportTile(
             context,
             icon: Icons.email_outlined,
-            label: 'Email Support',
+            label: kAboutEmailSupport,
             value: 'support@testapk.com',
             onTap: () => onLaunchURL(context, 'mailto:support@testapk.com'),
           ),
@@ -27,7 +28,7 @@ class AboutSupportCard extends StatelessWidget {
           _supportTile(
             context,
             icon: Icons.code_rounded,
-            label: 'GitHub Issues',
+            label: kAboutGithubIssues,
             value: 'github.com/testapk/issues',
             onTap: () => onLaunchURL(context, 'https://github.com/testapk/issues'),
           ),
@@ -35,7 +36,7 @@ class AboutSupportCard extends StatelessWidget {
           _supportTile(
             context,
             icon: Icons.forum_outlined,
-            label: 'Discord Community',
+            label: kAboutDiscordCommunity,
             value: 'discord.gg/testapk',
             onTap: () => onLaunchURL(context, 'https://discord.gg/testapk'),
           ),

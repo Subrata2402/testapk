@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,7 +31,7 @@ class FeedbackSubmitButton extends StatelessWidget {
                 child: const CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
               )
             : Text(
-                'Submit Feedback',
+                kFeedbackSubmitButton,
                 style: GoogleFonts.inter(fontSize: context.scale(15), fontWeight: FontWeight.w600),
               ),
       ),

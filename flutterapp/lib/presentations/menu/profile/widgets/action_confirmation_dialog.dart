@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -78,7 +79,7 @@ class ActionConfirmationDialog extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Cancel',
+                          kCancel,
                           style: GoogleFonts.inter(
                             color: Colors.white70,
                             fontWeight: FontWeight.w600,

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
@@ -5,6 +6,7 @@ import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/core/legal_texts.dart';
 import 'package:flutterapp/presentations/app_list/screens/app_list_screen.dart';
+import 'package:flutterapp/presentations/menu/language/screens/language_selector_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
@@ -14,6 +16,7 @@ import 'package:flutterapp/presentations/login/widgets/login_info_row.dart';
 import 'package:flutterapp/presentations/login/widgets/login_chip.dart';
 import 'package:flutterapp/presentations/login/widgets/login_sign_in_button.dart';
 import 'package:flutterapp/presentations/login/widgets/login_separator.dart';
+import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -88,6 +91,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.bg3,
       body: Stack(
@@ -172,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                         spacing: context.scale(8),
                         runSpacing: context.scale(8),
                         alignment: WrapAlignment.center,
-                        children: const [
+                        children: [
                           LoginChip(icon: Icons.android, label: kFeatureBetaTesting),
                           LoginChip(icon: Icons.download_rounded, label: kFeatureApkDownloads),
                           LoginChip(icon: Icons.notes_rounded, label: kFeatureReleaseNotes),
@@ -190,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                         borderRadius: 20,
                         borderColor: AppColors.glass.withValues(alpha: 0.22),
                         child: Column(
-                          children: const [
+                          children: [
                             LoginInfoRow(
                               icon: Icons.lock_person_rounded,
                               title: kInfoTitleTesterAccess,
@@ -227,24 +231,50 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             height: 1.4,
                           ),
                           children: [
-                            const TextSpan(text: 'By signing in, you agree to our '),
+                            TextSpan(text: kAgreeToTermsPrefix),
                             TextSpan(
                               text: kLabelTermsOfService,
                               style: const TextStyle(color: AppColors.accentLight, fontWeight: FontWeight.w600),
                               recognizer: _termsRecognizer,
                             ),
-                            const TextSpan(text: ' and '),
+                            TextSpan(text: kAgreeToTermsAnd),
                             TextSpan(
                               text: kLabelPrivacyPolicy,
                               style: const TextStyle(color: AppColors.accentLight, fontWeight: FontWeight.w600),
                               recognizer: _privacyRecognizer,
                             ),
-                            const TextSpan(text: '.'),
+                            TextSpan(text: kAgreeToTermsSuffix),
                           ],
                         ),
                       ),
                       SizedBox(height: context.scale(12)),
                     ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // Language Selector Button
+          Positioned(
+            top: context.scale(10),
+            right: context.scale(10),
+            child: SafeArea(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.08),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.12), width: 0.8),
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.language_outlined, color: Colors.white, size: context.scale(20)),
+                      onPressed: () => LanguageSelectorScreen.push(context),
+                      tooltip: kChangeLanguageTooltip,
+                    ),
                   ),
                 ),
               ),

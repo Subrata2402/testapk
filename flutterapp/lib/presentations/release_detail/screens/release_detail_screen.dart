@@ -213,13 +213,13 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                       ),
 
                       SizedBox(height: context.scale(20)),
-                      const SectionLabel(label: kSectionDetails),
+                      SectionLabel(label: kSectionDetails),
                       SizedBox(height: context.scale(12)),
                       DetailGrid(release: release, app: widget.app),
 
                       if (release.uploadedByName != null && release.uploadedByName!.isNotEmpty) ...[
                         SizedBox(height: context.scale(20)),
-                        const SectionLabel(label: kSectionUploadedBy),
+                        SectionLabel(label: kSectionUploadedBy),
                         SizedBox(height: context.scale(12)),
                         GlassPanel(
                           padding: EdgeInsets.all(context.scale(18)),
@@ -278,7 +278,7 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
 
                       if (release.releaseNotes.isNotEmpty) ...[
                         SizedBox(height: context.scale(20)),
-                        const SectionLabel(label: kSectionReleaseNotes),
+                        SectionLabel(label: kSectionReleaseNotes),
                         SizedBox(height: context.scale(12)),
                         GlassPanel(
                           padding: EdgeInsets.all(context.scale(18)),

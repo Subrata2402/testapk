@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
@@ -71,7 +72,7 @@ class MemberCard extends StatelessWidget {
                     if (isPending) ...[
                       SizedBox(width: context.scale(8)),
                       TagChip(
-                        label: 'Pending',
+                        label: kMemberStatusPending,
                         color: AppColors.warning,
                         bg: AppColors.warning.withValues(alpha: 0.15),
                         border: AppColors.warning.withValues(alpha: 0.30),

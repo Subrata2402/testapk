@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutterapp/utils/extensions.dart';
 
@@ -34,7 +35,7 @@ class ProfileLogoutButton extends StatelessWidget {
                   SizedBox(width: context.scale(10)),
                   Expanded(
                     child: Text(
-                      'Sign Out',
+                      kSignOutLabel,
                       style: GoogleFonts.inter(
                         fontSize: context.scale(15),
                         fontWeight: FontWeight.w600,

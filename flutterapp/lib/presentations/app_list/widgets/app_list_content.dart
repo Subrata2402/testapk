@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/presentations/app_list/widgets/app_card_widget.dart';
 import 'package:flutterapp/presentations/app_list/widgets/invitation_card.dart';
@@ -34,7 +35,7 @@ class AppListContent extends StatelessWidget {
       padding: EdgeInsets.all(context.scale(20)),
       children: [
         if (invitations.isNotEmpty) ...[
-          SectionLabel(label: 'PENDING INVITATIONS (${invitations.length})', color: AppColors.warning),
+          SectionLabel(label: '$kPendingInvitationsPrefix${invitations.length})', color: AppColors.warning),
           SizedBox(height: context.scale(12)),
           ...invitations.map(
             (app) => InvitationCard(
@@ -48,14 +49,14 @@ class AppListContent extends StatelessWidget {
           ),
           SizedBox(height: context.scale(24)),
         ],
-        const SectionLabel(label: 'MY APPLICATIONS'),
+        SectionLabel(label: kMyApplications),
         SizedBox(height: context.scale(12)),
         if (apps.isEmpty)
           Padding(
             padding: EdgeInsets.symmetric(vertical: context.scale(24)),
             child: Center(
               child: Text(
-                'No accepted applications yet.',
+                kNoApplicationsMsg,
                 style: GoogleFonts.inter(color: AppColors.textTertiary, fontSize: context.scale(13)),
               ),
             ),

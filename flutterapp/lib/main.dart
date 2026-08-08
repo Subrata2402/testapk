@@ -4,11 +4,14 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:flutterapp/configs.dart';
 import 'package:flutterapp/core/api_client.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/navigation.dart';
+import 'package:flutterapp/core/storage_service.dart';
 import 'package:flutterapp/firebase_options.dart';
 import 'package:flutterapp/notification_manager.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
@@ -48,8 +51,41 @@ void main() async {
   runApp(const TestApkApp());
 }
 
-class TestApkApp extends StatelessWidget {
+class TestApkApp extends StatefulWidget {
   const TestApkApp({super.key});
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _TestApkAppState? state = context.findAncestorStateOfType<_TestApkAppState>();
+    state?.setLocale(newLocale);
+  }
+
+  @override
+  State<TestApkApp> createState() => _TestApkAppState();
+}
+
+class _TestApkAppState extends State<TestApkApp> {
+  Locale? _locale;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLocale();
+  }
+
+  Future<void> _loadLocale() async {
+    final langCode = await StorageService.instance.getLanguage();
+    if (langCode != null) {
+      setState(() {
+        _locale = Locale(langCode);
+      });
+    }
+  }
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +94,24 @@ class TestApkApp extends StatelessWidget {
       title: 'TestAPK',
       debugShowCheckedModeBanner: false,
       navigatorObservers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
+      locale: _locale,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('es'),
+        Locale('pt'),
+        Locale('hi'),
+        Locale('fr'),
+        Locale('de'),
+        Locale('ja'),
+        Locale('zh'),
+        Locale('ar'),
+      ],
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,

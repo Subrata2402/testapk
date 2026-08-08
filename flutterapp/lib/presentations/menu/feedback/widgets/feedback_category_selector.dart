@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,9 +14,9 @@ class FeedbackCategorySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = [
-      _CategoryItem('bug', 'Bug', Icons.bug_report_outlined),
-      _CategoryItem('feature_request', 'Feature', Icons.lightbulb_outline_rounded),
-      _CategoryItem('other', 'Other', Icons.more_horiz_rounded),
+      _CategoryItem('bug', kFeedbackCategoryBug, Icons.bug_report_outlined),
+      _CategoryItem('feature_request', kFeedbackCategoryFeature, Icons.lightbulb_outline_rounded),
+      _CategoryItem('other', kFeedbackCategoryOther, Icons.more_horiz_rounded),
     ];
 
     final selectedIndex = categories.indexWhere((item) => item.value == selectedCategory);

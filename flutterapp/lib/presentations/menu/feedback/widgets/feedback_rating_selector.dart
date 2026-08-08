@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +19,7 @@ class FeedbackRatingSelector extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'How would you rate us?',
+            kFeedbackRateUsQuestion,
             style: GoogleFonts.inter(fontSize: context.scale(13), color: Colors.white.withValues(alpha: 0.70)),
           ),
           Row(

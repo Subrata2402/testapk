@@ -5,6 +5,7 @@ import 'package:flutterapp/core/api_service.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
+import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/action_confirmation_dialog.dart';
@@ -38,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
           scale: curve,
           child: FadeTransition(
             opacity: anim1,
-            child: const ActionConfirmationDialog(
+            child: ActionConfirmationDialog(
               title: kSignOutConfirmTitle,
               message: kSignOutConfirmMessage,
               confirmLabel: kSignOutLabel,
@@ -78,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
           scale: curve,
           child: FadeTransition(
             opacity: anim1,
-            child: const ActionConfirmationDialog(
+            child: ActionConfirmationDialog(
               title: kDeleteAccountConfirmTitle,
               message: kDeleteAccountConfirmMessage,
               confirmLabel: kDeleteLabel,
@@ -114,7 +115,7 @@ class ProfileScreen extends StatelessWidget {
       } catch (e) {
         if (context.mounted) {
           Navigator.of(context).pop(); // Dismiss the loading dialog
-          CustomSnackBar.show(context, 'Error: ${e.toString()}', type: CustomSnackBarType.error);
+          CustomSnackBar.show(context, '$kErrorPrefix${e.toString()}', type: CustomSnackBarType.error);
         }
       }
     }
@@ -122,6 +123,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: AppColors.bg3,
       body: Stack(
@@ -260,7 +262,7 @@ class ProfileScreen extends StatelessWidget {
                         ProfileDeleteAccountButton(onTap: () => _handleDeleteAccount(context)),
 
                         SizedBox(height: context.scale(16)),
-                        
+
                         // Logout button
                         ProfileLogoutButton(onTap: () => _handleSignOut(context)),
                       ],
