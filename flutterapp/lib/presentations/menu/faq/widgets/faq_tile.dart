@@ -25,13 +25,11 @@ class _FaqTileState extends State<FaqTile> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 250),
-      vsync: this,
-    );
-    _iconTurns = Tween<double>(begin: 0.0, end: 0.5).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _controller = AnimationController(duration: const Duration(milliseconds: 250), vsync: this);
+    _iconTurns = Tween<double>(
+      begin: 0.0,
+      end: 0.5,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
     _heightFactor = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
   }
 
@@ -91,19 +89,11 @@ class _FaqTileState extends State<FaqTile> with SingleTickerProviderStateMixin {
             animation: _controller.view,
             builder: (context, child) {
               return ClipRect(
-                child: Align(
-                  heightFactor: _heightFactor.value,
-                  child: child,
-                ),
+                child: Align(heightFactor: _heightFactor.value, child: child),
               );
             },
             child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                context.scale(18),
-                0,
-                context.scale(18),
-                context.scale(18),
-              ),
+              padding: EdgeInsets.fromLTRB(context.scale(18), 0, context.scale(18), context.scale(18)),
               child: LinkifiedText(
                 text: widget.answer,
                 style: GoogleFonts.inter(
@@ -131,58 +121,44 @@ class LinkifiedText extends StatelessWidget {
   final TextStyle? style;
   final TextStyle? linkStyle;
 
-  const LinkifiedText({
-    super.key,
-    required this.text,
-    this.style,
-    this.linkStyle,
-  });
+  const LinkifiedText({super.key, required this.text, this.style, this.linkStyle});
 
   @override
   Widget build(BuildContext context) {
-    final RegExp urlRegExp = RegExp(
-      r'(https?:\/\/[^\s]+)',
-      caseSensitive: false,
-    );
+    final RegExp urlRegExp = RegExp(r'(https?:\/\/[^\s]+)', caseSensitive: false);
 
     final List<TextSpan> spans = [];
     int start = 0;
 
     for (final RegExpMatch match in urlRegExp.allMatches(text)) {
       if (match.start > start) {
-        spans.add(TextSpan(
-          text: text.substring(start, match.start),
-          style: style,
-        ));
+        spans.add(TextSpan(text: text.substring(start, match.start), style: style));
       }
 
       final String urlString = match.group(0)!;
-      spans.add(TextSpan(
-        text: urlString,
-        style: linkStyle ?? const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
-        recognizer: TapGestureRecognizer()
-          ..onTap = () async {
-            final Uri url = Uri.parse(urlString);
-            try {
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url, mode: LaunchMode.externalApplication);
-              }
-            } catch (_) {}
-          },
-      ));
+      spans.add(
+        TextSpan(
+          text: urlString,
+          style: linkStyle ?? const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+          recognizer: TapGestureRecognizer()
+            ..onTap = () async {
+              final Uri url = Uri.parse(urlString);
+              try {
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                }
+              } catch (_) {}
+            },
+        ),
+      );
 
       start = match.end;
     }
 
     if (start < text.length) {
-      spans.add(TextSpan(
-        text: text.substring(start),
-        style: style,
-      ));
+      spans.add(TextSpan(text: text.substring(start), style: style));
     }
 
-    return RichText(
-      text: TextSpan(children: spans),
-    );
+    return RichText(text: TextSpan(children: spans));
   }
 }

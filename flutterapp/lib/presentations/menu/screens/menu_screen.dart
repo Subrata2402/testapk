@@ -56,10 +56,7 @@ class MenuScreen extends StatelessWidget {
       await AuthService.instance.signOut();
       if (context.mounted) {
         Navigator.of(context).pop(); // Dismiss the dialog
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => const LoginScreen()),
-          (_) => false,
-        );
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginScreen()), (_) => false);
       }
     }
   }
@@ -149,11 +146,7 @@ class MenuScreen extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           child: InkWell(
                             onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (_) => ProfileScreen(user: user),
-                                ),
-                              );
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen(user: user)));
                             },
                             borderRadius: BorderRadius.circular(context.scale(16)),
                             child: Padding(

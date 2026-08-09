@@ -15,30 +15,12 @@ class FaqScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     final List<Map<String, String>> faqItems = [
-      {
-        'question': l10n.faqQuestion1,
-        'answer': l10n.faqAnswer1,
-      },
-      {
-        'question': l10n.faqQuestion2,
-        'answer': l10n.faqAnswer2,
-      },
-      {
-        'question': l10n.faqQuestion3,
-        'answer': l10n.faqAnswer3,
-      },
-      {
-        'question': l10n.faqQuestion4,
-        'answer': l10n.faqAnswer4,
-      },
-      {
-        'question': l10n.faqQuestion5,
-        'answer': l10n.faqAnswer5,
-      },
-      {
-        'question': l10n.faqQuestion6,
-        'answer': l10n.faqAnswer6,
-      },
+      {'question': l10n.faqQuestion1, 'answer': l10n.faqAnswer1},
+      {'question': l10n.faqQuestion2, 'answer': l10n.faqAnswer2},
+      {'question': l10n.faqQuestion3, 'answer': l10n.faqAnswer3},
+      {'question': l10n.faqQuestion4, 'answer': l10n.faqAnswer4},
+      {'question': l10n.faqQuestion5, 'answer': l10n.faqAnswer5},
+      {'question': l10n.faqQuestion6, 'answer': l10n.faqAnswer6},
     ];
 
     return Scaffold(
@@ -116,10 +98,7 @@ class FaqScreen extends StatelessWidget {
                     final item = faqItems[index];
                     return Padding(
                       padding: EdgeInsets.only(bottom: context.scale(16)),
-                      child: FaqTile(
-                        question: item['question']!,
-                        answer: item['answer']!,
-                      ),
+                      child: FaqTile(question: item['question']!, answer: item['answer']!),
                     );
                   },
                 ),

@@ -47,15 +47,15 @@ class _LanguageSelectorScreenState extends State<LanguageSelectorScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     final languages = [
-      {'code': 'en', 'name': l10n.english, 'flag': '🇺🇸'},
-      {'code': 'es', 'name': l10n.spanish, 'flag': '🇪🇸'},
-      {'code': 'pt', 'name': l10n.portuguese, 'flag': '🇵🇹'},
-      {'code': 'hi', 'name': l10n.hindi, 'flag': '🇮🇳'},
-      {'code': 'fr', 'name': l10n.french, 'flag': '🇫🇷'},
-      {'code': 'de', 'name': l10n.german, 'flag': '🇩🇪'},
-      {'code': 'ja', 'name': l10n.japanese, 'flag': '🇯🇵'},
-      {'code': 'zh', 'name': l10n.chinese, 'flag': '🇨🇳'},
-      {'code': 'ar', 'name': l10n.arabic, 'flag': '🇸🇦'},
+      {'code': 'en', 'name': 'English', 'flag': '🇺🇸'},
+      {'code': 'es', 'name': 'Español', 'flag': '🇪🇸'},
+      {'code': 'pt', 'name': 'Português', 'flag': '🇵🇹'},
+      {'code': 'hi', 'name': 'हिन्दी', 'flag': '🇮🇳'},
+      {'code': 'fr', 'name': 'Français', 'flag': '🇫🇷'},
+      {'code': 'de', 'name': 'Deutsch', 'flag': '🇩🇪'},
+      {'code': 'ja', 'name': '日本語', 'flag': '🇯🇵'},
+      {'code': 'zh', 'name': '简体中文', 'flag': '🇨🇳'},
+      {'code': 'ar', 'name': 'العربية', 'flag': '🇸🇦'},
     ];
 
     return Scaffold(
