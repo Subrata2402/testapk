@@ -684,4 +684,49 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'Häufig gestellte Fragen';
+
+  @override
+  String get faqQuestion1 => 'Was ist TestAPK?';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK ist eine moderne, sichere und selbstgehostete APK-Release-Management-Plattform, mit der Entwickler Beta-Builds direkt an Tester verteilen können.';
+
+  @override
+  String get faqQuestion2 => 'Wie installiere ich Updates?';
+
+  @override
+  String get faqAnswer2 =>
+      'Sie können die neuesten APK-Releases direkt aus der App-Liste herunterladen und installieren. Stellen Sie sicher, dass Sie die Installation aus unbekannten Quellen zulassen, wenn Sie dazu aufgefordert werden.';
+
+  @override
+  String get faqQuestion3 => 'Wo werden die APK-Dateien gespeichert?';
+
+  @override
+  String get faqAnswer3 =>
+      'Alle APK-Dateien werden sicher im Google Drive des Entwicklers gespeichert, was eine vollständige Kontrolle und das Eigentum an den Daten gewährleistet.';
+
+  @override
+  String get faqQuestion4 => 'Wie erhalte ich Zugriff auf eine App?';
+
+  @override
+  String get faqAnswer4 =>
+      'Sie müssen vom App-Besitzer oder -Entwickler als Tester eingeladen werden. Sobald Sie eingeladen wurden, erhalten Sie eine Einladung in der App-Liste, die Sie annehmen können.';
+
+  @override
+  String get faqQuestion5 => 'Sind meine Daten sicher?';
+
+  @override
+  String get faqAnswer5 =>
+      'Ja, TestAPK verwendet Google OAuth für eine sichere Authentifizierung und greift nicht auf andere Dateien in Ihrem Google Drive zu als auf die von der App erstellten.';
+
+  @override
+  String get faqQuestion6 => 'Wo lade ich die APK hoch?';
+
+  @override
+  String get faqAnswer6 =>
+      'Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen.';
 }

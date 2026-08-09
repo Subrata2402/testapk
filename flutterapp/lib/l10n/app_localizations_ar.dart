@@ -670,4 +670,49 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'إذا كان لديك أي أسئلة حول شروط الخدمة هذه، يرجى الاتصال بنا على subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'الأسئلة الشائعة';
+
+  @override
+  String get faqQuestion1 => 'ما هو TestAPK؟';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK هو منصة حديثة وآمنة ومستضافة ذاتياً لإدارة إصدارات APK تتيح للمطورين توزيع إصدارات بيتا مباشرة للمختبرين.';
+
+  @override
+  String get faqQuestion2 => 'كيف أقوم بتثبيت التحديثات؟';
+
+  @override
+  String get faqAnswer2 =>
+      'يمكنك تنزيل وتثبيت أحدث إصدارات APK مباشرة من قائمة التطبيقات. تأكد من السماح بالتثبيت من مصادر غير معروفة إذا طلب منك ذلك.';
+
+  @override
+  String get faqQuestion3 => 'أين يتم تخزين ملفات APK؟';
+
+  @override
+  String get faqAnswer3 =>
+      'يتم تخزين جميع ملفات APK بشكل آمن في Google Drive الخاص بالمطور، مما يضمن التحكم الكامل والملكية للبيانات.';
+
+  @override
+  String get faqQuestion4 => 'كيف يمكنني الحصول على حق الوصول إلى تطبيق؟';
+
+  @override
+  String get faqAnswer4 =>
+      'يجب أن يتم دعوتك من قبل مالك التطبيق أو المطور كمختبر. بمجرد دعوتك، ستتلقى دعوة في قائمة التطبيقات لقبولها.';
+
+  @override
+  String get faqQuestion5 => 'هل بياناتي آمنة؟';
+
+  @override
+  String get faqAnswer5 =>
+      'نعم، يستخدم TestAPK نظام Google OAuth للمصادقة الآمنة ولا يصل إلى أي ملفات في Google Drive الخاص بك بخلاف تلك التي تم إنشاؤها بواسطة التطبيق.';
+
+  @override
+  String get faqQuestion6 => 'أين أقوم برفع ملف APK؟';
+
+  @override
+  String get faqAnswer6 =>
+      'يمكنك رفع ملفات APK عبر لوحة التحكم على الويب على https://testapk.clipboux.online/ أو باستخدام أداة TestAPK CLI.';
 }

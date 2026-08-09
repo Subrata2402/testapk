@@ -685,4 +685,49 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'Si vous avez des questions concernant ces conditions d\'utilisation, veuillez nous contacter à subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'Foire Aux Questions';
+
+  @override
+  String get faqQuestion1 => 'Qu\'est-ce que TestAPK ?';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK est une plateforme moderne, sécurisée et auto-hébergée de gestion des versions d\'APK qui permet aux développeurs de distribuer des versions bêta directement aux testeurs.';
+
+  @override
+  String get faqQuestion2 => 'Comment installer les mises à jour ?';
+
+  @override
+  String get faqAnswer2 =>
+      'Vous pouvez télécharger et installer les dernières versions d\'APK directement depuis la liste des applications. Assurez-vous d\'autoriser l\'installation à partir de sources inconnues si vous y êtes invité.';
+
+  @override
+  String get faqQuestion3 => 'Où sont stockés les fichiers APK ?';
+
+  @override
+  String get faqAnswer3 =>
+      'Tous les fichiers APK sont stockés en toute sécurité sur le Google Drive du développeur, garantissant un contrôle et une propriété complets des données.';
+
+  @override
+  String get faqQuestion4 => 'Comment puis-je accéder à une application ?';
+
+  @override
+  String get faqAnswer4 =>
+      'Vous devez être invité par le propriétaire ou le développeur de l\'application en tant que testeur. Une fois invité, vous recevrez une invitation dans la liste des applications à accepter.';
+
+  @override
+  String get faqQuestion5 => 'Mes données sont-elles sécurisées ?';
+
+  @override
+  String get faqAnswer5 =>
+      'Oui, TestAPK utilise Google OAuth pour une authentification sécurisée et n\'accède à aucun fichier de votre Google Drive autre que ceux créés par l\'application.';
+
+  @override
+  String get faqQuestion6 => 'Où puis-je télécharger l\'APK ?';
+
+  @override
+  String get faqAnswer6 =>
+      'Vous pouvez télécharger des APK via le tableau de bord Web à l\'adresse https://testapk.clipboux.online/ ou en utilisant l\'outil CLI TestAPK.';
 }

@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. Modification des conditions",
   "termsOfServicePara7_1": "Nous nous réservons le droit de modifier ou de remplacer ces conditions d'utilisation à tout moment. Nous vous informerons de tout changement en publiant les nouvelles conditions sur cette page. Votre utilisation continue du service après tout changement constitue votre acceptation des nouvelles conditions.",
   "termsOfServiceTitle8": "8. Nous contacter",
-  "termsOfServicePara8_1": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à subrata3250das@gmail.com."
+  "termsOfServicePara8_1": "Si vous avez des questions concernant ces conditions d'utilisation, veuillez nous contacter à subrata3250das@gmail.com.",
+  "faqTitle": "Foire Aux Questions",
+  "faqQuestion1": "Qu'est-ce que TestAPK ?",
+  "faqAnswer1": "TestAPK est une plateforme moderne, sécurisée et auto-hébergée de gestion des versions d'APK qui permet aux développeurs de distribuer des versions bêta directement aux testeurs.",
+  "faqQuestion2": "Comment installer les mises à jour ?",
+  "faqAnswer2": "Vous pouvez télécharger et installer les dernières versions d'APK directement depuis la liste des applications. Assurez-vous d'autoriser l'installation à partir de sources inconnues si vous y êtes invité.",
+  "faqQuestion3": "Où sont stockés les fichiers APK ?",
+  "faqAnswer3": "Tous les fichiers APK sont stockés en toute sécurité sur le Google Drive du développeur, garantissant un contrôle et une propriété complets des données.",
+  "faqQuestion4": "Comment puis-je accéder à une application ?",
+  "faqAnswer4": "Vous devez être invité par le propriétaire ou le développeur de l'application en tant que testeur. Une fois invité, vous recevrez une invitation dans la liste des applications à accepter.",
+  "faqQuestion5": "Mes données sont-elles sécurisées ?",
+  "faqAnswer5": "Oui, TestAPK utilise Google OAuth pour une authentification sécurisée et n'accède à aucun fichier de votre Google Drive autre que ceux créés par l'application.",
+  "faqQuestion6": "Où puis-je télécharger l'APK ?",
+  "faqAnswer6": "Vous pouvez télécharger des APK via le tableau de bord Web à l'adresse https://testapk.clipboux.online/ ou en utilisant l'outil CLI TestAPK."
 }

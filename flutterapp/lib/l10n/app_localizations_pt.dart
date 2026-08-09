@@ -682,4 +682,49 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'Se tiver alguma dúvida sobre estes Termos de Serviço, contacte-nos em subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'Perguntas Frequentes';
+
+  @override
+  String get faqQuestion1 => 'O que é o TestAPK?';
+
+  @override
+  String get faqAnswer1 =>
+      'O TestAPK é uma plataforma de gerenciamento de lançamentos de APK moderna, segura e auto-hospedada que permite aos desenvolvedores distribuir compilações beta diretamente para os testadores.';
+
+  @override
+  String get faqQuestion2 => 'Como instalo atualizações?';
+
+  @override
+  String get faqAnswer2 =>
+      'Você pode baixar e instalar os lançamentos de APK mais recentes diretamente da lista de aplicativos. Certifique-se de permitir a instalação de fontes desconhecidas se solicitado.';
+
+  @override
+  String get faqQuestion3 => 'Onde os arquivos APK são armazenados?';
+
+  @override
+  String get faqAnswer3 =>
+      'Todos os arquivos APK são armazenados com segurança no Google Drive do desenvolvedor, garantindo total controle e propriedade dos dados.';
+
+  @override
+  String get faqQuestion4 => 'Como obtenho acesso a um aplicativo?';
+
+  @override
+  String get faqAnswer4 =>
+      'Você deve ser convidado pelo proprietário ou desenvolvedor do aplicativo como testador. Uma vez convidado, você receberá um convite na lista de aplicativos para aceitar.';
+
+  @override
+  String get faqQuestion5 => 'Meus dados estão seguros?';
+
+  @override
+  String get faqAnswer5 =>
+      'Sim, o TestAPK usa o Google OAuth para autenticação segura e não acessa nenhum arquivo no seu Google Drive além daqueles criados pelo aplicativo.';
+
+  @override
+  String get faqQuestion6 => 'Onde eu envio o APK?';
+
+  @override
+  String get faqAnswer6 =>
+      'Você pode enviar APKs através do painel web em https://testapk.clipboux.online/ ou usando a ferramenta CLI do TestAPK.';
 }

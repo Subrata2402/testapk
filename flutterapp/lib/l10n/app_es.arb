@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. Cambios en los términos",
   "termsOfServicePara7_1": "Nos reservamos el derecho de modificar o reemplazar estos Términos de servicio en cualquier momento. Le notificaremos cualquier cambio publicando los nuevos términos en esta página. Su uso continuado del servicio después de cualquier cambio constituye la aceptación de los nuevos términos.",
   "termsOfServiceTitle8": "8. Contáctenos",
-  "termsOfServicePara8_1": "Si tiene alguna pregunta sobre estos Términos de servicio, comuníquese con nosotros en subrata3250das@gmail.com."
+  "termsOfServicePara8_1": "Si tiene alguna pregunta sobre estos Términos de servicio, comuníquese con nosotros en subrata3250das@gmail.com.",
+  "faqTitle": "Preguntas frecuentes",
+  "faqQuestion1": "¿Qué es TestAPK?",
+  "faqAnswer1": "TestAPK es una plataforma de gestión de lanzamientos de APK moderna, segura y autohospedada que permite a los desarrolladores distribuir versiones beta directamente a los evaluadores.",
+  "faqQuestion2": "¿Cómo instalo las actualizaciones?",
+  "faqAnswer2": "Puede descargar e instalar las últimas versiones de APK directamente desde la lista de aplicaciones. Asegúrese de permitir la instalación desde fuentes desconocidas si se le solicita.",
+  "faqQuestion3": "¿Dónde se almacenan los archivos APK?",
+  "faqAnswer3": "Todos los archivos APK se almacenan de forma segura en el Google Drive del desarrollador, lo que garantiza el control total y la propiedad de los datos.",
+  "faqQuestion4": "¿Cómo obtengo acceso a una aplicación?",
+  "faqAnswer4": "Debe ser invitado por el propietario o desarrollador de la aplicación como evaluador. Una vez invitado, recibirá una invitación en la lista de aplicaciones para aceptar.",
+  "faqQuestion5": "¿Es seguro mi dato?",
+  "faqAnswer5": "Sí, TestAPK utiliza Google OAuth para una autenticación segura y no accede a ningún archivo en su Google Drive que no sea el creado por la aplicación.",
+  "faqQuestion6": "¿Dónde subo el APK?",
+  "faqAnswer6": "Puede subir archivos APK a través del panel web en https://testapk.clipboux.online/ o utilizando la herramienta CLI de TestAPK."
 }

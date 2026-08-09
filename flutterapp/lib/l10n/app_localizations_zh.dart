@@ -643,4 +643,47 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       '如果您对这些服务条款有任何疑问，请通过 subrata3250das@gmail.com 与我们联系。';
+
+  @override
+  String get faqTitle => '常见问题';
+
+  @override
+  String get faqQuestion1 => '什么是 TestAPK？';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK 是一个现代、安全且自托管的 APK 版本管理平台，允许开发人员将测试版本直接分发给测试人员。';
+
+  @override
+  String get faqQuestion2 => '如何安装更新？';
+
+  @override
+  String get faqAnswer2 => '您可以直接从应用列表中下载并安装最新的 APK 版本。如果系统提示，请确保允许从未知来源安装。';
+
+  @override
+  String get faqQuestion3 => 'APK 文件存储在哪里？';
+
+  @override
+  String get faqAnswer3 =>
+      '所有 APK 文件都安全地存储在开发人员的 Google 云端硬盘中，从而确保对数据的完全控制和所有权。';
+
+  @override
+  String get faqQuestion4 => '如何获取应用的访问权限？';
+
+  @override
+  String get faqAnswer4 => '您必须被应用所有者或开发人员邀请为测试人员。一旦被邀请，您将在应用列表中收到接受邀请的通知。';
+
+  @override
+  String get faqQuestion5 => '我的数据安全吗？';
+
+  @override
+  String get faqAnswer5 =>
+      '是的，TestAPK 使用 Google OAuth 进行安全身份验证，并且不会访问您 Google 云端硬盘中除该应用创建的文件之外的任何文件。';
+
+  @override
+  String get faqQuestion6 => '我在哪里上传 APK？';
+
+  @override
+  String get faqAnswer6 =>
+      '您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。';
 }

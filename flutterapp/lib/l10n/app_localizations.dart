@@ -1347,6 +1347,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.'**
   String get termsOfServicePara8_1;
+
+  /// No description provided for @faqTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequently Asked Questions'**
+  String get faqTitle;
+
+  /// No description provided for @faqQuestion1.
+  ///
+  /// In en, this message translates to:
+  /// **'What is TestAPK?'**
+  String get faqQuestion1;
+
+  /// No description provided for @faqAnswer1.
+  ///
+  /// In en, this message translates to:
+  /// **'TestAPK is a modern, secure, and self-hosted APK release management platform that allows developers to distribute beta builds directly to testers.'**
+  String get faqAnswer1;
+
+  /// No description provided for @faqQuestion2.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I install updates?'**
+  String get faqQuestion2;
+
+  /// No description provided for @faqAnswer2.
+  ///
+  /// In en, this message translates to:
+  /// **'You can download and install the latest APK releases directly from the app list. Make sure to allow installation from unknown sources if prompted.'**
+  String get faqAnswer2;
+
+  /// No description provided for @faqQuestion3.
+  ///
+  /// In en, this message translates to:
+  /// **'Where are the APK files stored?'**
+  String get faqQuestion3;
+
+  /// No description provided for @faqAnswer3.
+  ///
+  /// In en, this message translates to:
+  /// **'All APK files are securely stored in the developer\'s Google Drive, ensuring complete control and ownership of the data.'**
+  String get faqAnswer3;
+
+  /// No description provided for @faqQuestion4.
+  ///
+  /// In en, this message translates to:
+  /// **'How do I get access to an app?'**
+  String get faqQuestion4;
+
+  /// No description provided for @faqAnswer4.
+  ///
+  /// In en, this message translates to:
+  /// **'You must be invited by the app owner or developer as a tester. Once invited, you will receive an invitation in the app list to accept.'**
+  String get faqAnswer4;
+
+  /// No description provided for @faqQuestion5.
+  ///
+  /// In en, this message translates to:
+  /// **'Is my data secure?'**
+  String get faqQuestion5;
+
+  /// No description provided for @faqAnswer5.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, TestAPK uses Google OAuth for secure authentication and does not access any files in your Google Drive other than those created by the app.'**
+  String get faqAnswer5;
+
+  /// No description provided for @faqQuestion6.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do I upload the APK?'**
+  String get faqQuestion6;
+
+  /// No description provided for @faqAnswer6.
+  ///
+  /// In en, this message translates to:
+  /// **'You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.'**
+  String get faqAnswer6;
 }
 
 class _AppLocalizationsDelegate

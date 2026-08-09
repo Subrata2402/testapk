@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. Alterações aos Termos",
   "termsOfServicePara7_1": "Reservamos o direito de modificar ou substituir estes Termos de Serviço a qualquer momento. Iremos notificá-lo de quaisquer alterações publicando os novos termos nesta página. A sua utilização continuada do serviço após quaisquer alterações constitui aceitação dos novos termos.",
   "termsOfServiceTitle8": "8. Contacte-nos",
-  "termsOfServicePara8_1": "Se tiver alguma dúvida sobre estes Termos de Serviço, contacte-nos em subrata3250das@gmail.com."
+  "termsOfServicePara8_1": "Se tiver alguma dúvida sobre estes Termos de Serviço, contacte-nos em subrata3250das@gmail.com.",
+  "faqTitle": "Perguntas Frequentes",
+  "faqQuestion1": "O que é o TestAPK?",
+  "faqAnswer1": "O TestAPK é uma plataforma de gerenciamento de lançamentos de APK moderna, segura e auto-hospedada que permite aos desenvolvedores distribuir compilações beta diretamente para os testadores.",
+  "faqQuestion2": "Como instalo atualizações?",
+  "faqAnswer2": "Você pode baixar e instalar os lançamentos de APK mais recentes diretamente da lista de aplicativos. Certifique-se de permitir a instalação de fontes desconhecidas se solicitado.",
+  "faqQuestion3": "Onde os arquivos APK são armazenados?",
+  "faqAnswer3": "Todos os arquivos APK são armazenados com segurança no Google Drive do desenvolvedor, garantindo total controle e propriedade dos dados.",
+  "faqQuestion4": "Como obtenho acesso a um aplicativo?",
+  "faqAnswer4": "Você deve ser convidado pelo proprietário ou desenvolvedor do aplicativo como testador. Uma vez convidado, você receberá um convite na lista de aplicativos para aceitar.",
+  "faqQuestion5": "Meus dados estão seguros?",
+  "faqAnswer5": "Sim, o TestAPK usa o Google OAuth para autenticação segura e não acessa nenhum arquivo no seu Google Drive além daqueles criados pelo aplicativo.",
+  "faqQuestion6": "Onde eu envio o APK?",
+  "faqAnswer6": "Você pode enviar APKs através do painel web em https://testapk.clipboux.online/ ou usando a ferramenta CLI do TestAPK."
 }

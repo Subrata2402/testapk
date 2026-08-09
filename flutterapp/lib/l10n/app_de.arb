@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. Änderungen der Bedingungen",
   "termsOfServicePara7_1": "Wir behalten uns das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern oder zu ersetzen. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen. Ihre fortgesetzte Nutzung des Dienstes nach Änderungen stellt die Annahme der neuen Bedingungen dar.",
   "termsOfServiceTitle8": "8. Kontaktieren Sie uns",
-  "termsOfServicePara8_1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter subrata3250das@gmail.com."
+  "termsOfServicePara8_1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter subrata3250das@gmail.com.",
+  "faqTitle": "Häufig gestellte Fragen",
+  "faqQuestion1": "Was ist TestAPK?",
+  "faqAnswer1": "TestAPK ist eine moderne, sichere und selbstgehostete APK-Release-Management-Plattform, mit der Entwickler Beta-Builds direkt an Tester verteilen können.",
+  "faqQuestion2": "Wie installiere ich Updates?",
+  "faqAnswer2": "Sie können die neuesten APK-Releases direkt aus der App-Liste herunterladen und installieren. Stellen Sie sicher, dass Sie die Installation aus unbekannten Quellen zulassen, wenn Sie dazu aufgefordert werden.",
+  "faqQuestion3": "Wo werden die APK-Dateien gespeichert?",
+  "faqAnswer3": "Alle APK-Dateien werden sicher im Google Drive des Entwicklers gespeichert, was eine vollständige Kontrolle und das Eigentum an den Daten gewährleistet.",
+  "faqQuestion4": "Wie erhalte ich Zugriff auf eine App?",
+  "faqAnswer4": "Sie müssen vom App-Besitzer oder -Entwickler als Tester eingeladen werden. Sobald Sie eingeladen wurden, erhalten Sie eine Einladung in der App-Liste, die Sie annehmen können.",
+  "faqQuestion5": "Sind meine Daten sicher?",
+  "faqAnswer5": "Ja, TestAPK verwendet Google OAuth für eine sichere Authentifizierung und greift nicht auf andere Dateien in Ihrem Google Drive zu als auf die von der App erstellten.",
+  "faqQuestion6": "Wo lade ich die APK hoch?",
+  "faqAnswer6": "Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen."
 }

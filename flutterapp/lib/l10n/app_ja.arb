@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. 規約の変更",
   "termsOfServicePara7_1": "当社は、いつでもこれらの利用規約を変更または置き換える権利を留保します。変更がある場合は、このページに新しい規約を掲載することでお知らせします。変更の掲載後もサービスの使用を継続することは、新しい規約に同意したことになります。",
   "termsOfServiceTitle8": "8. お問い合わせ",
-  "termsOfServicePara8_1": "これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。"
+  "termsOfServicePara8_1": "これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。",
+  "faqTitle": "よくある質問",
+  "faqQuestion1": "TestAPKとは何ですか？",
+  "faqAnswer1": "TestAPKは、開発者がベータビルドをテスターに直接配布できるようにする、モダンで安全なセルフホスト型のAPKリリース管理プラットフォームです。",
+  "faqQuestion2": "アップデートのインストール方法は？",
+  "faqAnswer2": "アプリ一覧から最新のAPKリリースを直接ダウンロードしてインストールできます。プロンプトが表示された場合は、不明なソースからのインストールを許可してください。",
+  "faqQuestion3": "APKファイルはどこに保存されますか？",
+  "faqAnswer3": "すべてのAPKファイルは開発者のGoogleドライブに安全に保存され、データの完全な制御と所有権が保証されます。",
+  "faqQuestion4": "アプリへのアクセス権を取得するには？",
+  "faqAnswer4": "アプリの所有者または開発者からテスターとして招待される必要があります。招待されると、アプリ一覧に承認用の招待が表示されます。",
+  "faqQuestion5": "データは安全ですか？",
+  "faqAnswer5": "はい、TestAPKは安全な認証にGoogle OAuthを使用しており、アプリによって作成されたもの以外のGoogleドライブ内のファイルにはアクセスしません。",
+  "faqQuestion6": "APKはどこにアップロードしますか？",
+  "faqAnswer6": "APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。"
 }

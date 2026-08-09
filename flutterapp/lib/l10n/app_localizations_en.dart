@@ -677,4 +677,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'Frequently Asked Questions';
+
+  @override
+  String get faqQuestion1 => 'What is TestAPK?';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK is a modern, secure, and self-hosted APK release management platform that allows developers to distribute beta builds directly to testers.';
+
+  @override
+  String get faqQuestion2 => 'How do I install updates?';
+
+  @override
+  String get faqAnswer2 =>
+      'You can download and install the latest APK releases directly from the app list. Make sure to allow installation from unknown sources if prompted.';
+
+  @override
+  String get faqQuestion3 => 'Where are the APK files stored?';
+
+  @override
+  String get faqAnswer3 =>
+      'All APK files are securely stored in the developer\'s Google Drive, ensuring complete control and ownership of the data.';
+
+  @override
+  String get faqQuestion4 => 'How do I get access to an app?';
+
+  @override
+  String get faqAnswer4 =>
+      'You must be invited by the app owner or developer as a tester. Once invited, you will receive an invitation in the app list to accept.';
+
+  @override
+  String get faqQuestion5 => 'Is my data secure?';
+
+  @override
+  String get faqAnswer5 =>
+      'Yes, TestAPK uses Google OAuth for secure authentication and does not access any files in your Google Drive other than those created by the app.';
+
+  @override
+  String get faqQuestion6 => 'Where do I upload the APK?';
+
+  @override
+  String get faqAnswer6 =>
+      'You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.';
 }

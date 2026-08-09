@@ -212,5 +212,18 @@
   "termsOfServiceTitle7": "7. Changes to Terms",
   "termsOfServicePara7_1": "We reserve the right to modify or replace these Terms of Service at any time. We will notify you of any changes by posting the new terms on this page. Your continued use of the service after any changes constitutes acceptance of the new terms.",
   "termsOfServiceTitle8": "8. Contact Us",
-  "termsOfServicePara8_1": "If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com."
+  "termsOfServicePara8_1": "If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.",
+  "faqTitle": "Frequently Asked Questions",
+  "faqQuestion1": "What is TestAPK?",
+  "faqAnswer1": "TestAPK is a modern, secure, and self-hosted APK release management platform that allows developers to distribute beta builds directly to testers.",
+  "faqQuestion2": "How do I install updates?",
+  "faqAnswer2": "You can download and install the latest APK releases directly from the app list. Make sure to allow installation from unknown sources if prompted.",
+  "faqQuestion3": "Where are the APK files stored?",
+  "faqAnswer3": "All APK files are securely stored in the developer's Google Drive, ensuring complete control and ownership of the data.",
+  "faqQuestion4": "How do I get access to an app?",
+  "faqAnswer4": "You must be invited by the app owner or developer as a tester. Once invited, you will receive an invitation in the app list to accept.",
+  "faqQuestion5": "Is my data secure?",
+  "faqAnswer5": "Yes, TestAPK uses Google OAuth for secure authentication and does not access any files in your Google Drive other than those created by the app.",
+  "faqQuestion6": "Where do I upload the APK?",
+  "faqAnswer6": "You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool."
 }

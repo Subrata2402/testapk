@@ -679,4 +679,49 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'यदि आपके पास इन सेवा की शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे subrata3250das@gmail.com पर संपर्क करें।';
+
+  @override
+  String get faqTitle => 'अक्सर पूछे जाने वाले प्रश्न';
+
+  @override
+  String get faqQuestion1 => 'TestAPK क्या है?';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK एक आधुनिक, सुरक्षित और स्व-होस्टेड APK रिलीज़ प्रबंधन प्लेटफ़ॉर्म है जो डेवलपर्स को सीधे परीक्षकों को बीटा बिल्ड वितरित करने की अनुमति देता है।';
+
+  @override
+  String get faqQuestion2 => 'मैं अपडेट कैसे इंस्टॉल करूं?';
+
+  @override
+  String get faqAnswer2 =>
+      'आप सीधे ऐप सूची से नवीनतम APK रिलीज़ डाउनलोड और इंस्टॉल कर सकते हैं। संकेत मिलने पर अज्ञात स्रोतों से इंस्टॉलेशन की अनुमति देना सुनिश्चित करें।';
+
+  @override
+  String get faqQuestion3 => 'APK फ़ाइलें कहाँ संग्रहीत की जाती हैं?';
+
+  @override
+  String get faqAnswer3 =>
+      'सभी APK फ़ाइलें डेवलपर के Google Drive में सुरक्षित रूप से संग्रहीत की जाती हैं, जिससे डेटा पर पूर्ण नियंत्रण और स्वामित्व सुनिश्चित होता है।';
+
+  @override
+  String get faqQuestion4 => 'मुझे किसी ऐप तक पहुंच कैसे मिलेगी?';
+
+  @override
+  String get faqAnswer4 =>
+      'आपको ऐप के मालिक या डेवलपर द्वारा एक परीक्षक के रूप में आमंत्रित किया जाना चाहिए। एक बार आमंत्रित होने पर, आपको स्वीकार करने के लिए ऐप सूची में एक आमंत्रण प्राप्त होगा।';
+
+  @override
+  String get faqQuestion5 => 'क्या मेरा डेटा सुरक्षित है?';
+
+  @override
+  String get faqAnswer5 =>
+      'हाँ, TestAPK सुरक्षित प्रमाणीकरण के लिए Google OAuth का उपयोग करता है और ऐप द्वारा बनाई गई फ़ाइलों के अलावा आपके Google Drive में किसी भी फ़ाइल तक पहुँच नहीं पाता है।';
+
+  @override
+  String get faqQuestion6 => 'मैं APK कहाँ अपलोड करूँ?';
+
+  @override
+  String get faqAnswer6 =>
+      'आप वेब डैशबोर्ड के माध्यम से https://testapk.clipboux.online/ पर या TestAPK CLI टूल का उपयोग करके APK अपलोड कर सकते हैं।';
 }

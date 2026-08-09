@@ -650,4 +650,49 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
+
+  @override
+  String get faqTitle => 'よくある質問';
+
+  @override
+  String get faqQuestion1 => 'TestAPKとは何ですか？';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPKは、開発者がベータビルドをテスターに直接配布できるようにする、モダンで安全なセルフホスト型のAPKリリース管理プラットフォームです。';
+
+  @override
+  String get faqQuestion2 => 'アップデートのインストール方法は？';
+
+  @override
+  String get faqAnswer2 =>
+      'アプリ一覧から最新のAPKリリースを直接ダウンロードしてインストールできます。プロンプトが表示された場合は、不明なソースからのインストールを許可してください。';
+
+  @override
+  String get faqQuestion3 => 'APKファイルはどこに保存されますか？';
+
+  @override
+  String get faqAnswer3 =>
+      'すべてのAPKファイルは開発者のGoogleドライブに安全に保存され、データの完全な制御と所有権が保証されます。';
+
+  @override
+  String get faqQuestion4 => 'アプリへのアクセス権を取得するには？';
+
+  @override
+  String get faqAnswer4 =>
+      'アプリの所有者または開発者からテスターとして招待される必要があります。招待されると、アプリ一覧に承認用の招待が表示されます。';
+
+  @override
+  String get faqQuestion5 => 'データは安全ですか？';
+
+  @override
+  String get faqAnswer5 =>
+      'はい、TestAPKは安全な認証にGoogle OAuthを使用しており、アプリによって作成されたもの以外のGoogleドライブ内のファイルにはアクセスしません。';
+
+  @override
+  String get faqQuestion6 => 'APKはどこにアップロードしますか？';
+
+  @override
+  String get faqAnswer6 =>
+      'APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。';
 }

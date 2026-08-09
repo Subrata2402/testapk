@@ -683,4 +683,49 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get termsOfServicePara8_1 =>
       'Si tiene alguna pregunta sobre estos Términos de servicio, comuníquese con nosotros en subrata3250das@gmail.com.';
+
+  @override
+  String get faqTitle => 'Preguntas frecuentes';
+
+  @override
+  String get faqQuestion1 => '¿Qué es TestAPK?';
+
+  @override
+  String get faqAnswer1 =>
+      'TestAPK es una plataforma de gestión de lanzamientos de APK moderna, segura y autohospedada que permite a los desarrolladores distribuir versiones beta directamente a los evaluadores.';
+
+  @override
+  String get faqQuestion2 => '¿Cómo instalo las actualizaciones?';
+
+  @override
+  String get faqAnswer2 =>
+      'Puede descargar e instalar las últimas versiones de APK directamente desde la lista de aplicaciones. Asegúrese de permitir la instalación desde fuentes desconocidas si se le solicita.';
+
+  @override
+  String get faqQuestion3 => '¿Dónde se almacenan los archivos APK?';
+
+  @override
+  String get faqAnswer3 =>
+      'Todos los archivos APK se almacenan de forma segura en el Google Drive del desarrollador, lo que garantiza el control total y la propiedad de los datos.';
+
+  @override
+  String get faqQuestion4 => '¿Cómo obtengo acceso a una aplicación?';
+
+  @override
+  String get faqAnswer4 =>
+      'Debe ser invitado por el propietario o desarrollador de la aplicación como evaluador. Una vez invitado, recibirá una invitación en la lista de aplicaciones para aceptar.';
+
+  @override
+  String get faqQuestion5 => '¿Es seguro mi dato?';
+
+  @override
+  String get faqAnswer5 =>
+      'Sí, TestAPK utiliza Google OAuth para una autenticación segura y no accede a ningún archivo en su Google Drive que no sea el creado por la aplicación.';
+
+  @override
+  String get faqQuestion6 => '¿Dónde subo el APK?';
+
+  @override
+  String get faqAnswer6 =>
+      'Puede subir archivos APK a través del panel web en https://testapk.clipboux.online/ o utilizando la herramienta CLI de TestAPK.';
 }
