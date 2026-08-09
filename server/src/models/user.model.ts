@@ -1,4 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
+import crypto from 'crypto';
 import { encrypt, decrypt } from '../utils/crypto.js';
 import { STRINGS } from '../constants/strings.js';
 
@@ -10,6 +11,7 @@ export interface IUser extends Document {
   googleRefreshToken?: string;
   googleDriveFolderId?: string;
   role: 'user' | 'admin';
+  password?: string;
   fcmTokens?: string[];
   isDeleted: boolean;
   createdAt: Date;
@@ -53,6 +55,10 @@ const userSchema = new Schema<IUser>(
       enum: ['user', 'admin'],
       default: 'user',
     },
+    password: {
+      type: String,
+      select: false,
+    },
     fcmTokens: {
       type: [String],
       default: [],
@@ -68,6 +74,13 @@ const userSchema = new Schema<IUser>(
     toJSON: { getters: true },
   }
 );
+
+// Pre-save hook to hash password using SHA-256
+userSchema.pre('save', async function () {
+  if (this.isModified('password') && this.password) {
+    this.password = crypto.createHash('sha256').update(this.password).digest('hex');
+  }
+});
 
 export const User = model<IUser>('User', userSchema);
 export default User;

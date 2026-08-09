@@ -3,6 +3,7 @@ import { env } from './config/env.js';
 import { logger } from './config/logger.js';
 import { connectDB } from './config/db.js';
 import { migrateEncryption } from './utils/migrate-encryption.js';
+import { seedAdminUser } from './utils/seed-admin.js';
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
@@ -16,6 +17,9 @@ await connectDB();
 
 // Migrate encryption for existing users
 await migrateEncryption();
+
+// Seed default admin user
+await seedAdminUser();
 
 const server = app.listen(env.PORT, () => {
   logger.info(`Server running in ${env.NODE_ENV} mode on port ${env.PORT}`);

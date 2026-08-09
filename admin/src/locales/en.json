@@ -1,0 +1,25 @@
+{
+  "login": {
+    "title": "Admin Portal",
+    "subtitle": "Sign in to manage TestAPK",
+    "email": "Email Address",
+    "password": "Password",
+    "button": "Sign In",
+    "error": "Invalid email or password"
+  },
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "logout": "Logout",
+    "welcome": "Welcome back, {0}!",
+    "stats": {
+      "totalApps": "Total Apps",
+      "totalDownloads": "Total Downloads",
+      "activeUsers": "Active Users"
+    },
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity found."
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}

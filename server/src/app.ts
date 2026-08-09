@@ -25,7 +25,7 @@ app.use(localeMiddleware);
 
 // Enable CORS
 const corsOptions: cors.CorsOptions = {
-  origin: env.CORS_ORIGIN === '*' ? '*' : env.CORS_ORIGIN.split(','),
+  origin: env.CORS_ORIGIN == '*' ? '*' : env.CORS_ORIGIN.split(','),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,

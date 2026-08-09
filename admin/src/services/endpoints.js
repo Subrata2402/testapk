@@ -1,0 +1,18 @@
+export const ENDPOINTS = {
+  AUTH: {
+    ADMIN_LOGIN: '/auth/admin-login',
+    LOGOUT: '/auth/logout',
+  },
+  USERS: {
+    ALL: '/users',
+    BY_ID: (id) => `/users/${id}`,
+  },
+  APPS: {
+    BASE: '/apps',
+    BY_ID: (id) => `/apps/${id}`,
+    RELEASES: (appId) => `/apps/${appId}/releases`,
+    MEMBERS: (appId) => `/apps/${appId}/members`,
+    MEMBER_EMAIL: (appId, email) => `/apps/${appId}/members/${email}`,
+    RELEASE_BUILD: (appId, buildNumber) => `/apps/${appId}/releases/${buildNumber}`,
+  },
+};

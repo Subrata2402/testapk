@@ -1,0 +1,25 @@
+{
+  "login": {
+    "title": "Portal de Administración",
+    "subtitle": "Inicie sesión para administrar TestAPK",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "button": "Iniciar Sesión",
+    "error": "Correo o contraseña incorrectos"
+  },
+  "dashboard": {
+    "title": "Panel de Administración",
+    "logout": "Cerrar Sesión",
+    "welcome": "¡Bienvenido de nuevo, {0}!",
+    "stats": {
+      "totalApps": "Aplicaciones Totales",
+      "totalDownloads": "Descargas Totales",
+      "activeUsers": "Usuarios Activos"
+    },
+    "recentActivity": "Actividad Reciente",
+    "noActivity": "No se encontró actividad reciente."
+  },
+  "common": {
+    "loading": "Cargando..."
+  }
+}

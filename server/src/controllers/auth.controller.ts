@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { OAuth2Client } from 'google-auth-library';
+import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { User } from '../models/user.model.js';
@@ -137,6 +138,64 @@ export const logout = async (
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
       message: STRINGS.AUTH.LOGGED_OUT,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const adminLogin = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      res.status(400).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: 'Email and password are required',
+      });
+      return;
+    }
+
+    // Find user and select password
+    const user = await User.findOne({ email, role: 'admin' }).select('+password');
+
+    if (!user || !user.password) {
+      res.status(401).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: 'Invalid email or password',
+      });
+      return;
+    }
+
+    // Hash input password and compare
+    const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+    if (hashedPassword !== user.password) {
+      res.status(401).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: 'Invalid email or password',
+      });
+      return;
+    }
+
+    // Generate JWT
+    const token = signToken(user._id.toString());
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      token,
+      data: {
+        user: {
+          id: user._id,
+          email: user.email,
+          name: user.name,
+          picture: user.picture,
+          role: user.role,
+        },
+      },
     });
   } catch (error) {
     next(error);
