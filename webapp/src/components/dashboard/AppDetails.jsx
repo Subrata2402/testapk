@@ -3,8 +3,10 @@ import * as Icons from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import { appService, API_BASE_URL } from '../../services/api';
 import './AppDetails.css';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function AppDetails({ app, user, onUpdateApp, showAlert, showConfirm }) {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('releases'); // 'releases' | 'collaborators'
   const [inviteEmail, setInviteEmail] = useState('');
   const [inviteRole, setInviteRole] = useState('Tester');
@@ -140,7 +142,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
   const validateAndProcessFile = (file) => {
     if (!file.name.endsWith('.apk')) {
-      showAlert('Please upload only APK files.', 'Error', 'error');
+      showAlert(t('DASHBOARD.UPLOAD_ONLY_APK'), 'Error', 'error');
       return;
     }
     setUploadFile(file);
@@ -150,7 +152,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
   const handleReleaseSubmit = async (e) => {
     e.preventDefault();
     if (!releaseNotes || !uploadFile) {
-      showAlert('Please fill in all release details.', 'Error', 'error');
+      showAlert(t('DASHBOARD.FILL_ALL_DETAILS'), 'Error', 'error');
       return;
     }
 
@@ -191,7 +193,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           setShowReleaseForm(false);
           setReleaseNotes('');
         } else {
-          let errorMsg = 'Upload failed';
+          let errorMsg = t('DASHBOARD.UPLOAD_FAILED');
           try {
             const errorData = JSON.parse(xhr.responseText);
             errorMsg = errorData.message || errorMsg;
@@ -202,14 +204,14 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
       xhr.onerror = () => {
         setIsUploading(false);
-        showAlert('An error occurred during the upload.', 'Error', 'error');
+        showAlert(t('DASHBOARD.UPLOAD_ERROR'), 'Error', 'error');
       };
 
       xhr.send(formData);
     } catch (err) {
       console.error('Upload failed:', err);
       setIsUploading(false);
-      showAlert('Upload failed', 'Error', 'error');
+      showAlert(t('DASHBOARD.UPLOAD_FAILED'), 'Error', 'error');
     }
   };
 
@@ -220,7 +222,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
       if (!response.ok) {
         const data = await response.json();
-        const errorMsg = data.message || data.error?.message || 'Failed to download APK';
+        const errorMsg = data.message || data.error?.message || t('DASHBOARD.DOWNLOAD_FAILED');
         showAlert(errorMsg, 'Error', 'error');
         return;
       }
@@ -236,7 +238,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
       window.URL.revokeObjectURL(url);
     } catch (err) {
       console.error('Download failed:', err);
-      showAlert('Failed to download APK', 'Error', 'error');
+      showAlert(t('DASHBOARD.DOWNLOAD_FAILED'), 'Error', 'error');
     } finally {
       setDownloadingBuild(null);
     }
@@ -248,7 +250,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
     // Check if already invited
     if (members.some(m => m.email.toLowerCase() === inviteEmail.toLowerCase())) {
-      showAlert('This user is already a member of this application.', 'Error', 'error');
+      showAlert(t('DASHBOARD.ALREADY_MEMBER'), 'Error', 'error');
       return;
     }
 
@@ -259,13 +261,13 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
         onUpdateApp(data.data.app);
         setMembers(data.data.app.members);
         setInviteEmail('');
-        showAlert('Invitation sent successfully.', 'Success', 'success');
+        showAlert(t('DASHBOARD.INVITE_SUCCESS'), 'Success', 'success');
       } else {
-        showAlert(data.message || 'Failed to send invitation', 'Error', 'error');
+        showAlert(data.message || t('DASHBOARD.INVITE_FAILED'), 'Error', 'error');
       }
     } catch (err) {
       console.error('Failed to send invitation:', err);
-      showAlert('Failed to send invitation', 'Error', 'error');
+      showAlert(t('DASHBOARD.INVITE_FAILED'), 'Error', 'error');
     } finally {
       setIsInviting(false);
     }
@@ -273,12 +275,12 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
   const handleRemoveMember = (emailToRemove) => {
     if (emailToRemove === user.email) {
-      showAlert('You cannot remove yourself as the owner.', 'Error', 'error');
+      showAlert(t('DASHBOARD.REMOVE_SELF_ERROR'), 'Error', 'error');
       return;
     }
 
     showConfirm(
-      `Are you sure you want to remove ${emailToRemove}?`,
+      t('DASHBOARD.CONFIRM_REMOVE_MEMBER', [emailToRemove]),
       async () => {
         setIsRemoving(true);
         try {
@@ -286,24 +288,24 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           if (data.status === 'success') {
             onUpdateApp(data.data.app);
             setMembers(data.data.app.members);
-            showAlert('Member removed successfully.', 'Success', 'success');
+            showAlert(t('DASHBOARD.REMOVE_SUCCESS'), 'Success', 'success');
           } else {
-            showAlert(data.message || 'Failed to remove member', 'Error', 'error');
+            showAlert(data.message || t('DASHBOARD.REMOVE_FAILED'), 'Error', 'error');
           }
         } catch (err) {
           console.error('Failed to remove member:', err);
-          showAlert('Failed to remove member', 'Error', 'error');
+          showAlert(t('DASHBOARD.REMOVE_FAILED'), 'Error', 'error');
         } finally {
           setIsRemoving(false);
         }
       },
-      'Remove Member'
+      t('DASHBOARD.REMOVE_MEMBER')
     );
   };
 
   const handleDeleteRelease = (buildNumberToDelete) => {
     showConfirm(
-      'Are you sure you want to delete this release? This action cannot be undone.',
+      t('DASHBOARD.CONFIRM_DELETE_RELEASE_DESC'),
       async () => {
         setIsDeleting(true);
         try {
@@ -311,18 +313,18 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           if (data.status === 'success') {
             onUpdateApp(data.data.app);
             setReleases(prev => prev.filter(r => r.buildNumber !== buildNumberToDelete));
-            showAlert('Release deleted successfully.', 'Success', 'success');
+            showAlert(t('DASHBOARD.DELETE_SUCCESS'), 'Success', 'success');
           } else {
-            showAlert(data.message || 'Failed to delete release', 'Error', 'error');
+            showAlert(data.message || t('DASHBOARD.DELETE_FAILED'), 'Error', 'error');
           }
         } catch (err) {
           console.error('Failed to delete release:', err);
-          showAlert('Failed to delete release', 'Error', 'error');
+          showAlert(t('DASHBOARD.DELETE_FAILED'), 'Error', 'error');
         } finally {
           setIsDeleting(false);
         }
       },
-      'Delete Release'
+      t('DASHBOARD.DELETE_RELEASE')
     );
   };
 
@@ -346,10 +348,6 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           </div>
         </div>
         <div className="app-header-actions">
-          {/* We can trigger a view switch back to the landing page for this app */}
-          {/* <button className="btn btn-secondary" onClick={() => window.location.reload()}>
-            <Icons.ExternalLink size={16} /> View Public Page
-          </button> */}
         </div>
       </header>
 
@@ -359,13 +357,13 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           className={`tab-btn ${activeTab === 'releases' ? 'active' : ''}`}
           onClick={() => setActiveTab('releases')}
         >
-          <Icons.Layers size={16} /> Releases & Uploads
+          <Icons.Layers size={16} /> {t('DASHBOARD.RELEASES_AND_UPLOADS')}
         </button>
         <button
           className={`tab-btn ${activeTab === 'collaborators' ? 'active' : ''}`}
           onClick={() => setActiveTab('collaborators')}
         >
-          <Icons.Users size={16} /> Collaborators & Testers ({members.length})
+          <Icons.Users size={16} /> {t('DASHBOARD.COLLABORATORS_AND_TESTERS', [members.length])}
         </button>
       </div>
 
@@ -391,9 +389,9 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                 />
                 <div className="upload-prompt">
                   <Icons.UploadCloud size={48} className="upload-icon" />
-                  <h3>Drag & Drop APK file here</h3>
-                  <p>or click to browse your files</p>
-                  <span className="upload-limits">Maximum file size: 200MB (.apk only)</span>
+                  <h3>{t('DASHBOARD.DRAG_DROP_APK')}</h3>
+                  <p>{t('DASHBOARD.OR_CLICK_BROWSE')}</p>
+                  <span className="upload-limits">{t('DASHBOARD.MAX_FILE_SIZE')}</span>
                 </div>
               </div>
             )}
@@ -405,19 +403,19 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                   <div className="spinner"></div>
                   {uploadPhase === 'uploading' ? (
                     <>
-                      <h3>Uploading {uploadFile?.name}…</h3>
+                      <h3>{t('DASHBOARD.UPLOADING_FILE', [uploadFile?.name])}</h3>
                       <div className="progress-bar-bg">
                         <div className="progress-bar-fill" style={{ width: `${uploadProgress}%` }}></div>
                       </div>
-                      <span>{uploadProgress}% — Sending to server</span>
+                      <span>{uploadProgress}% — {t('DASHBOARD.UPLOADING_FILE', ['']).replace('…', '')}</span>
                     </>
                   ) : (
                     <>
-                      <h3>Saving to Google Drive…</h3>
+                      <h3>{t('DASHBOARD.SAVING_TO_DRIVE')}</h3>
                       <div className="progress-bar-bg">
                         <div className="progress-bar-fill progress-bar-pulse"></div>
                       </div>
-                      <span>Processing — please wait, this may take a moment</span>
+                      <span>{t('DASHBOARD.PROCESSING_DESC')}</span>
                     </>
                   )}
                 </div>
@@ -430,17 +428,17 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                 <div className="release-form-header">
                   <Icons.FileCheck size={24} className="text-success" />
                   <div>
-                    <h3>Configure Release Details</h3>
-                    <p>Selected file: <strong>{uploadFile?.name}</strong></p>
+                    <h3>{t('DASHBOARD.CONFIGURE_RELEASE')}</h3>
+                    <p><span>{t('DASHBOARD.SELECTED_FILE', ['']).replace(': ', '')}: <strong>{uploadFile?.name}</strong></span></p>
                   </div>
                 </div>
 
                 <form onSubmit={handleReleaseSubmit} className="release-form">
                   <div className="form-group">
-                    <label className="form-label">Release Notes</label>
+                    <label className="form-label">{t('DASHBOARD.RELEASE_NOTES')}</label>
                     <textarea
                       className="form-textarea"
-                      placeholder="What's new in this release? Bug fixes, new features..."
+                      placeholder={t('DASHBOARD.RELEASE_NOTES_PLACEHOLDER')}
                       value={releaseNotes}
                       onChange={(e) => setReleaseNotes(e.target.value)}
                       required
@@ -449,10 +447,10 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
                   <div className="form-actions">
                     <button type="button" className="btn btn-secondary" onClick={() => { setUploadFile(null); setShowReleaseForm(false); setReleaseNotes(''); }}>
-                      Cancel
+                      {t('DASHBOARD.CANCEL')}
                     </button>
                     <button type="submit" className="btn btn-primary">
-                      Publish Release
+                      {t('DASHBOARD.PUBLISH_RELEASE')}
                     </button>
                   </div>
                 </form>
@@ -461,19 +459,19 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
             {/* Releases List */}
             <div className="releases-list-section">
-              <h3>Release History</h3>
+              <h3>{t('DASHBOARD.RELEASE_HISTORY')}</h3>
               {isLoadingReleases ? (
                 <div className="empty-state glass-card flex-center">
                   <Icons.Loader size={32} className="empty-icon animate-spin" />
-                  <p>Loading releases...</p>
+                  <p>{t('DASHBOARD.LOADING_RELEASES')}</p>
                 </div>
               ) : releases.length === 0 ? (
                 <div className="empty-state glass-card flex-center">
                   <Icons.Layers size={32} className="empty-icon" />
                   <p>
                     {canUpload
-                      ? 'No releases uploaded yet. Upload your first APK above.'
-                      : 'No releases uploaded yet.'}
+                      ? t('DASHBOARD.NO_RELEASES_UPLOAD_FIRST')
+                      : t('DASHBOARD.NO_RELEASES')}
                   </p>
                 </div>
               ) : (
@@ -495,7 +493,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                           )}
                           <div className="release-card-title-info">
                             <h4>{release.appName || app.name}</h4>
-                            <span className="badge badge-secondary">Build #{release.buildNumber}</span>
+                            <span className="badge badge-secondary">{t('DASHBOARD.BUILD_NUM', [release.buildNumber])}</span>
                           </div>
                         </div>
                         <span className="release-card-date">{formatDate(release.date)}</span>
@@ -510,7 +508,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                             <button
                               className="btn btn-danger btn-sm btn-icon-only"
                               onClick={() => handleDeleteRelease(release.buildNumber)}
-                              title="Delete Release"
+                              title={t('DASHBOARD.DELETE_RELEASE')}
                             >
                               <Icons.Trash2 size={14} />
                             </button>
@@ -523,11 +521,11 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                           >
                             {downloadingBuild === release.buildNumber ? (
                               <>
-                                <Icons.Loader size={14} className="animate-spin" /> Preparing...
+                                <Icons.Loader size={14} className="animate-spin" /> {t('DASHBOARD.PREPARING')}
                               </>
                             ) : (
                               <>
-                                <Icons.Download size={14} /> Download
+                                <Icons.Download size={14} /> {t('DASHBOARD.DOWNLOAD')}
                               </>
                             )}
                           </button>
@@ -544,18 +542,18 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
             {/* Invite Form */}
             {canInvite ? (
               <div className="invite-form-container glass-card">
-                <h3>Invite Collaborator</h3>
-                <p className="invite-desc">Invite developers to upload releases or testers to download and test builds.</p>
+                <h3>{t('DASHBOARD.INVITE_COLLABORATOR')}</h3>
+                <p className="invite-desc">{t('DASHBOARD.INVITE_DESC')}</p>
 
                 <form onSubmit={handleInviteSubmit} className="invite-form">
                   <div className="form-group" style={{ flex: 2 }}>
-                    <label className="form-label">Email Address</label>
+                    <label className="form-label">{t('CONTACT.EMAIL')}</label>
                     <div className="input-with-icon">
                       <Icons.Mail size={16} className="input-icon" />
                       <input
                         type="email"
                         className="form-input"
-                        placeholder="developer@company.com"
+                        placeholder={t('DASHBOARD.INVITE_EMAIL_PLACEHOLDER')}
                         value={inviteEmail}
                         onChange={(e) => setInviteEmail(e.target.value)}
                         required
@@ -565,7 +563,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                   </div>
 
                   <div className="form-group" style={{ flex: 1 }}>
-                    <label className="form-label">Role</label>
+                    <label className="form-label">{t('DASHBOARD.ROLE')}</label>
                     <CustomDropdown
                       options={['Developer', 'Tester']}
                       value={inviteRole}
@@ -576,7 +574,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                   <div className="form-group" style={{ justifyContent: 'flex-end' }}>
                     <label className="form-label" style={{ visibility: 'hidden' }}>Invite</label>
                     <button type="submit" className="btn btn-primary invite-btn">
-                      <Icons.UserPlus size={16} /> Send Invitation
+                      <Icons.UserPlus size={16} /> {t('DASHBOARD.SEND_INVITATION')}
                     </button>
                   </div>
                 </form>
@@ -584,17 +582,17 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
             ) : (
               <div className="glass-card" style={{ padding: '24px', textAlign: 'center', color: 'rgba(255, 255, 255, 0.4)', marginBottom: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                 <Icons.Lock size={24} style={{ color: 'rgba(255, 255, 255, 0.2)' }} />
-                <p style={{ margin: 0 }}>Only owners and developers can invite collaborators.</p>
+                <p style={{ margin: 0 }}>{t('DASHBOARD.INVITE_LOCK_DESC')}</p>
               </div>
             )}
 
             {/* Collaborators List */}
             <div className="collaborators-list-section">
-              <h3>Team Members</h3>
+              <h3>{t('DASHBOARD.TEAM_MEMBERS')}</h3>
               {isLoadingMembers ? (
                 <div className="empty-state glass-card flex-center" style={{ minHeight: '150px' }}>
                   <Icons.Loader size={32} className="empty-icon animate-spin" />
-                  <p>Loading members...</p>
+                  <p>{t('DASHBOARD.LOADING_MEMBERS')}</p>
                 </div>
               ) : (
                 <div className="collaborators-list glass-card">
@@ -613,14 +611,14 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
                           </span>
                           {member.status === 'Pending' && (
                             <span className="badge badge-warning" style={{ marginLeft: '8px' }}>
-                              Pending
+                              {t('DASHBOARD.PENDING')}
                             </span>
                           )}
                         </span>
                       </div>
                     </div>
                     {member.role !== 'Owner' && canInvite && (
-                      <button className="btn btn-danger btn-sm btn-icon-only" onClick={() => handleRemoveMember(member.email)} title="Remove Member">
+                      <button className="btn btn-danger btn-sm btn-icon-only" onClick={() => handleRemoveMember(member.email)} title={t('DASHBOARD.REMOVE_MEMBER')}>
                         <Icons.UserMinus size={14} />
                       </button>
                     )}
@@ -658,32 +656,32 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
             <div className="release-details-grid">
               <div className="detail-item">
-                <span className="detail-label">Version</span>
+                <span className="detail-label">{t('DASHBOARD.VERSION')}</span>
                 <span className="detail-value">{selectedRelease.version}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">Build Number</span>
+                <span className="detail-label">{t('DASHBOARD.BUILD_NUMBER')}</span>
                 <span className="detail-value">#{selectedRelease.buildNumber}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">Min SDK</span>
+                <span className="detail-label">{t('DASHBOARD.MIN_SDK')}</span>
                 <span className="detail-value">{selectedRelease.minSdkVersion || 'N/A'}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">Target SDK</span>
+                <span className="detail-label">{t('DASHBOARD.TARGET_SDK')}</span>
                 <span className="detail-value">{selectedRelease.targetSdkVersion || 'N/A'}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">APK Size</span>
+                <span className="detail-label">{t('DASHBOARD.APK_SIZE')}</span>
                 <span className="detail-value">{selectedRelease.size}</span>
               </div>
               <div className="detail-item">
-                <span className="detail-label">Upload Date</span>
+                <span className="detail-label">{t('DASHBOARD.UPLOAD_DATE')}</span>
                 <span className="detail-value">{formatDate(selectedRelease.date)}</span>
               </div>
               {selectedRelease.uploadedByName && (
                 <div className="detail-item" style={{ gridColumn: 'span 2' }}>
-                  <span className="detail-label">Uploaded By</span>
+                  <span className="detail-label">{t('DASHBOARD.UPLOADED_BY')}</span>
                   <span className="detail-value">
                     {selectedRelease.uploadedByName} ({selectedRelease.uploadedByEmail})
                   </span>
@@ -693,7 +691,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
             {selectedRelease.sha256 && (
               <div className="form-group" style={{ marginBottom: '24px' }}>
-                <span className="detail-label">SHA-256 Hash</span>
+                <span className="detail-label">{t('DASHBOARD.SHA256_HASH')}</span>
                 <span className="detail-value" style={{ marginTop: '4px' }}>
                   <code>{selectedRelease.sha256}</code>
                 </span>
@@ -701,13 +699,13 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
             )}
 
             <div className="form-group" style={{ marginBottom: '24px' }}>
-              <span className="detail-label">Release Notes</span>
+              <span className="detail-label">{t('DASHBOARD.RELEASE_NOTES')}</span>
               <p style={{ marginTop: '8px', whiteSpace: 'pre-wrap' }}>{selectedRelease.releaseNotes}</p>
             </div>
 
             {selectedRelease.permissions && selectedRelease.permissions.length > 0 && (
               <div className="form-group" style={{ marginBottom: '32px' }}>
-                <span className="detail-label">Permissions ({selectedRelease.permissions.length})</span>
+                <span className="detail-label">{t('DASHBOARD.PERMISSIONS', [selectedRelease.permissions.length])}</span>
                 <div className="permissions-list">
                   {selectedRelease.permissions.map((perm, idx) => (
                     <span key={idx} className="permission-badge">
@@ -720,7 +718,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
 
             <div className="form-actions" style={{ justifyContent: 'flex-end', gap: '12px' }}>
               <button className="btn btn-secondary" onClick={() => setSelectedRelease(null)}>
-                Close
+                {t('DASHBOARD.CLOSE')}
               </button>
               <button
                 className="btn btn-primary"
@@ -732,11 +730,11 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
               >
                 {downloadingBuild === selectedRelease.buildNumber ? (
                   <>
-                    <Icons.Loader size={16} className="animate-spin" /> Preparing Download...
+                    <Icons.Loader size={16} className="animate-spin" /> {t('DASHBOARD.PREPARING_DOWNLOAD')}
                   </>
                 ) : (
                   <>
-                    <Icons.Download size={16} /> Download APK
+                    <Icons.Download size={16} /> {t('DASHBOARD.DOWNLOAD_APK')}
                   </>
                 )}
               </button>
@@ -762,7 +760,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           }}
         >
           <div className="spinner" style={{ width: '48px', height: '48px', borderWidth: '4px' }} />
-          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>Deleting release…</p>
+          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>{t('DASHBOARD.DELETING_RELEASE')}</p>
         </div>
       )}
 
@@ -783,7 +781,7 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           }}
         >
           <div className="spinner" style={{ width: '48px', height: '48px', borderWidth: '4px' }} />
-          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>Sending invitation…</p>
+          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>{t('DASHBOARD.SENDING_INVITATION')}</p>
         </div>
       )}
 
@@ -804,10 +802,9 @@ export default function AppDetails({ app, user, onUpdateApp, showAlert, showConf
           }}
         >
           <div className="spinner" style={{ width: '48px', height: '48px', borderWidth: '4px' }} />
-          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>Removing member…</p>
+          <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600 }}>{t('DASHBOARD.REMOVING_MEMBER')}</p>
         </div>
       )}
     </div>
   );
 }
-

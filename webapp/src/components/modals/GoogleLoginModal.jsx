@@ -4,8 +4,10 @@ import { GoogleLogin } from '@react-oauth/google';
 import googleIcon from '../../assets/google-icon-logo.svg';
 import { authService } from '../../services/api';
 import './GoogleLoginModal.css';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -32,7 +34,7 @@ export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
       onClose();
     } catch (err) {
       console.error('Google Auth Error:', err);
-      setError(err.message || 'Failed to authenticate with Google');
+      setError(err.message || t('AUTH.FAILED_AUTHENTICATE'));
     } finally {
       setIsLoading(false);
     }
@@ -49,8 +51,8 @@ export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
           <div className="google-logo">
             <img src={googleIcon} alt="google-icon" height={40} width={40} />
           </div>
-          <h2>Sign in to TestAPK</h2>
-          <p>Use your Google account to access beta releases</p>
+          <h2>{t('AUTH.SIGN_IN_TITLE')}</h2>
+          <p>{t('AUTH.SIGN_IN_SUBTITLE')}</p>
         </div>
 
         {error && (
@@ -64,13 +66,13 @@ export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
           {isLoading ? (
             <div className="google-loading-state">
               <div className="spinner"></div>
-              <p>Authenticating...</p>
-              <span className="loading-subtext">This may take a few seconds</span>
+              <p>{t('AUTH.AUTHENTICATING')}</p>
+              <span className="loading-subtext">{t('AUTH.AUTHENTICATING_SUBTEXT')}</span>
             </div>
           ) : (
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
-              onError={() => setError('Google Sign-In was cancelled or failed')}
+              onError={() => setError(t('AUTH.SIGN_IN_CANCELLED'))}
               useOneTap
               theme="filled_blue"
               size="large"
@@ -79,7 +81,7 @@ export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
         </div>
 
         <div className="google-login-footer">
-          <p>To continue, Google will share your name, email address, language preference, and profile picture with TestAPK.</p>
+          <p>{t('AUTH.SIGN_IN_FOOTER')}</p>
         </div>
       </div>
     </div>

@@ -95,6 +95,23 @@
   cursor: pointer;
 }
 
+.nav-actions .custom-dropdown {
+  width: 140px;
+}
+
+.nav-actions .custom-dropdown .dropdown-trigger {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-actions .custom-dropdown .dropdown-menu {
+  width: 160px;
+  right: 0;
+  left: auto;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;

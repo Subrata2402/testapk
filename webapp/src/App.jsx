@@ -12,8 +12,10 @@ import ConfirmModal from './components/common/ConfirmModal';
 import AppRoutes from './routes/AppRoutes';
 import { authService, userService, appService } from './services/api';
 import './App.css';
+import { useTranslation } from './context/LanguageContext';
 
 export default function App() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(null); // { name, email, avatar }
@@ -173,12 +175,12 @@ export default function App() {
           setSelectedAppId(createdApp._id);
           return true;
         } else {
-          showAlert(data.message || 'Failed to create application', 'Error', 'error');
+          showAlert(data.message || t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
           return false;
         }
       } catch (err) {
         console.error('Failed to create app:', err);
-        showAlert('Failed to create application', 'Error', 'error');
+        showAlert(t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
         return false;
       }
     }
@@ -188,7 +190,7 @@ export default function App() {
     return (
       <div className="auth-loading-screen">
         <div className="spinner"></div>
-        <p>Loading your workspace...</p>
+        <p>{t('DASHBOARD.LOADING_WORKSPACE')}</p>
       </div>
     );
   }
@@ -258,8 +260,8 @@ export default function App() {
         <div className="modal-overlay flex-center" style={{ zIndex: 9999, background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(10px)' }}>
           <div className="google-loading-state" style={{ color: '#ffffff' }}>
             <div className="spinner"></div>
-            <p style={{ marginTop: '16px', fontSize: '1.1rem', fontWeight: '500' }}>Logging out...</p>
-            <span className="loading-subtext" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Cleaning up session data</span>
+            <p style={{ marginTop: '16px', fontSize: '1.1rem', fontWeight: '500' }}>{t('DASHBOARD.LOGGING_OUT')}</p>
+            <span className="loading-subtext" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{t('DASHBOARD.LOGGING_OUT_SUBTEXT')}</span>
           </div>
         </div>
       )}

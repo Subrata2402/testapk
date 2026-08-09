@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import './AboutPage.css';
 import { testapkDownloadLink } from '../constants';
+import { useTranslation } from '../context/LanguageContext';
 
 const GithubIcon = (props) => (
   <svg
@@ -21,6 +22,7 @@ const GithubIcon = (props) => (
 );
 
 export default function AboutPage({ showAlert }) {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('info'); // 'info' | 'contact'
 
   // Contact Form State
@@ -33,7 +35,7 @@ export default function AboutPage({ showAlert }) {
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !subject || !message) {
-      showAlert('Please fill in all fields.', 'Error', 'error');
+      showAlert(t('CONTACT.ERROR'), 'Error', 'error');
       return;
     }
 
@@ -41,14 +43,14 @@ export default function AboutPage({ showAlert }) {
     try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      showAlert('Your message has been sent successfully! We will get back to you soon.', 'Success', 'success');
+      showAlert(t('CONTACT.SUCCESS'), 'Success', 'success');
       setName('');
       setEmail('');
       setSubject('');
       setMessage('');
     } catch (err) {
       console.error('Failed to send message:', err);
-      showAlert('Failed to send message. Please try again later.', 'Error', 'error');
+      showAlert(t('CONTACT.ERROR'), 'Error', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -62,8 +64,8 @@ export default function AboutPage({ showAlert }) {
             <Icons.Cpu size={36} className="about-logo-icon" />
           </div>
           <div className="about-header-info">
-            <h2>About TestAPK</h2>
-            <p className="text-secondary">A modern, secure, and self-hosted APK release management platform.</p>
+            <h2>{t('ABOUT.TITLE')}</h2>
+            <p className="text-secondary">{t('ABOUT.SUBTITLE')}</p>
           </div>
         </div>
       </header>
@@ -74,13 +76,13 @@ export default function AboutPage({ showAlert }) {
           className={`tab-btn ${activeTab === 'info' ? 'active' : ''}`}
           onClick={() => setActiveTab('info')}
         >
-          <Icons.Info size={16} /> Platform Info
+          <Icons.Info size={16} /> {t('ABOUT.PLATFORM_INFO')}
         </button>
         <button
           className={`tab-btn ${activeTab === 'contact' ? 'active' : ''}`}
           onClick={() => setActiveTab('contact')}
         >
-          <Icons.Mail size={16} /> Contact Support
+          <Icons.Mail size={16} /> {t('CONTACT.TITLE')}
         </button>
       </div>
 
@@ -92,23 +94,23 @@ export default function AboutPage({ showAlert }) {
               <div className="about-card-icon-wrapper webapp-color flex-center">
                 <Icons.Globe size={24} />
               </div>
-              <h3>Web Dashboard</h3>
+              <h3>{t('LANDING.WEB_DASHBOARD')}</h3>
             </div>
             <p className="about-card-desc">
-              The central management console for your application releases, team members, and storage configurations.
+              {t('LANDING.WEB_DASHBOARD_DESC')}
             </p>
             <ul className="about-features-list">
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Google Drive Storage:</strong> Connects directly to your personal Google Drive for secure APK storage.</span>
+                <span><strong>{t('LANDING.DRIVE_STORAGE_TITLE')}:</strong> {t('LANDING.DRIVE_STORAGE_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Team Management:</strong> Invite developers to publish releases and testers to download builds.</span>
+                <span><strong>{t('LANDING.TEAM_MGMT_TITLE')}:</strong> {t('LANDING.TEAM_MGMT_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Release History:</strong> Track version codes, build numbers, SHA-256 hashes, and permissions.</span>
+                <span><strong>{t('LANDING.RELEASE_HISTORY_TITLE')}:</strong> {t('LANDING.RELEASE_HISTORY_DESC')}</span>
               </li>
             </ul>
           </div>
@@ -119,23 +121,23 @@ export default function AboutPage({ showAlert }) {
               <div className="about-card-icon-wrapper flutter-color flex-center">
                 <Icons.Smartphone size={24} />
               </div>
-              <h3>Flutter Client</h3>
+              <h3>{t('LANDING.FLUTTER_CLIENT')}</h3>
             </div>
             <p className="about-card-desc">
-              The mobile application designed for testers and developers to easily install and test new releases.
+              {t('LANDING.FLUTTER_CLIENT_DESC')}
             </p>
             <ul className="about-features-list">
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Glassmorphic UI:</strong> A premium, modern, and responsive iOS-inspired design.</span>
+                <span><strong>{t('LANDING.GLASSMORPHIC_UI_TITLE')}:</strong> {t('LANDING.GLASSMORPHIC_UI_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>One-Tap Install:</strong> Download and automatically install APKs directly from the app.</span>
+                <span><strong>{t('LANDING.ONE_TAP_INSTALL_TITLE')}:</strong> {t('LANDING.ONE_TAP_INSTALL_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Version Detection:</strong> Automatically compares installed versions with the latest release.</span>
+                <span><strong>{t('LANDING.VERSION_DETECTION_TITLE')}:</strong> {t('LANDING.VERSION_DETECTION_DESC')}</span>
               </li>
             </ul>
             <a
@@ -144,7 +146,7 @@ export default function AboutPage({ showAlert }) {
               style={{ textDecoration: 'none', width: 'fit-content' }}
             >
               <Icons.Download size={14} />
-              <span>Download APK</span>
+              <span>{t('LANDING.DOWNLOAD_APK')}</span>
             </a>
           </div>
 
@@ -154,23 +156,23 @@ export default function AboutPage({ showAlert }) {
               <div className="about-card-icon-wrapper cli-color flex-center">
                 <Icons.Terminal size={24} />
               </div>
-              <h3>CLI Tool</h3>
+              <h3>{t('LANDING.CLI_TOOL')}</h3>
             </div>
             <p className="about-card-desc">
-              A powerful command-line interface for automating release uploads directly from your CI/CD pipelines.
+              {t('LANDING.CLI_TOOL_DESC')}
             </p>
             <ul className="about-features-list">
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Device Auth Flow:</strong> Securely log in using the standard OAuth Device Authorization Flow.</span>
+                <span><strong>{t('LANDING.DEVICE_AUTH_FLOW_TITLE')}:</strong> {t('LANDING.DEVICE_AUTH_FLOW_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Real-Time Progress:</strong> Visual progress bar and percentage indicator during uploads.</span>
+                <span><strong>{t('LANDING.REAL_TIME_PROGRESS_TITLE')}:</strong> {t('LANDING.REAL_TIME_PROGRESS_DESC')}</span>
               </li>
               <li>
                 <Icons.Check size={16} className="feature-check" />
-                <span><strong>Drive Upload Status:</strong> Real-time feedback while the server transfers the APK to Google Drive.</span>
+                <span><strong>{t('LANDING.DRIVE_UPLOAD_STATUS_TITLE')}:</strong> {t('LANDING.DRIVE_UPLOAD_STATUS_DESC')}</span>
               </li>
             </ul>
           </div>
@@ -180,13 +182,13 @@ export default function AboutPage({ showAlert }) {
           <div className="contact-grid">
             {/* Contact Form */}
             <div className="contact-form-container glass-card">
-              <h3>Send us a Message</h3>
-              <p className="contact-desc">Have questions, feedback, or need help? Fill out the form below and we will get back to you.</p>
+              <h3>{t('CONTACT.TITLE')}</h3>
+              <p className="contact-desc">{t('CONTACT.SUBTITLE')}</p>
               
               <form onSubmit={handleContactSubmit} className="contact-form">
                 <div className="form-row">
                   <div className="form-group">
-                    <label className="form-label">Your Name</label>
+                    <label className="form-label">{t('CONTACT.NAME')}</label>
                     <input
                       type="text"
                       className="form-input"
@@ -197,7 +199,7 @@ export default function AboutPage({ showAlert }) {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Email Address</label>
+                    <label className="form-label">{t('CONTACT.EMAIL')}</label>
                     <input
                       type="email"
                       className="form-input"
@@ -210,7 +212,7 @@ export default function AboutPage({ showAlert }) {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Subject</label>
+                  <label className="form-label">{t('CONTACT.SUBJECT')}</label>
                   <input
                     type="text"
                     className="form-input"
@@ -222,7 +224,7 @@ export default function AboutPage({ showAlert }) {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Message</label>
+                  <label className="form-label">{t('CONTACT.MESSAGE')}</label>
                   <textarea
                     className="form-textarea"
                     placeholder="Write your message here..."
@@ -237,12 +239,12 @@ export default function AboutPage({ showAlert }) {
                   {isSubmitting ? (
                     <>
                       <div className="spinner spinner-sm"></div>
-                      <span>Sending Message...</span>
+                      <span>{t('CONTACT.SENDING')}</span>
                     </>
                   ) : (
                     <>
                       <Icons.Send size={16} />
-                      <span>Send Message</span>
+                      <span>{t('CONTACT.SEND')}</span>
                     </>
                   )}
                 </button>
@@ -251,8 +253,8 @@ export default function AboutPage({ showAlert }) {
 
             {/* Support Info */}
             <div className="support-info-container glass-card">
-              <h3>Support Channels</h3>
-              <p className="contact-desc">You can also reach out to us directly through any of the following channels:</p>
+              <h3>{t('ABOUT.SUPPORT_CHANNELS')}</h3>
+              <p className="contact-desc">{t('ABOUT.SUPPORT_CHANNELS_DESC')}</p>
 
               <div className="support-channels-list">
                 <div className="support-channel-item">
@@ -260,7 +262,7 @@ export default function AboutPage({ showAlert }) {
                     <Icons.Mail size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">Email Support</span>
+                    <span className="channel-label">{t('ABOUT.EMAIL_SUPPORT')}</span>
                     <a href="mailto:support@testapk.com" className="channel-value">support@testapk.com</a>
                   </div>
                 </div>
@@ -270,7 +272,7 @@ export default function AboutPage({ showAlert }) {
                     <GithubIcon size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">GitHub Issues</span>
+                    <span className="channel-label">{t('ABOUT.GITHUB_ISSUES')}</span>
                     <a href="https://github.com/testapk/issues" target="_blank" rel="noopener noreferrer" className="channel-value">github.com/testapk/issues</a>
                   </div>
                 </div>
@@ -280,7 +282,7 @@ export default function AboutPage({ showAlert }) {
                     <Icons.MessageSquare size={20} />
                   </div>
                   <div className="channel-details">
-                    <span className="channel-label">Discord Community</span>
+                    <span className="channel-label">{t('ABOUT.DISCORD_COMMUNITY')}</span>
                     <a href="https://discord.gg/testapk" target="_blank" rel="noopener noreferrer" className="channel-value">discord.gg/testapk</a>
                   </div>
                 </div>
@@ -291,7 +293,7 @@ export default function AboutPage({ showAlert }) {
       )}
 
       <footer className="about-footer glass-card text-center">
-        <p>TestAPK &copy; 2026. Built with React, Node.js, and Flutter.</p>
+        <p dangerouslySetInnerHTML={{ __html: t('ABOUT.FOOTER') }}></p>
       </footer>
     </div>
   );

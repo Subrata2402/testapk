@@ -1,9 +1,12 @@
 import React from 'react';
 import * as Icons from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation, languages } from '../../context/LanguageContext';
+import CustomDropdown from '../common/CustomDropdown';
 
 export default function Navbar({ user, onLoginClick }) {
   const navigate = useNavigate();
+  const { language, changeLanguage, t } = useTranslation();
 
   return (
     <header className="global-navbar glass-card">
@@ -14,6 +17,15 @@ export default function Navbar({ user, onLoginClick }) {
         </div>
 
         <div className="nav-actions">
+          <CustomDropdown
+            options={languages.map((lang) => ({
+              value: lang.code,
+              label: `${lang.flag} ${lang.name}`,
+            }))}
+            value={language}
+            onChange={changeLanguage}
+          />
+
           {user ? (
             <div className="user-nav-profile" title={user.email} onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>
               <div className="user-nav-avatar">{user.avatar}</div>
@@ -21,7 +33,7 @@ export default function Navbar({ user, onLoginClick }) {
             </div>
           ) : (
             <button className="btn btn-primary" onClick={onLoginClick}>
-              <Icons.LogIn size={16} /> Sign In
+              <Icons.LogIn size={16} /> {t('NAVBAR.SIGN_IN')}
             </button>
           )}
         </div>

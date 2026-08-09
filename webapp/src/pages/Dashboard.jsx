@@ -3,8 +3,10 @@ import * as Icons from 'lucide-react';
 import AppDetails from '../components/dashboard/AppDetails';
 import AboutPage from './AboutPage';
 import './Dashboard.css';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCreateApp, onLogout, onOpenCreateModal, onOpenDriveModal, showAlert, showConfirm }) {
+  const { t } = useTranslation();
   const selectedApp = apps.find(app => (app._id === selectedAppId || app.id === selectedAppId));
 
   return (
@@ -18,7 +20,7 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
           </div>
           <button className="btn btn-primary flex-center gap-2" onClick={onOpenCreateModal}>
             <Icons.Plus size={16} />
-            <span>Create App</span>
+            <span>{t('DASHBOARD.CREATE_APP')}</span>
           </button>
         </div>
 
@@ -82,14 +84,14 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
                   marginTop: '2px'
                 }}
               >
-                {user.isDriveConfigured ? 'Reconnect Google Drive' : 'Connect Google Drive'}
+                {user.isDriveConfigured ? t('DASHBOARD.RECONNECT_DRIVE') : t('DASHBOARD.CONNECT_DRIVE')}
               </button>
             </div>
             <button
               className="logout-btn"
               onClick={() => {
                 showConfirm(
-                  'Are you sure you want to log out?',
+                  t('DASHBOARD.CONFIRM_LOGOUT'),
                   onLogout,
                   'Logout'
                 );
@@ -117,8 +119,8 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
         ) : (
           <div className="welcome-screen flex-center">
             <Icons.Cpu size={64} className="welcome-icon" />
-            <h2>Welcome to APK Manager</h2>
-            <p className="text-secondary">Select an application from the sidebar or create a new one to manage releases, collaborators, and downloads.</p>
+            <h2>{t('DASHBOARD.WELCOME_TITLE')}</h2>
+            <p className="text-secondary">{t('DASHBOARD.WELCOME_DESC')}</p>
 
             <div className="quick-access-section">
               {/* <h3>Quick Access</h3> */}

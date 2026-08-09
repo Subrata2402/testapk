@@ -3,8 +3,10 @@ import * as Icons from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supportService, userService } from '../services/api';
 import './ContactSupport.css';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function ContactSupport({ user }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -55,7 +57,7 @@ export default function ContactSupport({ user }) {
       setMessage('');
     } catch (err) {
       console.error('Contact Support Error:', err);
-      setError(err.message || 'Failed to send message. Please try again later.');
+      setError(err.message || t('CONTACT.ERROR'));
     } finally {
       setIsSubmitting(false);
     }
@@ -66,7 +68,7 @@ export default function ContactSupport({ user }) {
       <div className="contact-card glass-card animate-fade-in">
         <button className="back-btn flex-center gap-2" onClick={() => navigate('/')}>
           <Icons.ArrowLeft size={16} />
-          <span>Back to Home</span>
+          <span>{t('CONTACT.BACK_TO_HOME')}</span>
         </button>
 
         {isSubmitted ? (
@@ -74,12 +76,10 @@ export default function ContactSupport({ user }) {
             <div className="success-icon-wrapper flex-center">
               <Icons.CheckCircle size={48} className="success-icon" />
             </div>
-            <h2>Message Sent!</h2>
-            <p>
-              Thank you for contacting support. We have received your message and will get back to you at <strong>{email || 'your email'}</strong> as soon as possible.
-            </p>
+            <h2>{t('CONTACT.SUCCESS_TITLE')}</h2>
+            <p dangerouslySetInnerHTML={{ __html: t('CONTACT.SUCCESS_DESC', [email || 'your email']) }}></p>
             <button className="btn btn-primary mt-4" onClick={() => setIsSubmitted(false)}>
-              Send Another Message
+              {t('CONTACT.SEND_ANOTHER')}
             </button>
           </div>
         ) : (
@@ -88,8 +88,8 @@ export default function ContactSupport({ user }) {
               <div className="contact-icon-wrapper flex-center">
                 <Icons.Mail size={32} className="contact-icon" />
               </div>
-              <h2>Contact Support</h2>
-              <p>Have questions or need help with TestAPK? Send us a message.</p>
+              <h2>{t('CONTACT.TITLE')}</h2>
+              <p>{t('CONTACT.SUBTITLE')}</p>
             </div>
 
             {error && (
@@ -102,7 +102,7 @@ export default function ContactSupport({ user }) {
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="name" className="form-label">
-                  Your Name
+                  {t('CONTACT.NAME')}
                 </label>
                 <input
                   type="text"
@@ -118,7 +118,7 @@ export default function ContactSupport({ user }) {
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  Email Address
+                  {t('CONTACT.EMAIL')}
                 </label>
                 <input
                   type="email"
@@ -134,7 +134,7 @@ export default function ContactSupport({ user }) {
 
               <div className="form-group">
                 <label htmlFor="subject" className="form-label">
-                  Subject
+                  {t('CONTACT.SUBJECT')}
                 </label>
                 <input
                   type="text"
@@ -150,7 +150,7 @@ export default function ContactSupport({ user }) {
 
               <div className="form-group">
                 <label htmlFor="message" className="form-label">
-                  Message
+                  {t('CONTACT.MESSAGE')}
                 </label>
                 <textarea
                   id="message"
@@ -168,12 +168,12 @@ export default function ContactSupport({ user }) {
                 {isSubmitting ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                     <div className="spinner" style={{ width: '16px', height: '16px', borderWidth: '2px' }}></div>
-                    <span>Sending...</span>
+                    <span>{t('CONTACT.SENDING')}</span>
                   </div>
                 ) : (
                   <>
                     <Icons.Send size={16} />
-                    <span>Send Message</span>
+                    <span>{t('CONTACT.SEND')}</span>
                   </>
                 )}
               </button>

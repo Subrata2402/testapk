@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { supportService } from '../../services/api';
 import './ContactSupportModal.css';
+import { useTranslation } from '../../context/LanguageContext';
 
 export default function ContactSupportModal({ isOpen, onClose, user }) {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -44,7 +46,7 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
       setMessage('');
     } catch (err) {
       console.error('Contact Support Error:', err);
-      setError(err.message || 'Failed to send message. Please try again later.');
+      setError(err.message || t('CONTACT.ERROR'));
     } finally {
       setIsSubmitting(false);
     }
@@ -62,12 +64,12 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
             <div className="success-icon-wrapper flex-center" style={{ marginBottom: '16px' }}>
               <Icons.CheckCircle size={48} className="success-icon" />
             </div>
-            <h2>Message Sent!</h2>
+            <h2>{t('CONTACT.SUCCESS_TITLE')}</h2>
             <p style={{ textAlign: 'center', marginTop: '8px', color: 'var(--text-muted)' }}>
-              Thank you for contacting support. We have received your message and will get back to you as soon as possible.
+              {t('CONTACT.SUCCESS_DESC')}
             </p>
             <button className="btn btn-primary mt-4" onClick={() => setIsSubmitted(false)}>
-              Send Another Message
+              {t('CONTACT.SEND_ANOTHER')}
             </button>
           </div>
         ) : (
@@ -76,9 +78,9 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
               <div className="contact-icon-wrapper flex-center" style={{ margin: '0 auto 12px auto', width: '56px', height: '56px', borderRadius: '50%', background: 'rgba(6, 182, 212, 0.1)', border: '1px solid rgba(6, 182, 212, 0.2)' }}>
                 <Icons.Mail size={28} className="contact-icon" style={{ color: '#06b6d4' }} />
               </div>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Contact Support</h2>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>{t('CONTACT.TITLE')}</h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '4px' }}>
-                Have questions or need help with TestAPK? Send us a message.
+                {t('CONTACT.SUBTITLE')}
               </p>
             </div>
 
@@ -92,13 +94,13 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <label htmlFor="name" className="form-label">
-                  Your Name
+                  {t('CONTACT.NAME')}
                 </label>
                 <input
                   type="text"
                   id="name"
                   className="form-input"
-                  placeholder="e.g., John Doe"
+                  placeholder={t('CONTACT.NAME_PLACEHOLDER')}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -108,13 +110,13 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  Email Address
+                  {t('CONTACT.EMAIL')}
                 </label>
                 <input
-                  type="email"
+                  type="type"
                   id="email"
                   className="form-input"
-                  placeholder="e.g., john@example.com"
+                  placeholder={t('CONTACT.EMAIL_PLACEHOLDER')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -124,13 +126,13 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
 
               <div className="form-group">
                 <label htmlFor="subject" className="form-label">
-                  Subject
+                  {t('CONTACT.SUBJECT')}
                 </label>
                 <input
                   type="text"
                   id="subject"
                   className="form-input"
-                  placeholder="How can we help you?"
+                  placeholder={t('CONTACT.SUBJECT_PLACEHOLDER')}
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   required
@@ -140,12 +142,12 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
 
               <div className="form-group">
                 <label htmlFor="message" className="form-label">
-                  Message
+                  {t('CONTACT.MESSAGE')}
                 </label>
                 <textarea
                   id="message"
                   className="form-input"
-                  placeholder="Describe your issue or question in detail..."
+                  placeholder={t('CONTACT.MESSAGE_PLACEHOLDER')}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows="4"
@@ -159,12 +161,12 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
                 {isSubmitting ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                     <div className="spinner" style={{ width: '16px', height: '16px', borderWidth: '2px' }}></div>
-                    <span>Sending...</span>
+                    <span>{t('CONTACT.SENDING')}</span>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
                     <Icons.Send size={16} />
-                    <span>Send Message</span>
+                    <span>{t('CONTACT.SEND')}</span>
                   </div>
                 )}
               </button>

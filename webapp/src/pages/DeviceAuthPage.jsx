@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
 import { deviceAuthService } from '../services/api';
 import './DeviceAuthPage.css';
+import { useTranslation } from '../context/LanguageContext';
 
 // States: 'checking' | 'form' | 'expired' | 'success'
 
 export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDashboard }) {
+  const { t } = useTranslation();
   const [pageState, setPageState] = useState('checking');
   const [userCode, setUserCode] = useState('');
   const [isAuthorizing, setIsAuthorizing] = useState(false);
@@ -47,14 +49,14 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
           onGoToDashboard();
         }, 3000);
       } else {
-        showAlert(data.message || 'Failed to authorize device', 'Error', 'error');
+        showAlert(data.message || t('DEVICE.ERROR'), 'Error', 'error');
       }
     } catch (err) {
       console.error('Failed to authorize device:', err);
       if (err.message === 'Device code expired' || err.message === 'expired_code') {
         setPageState('expired');
       } else {
-        showAlert(err.message || 'Failed to authorize device', 'Error', 'error');
+        showAlert(err.message || t('DEVICE.ERROR'), 'Error', 'error');
       }
     } finally {
       setIsAuthorizing(false);
@@ -67,7 +69,7 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
         <div className="device-auth-card glass-panel animate-fade-in">
           <div className="device-auth-body text-center">
             <div className="spinner" style={{ margin: '0 auto' }}></div>
-            <p style={{ marginTop: '16px', opacity: 0.7 }}>Validating authorization link...</p>
+            <p style={{ marginTop: '16px', opacity: 0.7 }}>{t('DEVICE.VALIDATING')}</p>
           </div>
         </div>
       </div>
@@ -82,8 +84,8 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
             <div className="device-icon-wrapper expired-icon-bg flex-center">
               <Icons.Clock size={40} className="expired-icon" />
             </div>
-            <h2>Link Expired or Invalid</h2>
-            <p>This authorization link has expired or is invalid. Please run the login command again to get a new link.</p>
+            <h2>{t('DEVICE.EXPIRED_TITLE')}</h2>
+            <p>{t('DEVICE.EXPIRED_DESC')}</p>
           </div>
           <div className="device-auth-body text-center expired-state">
             <div className="expired-code-hint">
@@ -97,7 +99,7 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
                   onGoToDashboard();
                 }}
               >
-                Go to Dashboard
+                {t('LANDING.GO_TO_DASHBOARD')}
               </button>
             )}
           </div>
@@ -114,8 +116,8 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
             <div className="success-icon-wrapper flex-center">
               <Icons.CheckCircle size={48} className="success-icon" />
             </div>
-            <h2>Device Authorized!</h2>
-            <p>Your terminal has been successfully linked. You can now close this tab or return to your dashboard.</p>
+            <h2>{t('DEVICE.SUCCESS_TITLE')}</h2>
+            <p>{t('DEVICE.SUCCESS_DESC')}</p>
           </div>
           <div className="device-auth-body text-center success-state">
             <button
@@ -125,7 +127,7 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
                 onGoToDashboard();
               }}
             >
-              Go to Dashboard
+              {t('LANDING.GO_TO_DASHBOARD')}
             </button>
           </div>
         </div>
@@ -140,25 +142,25 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
           <div className="device-icon-wrapper flex-center">
             <Icons.Terminal size={40} className="terminal-icon" />
           </div>
-          <h2>Authorize Device</h2>
-          <p>Link your command line interface to your TestAPK account.</p>
+          <h2>{t('DEVICE.TITLE')}</h2>
+          <p>{t('DEVICE.SUBTITLE')}</p>
         </div>
 
         {!user ? (
           <div className="device-auth-body text-center">
             <p className="auth-prompt-text">
-              You must be signed in to authorize a new device.
+              {t('DEVICE.SIGN_IN_PROMPT')}
             </p>
             <button className="btn btn-primary flex-center gap-2" onClick={onLoginClick} style={{ margin: '0 auto' }}>
               <Icons.LogIn size={18} />
-              <span>Sign In to Continue</span>
+              <span>{t('DEVICE.SIGN_IN_BTN')}</span>
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="device-auth-form">
             <div className="form-group">
               <label htmlFor="userCode" className="form-label">
-                Enter User Code
+                {t('DEVICE.ENTER_CODE')}
               </label>
               <input
                 type="text"
@@ -172,7 +174,7 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
                 autoFocus
               />
               <span className="form-help">
-                Enter the 8-character code displayed in your terminal.
+                {t('DEVICE.ENTER_CODE_HELP')}
               </span>
             </div>
 
@@ -184,12 +186,12 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
               {isAuthorizing ? (
                 <>
                   <div className="spinner spinner-sm"></div>
-                  <span>Authorizing...</span>
+                  <span>{t('DEVICE.AUTHORIZING')}</span>
                 </>
               ) : (
                 <>
                   <Icons.Key size={18} />
-                  <span>Authorize Device</span>
+                  <span>{t('DEVICE.AUTHORIZE')}</span>
                 </>
               )}
             </button>

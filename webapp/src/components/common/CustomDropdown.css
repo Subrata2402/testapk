@@ -48,7 +48,7 @@
   top: calc(100% + 6px);
   left: 0;
   right: 0;
-  background: rgba(15, 15, 25, 0.95);
+  background: rgba(15, 15, 25);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--border-color);
