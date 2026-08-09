@@ -301,5 +301,30 @@
     "CHANGES_CONTENT": "Wir behalten uns das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern oder zu ersetzen. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen. Ihre weitere Nutzung des Dienstes nach Änderungen gilt als Annahme der neuen Bedingungen.",
     "CONTACT_TITLE": "Kontaktieren Sie uns",
     "CONTACT_CONTENT": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:"
+  },
+  "FAQ": {
+    "TITLE": "Häufig gestellte Fragen (FAQ)",
+    "QUESTION_1": "Was ist TestAPK?",
+    "ANSWER_1": "TestAPK ist eine moderne, sichere und selbstgehostete APK-Release-Management-Plattform, mit der Entwickler Beta-Builds direkt an Tester verteilen können.",
+    "QUESTION_2": "Wie installiere ich Updates?",
+    "ANSWER_2": "Sie können die neuesten APK-Releases direkt aus der App-Liste herunterladen und installieren. Stellen Sie sicher, dass Sie die Installation aus unbekannten Quellen zulassen, wenn Sie dazu aufgefordert werden.",
+    "QUESTION_3": "Wo werden die APK-Dateien gespeichert?",
+    "ANSWER_3": "Alle APK-Dateien werden sicher im Google Drive des Entwicklers gespeichert, was eine vollständige Kontrolle und das Eigentum an den Daten gewährleistet.",
+    "QUESTION_4": "Wie erhalte ich Zugriff auf eine App?",
+    "ANSWER_4": "Sie müssen vom App-Besitzer oder -Entwickler als Tester eingeladen werden. Sobald Sie eingeladen wurden, erhalten Sie eine Einladung in der App-Liste, die Sie annehmen können.",
+    "QUESTION_5": "Sind meine Daten sicher?",
+    "ANSWER_5": "Ja, TestAPK verwendet Google OAuth für eine sichere Authentifizierung und greift nicht auf andere Dateien in Ihrem Google Drive zu als auf die von der App erstellten.",
+    "QUESTION_6": "Wo lade ich die APK hoch?",
+    "ANSWER_6": "Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen.",
+    "QUESTION_7": "Wie verbinde ich mein Google Drive?",
+    "ANSWER_7": "Gehen Sie zu Ihrem Dashboard, klicken auf 'Drive konfigurieren' und autorisieren Sie TestAPK. TestAPK wird nur einen eigenen Ordner (TestAPK_Releases) erstellen und verwalten, um Ihre APKs zu speichern.",
+    "QUESTION_8": "Wie lade ich ein neues Release hoch?",
+    "ANSWER_8": "Sie können ein Release direkt über das Web-Dashboard hochladen, indem Sie auf 'Neues Release' klicken und Ihre APK-Datei auswählen, oder automatisch mit dem TestAPK-CLI-Tool.",
+    "QUESTION_9": "Wie verwende ich das CLI-Tool zum Hochladen von Builds?",
+    "ANSWER_9": "Installieren Sie die CLI über npm (npm install -g testapk-cli), authentifizieren Sie sich über den Geräte-Flow (testapk login) und laden Sie sie mit testapk upload <pfad-zur-apk> hoch.",
+    "QUESTION_10": "Wie lade ich Tester oder Entwickler ein?",
+    "ANSWER_10": "Wählen Sie im Dashboard Ihre App aus, gehen Sie auf die Registerkarte 'Team' und fügen Sie die E-Mail-Adressen Ihrer Tester oder Entwickler hinzu. Tester erhalten eine Einladung in ihrer Begleit-App.",
+    "QUESTION_11": "Speichert TestAPK meine APK-Dateien?",
+    "ANSWER_11": "Nein, TestAPK speichert Ihre APK-Dateien nicht auf seinen Servern. Alle Dateien werden direkt in Ihr eigenes Google Drive gestreamt und dort gespeichert."
   }
 }

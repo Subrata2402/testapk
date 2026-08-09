@@ -301,5 +301,30 @@
     "CHANGES_CONTENT": "我们保留随时修改或替换本服务条款的权利。我们将通过在本页发布新条款来通知您任何变更。变更后继续使用该服务即表示您接受新条款。",
     "CONTACT_TITLE": "联系我们",
     "CONTACT_CONTENT": "如果您对本服务条款有任何问题，请通过以下方式联系我们："
+  },
+  "FAQ": {
+    "TITLE": "常见问题解答 (FAQ)",
+    "QUESTION_1": "什么是 TestAPK？",
+    "ANSWER_1": "TestAPK 是一个现代、安全且自托管的 APK 版本管理平台，允许开发者直接将测试版本分发给测试人员。",
+    "QUESTION_2": "如何安装更新？",
+    "ANSWER_2": "您可以直接从应用列表中下载并安装最新的 APK 版本。如果系统提示，请确保允许从未知来源安装。",
+    "QUESTION_3": "APK 文件存储在哪里？",
+    "ANSWER_3": "所有 APK 文件都安全地存储在开发人员的 Google 云端硬盘中，从而确保对数据的完全控制和所有权。",
+    "QUESTION_4": "如何获取应用的访问权限？",
+    "ANSWER_4": "您必须被应用所有者或开发人员邀请为测试人员。一旦被邀请，您将在应用列表中收到接受邀请的通知。",
+    "QUESTION_5": "我的数据安全吗？",
+    "ANSWER_5": "是的，TestAPK 使用 Google OAuth 进行安全身份验证，并且不会访问您 Google 云端硬盘中除该应用创建的文件之外的任何文件。",
+    "QUESTION_6": "我在哪里上传 APK？",
+    "ANSWER_6": "您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。",
+    "QUESTION_7": "如何连接我的 Google 云端硬盘？",
+    "ANSWER_7": "转到您的控制面板，点击“配置云端硬盘”，然后授权 TestAPK。TestAPK 将仅创建和管理其自己的文件夹 (TestAPK_Releases) 来存储您的 APK。",
+    "QUESTION_8": "如何上传新版本？",
+    "ANSWER_8": "您可以直接在 Web 控制面板中点击“新版本”并选择您的 APK 文件来上传版本，或者使用 TestAPK CLI 工具自动上传。",
+    "QUESTION_9": "如何使用 CLI 工具上传构建版本？",
+    "ANSWER_9": "通过 npm 安装 CLI (npm install -g testapk-cli)，使用设备流进行身份验证 (testapk login)，然后使用 testapk upload <apk路径> 进行上传。",
+    "QUESTION_10": "如何邀请测试人员或开发人员？",
+    "ANSWER_10": "在控制面板中，选择您的应用，转到“团队”选项卡，然后添加测试人员或开发人员的电子邮件地址。测试人员将在其配套应用中收到邀请。",
+    "QUESTION_11": "TestAPK 会存储 my APK 文件吗？",
+    "ANSWER_11": "不会，TestAPK 不会在其服务器上存储您的 APK 文件。所有文件都直接流式传输并存储在您自己的 Google 云端硬盘中。"
   }
 }

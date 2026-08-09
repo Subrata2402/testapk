@@ -301,5 +301,30 @@
     "CHANGES_CONTENT": "We reserve the right to modify or replace these Terms of Service at any time. We will notify you of any changes by posting the new terms on this page. Your continued use of the service after any changes constitutes acceptance of the new terms.",
     "CONTACT_TITLE": "Contact Us",
     "CONTACT_CONTENT": "If you have any questions about these Terms of Service, please contact us at:"
+  },
+  "FAQ": {
+    "TITLE": "Frequently Asked Questions",
+    "QUESTION_1": "What is TestAPK?",
+    "ANSWER_1": "TestAPK is a modern, secure, and self-hosted APK release management platform that allows developers to distribute beta builds directly to testers.",
+    "QUESTION_2": "How do I install updates?",
+    "ANSWER_2": "You can download and install the latest APK releases directly from the app list. Make sure to allow installation from unknown sources if prompted.",
+    "QUESTION_3": "Where are the APK files stored?",
+    "ANSWER_3": "All APK files are securely stored in the developer's Google Drive, ensuring full control and ownership of the data.",
+    "QUESTION_4": "How do I get access to an app?",
+    "ANSWER_4": "You must be invited by the app owner or developer as a tester. Once invited, you will receive an invitation in the app list to accept.",
+    "QUESTION_5": "Is my data secure?",
+    "ANSWER_5": "Yes, TestAPK uses Google OAuth for secure authentication and does not access any files in your Google Drive other than those created by the app.",
+    "QUESTION_6": "Where do I upload the APK?",
+    "ANSWER_6": "You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.",
+    "QUESTION_7": "How do I connect my Google Drive?",
+    "ANSWER_7": "Go to your dashboard, click on 'Configure Drive', and authorize TestAPK. TestAPK will only create and manage its own folder (TestAPK_Releases) to store your APKs.",
+    "QUESTION_8": "How do I upload a new release?",
+    "ANSWER_8": "You can upload a release directly from the web dashboard by clicking 'New Release' and selecting your APK file, or automatically using the TestAPK CLI tool.",
+    "QUESTION_9": "How do I use the CLI tool to upload builds?",
+    "ANSWER_9": "Install the CLI via npm (npm install -g testapk-cli), authenticate using the device flow (testapk login), and upload using testapk upload <path-to-apk>.",
+    "QUESTION_10": "How do I invite testers or developers?",
+    "ANSWER_10": "In the dashboard, select your app, go to the 'Team' tab, and add the email addresses of your testers or developers. Testers will receive an invitation in their companion app.",
+    "QUESTION_11": "Does TestAPK store my APK files?",
+    "ANSWER_11": "No, TestAPK does not store your APK files on its servers. All files are streamed directly to and stored in your own Google Drive."
   }
 }

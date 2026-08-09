@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import TermsOfService from '../pages/TermsOfService';
 import DeviceAuthPage from '../pages/DeviceAuthPage';
+import FaqPage from '../pages/FaqPage';
 
 export default function AppRoutes({
   user,
@@ -48,6 +49,14 @@ export default function AppRoutes({
         path="/terms"
         element={
           <TermsOfService
+            onBackToHome={() => navigate('/')}
+          />
+        }
+      />
+      <Route
+        path="/faq"
+        element={
+          <FaqPage
             onBackToHome={() => navigate('/')}
           />
         }

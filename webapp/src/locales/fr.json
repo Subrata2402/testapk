@@ -301,5 +301,30 @@
     "CHANGES_CONTENT": "Nous nous réservons le droit de modifier ou de remplacer ces Conditions d'utilisation à tout moment. Nous vous informerons de tout changement en publiant les nouvelles conditions sur cette page. Votre utilisation continue du service après tout changement constitue l'acceptation des nouvelles conditions.",
     "CONTACT_TITLE": "Contactez-nous",
     "CONTACT_CONTENT": "Si vous avez des questions sur ces Conditions d'utilisation, veuillez nous contacter à :"
+  },
+  "FAQ": {
+    "TITLE": "Questions fréquemment posées",
+    "QUESTION_1": "Qu'est-ce que TestAPK ?",
+    "ANSWER_1": "TestAPK est une plateforme de gestion de versions APK moderne, sécurisée et auto-hébergée qui permet aux développeurs de distribuer des versions bêta directement aux testeurs.",
+    "QUESTION_2": "Comment installer les mises à jour ?",
+    "ANSWER_2": "Vous pouvez télécharger et installer les dernières versions d'APK directement depuis la liste des applications. Assurez-vous d'autoriser l'installation à partir de sources inconnues si vous y êtes invité.",
+    "QUESTION_3": "Où sont stockés les fichiers APK ?",
+    "ANSWER_3": "Tous les fichiers APK sont stockés en toute sécurité sur le Google Drive du développeur, garantissant un contrôle et une propriété complets des données.",
+    "QUESTION_4": "Comment puis-je accéder à une application ?",
+    "ANSWER_4": "Vous devez être invité par le propriétaire ou le développeur de l'application en tant que testeur. Une fois invité, vous recevrez une invitation dans la liste des applications à accepter.",
+    "QUESTION_5": "Mes données sont-elles sécurisées ?",
+    "ANSWER_5": "Oui, TestAPK utilise Google OAuth pour une authentification sécurisée et n'accède à aucun fichier de votre Google Drive autre que ceux créés par l'application.",
+    "QUESTION_6": "Où puis-je télécharger l'APK ?",
+    "ANSWER_6": "Vous pouvez télécharger des APK via le tableau de bord Web à l'adresse https://testapk.clipboux.online/ ou en utilisant l'outil CLI TestAPK.",
+    "QUESTION_7": "Comment connecter mon Google Drive ?",
+    "ANSWER_7": "Allez sur votre tableau de bord, cliquez sur 'Configurer le Drive' et autorisez TestAPK. TestAPK créera et gérera uniquement son propre dossier (TestAPK_Releases) pour stocker vos APK.",
+    "QUESTION_8": "Comment puis-je télécharger une nouvelle version ?",
+    "ANSWER_8": "Vous pouvez télécharger une version directement depuis le tableau de bord Web en cliquant sur 'Nouvelle version' et en sélectionnant votre fichier APK, ou automatiquement en utilisant l'outil CLI TestAPK.",
+    "QUESTION_9": "Comment utiliser l'outil CLI pour télécharger des builds ?",
+    "ANSWER_9": "Installez la CLI via npm (npm install -g testapk-cli), authentifiez-vous à l'aide du flux de l'appareil (testapk login) et téléchargez à l'aide de testapk upload <chemin-vers-apk>.",
+    "QUESTION_10": "Comment inviter des testeurs ou des développeurs ?",
+    "ANSWER_10": "Dans le tableau de bord, sélectionnez votre application, allez dans l'onglet 'Équipe' et ajoutez les adresses e-mail de vos testeurs ou développeurs. Les testeurs recevront une invitation dans leur application compagnon.",
+    "QUESTION_11": "TestAPK stocke-t-il mes fichiers APK ?",
+    "ANSWER_11": "Non, TestAPK ne stocke pas vos fichiers APK sur ses serveurs. Tous les fichiers sont diffusés directement et stockés dans votre propre Google Drive."
   }
 }

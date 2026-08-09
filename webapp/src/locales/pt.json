@@ -301,5 +301,30 @@
     "CHANGES_CONTENT": "Reservamo-nos o direito de modificar ou substituir estes Termos de Serviço a qualquer momento. Notificaremos qualquer alteração publicando os novos termos nesta página. Seu uso contínuo do serviço após qualquer alteração constitui aceitação dos novos termos.",
     "CONTACT_TITLE": "Fale conosco",
     "CONTACT_CONTENT": "Se você tiver alguma dúvida sobre estes Termos de Serviço, entre em contato conosco em:"
+  },
+  "FAQ": {
+    "TITLE": "Perguntas frequentes",
+    "QUESTION_1": "O que é o TestAPK?",
+    "ANSWER_1": "O TestAPK é uma plataforma de gerenciamento de lançamentos de APK moderna, segura e auto-hospedada que permite aos desenvolvedores distribuir compilações beta diretamente aos testadores.",
+    "QUESTION_2": "Como instalo as atualizações?",
+    "ANSWER_2": "Você pode baixar e instalar os lançamentos de APK mais recentes diretamente da lista de aplicativos. Certifique-se de permitir a instalação de fontes desconhecidas se solicitado.",
+    "QUESTION_3": "Onde os arquivos APK são armazenados?",
+    "ANSWER_3": "All APK files are securely stored in the developer's Google Drive, ensuring full control and ownership of the data.",
+    "QUESTION_4": "Como obtenho acesso a um aplicativo?",
+    "ANSWER_4": "Você deve ser convidado pelo proprietário ou desenvolvedor do aplicativo como testador. Uma vez convidado, você receberá um convite na lista de aplicativos para aceitar.",
+    "QUESTION_5": "Meus dados estão seguros?",
+    "ANSWER_5": "Sim, o TestAPK usa o Google OAuth para autenticação segura e não acessa nenhum arquivo no seu Google Drive além daqueles criados pelo aplicativo.",
+    "QUESTION_6": "Onde eu envio o APK?",
+    "ANSWER_6": "Você pode enviar APKs através do painel web em https://testapk.clipboux.online/ ou usando a ferramenta CLI do TestAPK.",
+    "QUESTION_7": "Como conecto meu Google Drive?",
+    "ANSWER_7": "Vá para o seu painel, clique em 'Configurar Drive' e autorize o TestAPK. O TestAPK apenas criará e gerenciará sua própria pasta (TestAPK_Releases) para armazenar seus APKs.",
+    "QUESTION_8": "Como envio uma nova versão?",
+    "ANSWER_8": "Você pode enviar uma versão diretamente do painel web clicando em 'Nova versão' e selecionando seu arquivo APK, ou automaticamente usando a ferramenta CLI do TestAPK.",
+    "QUESTION_9": "Como uso a ferramenta CLI para enviar compilações?",
+    "ANSWER_9": "Instale a CLI via npm (npm install -g testapk-cli), autentique-se usando o fluxo do dispositivo (testapk login) e envie usando testapk upload <caminho-para-o-apk>.",
+    "QUESTION_10": "Como convido testadores ou desenvolvedores?",
+    "ANSWER_10": "No painel, selecione seu aplicativo, vá para a guia 'Equipe' e adicione os endereços de e-mail de seus testadores ou desenvolvedores. Os testadores receberão um convite em seu aplicativo complementar.",
+    "QUESTION_11": "O TestAPK armazena meus arquivos APK?",
+    "ANSWER_11": "Não, o TestAPK não armazena seus arquivos APK em seus servidores. Todos os arquivos são transmitidos diretamente e armazenados em seu próprio Google Drive."
   }
 }
