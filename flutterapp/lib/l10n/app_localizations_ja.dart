@@ -192,16 +192,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get acceptBtnLabel => '承認';
 
   @override
-  String get errorInstallCancelled => 'インストールがキャンセルされました: アプリをインストールする権限を許可してください。';
+  String get errorInstallCancelled =>
+      'インストールがキャンセルされました: アプリをインストールする権限を許可してください。';
 
   @override
-  String get errorInstallConflictingVersion => 'インストールに失敗しました: 競合するバージョンのアプリが既にインストールされています。';
+  String get errorInstallConflictingVersion =>
+      'インストールに失敗しました: 競合するバージョンのアプリが既にインストールされています。';
 
   @override
   String get errorInstallInvalidApk => 'インストールに失敗しました: APKファイルが無効か破損しています。';
 
   @override
-  String get errorInstallInsufficientStorage => 'インストールに失敗しました: デバイスの空き容量が不足しています。';
+  String get errorInstallInsufficientStorage =>
+      'インストールに失敗しました: デバイスの空き容量が不足しています。';
 
   @override
   String get errorInstallStartFailed => 'インストールの開始に失敗しました';
@@ -321,7 +324,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get deleteAccountConfirmTitle => 'アカウントを削除しますか？';
 
   @override
-  String get deleteAccountConfirmMessage => 'アカウントを削除してもよろしいですか？この操作は永続的であり、元に戻すことはできません。';
+  String get deleteAccountConfirmMessage =>
+      'アカウントを削除してもよろしいですか？この操作は永続的であり、元に戻すことはできません。';
 
   @override
   String get deleteAccountSuccessMsg => 'アカウントが正常に削除されました';
@@ -507,7 +511,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara2_1 => '当社は、お客様が当社のサービスを利用する際に直接提供する情報を収集します。';
 
   @override
-  String get privacyPolicyPara2_2 => '• アカウント情報: Google OAuthを使用してサインインすると、名前、メールアドレス、プロフィール写真が提供されます。';
+  String get privacyPolicyPara2_2 =>
+      '• アカウント情報: Google OAuthを使用してサインインすると、名前、メールアドレス、プロフィール写真が提供されます。';
 
   @override
   String get privacyPolicyPara2_3 =>
@@ -527,10 +532,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara3_2 => '• 本人確認およびアカウント管理のため。';
 
   @override
-  String get privacyPolicyPara3_3 => '• お客様自身のGoogleドライブストレージへのAPKファイルのアップロード、保存、および取得を容易にするため。';
+  String get privacyPolicyPara3_3 =>
+      '• お客様自身のGoogleドライブストレージへのAPKファイルのアップロード、保存、および取得を容易にするため。';
 
   @override
-  String get privacyPolicyPara3_4 => '• ダッシュボードおよびモバイルクライアントにアプリケーションのリリース履歴と詳細を表示するため。';
+  String get privacyPolicyPara3_4 =>
+      '• ダッシュボードおよびモバイルクライアントにアプリケーションのリリース履歴と詳細を表示するため。';
 
   @override
   String get privacyPolicyPara3_5 => '• CLIツールの認証およびアップロードフローをサポートするため。';
@@ -559,16 +566,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara6_2 => '• ダッシュボードの設定から、いつでもGoogleドライブの統合を切断できます。';
 
   @override
-  String get privacyPolicyPara6_3 => '• Googleアカウントの権限ページにアクセスして、GoogleアカウントへのTestAPKのアクセス権を完全に無効にすることができます。';
+  String get privacyPolicyPara6_3 =>
+      '• Googleアカウントの権限ページにアクセスして、GoogleアカウントへのTestAPKのアクセス権を完全に無効にすることができます。';
 
   @override
-  String get privacyPolicyPara6_4 => '• お問い合わせいただくことで、TestAPKアカウントおよび関連するメタデータの削除をリクエストできます。';
+  String get privacyPolicyPara6_4 =>
+      '• お問い合わせいただくことで、TestAPKアカウントおよび関連するメタデータの削除をリクエストできます。';
 
   @override
   String get privacyPolicyTitle7 => '7. お問い合わせ';
 
   @override
-  String get privacyPolicyPara7_1 => 'このプライバシーポリシーに関するご質問やご不明な点がございましたら、subrata3250das@gmail.comまでお問い合わせください。';
+  String get privacyPolicyPara7_1 =>
+      'このプライバシーポリシーに関するご質問やご不明な点がございましたら、subrata3250das@gmail.comまでお問い合わせください。';
 
   @override
   String get termsOfServiceLastUpdated => '2026年7月18日';
@@ -608,7 +618,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get termsOfServicePara5_1 => 'お客様は、以下の目的でサービスを使用しないことに同意します。';
 
   @override
-  String get termsOfServicePara5_2 => '• 悪意のあるソフトウェア、ウイルス、またはデバイスに損害を与えたり妨害したりするように設計されたコードをアップロードまたは配布すること。';
+  String get termsOfServicePara5_2 =>
+      '• 悪意のあるソフトウェア、ウイルス、またはデバイスに損害を与えたり妨害したりするように設計されたコードをアップロードまたは配布すること。';
 
   @override
   String get termsOfServicePara5_3 => '• 他者の知的財産権を侵害すること。';
@@ -637,5 +648,6 @@ class AppLocalizationsJa extends AppLocalizations {
   String get termsOfServiceTitle8 => '8. お問い合わせ';
 
   @override
-  String get termsOfServicePara8_1 => 'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
+  String get termsOfServicePara8_1 =>
+      'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
 }

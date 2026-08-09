@@ -1,4 +1,12 @@
-export const STRINGS = {
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { localeStorage } from '../middlewares/localeStorage.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const ENGLISH_STRINGS = {
   COMMON: {
     STATUS_SUCCESS: 'success',
     STATUS_FAIL: 'fail',
@@ -172,3 +180,94 @@ export const STRINGS = {
     },
   },
 } as const;
+
+// Load JSON locale files
+const locales: Record<string, any> = {};
+const supportedLocales = ['en', 'es', 'pt', 'hi', 'fr', 'de', 'ja', 'zh', 'ar'];
+
+let localesDir = path.join(__dirname, '..', 'locales');
+if (!fs.existsSync(localesDir)) {
+  localesDir = path.join(__dirname, '..', '..', 'src', 'locales');
+}
+
+for (const locale of supportedLocales) {
+  const filePath = path.join(localesDir, `${locale}.json`);
+  if (fs.existsSync(filePath)) {
+    try {
+      locales[locale] = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    } catch (e) {
+      console.error(`Failed to load locale file ${filePath}:`, e);
+    }
+  }
+}
+
+function interpolate(template: string, args: any[]): string {
+  return template.replace(/{(\d+)}/g, (match, index) => {
+    const val = args[Number(index)];
+    return val !== undefined ? String(val) : match;
+  });
+}
+
+function createProxy(target: any, path: string[] = []): any {
+  return new Proxy(target, {
+    get(obj, prop: string | symbol) {
+      if (typeof prop === 'symbol') {
+        return Reflect.get(obj, prop);
+      }
+
+      const currentPath = [...path, prop];
+      const value = obj[prop];
+
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        return createProxy(value, currentPath);
+      }
+
+      // Get current locale from AsyncLocalStorage
+      const locale = localeStorage.getStore() || 'en';
+
+      if (locale === 'en') {
+        return value;
+      }
+
+      if (typeof value === 'function') {
+        return (...args: any[]) => {
+          // Find translation
+          let translation = locales[locale];
+          for (const key of currentPath) {
+            if (translation && translation[key] !== undefined) {
+              translation = translation[key];
+            } else {
+              translation = undefined;
+              break;
+            }
+          }
+          if (typeof translation === 'string') {
+            return interpolate(translation, args);
+          }
+          // Fallback to English function
+          return value(...args);
+        };
+      }
+
+      // Find translation
+      let translation = locales[locale];
+      for (const key of currentPath) {
+        if (translation && translation[key] !== undefined) {
+          translation = translation[key];
+        } else {
+          translation = undefined;
+          break;
+        }
+      }
+
+      if (translation !== undefined) {
+        return translation;
+      }
+
+      // Fallback to English
+      return value;
+    },
+  });
+}
+
+export const STRINGS = createProxy(ENGLISH_STRINGS) as typeof ENGLISH_STRINGS;

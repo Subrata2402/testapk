@@ -332,8 +332,8 @@ export const downloadApk = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -448,8 +448,8 @@ export const deleteRelease = async (
     const release = await Release.findOne({ appId: app._id, buildNumber: parseInt(buildNumber as string) });
     if (!release) {
       res.status(404).json({
-        status: 'fail',
-        message: 'Release not found',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.RELEASE.NOT_FOUND,
       });
       return;
     }
@@ -459,8 +459,8 @@ export const deleteRelease = async (
       const credentials = await getOwnerCredentials(app);
       if (!credentials) {
         res.status(400).json({
-          status: 'fail',
-          message: 'Google Drive is not configured for the owner of this application.',
+          status: STRINGS.COMMON.STATUS_FAIL,
+          message: STRINGS.RELEASE.DRIVE_NOT_CONFIGURED,
         });
         return;
       }
@@ -841,8 +841,8 @@ export const getMembers = async (
     const isMember = app.members.some(m => m.email.toLowerCase() === req.user!.email.toLowerCase());
     if (!isMember) {
       res.status(403).json({
-        status: 'fail',
-        message: 'You are not a member of this application',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.APP.NOT_MEMBER,
       });
       return;
     }

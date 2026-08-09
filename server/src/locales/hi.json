@@ -1,0 +1,143 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "सफलता",
+    "STATUS_FAIL": "विफलता",
+    "STATUS_ERROR": "त्रुटि",
+    "USER_NOT_AUTHENTICATED": "उपयोगकर्ता प्रमाणित नहीं है",
+    "SOMETHING_WENT_WRONG": "कुछ गलत हो गया",
+    "TOO_MANY_REQUESTS": "इस आईपी से बहुत सारे अनुरोध, कृपया बाद में पुनः प्रयास करें।",
+    "VALIDATION_FAILED": "सत्यापन विफल रहा"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "गूगल आईडी टोकन आवश्यक है",
+    "INVALID_GOOGLE_ID_TOKEN": "अमान्य गूगल आईडी टोकन",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "अमान्य गूगल आईडी टोकन पेलोड",
+    "MISSING_EMAIL_OR_NAME": "गूगल खाते में ईमेल या नाम गायब है",
+    "LOGGED_OUT": "सफलतापूर्वक लॉग आउट किया गया",
+    "NOT_LOGGED_IN": "आप लॉग इन नहीं हैं! पहुंच प्राप्त करने के लिए कृपया लॉग इन करें।",
+    "INVALID_EXPIRED_TOKEN": "अमान्य या समाप्त टोकन। कृपया पुनः लॉग इन करें।",
+    "USER_NOT_FOUND": "इस टोकन से संबंधित उपयोगकर्ता अब मौजूद नहीं है।",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "आपका खाता हटा दिया गया है। कृपया अपना खाता फिर से खोलने के लिए समर्थन से संपर्क करें।"
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "एप्लिकेशन का नाम, पैकेज का नाम और विवरण आवश्यक हैं",
+    "PACKAGE_ALREADY_EXISTS": "इस पैकेज नाम वाला एक एप्लिकेशन पहले से मौजूद है",
+    "NOT_FOUND": "एप्लिकेशन नहीं मिला",
+    "NOT_MEMBER": "आप इस एप्लिकेशन के सदस्य नहीं हैं",
+    "INVITE_FIELDS_REQUIRED": "ईमेल और भूमिका आवश्यक हैं",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "केवल मालिक और डेवलपर ही सदस्यों को आमंत्रित कर सकते हैं",
+    "INVITE_YOURSELF": "आप खुद को आमंत्रित नहीं कर सकते",
+    "INVITE_NOT_REGISTERED": "उपयोगकर्ता पंजीकृत नहीं है। केवल पंजीकृत उपयोगकर्ताओं को ही आमंत्रित किया जा सकता है।",
+    "INVITE_ALREADY_MEMBER": "उपयोगकर्ता पहले से ही सदस्य है या उसका निमंत्रण लंबित है",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "केवल मालिक और डेवलपर ही सदस्यों को हटा सकते हैं",
+    "REMOVE_OWNER_RESTRICTED": "एप्लिकेशन के मालिक को हटाया नहीं जा सकता",
+    "INVITATION_NOT_FOUND": "निमंत्रण नहीं मिला",
+    "INVITATION_REJECTED": "निमंत्रण सफलतापूर्वक अस्वीकार कर दिया गया",
+    "INVITATION_NOTIFICATION_TITLE": "{0} में शामिल होने का निमंत्रण",
+    "INVITATION_NOTIFICATION_BODY": "आपको {0} में {1} के रूप में शामिल होने के लिए आमंत्रित किया गया है।"
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "कृपया एक एपीके (APK) फ़ाइल अपलोड करें",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "केवल मालिकों और डेवलपर्स को एपीके अपलोड करने की अनुमति है",
+    "PARSE_FAILED": "एपीके फ़ाइल को पार्स करने में विफल। सुनिश्चित करें कि यह एक मान्य एंड्रॉइड पैकेज है।",
+    "PACKAGE_MISMATCH": "पैकेज नाम बेमेल। अपेक्षित: {0}, पाया गया: {1}",
+    "BUILD_ALREADY_EXISTS": "बिल्ड नंबर #{0} वाला एक रिलीज़ पहले से मौजूद है",
+    "BUILD_NUMBER_TOO_LOW": "बिल्ड नंबर #{0} का उपयोग नहीं किया जा सकता क्योंकि नवीनतम प्रकाशित बिल्ड नंबर #{1} है। कृपया बिल्ड नंबर बढ़ाएं और पुनः प्रयास करें।",
+    "DRIVE_NOT_CONFIGURED": "इस एप्लिकेशन के मालिक के लिए गूगल ड्राइव कॉन्फ़िगर नहीं है।",
+    "DRIVE_REVOKED": "गूगल ड्राइव एक्सेस रद्द कर दिया गया है या अमान्य है। कृपया अपने एप्लिकेशन सेटिंग्स में गूगल ड्राइव को फिर से कॉन्फ़िगर करें।",
+    "DRIVE_UPLOAD_FAILED": "गूगल ड्राइव पर एपीके अपलोड करने में विफल: {0}",
+    "NO_RELEASE_NOTES": "कोई रिलीज़ नोट्स प्रदान नहीं किए गए",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "{0} के लिए नया रिलीज़",
+    "NEW_RELEASE_NOTIFICATION_BODY": "संस्करण {0} (बिल्ड #{1}) अब उपलब्ध है।",
+    "NOT_FOUND": "रिलीज़ नहीं मिला",
+    "DRIVE_FILE_NOT_FOUND": "एपीके फ़ाइल गूगल ड्राइव पर नहीं मिली। यह हटा दी गई होगी।",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "केवल मालिकों और डेवलपर्स को रिलीज़ हटाने की अनुमति है"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "टोकन आवश्यक है",
+    "INVALID_USED_TOKEN": "अमान्य या पहले से उपयोग किया गया टोकन",
+    "LINK_EXPIRED": "यह प्राधिकरण लिंक समाप्त हो गया है",
+    "LINK_ALREADY_USED": "यह लिंक पहले ही उपयोग किया जा चुका है",
+    "USER_CODE_REQUIRED": "उपयोगकर्ता कोड आवश्यक है",
+    "INVALID_CODE": "अमान्य प्राधिकरण कोड। कृपया कोड की जांच करें और पुनः प्रयास करें।",
+    "CODE_EXPIRED": "यह प्राधिकरण कोड समाप्त हो गया है। कृपया एक नया कोड जनरेट करें।",
+    "SUCCESSFULLY_AUTHORIZED": "डिवाइस सफलतापूर्वक अधिकृत हो गया",
+    "DEVICE_CODE_REQUIRED": "डिवाइस कोड आवश्यक है",
+    "DEVICE_CODE_EXPIRED": "डिवाइस कोड समाप्त हो गया है। कृपया एक नया अनुरोध करें।",
+    "AUTHORIZATION_PENDING": "उपयोगकर्ता ने अभी तक डिवाइस को अधिकृत नहीं किया है।",
+    "USER_NOT_FOUND": "उपयोगकर्ता नहीं मिला"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "श्रेणी, रेटिंग, शीर्षक और विवरण आवश्यक हैं"
+  },
+  "HEALTH": {
+    "RUNNING": "सर्वर स्वस्थ है और चल रहा है"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "कृपया नाम, ईमेल, विषय और संदेश प्रदान करें",
+    "SENT_SUCCESS": "संदेश सफलतापूर्वक भेजा गया।",
+    "SENT_ERROR": "समर्थन ईमेल भेजने में त्रुटि। कृपया बाद में पुनः प्रयास करें।"
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "प्राधिकरण कोड आवश्यक है",
+    "REFRESH_TOKEN_FAILED": "रिफ्रेश टोकन प्राप्त करने में विफल। कृपया सुनिश्चित करें कि आप ऑफ़लाइन एक्सेस और सहमति प्रदान करते हैं।",
+    "DRIVE_CONFIGURED": "गूगल ड्राइव सफलतापूर्वक कॉन्फ़िगर किया गया",
+    "FCM_TOKEN_REQUIRED": "एफसीएम (FCM) टोकन आवश्यक है",
+    "FCM_TOKEN_UPDATED": "एफसीएम टोकन सफलतापूर्वक अपडेट किया गया",
+    "NOT_FOUND": "उपयोगकर्ता नहीं मिला",
+    "DELETED_SUCCESS": "खाता सफलतापूर्वक हटा दिया गया"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "TestAPK में आपका स्वागत है!",
+    "WELCOME_TEXT": "नमस्ते {0},\n\nTestAPK में आपका स्वागत है! हमें आपको अपने साथ पाकर बहुत खुशी हो रही है।\n\nसादर,\nTestAPK टीम",
+    "WELCOME_HTML": "\n          <h3>TestAPK में आपका स्वागत है!</h3>\n          <p>नमस्ते {0},</p>\n          <p>हमें आपको अपने साथ पाकर बहुत खुशी हो रही है। TestAPK आपको अपने APK रिलीज़ को परीक्षकों को आसानी से प्रबंधित और वितरित करने में मदद करता है।</p>\n          <br/>\n          <p>सादर,</p>\n          <p><strong>TestAPK टीम</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[TestAPK समर्थन] {0}",
+    "SUPPORT_TEXT": "नाम: {0}\nईमेल: {1}\n\nसंदेश:\n{2}",
+    "SUPPORT_HTML": "\n        <h3>नया समर्थन अनुरोध</h3>\n        <p><strong>नाम:</strong> {0}</p>\n        <p><strong>ईमेल:</strong> {1}</p>\n        <p><strong>विषय:</strong> {2}</p>\n        <br/>\n        <p><strong>संदेश:</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "SMTP कॉन्फ़िगर नहीं है। {0} को स्वागत ईमेल भेजने का अनुकरण किया गया।",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "SMTP कॉन्फ़िगर नहीं है। समर्थन संदेश कंसोल में लॉग किया गया:",
+    "WELCOME_SENT": "{0} को स्वागत ईमेल भेजा गया",
+    "SUPPORT_SENT": "{0} को समर्थन ईमेल भेजा गया",
+    "INVITATION_SUBJECT": "TestAPK पर {0} में शामिल होने का निमंत्रण",
+    "INVITATION_TEXT": "नमस्ते,\n\nआपको TestAPK पर {1} के रूप में एप्लिकेशन \"{0}\" में शामिल होने के लिए आमंत्रित किया गया है।\n\nकृपया निमंत्रण स्वीकार या अस्वीकार करने के लिए TestAPK ऐप में लॉग इन करें।\n\nसादर,\nTestAPK टीम",
+    "INVITATION_HTML": "\n        <h3>TestAPK पर {0} में शामिल होने का निमंत्रण</h3>\n        <p>नमस्ते,</p>\n        <p>आपको TestAPK पर <strong>{1}</strong> के रूप में एप्लिकेशन <strong>{0}</strong> में शामिल होने के लिए आमंत्रित किया गया है।</p>\n        <p>कृपया निमंत्रण स्वीकार या अस्वीकार करने के लिए TestAPK ऐप में लॉग इन करें।</p>\n        <br/>\n        <p>सादर,</p>\n        <p><strong>TestAPK टीम</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "SMTP कॉन्फ़िगर नहीं है। {0} को निमंत्रण ईमेल भेजने का अनुकरण किया गया।",
+    "INVITATION_SENT": "{0} को निमंत्रण ईमेल भेजा गया"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "गूगल ड्राइव क्रेडेंशियल कॉन्फ़िगर नहीं हैं।",
+    "FOLDER_CREATE_FAILED": "गूगल ड्राइव में फ़ोल्डर बनाने में विफल",
+    "UPLOAD_FAILED_NO_ID": "गूगल ड्राइव पर फ़ाइल अपलोड करने में विफल: कोई आईडी वापस नहीं मिली"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ फायरबेस क्लाउड मैसेजिंग सफलतापूर्वक प्रारंभ हो गया।",
+    "FCM_INIT_FAILED": "❌ फायरबेस क्लाउड मैसेजिंग प्रारंभ करने में विफल:",
+    "FCM_NOT_INITIALIZED": "⚠️ एफसीएम प्रारंभ नहीं हुआ। अधिसूचना छोड़ी जा रही है।",
+    "FCM_KEY_NOT_FOUND": "⚠️ {0} पर फायरबेस सेवा खाता फ़ाइल नहीं मिली। पुश सूचनाएं अक्षम कर दी जाएंगी।",
+    "FCM_SEND_FAILED": "❌ टोकन {0} पर पुश अधिसूचना भेजने में विफल:"
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "एंड्रॉइड ऐप",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "उपयोगकर्ता आईडी आवश्यक है",
+      "CATEGORY_REQUIRED": "श्रेणी आवश्यक है",
+      "RATING_REQUIRED": "रेटिंग आवश्यक है",
+      "TITLE_REQUIRED": "शीर्षक आवश्यक है",
+      "DESCRIPTION_REQUIRED": "विवरण आवश्यक है"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "ईमेल आवश्यक है",
+      "NAME_REQUIRED": "नाम आवश्यक है"
+    }
+  }
+}

@@ -27,6 +27,10 @@ class ApiClient {
           if (token != null) {
             options.headers['Authorization'] = 'Bearer $token';
           }
+          final language = await StorageService.instance.getLanguage();
+          if (language != null) {
+            options.headers['Accept-Language'] = language;
+          }
           return handler.next(options);
         },
         onError: (DioException e, handler) async {

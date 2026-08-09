@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import { env } from './config/env.js';
 import { rateLimiter } from './middlewares/rateLimiter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import { localeMiddleware } from './middlewares/locale.middleware.js';
 import { AppError } from './utils/appError.js';
 
 import healthRoutes from './routes/health.routes.js';
@@ -18,6 +19,9 @@ const app = express();
 
 // Set security HTTP headers
 app.use(helmet());
+
+// Use locale middleware
+app.use(localeMiddleware);
 
 // Enable CORS
 const corsOptions: cors.CorsOptions = {

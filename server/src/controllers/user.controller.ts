@@ -6,13 +6,13 @@ import { createFolderInDrive } from '../services/google-drive.service.js';
 import { STRINGS } from '../constants/strings.js';
 
 export const getMe = (req: Request, res: Response, next: NextFunction): void => {
-    if (!req.user) {
-      res.status(401).json({
-        status: STRINGS.COMMON.STATUS_FAIL,
-        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
-      });
-      return;
-    }
+  if (!req.user) {
+    res.status(401).json({
+      status: STRINGS.COMMON.STATUS_FAIL,
+      message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
+    });
+    return;
+  }
 
   res.status(200).json({
     status: STRINGS.COMMON.STATUS_SUCCESS,
@@ -47,8 +47,8 @@ export const configureDrive = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }
@@ -118,8 +118,8 @@ export const updateFcmToken = async (
 
     if (!req.user) {
       res.status(401).json({
-        status: 'fail',
-        message: 'User not authenticated',
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.COMMON.USER_NOT_AUTHENTICATED,
       });
       return;
     }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/user_model.dart';
-import 'package:flutterapp/presentations/menu/profile/screens/profile_screen.dart';
+import 'package:flutterapp/presentations/menu/screens/menu_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,7 +15,7 @@ class AppListAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   void _openProfile(BuildContext context) {
     if (user == null) return;
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProfileScreen(user: user!)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => MenuScreen(user: user!)));
   }
 
   @override

@@ -1,0 +1,143 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "نجاح",
+    "STATUS_FAIL": "فشل",
+    "STATUS_ERROR": "خطأ",
+    "USER_NOT_AUTHENTICATED": "المستخدم غير مصادق عليه",
+    "SOMETHING_WENT_WRONG": "حدث خطأ ما",
+    "TOO_MANY_REQUESTS": "طلبات كثيرة جداً من هذا العنوان، يرجى المحاولة مرة أخرى لاحقاً.",
+    "VALIDATION_FAILED": "فشل التحقق من الصحة"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "رمز معرف Google مطلوب",
+    "INVALID_GOOGLE_ID_TOKEN": "رمز معرف Google غير صالح",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "حمولة رمز معرف Google غير صالحة",
+    "MISSING_EMAIL_OR_NAME": "حساب Google يفتقد إلى البريد الإلكتروني أو الاسم",
+    "LOGGED_OUT": "تم تسجيل الخروج بنجاح",
+    "NOT_LOGGED_IN": "أنت لم تقم بتسجيل الدخول! يرجى تسجيل الدخول للحصول على صلاحية الوصول.",
+    "INVALID_EXPIRED_TOKEN": "رمز غير صالح أو منتهي الصلاحية. يرجى تسجيل الدخول مرة أخرى.",
+    "USER_NOT_FOUND": "المستخدم الذي ينتمي إليه هذا الرمز لم يعد موجوداً.",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "تم حذف حسابك. يرجى الاتصال بالدعم لإعادة فتح حسابك."
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "اسم التطبيق واسم الحزمة والوصف مطلوبة",
+    "PACKAGE_ALREADY_EXISTS": "هناك تطبيق آخر يستخدم اسم الحزمة هذا بالفعل",
+    "NOT_FOUND": "لم يتم العثور على التطبيق",
+    "NOT_MEMBER": "أنت لست عضواً في هذا التطبيق",
+    "INVITE_FIELDS_REQUIRED": "البريد الإلكتروني والدور مطلوبان",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "يمكن للمالكين والمطورين فقط دعوة الأعضاء",
+    "INVITE_YOURSELF": "لا يمكنك دعوة نفسك",
+    "INVITE_NOT_REGISTERED": "المستخدم غير مسجل. يمكن دعوة المستخدمين المسجلين فقط.",
+    "INVITE_ALREADY_MEMBER": "المستخدم عضو بالفعل أو لديه دعوة معلقة",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "يمكن للمالكين والمطورين فقط إزالة الأعضاء",
+    "REMOVE_OWNER_RESTRICTED": "لا يمكن إزالة مالك التطبيق",
+    "INVITATION_NOT_FOUND": "لم يتم العثور على الدعوة",
+    "INVITATION_REJECTED": "تم رفض الدعوة بنجاح",
+    "INVITATION_NOTIFICATION_TITLE": "دعوة للانضمام إلى {0}",
+    "INVITATION_NOTIFICATION_BODY": "لقد تم دعوتك للانضمام إلى {0} كـ {1}."
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "يرجى تحميل ملف APK",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "يسمح للمالكين والمطورين فقط بتحميل ملفات APK",
+    "PARSE_FAILED": "فشل تحليل ملف APK. تأكد من أنه حزمة Android صالحة.",
+    "PACKAGE_MISMATCH": "عدم تطابق اسم الحزمة. المتوقع: {0}، الموجود: {1}",
+    "BUILD_ALREADY_EXISTS": "هناك إصدار برقم البناء #{0} موجود بالفعل",
+    "BUILD_NUMBER_TOO_LOW": "لا يمكن استخدام رقم البناء #{0} لأن آخر رقم بناء تم نشره هو #{1}. يرجى زيادة رقم البناء والمحاولة مرة أخرى.",
+    "DRIVE_NOT_CONFIGURED": "لم يتم تكوين Google Drive لمالك هذا التطبيق.",
+    "DRIVE_REVOKED": "تم إلغاء الوصول إلى Google Drive أو أنه غير صالح. يرجى إعادة تكوين Google Drive في إعدادات تطبيقك.",
+    "DRIVE_UPLOAD_FAILED": "فشل تحميل ملف APK إلى Google Drive: {0}",
+    "NO_RELEASE_NOTES": "لم يتم تقديم ملاحظات الإصدار",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "إصدار جديد لـ {0}",
+    "NEW_RELEASE_NOTIFICATION_BODY": "الإصدار {0} (البناء #{1}) متاح الآن.",
+    "NOT_FOUND": "لم يتم العثور على الإصدار",
+    "DRIVE_FILE_NOT_FOUND": "لم يتم العثور على ملف APK على Google Drive. قد يكون قد تم حذفه.",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "يسمح للمالكين والمطورين فقط بحذف الإصدارات"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "الرمز مطلوب",
+    "INVALID_USED_TOKEN": "رمز غير صالح أو مستخدم بالفعل",
+    "LINK_EXPIRED": "انتهت صلاحية رابط التفويض هذا",
+    "LINK_ALREADY_USED": "تم استخدام هذا الرابط بالفعل",
+    "USER_CODE_REQUIRED": "رمز المستخدم مطلوب",
+    "INVALID_CODE": "رمز تفويض غير صالح. يرجى التحقق من الرمز والمحاولة مرة أخرى.",
+    "CODE_EXPIRED": "انتهت صلاحية رمز التفويض هذا. يرجى إنشاء رمز جديد.",
+    "SUCCESSFULLY_AUTHORIZED": "تم تفويض الجهاز بنجاح",
+    "DEVICE_CODE_REQUIRED": "رمز الجهاز مطلوب",
+    "DEVICE_CODE_EXPIRED": "انتهت صلاحية رمز الجهاز. يرجى طلب رمز جديد.",
+    "AUTHORIZATION_PENDING": "لم يقم المستخدم بتفويض الجهاز بعد.",
+    "USER_NOT_FOUND": "لم يتم العثور على المستخدم"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "الفئة والتقييم والعنوان والوصف مطلوبة"
+  },
+  "HEALTH": {
+    "RUNNING": "الخادم يعمل بشكل جيد"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "يرجى تقديم الاسم والبريد الإلكتروني والموضوع والرسالة",
+    "SENT_SUCCESS": "تم إرسال الرسالة بنجاح.",
+    "SENT_ERROR": "حدث خطأ أثناء إرسال بريد الدعم الإلكتروني. يرجى المحاولة مرة أخرى لاحقاً."
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "رمز التفويض مطلوب",
+    "REFRESH_TOKEN_FAILED": "فشل الحصول على رمز التحديث. يرجى التأكد من منح الوصول دون اتصال بالإنترنت والموافقة.",
+    "DRIVE_CONFIGURED": "تم تكوين Google Drive بنجاح",
+    "FCM_TOKEN_REQUIRED": "رمز FCM مطلوب",
+    "FCM_TOKEN_UPDATED": "تم تحديث رمز FCM بنجاح",
+    "NOT_FOUND": "المستخدم غير موجود",
+    "DELETED_SUCCESS": "تم حذف الحساب بنجاح"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "مرحباً بك في TestAPK!",
+    "WELCOME_TEXT": "مرحباً {0}،\n\nمرحباً بك في TestAPK! نحن متحمسون لانضمامك إلينا.\n\nمع أطيب التحيات،\nفريق TestAPK",
+    "WELCOME_HTML": "\n          <h3>مرحباً بك في TestAPK!</h3>\n          <p>مرحباً {0}،</p>\n          <p>نحن متحمسون لانضمامك إلينا. يساعدك TestAPK على إدارة وتوزيع إصدارات APK الخاصة بك للمختبرين بسلاسة.</p>\n          <br/>\n          <p>مع أطيب التحيات،</p>\n          <p><strong>فريق TestAPK</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[دعم TestAPK] {0}",
+    "SUPPORT_TEXT": "الاسم: {0}\nالبريد الإلكتروني: {1}\n\nالرسالة:\n{2}",
+    "SUPPORT_HTML": "\n        <h3>طلب دعم جديد</h3>\n        <p><strong>الاسم:</strong> {0}</p>\n        <p><strong>البريد الإلكتروني:</strong> {1}</p>\n        <p><strong>الموضوع:</strong> {2}</p>\n        <br/>\n        <p><strong>الرسالة:</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "لم يتم تكوين SMTP. تم محاكاة إرسال بريد الترحيب الإلكتروني إلى {0}.",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "لم يتم تكوين SMTP. تم تسجيل رسالة الدعم في وحدة التحكم:",
+    "WELCOME_SENT": "تم إرسال بريد الترحيب الإلكتروني إلى {0}",
+    "SUPPORT_SENT": "تم إرسال بريد الدعم الإلكتروني إلى {0}",
+    "INVITATION_SUBJECT": "دعوة للانضمام إلى {0} على TestAPK",
+    "INVITATION_TEXT": "مرحباً،\n\nلقد تم دعوتك للانضمام إلى التطبيق \"{0}\" كـ {1} على TestAPK.\n\nيرجى تسجيل الدخول إلى تطبيق TestAPK لقبول أو رفض الدعوة.\n\nمع أطيب التحيات،\nفريق TestAPK",
+    "INVITATION_HTML": "\n        <h3>دعوة للانضمام إلى {0} على TestAPK</h3>\n        <p>مرحباً،</p>\n        <p>لقد تم دعوتك للانضمام إلى التطبيق <strong>{0}</strong> كـ <strong>{1}</strong> على TestAPK.</p>\n        <p>يرجى تسجيل الدخول إلى تطبيق TestAPK لقبول أو رفض الدعوة.</p>\n        <br/>\n        <p>مع أطيب التحيات،\n<strong>فريق TestAPK</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "لم يتم تكوين SMTP. تم محاكاة إرسال بريد الدعوة الإلكتروني إلى {0}.",
+    "INVITATION_SENT": "تم إرسال بريد الدعوة الإلكتروني إلى {0}"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "لم يتم تكوين بيانات اعتماد Google Drive.",
+    "FOLDER_CREATE_FAILED": "فشل إنشاء مجلد في Google Drive",
+    "UPLOAD_FAILED_NO_ID": "فشل تحميل الملف إلى Google Drive: لم يتم إرجاع معرف"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ تم تهيئة Firebase Cloud Messaging بنجاح.",
+    "FCM_INIT_FAILED": "❌ فشل تهيئة Firebase Cloud Messaging:",
+    "FCM_NOT_INITIALIZED": "⚠️ لم يتم تهيئة FCM. تخطي الإشعار.",
+    "FCM_KEY_NOT_FOUND": "⚠️ لم يتم العثور على ملف حساب خدمة Firebase في {0}. سيتم تعطيل إشعارات الدفع.",
+    "FCM_SEND_FAILED": "❌ فشل إرسال إشعار الدفع إلى الرمز {0}:"
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "تطبيق Android",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "معرف المستخدم مطلوب",
+      "CATEGORY_REQUIRED": "الفئة مطلوبة",
+      "RATING_REQUIRED": "التقييم مطلوب",
+      "TITLE_REQUIRED": "العنوان مطلوب",
+      "DESCRIPTION_REQUIRED": "الوصف مطلوب"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "البريد الإلكتروني مطلوب",
+      "NAME_REQUIRED": "الاسم مطلوب"
+    }
+  }
+}

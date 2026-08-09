@@ -1,0 +1,143 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "Erfolg",
+    "STATUS_FAIL": "Fehlschlag",
+    "STATUS_ERROR": "Fehler",
+    "USER_NOT_AUTHENTICATED": "Benutzer nicht authentifiziert",
+    "SOMETHING_WENT_WRONG": "Etwas ist schief gelaufen",
+    "TOO_MANY_REQUESTS": "Zu viele Anfragen von dieser IP, bitte versuchen Sie es später noch einmal.",
+    "VALIDATION_FAILED": "Validierung fehlgeschlagen"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "Google-ID-Token ist erforderlich",
+    "INVALID_GOOGLE_ID_TOKEN": "Ungültiges Google-ID-Token",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "Ungültige Google-ID-Token-Nutzlast",
+    "MISSING_EMAIL_OR_NAME": "Google-Konto hat keine E-Mail-Adresse oder keinen Namen",
+    "LOGGED_OUT": "Erfolgreich abgemeldet",
+    "NOT_LOGGED_IN": "Sie sind nicht eingeloggt! Bitte loggen Sie sich ein, um Zugriff zu erhalten.",
+    "INVALID_EXPIRED_TOKEN": "Ungültiges oder abgelaufenes Token. Bitte melden Sie sich erneut an.",
+    "USER_NOT_FOUND": "Der zu diesem Token gehörende Benutzer existiert nicht mehr.",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Ihr Konto wurde gelöscht. Bitte kontaktieren Sie den Support, um Ihr Konto wieder zu eröffnen."
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "Anwendungsname, Paketname und Beschreibung sind erforderlich",
+    "PACKAGE_ALREADY_EXISTS": "Eine Anwendung mit diesem Paketnamen existiert bereits",
+    "NOT_FOUND": "Anwendung nicht gefunden",
+    "NOT_MEMBER": "Sie sind kein Mitglied dieser Anwendung",
+    "INVITE_FIELDS_REQUIRED": "E-Mail-Adresse und Rolle sind erforderlich",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "Nur Besitzer und Entwickler können Mitglieder einladen",
+    "INVITE_YOURSELF": "Sie können sich nicht selbst einladen",
+    "INVITE_NOT_REGISTERED": "Benutzer ist nicht registriert. Nur registrierte Benutzer können eingeladen werden.",
+    "INVITE_ALREADY_MEMBER": "Benutzer ist bereits Mitglied oder hat eine ausstehende Einladung",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "Nur Besitzer und Entwickler können Mitglieder entfernen",
+    "REMOVE_OWNER_RESTRICTED": "Der Besitzer der Anwendung kann nicht entfernt werden",
+    "INVITATION_NOT_FOUND": "Einladung nicht gefunden",
+    "INVITATION_REJECTED": "Einladung erfolgreich abgelehnt",
+    "INVITATION_NOTIFICATION_TITLE": "Einladung zum Beitritt zu {0}",
+    "INVITATION_NOTIFICATION_BODY": "Sie wurden eingeladen, {0} als {1} beizutreten."
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "Bitte laden Sie eine APK-Datei hoch",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "Nur Besitzer und Entwickler dürfen APKs hochladen",
+    "PARSE_FAILED": "Fehler beim Analysieren der APK-Datei. Stellen Sie sicher, dass es sich um ein gültiges Android-Paket handelt.",
+    "PACKAGE_MISMATCH": "Paketnamen stimmen nicht überein. Erwartet: {0}, Gefunden: {1}",
+    "BUILD_ALREADY_EXISTS": "Ein Release mit der Build-Nummer #{0} existiert bereits",
+    "BUILD_NUMBER_TOO_LOW": "Die Build-Nummer #{0} kann nicht verwendet werden, da die letzte veröffentlichte Build-Nummer #{1} ist. Bitte erhöhen Sie die Build-Nummer und versuchen Sie es erneut.",
+    "DRIVE_NOT_CONFIGURED": "Google Drive ist für den Besitzer dieser Anwendung nicht konfiguriert.",
+    "DRIVE_REVOKED": "Der Google Drive-Zugriff wurde widerrufen oder ist ungültig. Bitte konfigurieren Sie Google Drive in Ihren Anwendungseinstellungen neu.",
+    "DRIVE_UPLOAD_FAILED": "Fehler beim Hochladen der APK auf Google Drive: {0}",
+    "NO_RELEASE_NOTES": "Keine Versionshinweise bereitgestellt",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "Neues Release für {0}",
+    "NEW_RELEASE_NOTIFICATION_BODY": "Version {0} (Build #{1}) ist jetzt verfügbar.",
+    "NOT_FOUND": "Release nicht gefunden",
+    "DRIVE_FILE_NOT_FOUND": "Die APK-Datei wurde auf Google Drive nicht gefunden. Sie wurde möglicherweise gelöscht.",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "Nur Besitzer und Entwickler dürfen Releases löschen"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "Token ist erforderlich",
+    "INVALID_USED_TOKEN": "Ungültiges oder bereits verwendetes Token",
+    "LINK_EXPIRED": "Dieser Autorisierungslink ist abgelaufen",
+    "LINK_ALREADY_USED": "Dieser Link wurde bereits verwendet",
+    "USER_CODE_REQUIRED": "Benutzercode ist erforderlich",
+    "INVALID_CODE": "Ungültiger Autorisierungscode. Bitte überprüfen Sie den Code und versuchen Sie es erneut.",
+    "CODE_EXPIRED": "Dieser Autorisierungscode ist abgelaufen. Bitte generieren Sie einen neuen.",
+    "SUCCESSFULLY_AUTHORIZED": "Gerät erfolgreich autorisiert",
+    "DEVICE_CODE_REQUIRED": "Gerätecode ist erforderlich",
+    "DEVICE_CODE_EXPIRED": "Der Gerätecode ist abgelaufen. Bitte fordern Sie einen neuen an.",
+    "AUTHORIZATION_PENDING": "Der Benutzer hat das Gerät noch nicht autorisiert.",
+    "USER_NOT_FOUND": "Benutzer nicht gefunden"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "Kategorie, Bewertung, Titel und Beschreibung sind erforderlich"
+  },
+  "HEALTH": {
+    "RUNNING": "Server ist gesund und läuft"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "Bitte geben Sie Name, E-Mail-Adresse, Betreff und Nachricht an",
+    "SENT_SUCCESS": "Nachricht erfolgreich gesendet.",
+    "SENT_ERROR": "Fehler beim Senden der Support-E-Mail. Bitte versuchen Sie es später noch einmal."
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "Autorisierungscode ist erforderlich",
+    "REFRESH_TOKEN_FAILED": "Fehler beim Abrufen des Aktualisierungstokens. Bitte stellen Sie sicher, dass Sie Offline-Zugriff und Zustimmung gewähren.",
+    "DRIVE_CONFIGURED": "Google Drive erfolgreich konfiguriert",
+    "FCM_TOKEN_REQUIRED": "FCM-Token ist erforderlich",
+    "FCM_TOKEN_UPDATED": "FCM-Token erfolgreich aktualisiert",
+    "NOT_FOUND": "Benutzer nicht gefunden",
+    "DELETED_SUCCESS": "Konto erfolgreich gelöscht"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "Willkommen bei TestAPK!",
+    "WELCOME_TEXT": "Hallo {0},\n\nWillkommen bei TestAPK! Wir freuen uns, Sie an Bord zu haben.\n\nMit freundlichen Grüßen,\nDas TestAPK-Team",
+    "WELCOME_HTML": "\n          <h3>Willkommen bei TestAPK!</h3>\n          <p>Hallo {0},</p>\n          <p>Wir freuen uns, Sie an Bord zu haben. TestAPK hilft Ihnen, Ihre APK-Releases nahtlos an Tester zu verwalten und zu verteilen.</p>\n          <br/>\n          <p>Mit freundlichen Grüßen,</p>\n          <p><strong>Das TestAPK-Team</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[TestAPK Support] {0}",
+    "SUPPORT_TEXT": "Name: {0}\nE-Mail: {1}\n\nNachricht:\n{2}",
+    "SUPPORT_HTML": "\n        <h3>Neue Support-Anfrage</h3>\n        <p><strong>Name:</strong> {0}</p>\n        <p><strong>E-Mail:</strong> {1}</p>\n        <p><strong>Betreff:</strong> {2}</p>\n        <br/>\n        <p><strong>Nachricht:</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "SMTP ist nicht konfiguriert. Willkommens-E-Mail an {0} simuliert.",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "SMTP ist nicht konfiguriert. Support-Nachricht in Konsole protokolliert:",
+    "WELCOME_SENT": "Willkommens-E-Mail an {0} gesendet",
+    "SUPPORT_SENT": "Support-E-Mail an {0} gesendet",
+    "INVITATION_SUBJECT": "Einladung zum Beitritt zu {0} auf TestAPK",
+    "INVITATION_TEXT": "Hallo,\n\nSie wurden eingeladen, der Anwendung \"{0}\" als {1} auf TestAPK beizutreten.\n\nBitte melden Sie sich in der TestAPK-App an, um die Einladung anzunehmen oder abzulehnen.\n\nMit freundlichen Grüßen,\nDas TestAPK-Team",
+    "INVITATION_HTML": "\n        <h3>Einladung zum Beitritt zu {0} auf TestAPK</h3>\n        <p>Hallo,</p>\n        <p>Sie wurden eingeladen, der Anwendung <strong>{0}</strong> als <strong>{1}</strong> auf TestAPK beizutreten.</p>\n        <p>Bitte melden Sie sich in der TestAPK-App an, um die Einladung anzunehmen oder abzulehnen.</p>\n        <br/>\n        <p>Mit freundlichen Grüßen,\n<strong>Das TestAPK-Team</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "SMTP ist nicht konfiguriert. Einladungs-E-Mail an {0} simuliert.",
+    "INVITATION_SENT": "Einladungs-E-Mail an {0} gesendet"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "Google Drive-Anmeldeinformationen sind nicht konfiguriert.",
+    "FOLDER_CREATE_FAILED": "Fehler beim Erstellen des Ordners in Google Drive",
+    "UPLOAD_FAILED_NO_ID": "Fehler beim Hochladen der Datei auf Google Drive: Keine ID zurückgegeben"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ Firebase Cloud Messaging erfolgreich initialisiert.",
+    "FCM_INIT_FAILED": "❌ Fehler beim Initialisieren von Firebase Cloud Messaging:",
+    "FCM_NOT_INITIALIZED": "⚠️ FCM nicht initialisiert. Benachrichtigung wird übersprungen.",
+    "FCM_KEY_NOT_FOUND": "⚠️ Firebase-Dienstkontodatei nicht unter {0} gefunden. Push-Benachrichtigungen werden deaktiviert.",
+    "FCM_SEND_FAILED": "❌ Fehler beim Senden der Push-Benachrichtigung an Token {0}:"
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "Android-App",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "Benutzer-ID ist erforderlich",
+      "CATEGORY_REQUIRED": "Kategorie ist erforderlich",
+      "RATING_REQUIRED": "Bewertung ist erforderlich",
+      "TITLE_REQUIRED": "Titel ist erforderlich",
+      "DESCRIPTION_REQUIRED": "Beschreibung ist erforderlich"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "E-Mail-Adresse ist erforderlich",
+      "NAME_REQUIRED": "Name ist erforderlich"
+    }
+  }
+}

@@ -9,7 +9,8 @@ class AppLocalizationsHi extends AppLocalizations {
   AppLocalizationsHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get loginErrorMsg => 'साइन-इन विफल रहा। कृपया सुनिश्चित करें कि आप एक पंजीकृत परीक्षक हैं।';
+  String get loginErrorMsg =>
+      'साइन-इन विफल रहा। कृपया सुनिश्चित करें कि आप एक पंजीकृत परीक्षक हैं।';
 
   @override
   String get appName => 'TestAPK';
@@ -36,13 +37,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get infoTitleTesterAccess => 'केवल परीक्षक पहुंच';
 
   @override
-  String get infoSubtitleTesterAccess => 'केवल आमंत्रित परीक्षक ही ऐप रिलीज़ तक पहुँच सकते हैं।';
+  String get infoSubtitleTesterAccess =>
+      'केवल आमंत्रित परीक्षक ही ऐप रिलीज़ तक पहुँच सकते हैं।';
 
   @override
   String get infoTitleSecureStorage => 'सुरक्षित क्लाउड स्टोरेज';
 
   @override
-  String get infoSubtitleSecureStorage => 'APK Google ड्राइव पर संग्रहीत हैं, सुरक्षित रूप से वितरित किए गए हैं।';
+  String get infoSubtitleSecureStorage =>
+      'APK Google ड्राइव पर संग्रहीत हैं, सुरक्षित रूप से वितरित किए गए हैं।';
 
   @override
   String get infoTitleAlwaysUpToDate => 'हमेशा अद्यतित';
@@ -57,7 +60,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loginContinueWithGoogle => 'Google के साथ जारी रखें';
 
   @override
-  String get loginConfirmation => 'साइन इन करके, आप पुष्टि करते हैं कि आप एक अधिकृत परीक्षक हैं।';
+  String get loginConfirmation =>
+      'साइन इन करके, आप पुष्टि करते हैं कि आप एक अधिकृत परीक्षक हैं।';
 
   @override
   String get splashSubtitle => 'परीक्षकों के लिए रिलीज़ प्रबंधक';
@@ -84,10 +88,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get errorPrefix => 'त्रुटि: ';
 
   @override
-  String get appListEmptyTitle => 'आपको अभी तक किसी भी\nऐप में नहीं जोड़ा गया है।';
+  String get appListEmptyTitle =>
+      'आपको अभी तक किसी भी\nऐप में नहीं जोड़ा गया है।';
 
   @override
-  String get appListEmptySubtitle => 'किसी डेवलपर से आपको परीक्षक के रूप में आमंत्रित करने के लिए कहें।';
+  String get appListEmptySubtitle =>
+      'किसी डेवलपर से आपको परीक्षक के रूप में आमंत्रित करने के लिए कहें।';
 
   @override
   String get signOutTooltip => 'साइन आउट';
@@ -192,16 +198,20 @@ class AppLocalizationsHi extends AppLocalizations {
   String get acceptBtnLabel => 'स्वीकार करें';
 
   @override
-  String get errorInstallCancelled => 'इंस्टॉलेशन रद्द: कृपया ऐप इंस्टॉल करने की अनुमति दें।';
+  String get errorInstallCancelled =>
+      'इंस्टॉलेशन रद्द: कृपया ऐप इंस्टॉल करने की अनुमति दें।';
 
   @override
-  String get errorInstallConflictingVersion => 'इंस्टॉलेशन विफल: ऐप का एक परस्पर विरोधी संस्करण पहले से इंस्टॉल है।';
+  String get errorInstallConflictingVersion =>
+      'इंस्टॉलेशन विफल: ऐप का एक परस्पर विरोधी संस्करण पहले से इंस्टॉल है।';
 
   @override
-  String get errorInstallInvalidApk => 'इंस्टॉलेशन विफल: APK फ़ाइल अमान्य या दूषित है।';
+  String get errorInstallInvalidApk =>
+      'इंस्टॉलेशन विफल: APK फ़ाइल अमान्य या दूषित है।';
 
   @override
-  String get errorInstallInsufficientStorage => 'इंस्टॉलेशन विफल: डिवाइस पर अपर्याप्त स्टोरेज स्पेस।';
+  String get errorInstallInsufficientStorage =>
+      'इंस्टॉलेशन विफल: डिवाइस पर अपर्याप्त स्टोरेज स्पेस।';
 
   @override
   String get errorInstallStartFailed => 'इंस्टॉलेशन शुरू करने में विफल';
@@ -231,7 +241,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get feedbackTitleRequired => 'शीर्षक आवश्यक है';
 
   @override
-  String get feedbackDescriptionHint => 'अपने अनुभव, बग या सुविधा अनुरोध के बारे में विवरण प्रदान करें...';
+  String get feedbackDescriptionHint =>
+      'अपने अनुभव, बग या सुविधा अनुरोध के बारे में विवरण प्रदान करें...';
 
   @override
   String get feedbackDescriptionRequired => 'विवरण आवश्यक है';
@@ -258,7 +269,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get supportSubjectRequired => 'विषय आवश्यक है';
 
   @override
-  String get supportMessageHint => 'अपनी समस्या या प्रश्न का विस्तार से वर्णन करें...';
+  String get supportMessageHint =>
+      'अपनी समस्या या प्रश्न का विस्तार से वर्णन करें...';
 
   @override
   String get supportMessageRequired => 'संदेश आवश्यक है';
@@ -276,7 +288,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get aboutVersion => 'संस्करण 1.0.0+3';
 
   @override
-  String get aboutDescription => 'एक आधुनिक, सुरक्षित और स्व-होस्टेड APK रिलीज़ प्रबंधन प्लेटफ़ॉर्म।';
+  String get aboutDescription =>
+      'एक आधुनिक, सुरक्षित और स्व-होस्टेड APK रिलीज़ प्रबंधन प्लेटफ़ॉर्म।';
 
   @override
   String get aboutPlatformInfoLabel => 'प्लेटफ़ॉर्म जानकारी';
@@ -312,7 +325,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get signOutConfirmTitle => 'साइन आउट';
 
   @override
-  String get signOutConfirmMessage => 'क्या आप वाकई अपने खाते से साइन आउट करना चाहते हैं?';
+  String get signOutConfirmMessage =>
+      'क्या आप वाकई अपने खाते से साइन आउट करना चाहते हैं?';
 
   @override
   String get deleteLabel => 'हटाएं';
@@ -331,19 +345,24 @@ class AppLocalizationsHi extends AppLocalizations {
   String get deleteAccountErrorMsg => 'खाता हटाने में विफल';
 
   @override
-  String get errorUnexpected => 'एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।';
+  String get errorUnexpected =>
+      'एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।';
 
   @override
-  String get errorTimeout => 'कनेक्शन का समय समाप्त हो गया। कृपया अपना इंटरनेट कनेक्शन जांचें।';
+  String get errorTimeout =>
+      'कनेक्शन का समय समाप्त हो गया। कृपया अपना इंटरनेट कनेक्शन जांचें।';
 
   @override
-  String get errorSessionExpired => 'सत्र समाप्त हो गया। कृपया पुनः साइन इन करें।';
+  String get errorSessionExpired =>
+      'सत्र समाप्त हो गया। कृपया पुनः साइन इन करें।';
 
   @override
-  String get errorServerError => 'सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।';
+  String get errorServerError =>
+      'सर्वर त्रुटि। कृपया बाद में पुनः प्रयास करें।';
 
   @override
-  String get errorNoInternet => 'कोई इंटरनेट कनेक्शन नहीं। कृपया अपनी नेटवर्क सेटिंग्स जांचें।';
+  String get errorNoInternet =>
+      'कोई इंटरनेट कनेक्शन नहीं। कृपया अपनी नेटवर्क सेटिंग्स जांचें।';
 
   @override
   String get errorRequestCancelled => 'अनुरोध रद्द कर दिया गया था।';
@@ -355,7 +374,8 @@ class AppLocalizationsHi extends AppLocalizations {
   String get errorBadRequest => 'अमान्य अनुरोध। कृपया अपना इनपुट जांचें।';
 
   @override
-  String get errorForbidden => 'पहुंच अस्वीकृत। आपके पास इस कार्रवाई को करने की अनुमति नहीं है।';
+  String get errorForbidden =>
+      'पहुंच अस्वीकृत। आपके पास इस कार्रवाई को करने की अनुमति नहीं है।';
 
   @override
   String get selectLanguage => 'भाषा चुनें';
@@ -424,19 +444,22 @@ class AppLocalizationsHi extends AppLocalizations {
   String get aboutWebDashboardTitle => 'वेब डैशबोर्ड';
 
   @override
-  String get aboutWebDashboardSubtitle => 'Google ड्राइव स्टोरेज, टीम प्रबंधन, रिलीज़ इतिहास';
+  String get aboutWebDashboardSubtitle =>
+      'Google ड्राइव स्टोरेज, टीम प्रबंधन, रिलीज़ इतिहास';
 
   @override
   String get aboutFlutterClientTitle => 'फ्लटर क्लाइंट';
 
   @override
-  String get aboutFlutterClientSubtitle => 'ग्लासमॉर्फिक यूआई, वन-टैप इंस्टॉल, संस्करण पहचान';
+  String get aboutFlutterClientSubtitle =>
+      'ग्लासमॉर्फिक यूआई, वन-टैप इंस्टॉल, संस्करण पहचान';
 
   @override
   String get aboutCliToolTitle => 'CLI टूल';
 
   @override
-  String get aboutCliToolSubtitle => 'डिवाइस ऑथ फ्लो, रीयल-टाइम प्रगति, ड्राइव अपलोड स्थिति';
+  String get aboutCliToolSubtitle =>
+      'डिवाइस ऑथ फ्लो, रीयल-टाइम प्रगति, ड्राइव अपलोड स्थिति';
 
   @override
   String get aboutEmailSupport => 'ईमेल सहायता';
@@ -524,10 +547,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get privacyPolicyTitle3 => '3. हम आपकी जानकारी का उपयोग कैसे करते हैं';
 
   @override
-  String get privacyPolicyPara3_1 => 'हम एकत्र की गई जानकारी का उपयोग निम्नलिखित उद्देश्यों के लिए करते हैं:';
+  String get privacyPolicyPara3_1 =>
+      'हम एकत्र की गई जानकारी का उपयोग निम्नलिखित उद्देश्यों के लिए करते हैं:';
 
   @override
-  String get privacyPolicyPara3_2 => '• आपकी पहचान को प्रमाणित करने और आपके खाते का प्रबंधन करने के लिए।';
+  String get privacyPolicyPara3_2 =>
+      '• आपकी पहचान को प्रमाणित करने और आपके खाते का प्रबंधन करने के लिए।';
 
   @override
   String get privacyPolicyPara3_3 =>
@@ -538,7 +563,8 @@ class AppLocalizationsHi extends AppLocalizations {
       '• आपके डैशबोर्ड और मोबाइल क्लाइंट पर एप्लिकेशन रिलीज़ इतिहास और विवरण प्रदर्शित करने के लिए।';
 
   @override
-  String get privacyPolicyPara3_5 => '• CLI टूल के प्रमाणीकरण और अपलोड फ़्लो का समर्थन करने के लिए।';
+  String get privacyPolicyPara3_5 =>
+      '• CLI टूल के प्रमाणीकरण और अपलोड फ़्लो का समर्थन करने के लिए।';
 
   @override
   String get privacyPolicyTitle4 => '4. डेटा साझाकरण और प्रकटीकरण';
@@ -614,14 +640,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get termsOfServiceTitle5 => '5. स्वीकार्य उपयोग';
 
   @override
-  String get termsOfServicePara5_1 => 'आप सेवा का उपयोग न करने के लिए सहमत हैं:';
+  String get termsOfServicePara5_1 =>
+      'आप सेवा का उपयोग न करने के लिए सहमत हैं:';
 
   @override
   String get termsOfServicePara5_2 =>
       '• दुर्भावनापूर्ण सॉफ़्टवेयर, वायरस या उपकरणों को नुकसान पहुंचाने या बाधित करने के लिए डिज़ाइन किए गए किसी भी कोड को अपलोड या वितरित करने के लिए।';
 
   @override
-  String get termsOfServicePara5_3 => '• दूसरों के बौद्धिक संपदा अधिकारों का उल्लंघन करने के लिए।';
+  String get termsOfServicePara5_3 =>
+      '• दूसरों के बौद्धिक संपदा अधिकारों का उल्लंघन करने के लिए।';
 
   @override
   String get termsOfServicePara5_4 =>

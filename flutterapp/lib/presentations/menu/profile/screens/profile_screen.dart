@@ -11,8 +11,6 @@ import 'package:flutterapp/presentations/login/screens/login_screen.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/action_confirmation_dialog.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_avatar.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_info_card.dart';
-import 'package:flutterapp/presentations/menu/profile/widgets/profile_legal_card.dart';
-import 'package:flutterapp/presentations/menu/profile/widgets/profile_logout_button.dart';
 import 'package:flutterapp/presentations/menu/profile/widgets/profile_delete_account_button.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
@@ -21,49 +19,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
   final UserModel user;
-  final VoidCallback? onSignedOut;
 
-  const ProfileScreen({super.key, required this.user, this.onSignedOut});
-
-  Future<void> _handleSignOut(BuildContext context) async {
-    final confirmed = await showGeneralDialog<bool>(
-      context: context,
-      barrierDismissible: true,
-      barrierLabel: 'Dismiss',
-      barrierColor: Colors.black.withValues(alpha: 0.5),
-      transitionDuration: const Duration(milliseconds: 300),
-      pageBuilder: (context, anim1, anim2) => const SizedBox.shrink(),
-      transitionBuilder: (context, anim1, anim2, child) {
-        final curve = CurvedAnimation(parent: anim1, curve: Curves.easeOutBack);
-        return ScaleTransition(
-          scale: curve,
-          child: FadeTransition(
-            opacity: anim1,
-            child: ActionConfirmationDialog(
-              title: kSignOutConfirmTitle,
-              message: kSignOutConfirmMessage,
-              confirmLabel: kSignOutLabel,
-              icon: Icons.logout_rounded,
-            ),
-          ),
-        );
-      },
-    );
-
-    if (confirmed == true) {
-      if (!context.mounted) return;
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (ctx) => const Center(child: CircularProgressIndicator(color: AppColors.accent)),
-      );
-      await AuthService.instance.signOut();
-      if (context.mounted) {
-        Navigator.of(context).pop(); // Dismiss the dialog
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginScreen()), (_) => false);
-      }
-    }
-  }
+  const ProfileScreen({super.key, required this.user});
 
   Future<void> _handleDeleteAccount(BuildContext context) async {
     final confirmed = await showGeneralDialog<bool>(
@@ -251,20 +208,10 @@ class ProfileScreen extends StatelessWidget {
                         // Info card
                         ProfileInfoCard(user: user),
 
-                        SizedBox(height: context.scale(20)),
-
-                        // Legal card
-                        const ProfileLegalCard(),
-
                         SizedBox(height: context.scale(32)),
 
                         // Delete Account button
                         ProfileDeleteAccountButton(onTap: () => _handleDeleteAccount(context)),
-
-                        SizedBox(height: context.scale(16)),
-
-                        // Logout button
-                        ProfileLogoutButton(onTap: () => _handleSignOut(context)),
                       ],
                     ),
                   ),

@@ -1,0 +1,143 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "成功",
+    "STATUS_FAIL": "失敗",
+    "STATUS_ERROR": "エラー",
+    "USER_NOT_AUTHENTICATED": "ユーザーが認証されていません",
+    "SOMETHING_WENT_WRONG": "問題が発生しました",
+    "TOO_MANY_REQUESTS": "このIPからのリクエストが多すぎます。後でもう一度お試しください。",
+    "VALIDATION_FAILED": "検証に失敗しました"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "Google IDトークンが必要です",
+    "INVALID_GOOGLE_ID_TOKEN": "無効なGoogle IDトークン",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "無効なGoogle IDトークンのペイロード",
+    "MISSING_EMAIL_OR_NAME": "Googleアカウントにメールアドレスまたは名前がありません",
+    "LOGGED_OUT": "正常にログアウトしました",
+    "NOT_LOGGED_IN": "ログインしていません！アクセスするにはログインしてください。",
+    "INVALID_EXPIRED_TOKEN": "トークンが無効または期限切れです。もう一度ログインしてください。",
+    "USER_NOT_FOUND": "このトークンに属するユーザーはもう存在しません。",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "アカウントが削除されました。アカウントを再開するにはサポートにお問い合わせください。"
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "アプリケーション名、パッケージ名、および説明が必要です",
+    "PACKAGE_ALREADY_EXISTS": "このパッケージ名のアプリケーションは既に存在します",
+    "NOT_FOUND": "アプリケーションが見つかりません",
+    "NOT_MEMBER": "このアプリケーションのメンバーではありません",
+    "INVITE_FIELDS_REQUIRED": "メールアドレスと役割が必要です",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "オーナーとデベロッパーのみがメンバーを招待できます",
+    "INVITE_YOURSELF": "自分自身を招待することはできません",
+    "INVITE_NOT_REGISTERED": "ユーザーが登録されていません。登録済みのユーザーのみ招待できます。",
+    "INVITE_ALREADY_MEMBER": "ユーザーは既にメンバーであるか、保留中の招待があります",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "オーナーとデベロッパーのみがメンバーを削除できます",
+    "REMOVE_OWNER_RESTRICTED": "アプリケーションのオーナーを削除することはできません",
+    "INVITATION_NOT_FOUND": "招待が見つかりません",
+    "INVITATION_REJECTED": "招待が正常に辞退されました",
+    "INVITATION_NOTIFICATION_TITLE": "{0}への招待",
+    "INVITATION_NOTIFICATION_BODY": "{0}に{1}として参加するよう招待されました。"
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "APKファイルをアップロードしてください",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "オーナーとデベロッパーのみがAPKをアップロードできます",
+    "PARSE_FAILED": "APKファイルの解析に失敗しました。有効なAndroidパッケージであることを確認してください。",
+    "PACKAGE_MISMATCH": "パッケージ名が一致しません。期待値: {0}、検出値: {1}",
+    "BUILD_ALREADY_EXISTS": "ビルド番号 #{0} のリリースは既に存在します",
+    "BUILD_NUMBER_TOO_LOW": "ビルド番号 #{0} は、最後に公開されたビルド番号が #{1} であるため使用できません。ビルド番号を増やして再試行してください。",
+    "DRIVE_NOT_CONFIGURED": "このアプリケーションのオーナーに対してGoogleドライブが設定されていません。",
+    "DRIVE_REVOKED": "Googleドライブへのアクセス権が取り消されたか、無効です。アプリケーション設定でGoogleドライブを再設定してください。",
+    "DRIVE_UPLOAD_FAILED": "GoogleドライブへのAPKのアップロードに失敗しました: {0}",
+    "NO_RELEASE_NOTES": "リリースノートが提供されていません",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "{0}の新しいリリース",
+    "NEW_RELEASE_NOTIFICATION_BODY": "バージョン {0} (ビルド #{1}) が利用可能になりました。",
+    "NOT_FOUND": "リリースが見つかりません",
+    "DRIVE_FILE_NOT_FOUND": "GoogleドライブにAPKファイルが見つかりませんでした。削除された可能性があります。",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "オーナーとデベロッパーのみがリリースを削除できます"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "トークンが必要です",
+    "INVALID_USED_TOKEN": "無効なトークンまたは既に使用されているトークン",
+    "LINK_EXPIRED": "この認証リンクは期限切れです",
+    "LINK_ALREADY_USED": "このリンクは既に使用されています",
+    "USER_CODE_REQUIRED": "ユーザーコードが必要です",
+    "INVALID_CODE": "無効な認証コード。コードを確認して再試行してください。",
+    "CODE_EXPIRED": "この認証コードは期限切れです。新しいコードを生成してください。",
+    "SUCCESSFULLY_AUTHORIZED": "デバイスが正常に認証されました",
+    "DEVICE_CODE_REQUIRED": "デバイスコードが必要です",
+    "DEVICE_CODE_EXPIRED": "デバイスコードが期限切れです。新しいコードを要求してください。",
+    "AUTHORIZATION_PENDING": "ユーザーはまだデバイスを認証していません。",
+    "USER_NOT_FOUND": "ユーザーが見つかりません"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "カテゴリ、評価、タイトル、および説明が必要です"
+  },
+  "HEALTH": {
+    "RUNNING": "サーバーは正常に動作しています"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "名前、メールアドレス、件名、およびメッセージを入力してください",
+    "SENT_SUCCESS": "メッセージが正常に送信されました。",
+    "SENT_ERROR": "サポートメールの送信中にエラーが発生しました。後でもう一度お試しください。"
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "認証コードが必要です",
+    "REFRESH_TOKEN_FAILED": "リフレッシュトークンの取得に失敗しました。オフラインアクセスと同意を付与していることを確認してください。",
+    "DRIVE_CONFIGURED": "Googleドライブが正常に設定されました",
+    "FCM_TOKEN_REQUIRED": "FCMトークンが必要です",
+    "FCM_TOKEN_UPDATED": "FCMトークンが正常に更新されました",
+    "NOT_FOUND": "ユーザーが見つかりません",
+    "DELETED_SUCCESS": "アカウントが正常に削除されました"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "TestAPKへようこそ！",
+    "WELCOME_TEXT": "{name}様、\n\nTestAPKへようこそ！ご利用いただきありがとうございます。\n\n敬具、\nTestAPKチーム",
+    "WELCOME_HTML": "\n          <h3>TestAPKへようこそ！</h3>\n          <p>{0}様、</p>\n          <p>ご利用いただきありがとうございます。TestAPKは、テスターへのAPKリリースの管理と配信をシームレスに行うためのプラットフォームです。</p>\n          <br/>\n          <p>敬具、</p>\n          <p><strong>TestAPKチーム</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[TestAPKサポート] {0}",
+    "SUPPORT_TEXT": "お名前: {0}\nメールアドレス: {1}\n\nメッセージ:\n{2}",
+    "SUPPORT_HTML": "\n        <h3>新規サポートリクエスト</h3>\n        <p><strong>お名前:</strong> {0}</p>\n        <p><strong>メールアドレス:</strong> {1}</p>\n        <p><strong>件名:</strong> {2}</p>\n        <br/>\n        <p><strong>メッセージ:</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "SMTPが設定されていません。{0}へのウェルカムメールの送信をシミュレートしました。",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "SMTPが設定されていません。サポートメッセージがコンソールに記録されました:",
+    "WELCOME_SENT": "{0}にウェルカムメールを送信しました",
+    "SUPPORT_SENT": "{0}にサポートメールを送信しました",
+    "INVITATION_SUBJECT": "TestAPKで{0}への招待",
+    "INVITATION_TEXT": "こんにちは、\n\nTestAPKでアプリケーション「{0}」に{1}として招待されました。\n\n招待を承認または辞退するには、TestAPKアプリにログインしてください。\n\n敬具、\nTestAPKチーム",
+    "INVITATION_HTML": "\n        <h3>TestAPKで{0}への招待</h3>\n        <p>こんにちは、</p>\n        <p>TestAPKでアプリケーション<strong>「{0}」</strong>に<strong>{1}</strong>として招待されました。</p>\n        <p>招待を承認または辞退するには、TestAPKアプリにログインしてください。</p>\n        <br/>\n        <p>敬具、</p>\n        <p><strong>TestAPKチーム</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "SMTPが設定されていません。{0}への招待メールの送信をシミュレートしました。",
+    "INVITATION_SENT": "{0}に招待メールを送信しました"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "Googleドライブの認証情報が設定されていません。",
+    "FOLDER_CREATE_FAILED": "Googleドライブでのフォルダ作成に失敗しました",
+    "UPLOAD_FAILED_NO_ID": "Googleドライブへのファイルのアップロードに失敗しました: IDが返されませんでした"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ Firebase Cloud Messagingが正常に初期化されました。",
+    "FCM_INIT_FAILED": "❌ Firebase Cloud Messagingの初期化に失敗しました:",
+    "FCM_NOT_INITIALIZED": "⚠️ FCMが初期化されていません。通知をスキップします。",
+    "FCM_KEY_NOT_FOUND": "⚠️ {0} にFirebaseサービスアカウントファイルが見つかりませんでした。プッシュ通知は無効になります。",
+    "FCM_SEND_FAILED": "❌ トークン {0} へのプッシュ通知の送信に失敗しました:"
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "Androidアプリ",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "ユーザーIDが必要です",
+      "CATEGORY_REQUIRED": "カテゴリが必要です",
+      "RATING_REQUIRED": "評価が必要です",
+      "TITLE_REQUIRED": "タイトルが必要です",
+      "DESCRIPTION_REQUIRED": "説明が必要です"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "メールアドレスが必要です",
+      "NAME_REQUIRED": "名前が必要です"
+    }
+  }
+}
