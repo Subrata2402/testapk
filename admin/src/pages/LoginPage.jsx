@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation, languages } from '../context/LanguageContext';
 import CustomDropdown from '../components/common/CustomDropdown';
-import { Shield, Mail, Lock, Loader2, AlertCircle } from 'lucide-react';
+import { Shield, Mail, Lock, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import './LoginPage.css';
 
 export default function LoginPage() {
@@ -13,6 +13,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -100,14 +101,23 @@ export default function LoginPage() {
                 <Lock className="input-icon" size={18} />
                 <input
                   id="password"
-                  type="password"
-                  className="form-input with-icon"
+                  type={showPassword ? 'text' : 'password'}
+                  className="form-input with-icon with-icon-right"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
                   disabled={isSubmitting}
                 />
+                <button
+                  type="button"
+                  className="input-icon-right"
+                  onClick={() => setShowPassword(v => !v)}
+                  tabIndex={-1}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
             </div>
 

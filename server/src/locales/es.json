@@ -17,7 +17,9 @@
     "NOT_LOGGED_IN": "¡No has iniciado sesión! Por favor, inicia sesión para obtener acceso.",
     "INVALID_EXPIRED_TOKEN": "Token no válido o caducado. Por favor, inicia sesión de nuevo.",
     "USER_NOT_FOUND": "El usuario al que pertenece este token ya no existe.",
-    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Tu cuenta ha sido eliminada. Por favor, contacta con soporte para reabrir tu cuenta."
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Tu cuenta ha sido eliminada. Por favor, contacta con soporte para reabrir tu cuenta.",
+    "EMAIL_PASSWORD_REQUIRED": "Se requieren correo electrónico y contraseña",
+    "INVALID_EMAIL_PASSWORD": "Correo electrónico o contraseña incorrectos"
   },
   "APP": {
     "FIELDS_REQUIRED": "Se requieren el nombre de la aplicación, el nombre del paquete y la descripción",

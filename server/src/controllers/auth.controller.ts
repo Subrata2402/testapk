@@ -155,7 +155,7 @@ export const adminLogin = async (
     if (!email || !password) {
       res.status(400).json({
         status: STRINGS.COMMON.STATUS_FAIL,
-        message: 'Email and password are required',
+        message: STRINGS.AUTH.EMAIL_PASSWORD_REQUIRED,
       });
       return;
     }
@@ -166,7 +166,7 @@ export const adminLogin = async (
     if (!user || !user.password) {
       res.status(401).json({
         status: STRINGS.COMMON.STATUS_FAIL,
-        message: 'Invalid email or password',
+        message: STRINGS.AUTH.INVALID_EMAIL_PASSWORD,
       });
       return;
     }
@@ -176,7 +176,7 @@ export const adminLogin = async (
     if (hashedPassword !== user.password) {
       res.status(401).json({
         status: STRINGS.COMMON.STATUS_FAIL,
-        message: 'Invalid email or password',
+        message: STRINGS.AUTH.INVALID_EMAIL_PASSWORD,
       });
       return;
     }

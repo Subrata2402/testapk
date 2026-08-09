@@ -26,6 +26,8 @@ export const ENGLISH_STRINGS = {
     INVALID_EXPIRED_TOKEN: 'Invalid or expired token. Please log in again.',
     USER_NOT_FOUND: 'The user belonging to this token no longer exists.',
     ACCOUNT_DELETED_CONTACT_SUPPORT: 'Your account has been deleted. Please contact support to reopen your account.',
+    EMAIL_PASSWORD_REQUIRED: 'Email and password are required',
+    INVALID_EMAIL_PASSWORD: 'Invalid email or password',
   },
   APP: {
     FIELDS_REQUIRED: 'Application name, package name, and description are required',

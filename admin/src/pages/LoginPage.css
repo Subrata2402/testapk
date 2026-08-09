@@ -119,7 +119,35 @@
   padding-left: 44px;
 }
 
+.form-input.with-icon-right {
+  padding-right: 44px;
+}
+
+.input-icon-right {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.input-icon-right:hover {
+  color: var(--text-primary);
+}
+
 .input-icon-wrapper:focus-within .input-icon {
+  color: var(--accent-primary);
+}
+
+.input-icon-wrapper:focus-within .input-icon-right {
   color: var(--accent-primary);
 }
 
