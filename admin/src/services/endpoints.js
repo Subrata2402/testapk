@@ -15,4 +15,11 @@ export const ENDPOINTS = {
     MEMBER_EMAIL: (appId, email) => `/apps/${appId}/members/${email}`,
     RELEASE_BUILD: (appId, buildNumber) => `/apps/${appId}/releases/${buildNumber}`,
   },
+  SUPPORT: {
+    REQUESTS: '/support/requests',
+    UPDATE_STATUS: (id) => `/support/requests/${id}/status`,
+  },
+  ADMIN: {
+    STATS: '/admin/stats',
+  },
 };

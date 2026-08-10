@@ -55,4 +55,13 @@ export const appService = {
     apiClient.delete(ENDPOINTS.APPS.RELEASE_BUILD(appId, buildNumber)),
 };
 
+export const supportService = {
+  getRequests: () => apiClient.get(ENDPOINTS.SUPPORT.REQUESTS),
+  updateStatus: (id, status) => apiClient.patch(ENDPOINTS.SUPPORT.UPDATE_STATUS(id), { status }),
+};
+
+export const adminService = {
+  getStats: () => apiClient.get(ENDPOINTS.ADMIN.STATS),
+};
+
 export default apiClient;

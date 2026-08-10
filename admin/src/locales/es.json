@@ -11,6 +11,10 @@
     "title": "Panel de Administración",
     "logout": "Cerrar Sesión",
     "welcome": "¡Bienvenido de nuevo, {0}!",
+    "welcomeSubtitle": "Tiene acceso completo para administrar aplicaciones, versiones y configuraciones del sistema.",
+    "role": "Administrador",
+    "logoutConfirmTitle": "Cerrar Sesión",
+    "logoutConfirmMessage": "¿Está seguro de que desea cerrar la sesión del portal de administración?",
     "stats": {
       "totalApps": "Aplicaciones Totales",
       "totalDownloads": "Descargas Totales",
@@ -18,6 +22,31 @@
     },
     "recentActivity": "Actividad Reciente",
     "noActivity": "No se encontró actividad reciente."
+  },
+  "support": {
+    "title": "Solicitudes de Soporte",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "date": "Fecha",
+    "status": "Estado",
+    "actions": "Acciones",
+    "view": "Ver Mensaje",
+    "noRequests": "No se encontraron solicitudes de soporte.",
+    "pending": "Pendiente",
+    "resolved": "Resuelto",
+    "reply": "Responder por Correo",
+    "searchPlaceholder": "Buscar por nombre, correo o asunto...",
+    "allStatuses": "Todos los estados",
+    "new": "Nuevo",
+    "closed": "Cerrado",
+    "allTime": "Todo el tiempo",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "last7Days": "Últimos 7 días",
+    "noMatchingRequests": "No se encontraron solicitudes de soporte coincidentes.",
+    "pendingRequests": "Nuevas solicitudes de soporte"
   },
   "common": {
     "loading": "Cargando..."

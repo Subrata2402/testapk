@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Check } from 'lucide-react';
+import { ChevronDown, Check, Loader2 } from 'lucide-react';
 import './CustomDropdown.css';
 
-export default function CustomDropdown({ options, value, onChange, placeholder = 'Select option' }) {
+export default function CustomDropdown({ options, value, onChange, placeholder = 'Select option', disabled = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -19,21 +19,32 @@ export default function CustomDropdown({ options, value, onChange, placeholder =
 
   const selectedOption = options.find(opt => opt.value === value) || { value, label: value || placeholder };
 
+  const handleTriggerClick = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
+  };
+
   return (
-    <div className="custom-dropdown" ref={dropdownRef}>
+    <div className={`custom-dropdown ${disabled ? 'disabled' : ''}`} ref={dropdownRef}>
       <button
         type="button"
-        className={`dropdown-trigger ${isOpen ? 'open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        className={`dropdown-trigger ${isOpen ? 'open' : ''} ${disabled ? 'disabled' : ''}`}
+        onClick={handleTriggerClick}
+        disabled={disabled}
       >
         <div className="trigger-content">
           {selectedOption.flag && <span className="dropdown-item-flag">{selectedOption.flag}</span>}
           <span>{selectedOption.label}</span>
         </div>
-        <ChevronDown size={16} className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
+        {disabled ? (
+          <Loader2 size={14} className="dropdown-spinner animate-spin" />
+        ) : (
+          <ChevronDown size={16} className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
+        )}
       </button>
 
-      {isOpen && (
+      {isOpen && !disabled && (
         <div className="dropdown-menu animate-fade-in">
           {options.map((opt) => {
             const isSelected = opt.value === value;

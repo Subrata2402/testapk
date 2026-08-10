@@ -17,7 +17,10 @@
     "NOT_LOGGED_IN": "Sie sind nicht eingeloggt! Bitte loggen Sie sich ein, um Zugriff zu erhalten.",
     "INVALID_EXPIRED_TOKEN": "Ungültiges oder abgelaufenes Token. Bitte melden Sie sich erneut an.",
     "USER_NOT_FOUND": "Der zu diesem Token gehörende Benutzer existiert nicht mehr.",
-    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Ihr Konto wurde gelöscht. Bitte kontaktieren Sie den Support, um Ihr Konto wieder zu eröffnen."
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Ihr Konto wurde gelöscht. Bitte kontaktieren Sie den Support, um Ihr Konto wieder zu eröffnen.",
+    "EMAIL_PASSWORD_REQUIRED": "E-Mail-Adresse und Passwort sind erforderlich",
+    "INVALID_EMAIL_PASSWORD": "Ungültige E-Mail-Adresse oder Passwort",
+    "ACCESS_DENIED": "Zugriff verweigert. Nur für Administratoren."
   },
   "APP": {
     "FIELDS_REQUIRED": "Anwendungsname, Paketname und Beschreibung sind erforderlich",
@@ -76,7 +79,9 @@
   "SUPPORT": {
     "FIELDS_REQUIRED": "Bitte geben Sie Name, E-Mail-Adresse, Betreff und Nachricht an",
     "SENT_SUCCESS": "Nachricht erfolgreich gesendet.",
-    "SENT_ERROR": "Fehler beim Senden der Support-E-Mail. Bitte versuchen Sie es später noch einmal."
+    "SENT_ERROR": "Fehler beim Senden der Support-E-Mail. Bitte versuchen Sie es später noch einmal.",
+    "INVALID_STATUS": "Ungültiger Statuswert. Muss ausstehend oder gelöst sein.",
+    "NOT_FOUND": "Support-Anfrage nicht gefunden"
   },
   "USER": {
     "AUTH_CODE_REQUIRED": "Autorisierungscode ist erforderlich",

@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "Admin-Portal",
+    "subtitle": "Melden Sie sich an, um TestAPK zu verwalten",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "button": "Anmelden",
+    "error": "Ungültige E-Mail-Adresse oder Passwort"
+  },
+  "dashboard": {
+    "title": "Admin-Dashboard",
+    "logout": "Abmelden",
+    "welcome": "Willkommen zurück, {0}!",
+    "welcomeSubtitle": "Sie haben vollen Zugriff auf die Verwaltung von Anwendungen, Versionen und Systemeinstellungen.",
+    "role": "Administrator",
+    "logoutConfirmTitle": "Abmelden",
+    "logoutConfirmMessage": "Sind Sie sicher, dass Sie sich vom Admin-Portal abmelden möchten?",
+    "stats": {
+      "totalApps": "Apps insgesamt",
+      "totalDownloads": "Downloads insgesamt",
+      "activeUsers": "Aktive Benutzer"
+    },
+    "recentActivity": "Letzte Aktivität",
+    "noActivity": "Keine kürzlichen Aktivitäten gefunden."
+  },
+  "support": {
+    "title": "Support-Anfragen",
+    "name": "Name",
+    "email": "E-Mail",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "date": "Datum",
+    "status": "Status",
+    "actions": "Aktionen",
+    "view": "Nachricht anzeigen",
+    "noRequests": "Keine Support-Anfragen gefunden.",
+    "pending": "Ausstehend",
+    "resolved": "Gelöst",
+    "reply": "Per E-Mail antworten",
+    "searchPlaceholder": "Suche nach Name, E-Mail oder Betreff...",
+    "allStatuses": "Alle Status",
+    "new": "Neu",
+    "closed": "Geschlossen",
+    "allTime": "Gesamte Zeit",
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "last7Days": "Letzte 7 Tage",
+    "noMatchingRequests": "Keine übereinstimmenden Support-Anfragen gefunden.",
+    "pendingRequests": "Neue Support-Anfragen"
+  },
+  "common": {
+    "loading": "Laden..."
+  }
+}

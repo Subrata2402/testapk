@@ -14,6 +14,7 @@ export default function ContactSupport({ user }) {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState('');
   const [error, setError] = useState(null);
 
   React.useEffect(() => {
@@ -50,6 +51,7 @@ export default function ContactSupport({ user }) {
     try {
       await supportService.contactSupport(name, email, subject, message);
 
+      setSubmittedEmail(email);
       setIsSubmitted(true);
       setName('');
       setEmail('');
@@ -77,7 +79,7 @@ export default function ContactSupport({ user }) {
               <Icons.CheckCircle size={48} className="success-icon" />
             </div>
             <h2>{t('CONTACT.SUCCESS_TITLE')}</h2>
-            <p dangerouslySetInnerHTML={{ __html: t('CONTACT.SUCCESS_DESC', [email || 'your email']) }}></p>
+            <p dangerouslySetInnerHTML={{ __html: t('CONTACT.SUCCESS_DESC', [submittedEmail || 'your email']) }}></p>
             <button className="btn btn-primary mt-4" onClick={() => setIsSubmitted(false)}>
               {t('CONTACT.SEND_ANOTHER')}
             </button>

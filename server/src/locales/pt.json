@@ -17,7 +17,10 @@
     "NOT_LOGGED_IN": "Você não está logado! Por favor, faça o login para obter acesso.",
     "INVALID_EXPIRED_TOKEN": "Token inválido ou expirado. Por favor, faça o login novamente.",
     "USER_NOT_FOUND": "O usuário associado a este token não existe mais.",
-    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Sua conta foi excluída. Entre em contato com o suporte para reabrir sua conta."
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Sua conta foi excluída. Entre em contato com o suporte para reabrir sua conta.",
+    "EMAIL_PASSWORD_REQUIRED": "E-mail e senha são obrigatórios",
+    "INVALID_EMAIL_PASSWORD": "E-mail ou senha inválidos",
+    "ACCESS_DENIED": "Acesso negado. Apenas administradores."
   },
   "APP": {
     "FIELDS_REQUIRED": "Nome do aplicativo, nome do pacote e descrição são obrigatórios",
@@ -76,7 +79,9 @@
   "SUPPORT": {
     "FIELDS_REQUIRED": "Por favor, forneça nome, e-mail, assunto e mensagem",
     "SENT_SUCCESS": "Mensagem enviada com sucesso.",
-    "SENT_ERROR": "Erro ao enviar o e-mail de suporte. Por favor, tente novamente mais tarde."
+    "SENT_ERROR": "Erro ao enviar o e-mail de suporte. Por favor, tente novamente mais tarde.",
+    "INVALID_STATUS": "Valor de status inválido. Deve ser pendente ou resolvido.",
+    "NOT_FOUND": "Solicitação de suporte não encontrada"
   },
   "USER": {
     "AUTH_CODE_REQUIRED": "O código de autorização é obrigatório",

@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "Portal do Administrador",
+    "subtitle": "Faça login para gerenciar o TestAPK",
+    "email": "Endereço de E-mail",
+    "password": "Senha",
+    "button": "Entrar",
+    "error": "E-mail ou senha inválidos"
+  },
+  "dashboard": {
+    "title": "Painel do Administrador",
+    "logout": "Sair",
+    "welcome": "Bem-vindo de volta, {0}!",
+    "welcomeSubtitle": "Você tem acesso total para gerenciar aplicativos, lançamentos e configurações do sistema.",
+    "role": "Administrador",
+    "logoutConfirmTitle": "Sair",
+    "logoutConfirmMessage": "Tem certeza de que deseja sair do portal do administrador?",
+    "stats": {
+      "totalApps": "Total de Apps",
+      "totalDownloads": "Total de Downloads",
+      "activeUsers": "Usuários Ativos"
+    },
+    "recentActivity": "Atividade Recente",
+    "noActivity": "Nenhuma atividade recente encontrada."
+  },
+  "support": {
+    "title": "Solicitações de Suporte",
+    "name": "Nome",
+    "email": "E-mail",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "date": "Data",
+    "status": "Status",
+    "actions": "Ações",
+    "view": "Ver Mensagem",
+    "noRequests": "Nenhuma solicitação de suporte encontrada.",
+    "pending": "Pendente",
+    "resolved": "Resolvido",
+    "reply": "Responder por E-mail",
+    "searchPlaceholder": "Pesquisar por nome, e-mail ou assunto...",
+    "allStatuses": "Todos os Statuses",
+    "new": "Novo",
+    "closed": "Fechado",
+    "allTime": "Todo o período",
+    "today": "Hoje",
+    "yesterday": "Ontem",
+    "last7Days": "Últimos 7 dias",
+    "noMatchingRequests": "Nenhuma solicitação de suporte correspondente encontrada.",
+    "pendingRequests": "Novas Solicitações de Suporte"
+  },
+  "common": {
+    "loading": "Carregando..."
+  }
+}

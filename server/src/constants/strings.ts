@@ -28,6 +28,7 @@ export const ENGLISH_STRINGS = {
     ACCOUNT_DELETED_CONTACT_SUPPORT: 'Your account has been deleted. Please contact support to reopen your account.',
     EMAIL_PASSWORD_REQUIRED: 'Email and password are required',
     INVALID_EMAIL_PASSWORD: 'Invalid email or password',
+    ACCESS_DENIED: 'Access denied. Admins only.',
   },
   APP: {
     FIELDS_REQUIRED: 'Application name, package name, and description are required',
@@ -92,6 +93,8 @@ export const ENGLISH_STRINGS = {
     FIELDS_REQUIRED: 'Please provide name, email, subject, and message',
     SENT_SUCCESS: 'Message sent successfully.',
     SENT_ERROR: 'Error sending support email. Please try again later.',
+    INVALID_STATUS: 'Invalid status value. Must be pending or resolved.',
+    NOT_FOUND: 'Support request not found',
   },
   USER: {
     AUTH_CODE_REQUIRED: 'Authorization code is required',
@@ -227,7 +230,13 @@ function createProxy(target: any, path: string[] = []): any {
       // Get current locale from AsyncLocalStorage
       const locale = localeStorage.getStore() || 'en';
 
-      if (locale === 'en') {
+      const propStr = String(prop);
+      if (
+        locale === 'en' ||
+        propStr === 'STATUS_SUCCESS' ||
+        propStr === 'STATUS_FAIL' ||
+        propStr === 'STATUS_ERROR'
+      ) {
         return value;
       }
 

@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "Portail Admin",
+    "subtitle": "Connectez-vous pour gérer TestAPK",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "button": "Se connecter",
+    "error": "E-mail ou mot de passe invalide"
+  },
+  "dashboard": {
+    "title": "Tableau de bord Admin",
+    "logout": "Se déconnecter",
+    "welcome": "Ravi de vous revoir, {0} !",
+    "welcomeSubtitle": "Vous disposez d'un accès complet pour gérer les applications, les versions et les paramètres système.",
+    "role": "Administrateur",
+    "logoutConfirmTitle": "Se déconnecter",
+    "logoutConfirmMessage": "Êtes-vous sûr de vouloir vous déconnecter du portail admin ?",
+    "stats": {
+      "totalApps": "Total des applications",
+      "totalDownloads": "Total des téléchargements",
+      "activeUsers": "Utilisateurs actifs"
+    },
+    "recentActivity": "Activité récente",
+    "noActivity": "Aucune activité récente trouvée."
+  },
+  "support": {
+    "title": "Demandes de support",
+    "name": "Nom",
+    "email": "E-mail",
+    "subject": "Sujet",
+    "message": "Message",
+    "date": "Date",
+    "status": "Statut",
+    "actions": "Actions",
+    "view": "Voir le message",
+    "noRequests": "Aucune demande de support trouvée.",
+    "pending": "En attente",
+    "resolved": "Résolu",
+    "reply": "Répondre par e-mail",
+    "searchPlaceholder": "Rechercher par nom, e-mail ou sujet...",
+    "allStatuses": "Tous les statuts",
+    "new": "Nouveau",
+    "closed": "Fermé",
+    "allTime": "Tout le temps",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "last7Days": "7 derniers jours",
+    "noMatchingRequests": "Aucune demande de support correspondante trouvée.",
+    "pendingRequests": "Nouvelles demandes de support"
+  },
+  "common": {
+    "loading": "Chargement..."
+  }
+}

@@ -19,7 +19,8 @@
     "USER_NOT_FOUND": "El usuario al que pertenece este token ya no existe.",
     "ACCOUNT_DELETED_CONTACT_SUPPORT": "Tu cuenta ha sido eliminada. Por favor, contacta con soporte para reabrir tu cuenta.",
     "EMAIL_PASSWORD_REQUIRED": "Se requieren correo electrónico y contraseña",
-    "INVALID_EMAIL_PASSWORD": "Correo electrónico o contraseña incorrectos"
+    "INVALID_EMAIL_PASSWORD": "Correo electrónico o contraseña incorrectos",
+    "ACCESS_DENIED": "Acceso denegado. Solo administradores."
   },
   "APP": {
     "FIELDS_REQUIRED": "Se requieren el nombre de la aplicación, el nombre del paquete y la descripción",
@@ -78,7 +79,9 @@
   "SUPPORT": {
     "FIELDS_REQUIRED": "Por favor, proporciona nombre, correo electrónico, asunto y mensaje",
     "SENT_SUCCESS": "Mensaje enviado con éxito.",
-    "SENT_ERROR": "Error al enviar el correo electrónico de soporte. Por favor, inténtelo de nuevo más tarde."
+    "SENT_ERROR": "Error al enviar el correo electrónico de soporte. Por favor, inténtelo de nuevo más tarde.",
+    "INVALID_STATUS": "Valor de estado no válido. Debe ser pendiente o resuelto.",
+    "NOT_FOUND": "Solicitud de soporte no encontrada"
   },
   "USER": {
     "AUTH_CODE_REQUIRED": "Se requiere el código de autorización",

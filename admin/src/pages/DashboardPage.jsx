@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation, languages } from '../context/LanguageContext';
 import CustomDropdown from '../components/common/CustomDropdown';
 import ConfirmModal from '../components/common/ConfirmModal';
-import { LogOut, Shield, LayoutDashboard, Smartphone, Download, Users, Activity, Clock } from 'lucide-react';
+import {
+  LogOut,
+  Shield,
+  LayoutDashboard,
+  Mail
+} from 'lucide-react';
 import './DashboardPage.css';
 
 export default function DashboardPage() {
@@ -11,6 +17,7 @@ export default function DashboardPage() {
   const { t, language, changeLanguage } = useTranslation();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const location = useLocation();
 
   const dropdownOptions = languages.map(lang => ({
     value: lang.code,
@@ -28,38 +35,7 @@ export default function DashboardPage() {
     }
   };
 
-  // Placeholder metrics
-  const stats = [
-    {
-      label: t('dashboard.stats.totalApps'),
-      value: '12',
-      icon: Smartphone,
-      color: 'var(--accent-primary)',
-      glow: 'var(--accent-primary-glow)'
-    },
-    {
-      label: t('dashboard.stats.totalDownloads'),
-      value: '1,248',
-      icon: Download,
-      color: 'var(--accent-secondary)',
-      glow: 'var(--accent-secondary-glow)'
-    },
-    {
-      label: t('dashboard.stats.activeUsers'),
-      value: '342',
-      icon: Users,
-      color: 'var(--accent-success)',
-      glow: 'var(--accent-success-glow)'
-    }
-  ];
-
-  // Placeholder activities
-  const activities = [
-    { id: 1, action: "App 'TestAPK Mobile' updated to v2.1.0", time: "10 mins ago", user: "admin" },
-    { id: 2, action: "New release 'Beta-v0.9' published for 'DemoApp'", time: "2 hours ago", user: "admin" },
-    { id: 3, action: "User 'john_doe' registered", time: "5 hours ago", user: "system" },
-    { id: 4, action: "App 'OldTestApp' deleted", time: "1 day ago", user: "admin" }
-  ];
+  const isSupportTab = location.pathname.includes('/dashboard/support');
 
   return (
     <div className="dashboard-container">
@@ -71,10 +47,21 @@ export default function DashboardPage() {
         </div>
 
         <nav className="sidebar-nav">
-          <a href="#dashboard" className="nav-item active">
+          <NavLink
+            to="/dashboard"
+            end
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
             <LayoutDashboard size={18} />
             <span>{t('dashboard.title')}</span>
-          </a>
+          </NavLink>
+          <NavLink
+            to="/dashboard/support"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Mail size={18} />
+            <span>{t('support.title')}</span>
+          </NavLink>
         </nav>
 
         <div className="sidebar-footer">
@@ -84,7 +71,7 @@ export default function DashboardPage() {
             </div>
             <div className="user-info">
               <span className="user-name">{user?.name || 'Admin'}</span>
-              <span className="user-role">{user?.role || 'Administrator'}</span>
+              <span className="user-role">{user?.role || t('dashboard.role')}</span>
             </div>
           </div>
           <button onClick={() => setShowLogoutConfirm(true)} className="btn btn-danger logout-btn">
@@ -99,7 +86,7 @@ export default function DashboardPage() {
         {/* Top Header */}
         <header className="dashboard-header glass-card">
           <div className="header-title-section">
-            <h1>{t('dashboard.title')}</h1>
+            <h1>{isSupportTab ? t('support.title') : t('dashboard.title')}</h1>
           </div>
           <div className="header-actions">
             <CustomDropdown
@@ -110,62 +97,15 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        {/* Welcome Banner */}
-        <div className="welcome-banner glass-card animate-fade-in">
-          <h2>{t('dashboard.welcome', [user?.name || 'Admin'])}</h2>
-          <p>You have full access to manage applications, releases, and system settings.</p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="stats-grid">
-          {stats.map((stat, idx) => {
-            const Icon = stat.icon;
-            return (
-              <div key={idx} className="stat-card glass-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="stat-card-header">
-                  <span className="stat-label">{stat.label}</span>
-                  <div className="stat-icon-wrapper" style={{ backgroundColor: stat.glow, color: stat.color }}>
-                    <Icon size={20} />
-                  </div>
-                </div>
-                <span className="stat-value">{stat.value}</span>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Recent Activity Section */}
-        <section className="activity-section glass-card animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <div className="section-header">
-            <Activity size={20} className="section-icon" />
-            <h3>{t('dashboard.recentActivity')}</h3>
-          </div>
-
-          <div className="activity-list">
-            {activities.length > 0 ? (
-              activities.map((act) => (
-                <div key={act.id} className="activity-item">
-                  <div className="activity-icon-wrapper">
-                    <Clock size={14} />
-                  </div>
-                  <div className="activity-details">
-                    <p className="activity-action">{act.action}</p>
-                    <span className="activity-time">{act.time} • by {act.user}</span>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="no-activity">{t('dashboard.noActivity')}</p>
-            )}
-          </div>
-        </section>
+        {/* Nested Routes Content */}
+        <Outlet />
       </main>
 
       {/* Logout Confirmation Modal */}
       <ConfirmModal
         config={showLogoutConfirm ? {
-          title: 'Sign Out',
-          message: 'Are you sure you want to sign out of the admin portal?',
+          title: t('dashboard.logoutConfirmTitle'),
+          message: t('dashboard.logoutConfirmMessage'),
           onConfirm: handleLogoutConfirm,
           isLoading: isLoggingOut,
         } : null}

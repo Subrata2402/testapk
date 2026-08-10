@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import LoginPage from '../pages/LoginPage';
 import DashboardPage from '../pages/DashboardPage';
+import DashboardOverview from '../pages/DashboardOverview';
+import SupportRequestsPage from '../pages/SupportRequestsPage';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -32,7 +34,10 @@ export default function AppRoutes() {
             <DashboardPage />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route index element={<DashboardOverview />} />
+        <Route path="support" element={<SupportRequestsPage />} />
+      </Route>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>

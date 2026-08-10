@@ -14,6 +14,7 @@ import appRoutes from './routes/app.routes.js';
 import deviceAuthRoutes from './routes/device-auth.routes.js';
 import feedbackRoutes from './routes/feedback.route.js';
 import supportRoutes from './routes/support.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use('/api/v1', appRoutes);
 app.use('/api/v1', feedbackRoutes);
 app.use('/api/v1/support', supportRoutes);
 app.use('/api/v1/auth/device', deviceAuthRoutes);
+app.use('/api/v1/admin', adminRoutes);
 
 // Handle undefined routes
 app.use((req, res, next) => {

@@ -12,6 +12,7 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedEmail, setSubmittedEmail] = useState('');
   const [error, setError] = useState(null);
 
   React.useEffect(() => {
@@ -22,6 +23,7 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
       setMessage('');
       setIsSubmitting(false);
       setIsSubmitted(false);
+      setSubmittedEmail('');
       setError(null);
     }
   }, [isOpen, user]);
@@ -39,6 +41,7 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
     try {
       await supportService.contactSupport(name, email, subject, message);
 
+      setSubmittedEmail(email);
       setIsSubmitted(true);
       setName('');
       setEmail('');
@@ -66,7 +69,7 @@ export default function ContactSupportModal({ isOpen, onClose, user }) {
             </div>
             <h2>{t('CONTACT.SUCCESS_TITLE')}</h2>
             <p style={{ textAlign: 'center', marginTop: '8px', color: 'var(--text-muted)' }}>
-              {t('CONTACT.SUCCESS_DESC')}
+              {t('CONTACT.SUCCESS_DESC', [submittedEmail || 'your email'])}
             </p>
             <button className="btn btn-primary mt-4" onClick={() => setIsSubmitted(false)}>
               {t('CONTACT.SEND_ANOTHER')}

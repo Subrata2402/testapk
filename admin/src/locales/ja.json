@@ -1,0 +1,54 @@
+{
+  "login": {
+    "title": "管理者ポータル",
+    "subtitle": "サインインして TestAPK を管理する",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "button": "サインイン",
+    "error": "メールアドレスまたはパスワードが無効です"
+  },
+  "dashboard": {
+    "title": "管理者ダッシュボード",
+    "logout": "ログアウト",
+    "welcome": "お帰りなさい、{0}さん！",
+    "welcomeSubtitle": "アプリケーション、リリース、およびシステム設定を管理する完全なアクセス権があります。",
+    "role": "管理者",
+    "logoutConfirmTitle": "サインアウト",
+    "logoutConfirmMessage": "管理者ポータルからサインアウトしてもよろしいですか？",
+    "stats": {
+      "totalApps": "アプリ総数",
+      "totalDownloads": "ダウンロード総数",
+      "activeUsers": "アクティブユーザー"
+    },
+    "recentActivity": "最近のアクティビティ",
+    "noActivity": "最近のアクティビティはありません。"
+  },
+  "support": {
+    "title": "サポートリクエスト",
+    "name": "名前",
+    "email": "メールアドレス",
+    "subject": "件名",
+    "message": "メッセージ",
+    "date": "日付",
+    "status": "ステータス",
+    "actions": "操作",
+    "view": "メッセージを表示",
+    "noRequests": "サポートリクエストが見つかりません。",
+    "pending": "保留中",
+    "resolved": "解決済み",
+    "reply": "メールで返信",
+    "searchPlaceholder": "名前、メール、または件名で検索...",
+    "allStatuses": "すべてのステータス",
+    "new": "新規",
+    "closed": "クローズ済み",
+    "allTime": "全期間",
+    "today": "本日",
+    "yesterday": "昨日",
+    "last7Days": "過去7日間",
+    "noMatchingRequests": "一致するサポートリクエストが見つかりません。",
+    "pendingRequests": "新規サポートリクエスト"
+  },
+  "common": {
+    "loading": "読み込み中..."
+  }
+}

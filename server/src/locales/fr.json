@@ -17,7 +17,10 @@
     "NOT_LOGGED_IN": "Vous n'êtes pas connecté ! Veuillez vous connecter pour y accéder.",
     "INVALID_EXPIRED_TOKEN": "Jeton invalide ou expiré. Veuillez vous reconnecter.",
     "USER_NOT_FOUND": "L'utilisateur associé à ce jeton n'existe plus.",
-    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Votre compte a été supprimé. Veuillez contacter le support pour le rouvrir."
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Votre compte a été supprimé. Veuillez contacter le support pour le rouvrir.",
+    "EMAIL_PASSWORD_REQUIRED": "L'adresse e-mail et le mot de passe sont requis",
+    "INVALID_EMAIL_PASSWORD": "E-mail ou mot de passe invalide",
+    "ACCESS_DENIED": "Accès refusé. Réservé aux administrateurs."
   },
   "APP": {
     "FIELDS_REQUIRED": "Le nom de l'application, le nom du package et la description sont requis",
@@ -76,7 +79,9 @@
   "SUPPORT": {
     "FIELDS_REQUIRED": "Veuillez fournir un nom, une adresse e-mail, un sujet et un message",
     "SENT_SUCCESS": "Message envoyé avec succès.",
-    "SENT_ERROR": "Erreur lors de l'envoi de l'e-mail de support. Veuillez réessayer plus tard."
+    "SENT_ERROR": "Erreur lors de l'envoi de l'e-mail de support. Veuillez réessayer plus tard.",
+    "INVALID_STATUS": "Valeur de statut invalide. Doit être en attente ou résolu.",
+    "NOT_FOUND": "Demande de support non trouvée"
   },
   "USER": {
     "AUTH_CODE_REQUIRED": "Le code d'autorisation est requis",
