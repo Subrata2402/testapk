@@ -1,0 +1,150 @@
+.device-auth-container {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.device-auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(15, 15, 25, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.device-auth-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.device-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+}
+
+.terminal-icon {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.device-auth-header h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.device-auth-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.device-auth-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-prompt-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.success-state {
+  align-items: center;
+  gap: 16px;
+}
+
+.success-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  color: var(--accent-success);
+}
+
+.success-icon {
+  animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.device-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.code-input {
+  text-align: center;
+  font-size: 1.75rem;
+  font-family: monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 12px;
+  height: auto;
+}
+
+.code-input::placeholder {
+  letter-spacing: normal;
+  font-size: 1.25rem;
+  font-family: inherit;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Expired / No-code states */
+.expired-state {
+  align-items: center;
+  gap: 16px;
+}
+
+.expired-icon-bg {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.expired-icon {
+  color: #f87171;
+  animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.success-color {
+  color: var(--accent-success);
+}
+
+.expired-code-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.code-snippet {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+  letter-spacing: 0.04em;
+}
+

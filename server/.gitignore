@@ -3,3 +3,6 @@ dist/
 .env
 .DS_Store
 *.log
+mongodb_data/
+firebase-service-account.json
+logs

@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import * as Icons from 'lucide-react';
+import { GoogleLogin } from '@react-oauth/google';
+import googleIcon from '../../assets/google-icon-logo.svg';
+import { authService } from '../../services/api';
+import './GoogleLoginModal.css';
+import { useTranslation } from '../../context/LanguageContext';
+
+export default function GoogleLoginModal({ isOpen, onClose, onLoginSuccess }) {
+  const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  if (!isOpen) return null;
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await authService.loginWithGoogle(credentialResponse.credential);
+
+      // Save token to localStorage
+      localStorage.setItem('token', data.token);
+
+      onLoginSuccess({
+        name: data.data.user.name,
+        email: data.data.user.email,
+        avatar: data.data.user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase(),
+        picture: data.data.user.picture,
+        role: data.data.user.role,
+        isDriveConfigured: data.data.user.isDriveConfigured,
+      });
+      onClose();
+    } catch (err) {
+      console.error('Google Auth Error:', err);
+      setError(err.message || t('AUTH.FAILED_AUTHENTICATE'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="modal-overlay flex-center">
+      <div className="modal-container glass-card animate-fade-in" style={{ maxWidth: '420px' }}>
+        <button className="modal-close" onClick={onClose}>
+          <Icons.X size={20} />
+        </button>
+
+        <div className="google-login-header">
+          <div className="google-logo">
+            <img src={googleIcon} alt="google-icon" height={40} width={40} />
+          </div>
+          <h2>{t('AUTH.SIGN_IN_TITLE')}</h2>
+          <p>{t('AUTH.SIGN_IN_SUBTITLE')}</p>
+        </div>
+
+        {error && (
+          <div className="error-banner" style={{ margin: '0 0 16px 0' }}>
+            <Icons.AlertCircle size={16} />
+            <span>{error}</span>
+          </div>
+        )}
+
+        <div className="google-login-body flex-center" style={{ minHeight: '80px' }}>
+          {isLoading ? (
+            <div className="google-loading-state">
+              <div className="spinner"></div>
+              <p>{t('AUTH.AUTHENTICATING')}</p>
+              <span className="loading-subtext">{t('AUTH.AUTHENTICATING_SUBTEXT')}</span>
+            </div>
+          ) : (
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={() => setError(t('AUTH.SIGN_IN_CANCELLED'))}
+              useOneTap
+              theme="filled_blue"
+              size="large"
+            />
+          )}
+        </div>
+
+        <div className="google-login-footer">
+          <p>{t('AUTH.SIGN_IN_FOOTER')}</p>
+        </div>
+      </div>
+    </div>
+  );
+}

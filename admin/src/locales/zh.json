@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "管理员门户",
+    "subtitle": "登录以管理 TestAPK",
+    "email": "电子邮箱",
+    "password": "密码",
+    "button": "登录",
+    "error": "邮箱或密码无效"
+  },
+  "dashboard": {
+    "title": "管理员控制面板",
+    "logout": "退出登录",
+    "welcome": "欢迎回来，{0}！",
+    "welcomeSubtitle": "您拥有管理应用程序、版本和系统设置 food 的完整权限。",
+    "role": "管理员",
+    "logoutConfirmTitle": "退出登录",
+    "logoutConfirmMessage": "您确定要退出管理员门户吗？",
+    "stats": {
+      "totalApps": "应用总数",
+      "totalDownloads": "下载总数",
+      "activeUsers": "活跃用户",
+      "totalFeedbacks": "反馈总数"
+    },
+    "recentActivity": "近期活动",
+    "noActivity": "未找到近期活动。"
+  },
+  "support": {
+    "title": "支持请求",
+    "name": "姓名",
+    "email": "电子邮箱",
+    "subject": "主题",
+    "message": "内容",
+    "date": "日期",
+    "status": "状态",
+    "actions": "操作",
+    "view": "查看消息",
+    "noRequests": "未找到支持请求。",
+    "pending": "待处理",
+    "resolved": "已解决",
+    "reply": "通过邮件回复",
+    "searchPlaceholder": "按姓名、邮箱或主题搜索...",
+    "allStatuses": "所有状态",
+    "new": "新建",
+    "closed": "已关闭",
+    "allTime": "所有时间",
+    "today": "今天",
+    "yesterday": "昨天",
+    "last7Days": "最近7天",
+    "noMatchingRequests": "未找到匹配的支持请求。",
+    "pendingRequests": "新支持请求"
+  },
+  "common": {
+    "loading": "加载中..."
+  },
+  "feedback": {
+    "title": "用户反馈",
+    "category": "类别",
+    "rating": "评分",
+    "titleLabel": "标题",
+    "description": "描述",
+    "deviceInfo": "设备信息",
+    "date": "日期",
+    "user": "用户",
+    "noFeedbacks": "未找到反馈。",
+    "searchPlaceholder": "按标题、描述或用户搜索...",
+    "allCategories": "所有类别",
+    "allRatings": "所有评分",
+    "anonymous": "匿名",
+    "categories": {
+      "bug": "缺陷",
+      "feature_request": "功能建议",
+      "other": "其他"
+    },
+    "ratings": {
+      "stars": "{0} 星",
+      "star": "1 星"
+    }
+  },
+  "users": {
+    "title": "已注册用户",
+    "name": "姓名",
+    "email": "电子邮箱",
+    "role": "角色",
+    "joinedDate": "加入日期",
+    "noUsers": "未找到用户。",
+    "searchPlaceholder": "按姓名或邮箱搜索...",
+    "admin": "管理员",
+    "user": "用户",
+    "allUsers": "所有用户",
+    "active": "活跃",
+    "inactive": "不活跃",
+    "status": "状态",
+    "allRoles": "所有角色",
+    "startDate": "开始日期",
+    "endDate": "结束日期"
+  }
+}

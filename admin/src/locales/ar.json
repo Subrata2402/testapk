@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "بوابة المسؤول",
+    "subtitle": "تسجيل الدخول لإدارة TestAPK",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "button": "تسجيل الدخول",
+    "error": "البريد الإلكتروني أو كلمة المرور غير صالحة"
+  },
+  "dashboard": {
+    "title": "لوحة تحكم المسؤول",
+    "logout": "تسجيل الخروج",
+    "welcome": "مرحباً بعودتك، {0}!",
+    "welcomeSubtitle": "لديك حق الوصول الكامل لإدارة التطبيقات والإصدارات وإعدادات النظام.",
+    "role": "مسؤول",
+    "logoutConfirmTitle": "تسجيل الخروج",
+    "logoutConfirmMessage": "هل أنت متأكد أنك تريد تسجيل الخروج من بوابة المسؤول؟",
+    "stats": {
+      "totalApps": "إجمالي التطبيقات",
+      "totalDownloads": "إجمالي التنزيلات",
+      "activeUsers": "المستخدمين النشطين",
+      "totalFeedbacks": "إجمالي التعليقات"
+    },
+    "recentActivity": "النشاط الأخير",
+    "noActivity": "لم يتم العثور على نشاط حديث."
+  },
+  "support": {
+    "title": "طلبات الدعم",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "subject": "الموضوع",
+    "message": "الرسالة",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "actions": "الإجراءات",
+    "view": "عرض الرسالة",
+    "noRequests": "لم يتم العثور على طلبات دعم.",
+    "pending": "قيد الانتظار",
+    "resolved": "تم الحل",
+    "reply": "الرد عبر البريد الإلكتروني",
+    "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني أو الموضوع...",
+    "allStatuses": "جميع الحالات",
+    "new": "جديد",
+    "closed": "مغلق",
+    "allTime": "كل الوقت",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "last7Days": "آخر 7 أيام",
+    "noMatchingRequests": "لم يتم العثور على طلبات دعم مطابقة.",
+    "pendingRequests": "طلبات الدعم الجديدة"
+  },
+  "common": {
+    "loading": "جاري التحميل..."
+  },
+  "feedback": {
+    "title": "تعليقات المستخدمين",
+    "category": "الفئة",
+    "rating": "التقييم",
+    "titleLabel": "العنوان",
+    "description": "الوصف",
+    "deviceInfo": "معلومات الجهاز",
+    "date": "التاريخ",
+    "user": "المستخدم",
+    "noFeedbacks": "لم يتم العثور على تعليقات.",
+    "searchPlaceholder": "البحث بالعنوان أو الوصف أو المستخدم...",
+    "allCategories": "جميع الفئات",
+    "allRatings": "جميع التقييمات",
+    "anonymous": "مجهول",
+    "categories": {
+      "bug": "خطأ",
+      "feature_request": "طلب ميزة",
+      "other": "آخر"
+    },
+    "ratings": {
+      "stars": "{0} نجوم",
+      "star": "نجمة واحدة"
+    }
+  },
+  "users": {
+    "title": "المستخدمين المسجلين",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "joinedDate": "تاريخ الانضمام",
+    "noUsers": "لم يتم العثور على مستخدمين.",
+    "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني...",
+    "admin": "مسؤول",
+    "user": "مستخدم",
+    "allUsers": "جميع المستخدمين",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "status": "الحالة",
+    "allRoles": "جميع الأدوار",
+    "startDate": "تاريخ البدء",
+    "endDate": "تاريخ الانتهاء"
+  }
+}

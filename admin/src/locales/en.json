@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "Admin Portal",
+    "subtitle": "Sign in to manage TestAPK",
+    "email": "Email Address",
+    "password": "Password",
+    "button": "Sign In",
+    "error": "Invalid email or password"
+  },
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "logout": "Logout",
+    "welcome": "Welcome back, {0}!",
+    "welcomeSubtitle": "You have full access to manage applications, releases, and system settings.",
+    "role": "Administrator",
+    "logoutConfirmTitle": "Sign Out",
+    "logoutConfirmMessage": "Are you sure you want to sign out of the admin portal?",
+    "stats": {
+      "totalApps": "Total Apps",
+      "totalDownloads": "Total Downloads",
+      "activeUsers": "Active Users",
+      "totalFeedbacks": "Total Feedbacks"
+    },
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity found."
+  },
+  "support": {
+    "title": "Support Requests",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "date": "Date",
+    "status": "Status",
+    "actions": "Actions",
+    "view": "View Message",
+    "noRequests": "No support requests found.",
+    "pending": "Pending",
+    "resolved": "Resolved",
+    "reply": "Reply via Email",
+    "searchPlaceholder": "Search by name, email, or subject...",
+    "allStatuses": "All Statuses",
+    "new": "New",
+    "closed": "Closed",
+    "allTime": "All Time",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "last7Days": "Last 7 Days",
+    "noMatchingRequests": "No matching support requests found.",
+    "pendingRequests": "New Support Requests"
+  },
+  "feedback": {
+    "title": "User Feedbacks",
+    "category": "Category",
+    "rating": "Rating",
+    "titleLabel": "Title",
+    "description": "Description",
+    "deviceInfo": "Device Info",
+    "date": "Date",
+    "user": "User",
+    "noFeedbacks": "No feedbacks found.",
+    "searchPlaceholder": "Search by title, description, or user...",
+    "allCategories": "All Categories",
+    "allRatings": "All Ratings",
+    "anonymous": "Anonymous",
+    "categories": {
+      "bug": "Bug",
+      "feature_request": "Feature Request",
+      "other": "Other"
+    },
+    "ratings": {
+      "stars": "{0} Stars",
+      "star": "1 Star"
+    }
+  },
+  "common": {
+    "loading": "Loading..."
+  },
+  "users": {
+    "title": "Registered Users",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "joinedDate": "Joined Date",
+    "noUsers": "No users found.",
+    "searchPlaceholder": "Search by name or email...",
+    "admin": "Admin",
+    "user": "User",
+    "allUsers": "All Users",
+    "active": "Active",
+    "inactive": "Inactive",
+    "status": "Status",
+    "allRoles": "All Roles",
+    "startDate": "Start Date",
+    "endDate": "End Date"
+  }
+}

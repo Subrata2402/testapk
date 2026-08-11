@@ -4,26 +4,38 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-    
-    {
-      "name": "flutterapp",
-      "cwd": "flutterapp",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "flutterapp (profile mode)",
-      "cwd": "flutterapp",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "profile"
-    },
-    {
-      "name": "flutterapp (release mode)",
-      "cwd": "flutterapp",
-      "request": "launch",
-      "type": "dart",
-      "flutterMode": "release"
-    }
+      {
+          "name": "development",
+          "request": "launch",
+          "type": "dart",
+          "flutterMode": "debug",
+          "program": "flutterapp/lib/main.dart",
+          "args": [
+              "--flavor",
+              "dev"
+          ]
+      },
+      {
+          "name": "local",
+          "request": "launch",
+          "type": "dart",
+          "flutterMode": "debug",
+          "program": "flutterapp/lib/main.dart",
+          "args": [
+              "--flavor",
+              "local"
+          ]
+      },
+      {
+          "name": "production",
+          "request": "launch",
+          "type": "dart",
+          "flutterMode": "release",
+          "program": "flutterapp/lib/main.dart",
+          "args": [
+              "--flavor",
+              "prod"
+          ]
+      }
   ]
 }

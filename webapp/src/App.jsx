@@ -1,33 +1,39 @@
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { initialApps } from './mockData';
-import LandingPage from './components/LandingPage';
-import Dashboard from './components/Dashboard';
-import GoogleLoginModal from './components/GoogleLoginModal';
-import CreateAppModal from './components/CreateAppModal';
-import CustomDropdown from './components/CustomDropdown';
+import GoogleLoginModal from './components/modals/GoogleLoginModal';
+import CreateAppModal from './components/modals/CreateAppModal';
+import DriveConfigModal from './components/modals/DriveConfigModal';
+import ContactSupportModal from './components/modals/ContactSupportModal';
+import Navbar from './components/layout/Navbar';
+import AlertModal from './components/common/AlertModal';
+import ConfirmModal from './components/common/ConfirmModal';
+import AppRoutes from './routes/AppRoutes';
+import { authService, userService, appService } from './services/api';
 import './App.css';
+import { useTranslation } from './context/LanguageContext';
 
 export default function App() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [user, setUser] = useState(null); // { name, email, avatar }
   const [apps, setApps] = useState(initialApps);
   const [selectedAppId, setSelectedAppId] = useState(initialApps[0]?.id || null);
-  const [currentView, setCurrentView] = useState('landing'); // 'landing' | 'dashboard'
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(!!localStorage.getItem('token'));
   const [isLoadingApps, setIsLoadingApps] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const fetchApps = async (token) => {
+  const fetchApps = async () => {
     setIsLoadingApps(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/apps`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok && data.status === 'success') {
+      const data = await appService.getApps();
+      if (data.status === 'success') {
         setApps(data.data.apps);
         if (data.data.apps.length > 0) {
           setSelectedAppId(data.data.apps[0]._id || data.data.apps[0].id);
@@ -51,24 +57,25 @@ export default function App() {
       }
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/users/me`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        const data = await userService.getCurrentUser();
 
-        const data = await response.json();
-
-        if (response.ok && data.status === 'success') {
+        if (data.status === 'success') {
           setUser({
             name: data.data.user.name,
             email: data.data.user.email,
             avatar: data.data.user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase(),
             picture: data.data.user.picture,
             role: data.data.user.role,
+            isDriveConfigured: data.data.user.isDriveConfigured,
           });
-          await fetchApps(token);
-          setCurrentView('dashboard');
+          await fetchApps();
+          
+          if (window.location.pathname === '/device') {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams.has('token')) {
+              navigate('/', { replace: true });
+            }
+          }
         } else {
           localStorage.removeItem('token');
         }
@@ -83,25 +90,43 @@ export default function App() {
     checkLoggedIn();
   }, []);
 
-  const handleLoginSuccess = (userData) => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const handleLoginSuccess = async (userData) => {
+    // Set user and navigate immediately to prevent landing page flicker
     setUser(userData);
-    setCurrentView('dashboard');
+    navigate('/dashboard');
+
     const token = localStorage.getItem('token');
     if (token) {
-      fetchApps(token);
+      // Fetch apps (which sets isLoadingApps to true, showing the loading screen)
+      fetchApps();
+      try {
+        const data = await userService.getCurrentUser();
+        if (data.status === 'success') {
+          setUser({
+            name: data.data.user.name,
+            email: data.data.user.email,
+            avatar: data.data.user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase(),
+            picture: data.data.user.picture,
+            role: data.data.user.role,
+            isDriveConfigured: data.data.user.isDriveConfigured,
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch user details after login:', err);
+      }
     }
   };
 
   const handleLogout = async () => {
+    setIsLoggingOut(true);
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        });
+        await authService.logout();
       } catch (err) {
         console.error('Logout API call failed:', err);
       }
@@ -110,7 +135,8 @@ export default function App() {
     setUser(null);
     setApps(initialApps);
     setSelectedAppId(initialApps[0]?.id || null);
-    setCurrentView('landing');
+    setIsLoggingOut(false);
+    navigate('/');
   };
 
   const [alertConfig, setAlertConfig] = useState(null); // { title, message, type: 'error' | 'success' | 'info' }
@@ -132,35 +158,30 @@ export default function App() {
           : (newAppOrUpdatedApp.id && a.id === newAppOrUpdatedApp.id);
         return isMatch ? newAppOrUpdatedApp : a;
       }));
+      return true;
     } else {
       const token = localStorage.getItem('token');
-      if (!token) return;
+      if (!token) return false;
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/apps`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            name: newAppOrUpdatedApp.name,
-            packageName: newAppOrUpdatedApp.packageName,
-            description: newAppOrUpdatedApp.description,
-          }),
+        const data = await appService.createApp({
+          name: newAppOrUpdatedApp.name,
+          packageName: newAppOrUpdatedApp.packageName,
+          description: newAppOrUpdatedApp.description,
         });
-
-        const data = await response.json();
-        if (response.ok && data.status === 'success') {
+        if (data.status === 'success') {
           const createdApp = data.data.app;
           setApps([...apps, createdApp]);
           setSelectedAppId(createdApp._id);
+          return true;
         } else {
-          showAlert(data.message || 'Failed to create application', 'Error', 'error');
+          showAlert(data.message || t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
+          return false;
         }
       } catch (err) {
         console.error('Failed to create app:', err);
-        showAlert('Failed to create application', 'Error', 'error');
+        showAlert(t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
+        return false;
       }
     }
   };
@@ -169,7 +190,7 @@ export default function App() {
     return (
       <div className="auth-loading-screen">
         <div className="spinner"></div>
-        <p>Loading your workspace...</p>
+        <p>{t('DASHBOARD.LOADING_WORKSPACE')}</p>
       </div>
     );
   }
@@ -178,52 +199,25 @@ export default function App() {
 
   return (
     <div className="app-layout">
-      {/* Global Navigation Bar */}
-      <header className="global-navbar glass-card">
-        <div className="container nav-container">
-          <div className="nav-logo" onClick={() => setCurrentView(user ? 'dashboard' : 'landing')} style={{ cursor: 'pointer' }}>
-            <Icons.Cpu size={24} className="logo-icon" />
-            <span className="logo-text">APK Release Manager</span>
-          </div>
-
-
-
-          <div className="nav-actions">
-            {user ? (
-              <>
-                <div className="user-nav-profile" title={user.email}>
-                  <div className="user-nav-avatar">{user.avatar}</div>
-                  <span className="user-nav-name">{user.name.split(' ')[0]}</span>
-                </div>
-              </>
-            ) : (
-              <button className="btn btn-primary" onClick={() => setIsLoginModalOpen(true)}>
-                <Icons.LogIn size={16} /> Sign In
-              </button>
-            )}
-          </div>
-        </div>
-      </header>
+      <Navbar user={user} onLoginClick={() => setIsLoginModalOpen(true)} />
 
       {/* Main Content */}
       <div className="container main-content-container">
-        {currentView === 'landing' ? (
-          <LandingPage
-            onLoginClick={() => setIsLoginModalOpen(true)}
-          />
-        ) : (
-          <Dashboard
-            user={user}
-            apps={apps}
-            selectedAppId={selectedAppId}
-            onSelectApp={setSelectedAppId}
-            onCreateApp={handleCreateApp}
-            onLogout={handleLogout}
-            onOpenCreateModal={() => setIsCreateModalOpen(true)}
-            showAlert={showAlert}
-            showConfirm={showConfirm}
-          />
-        )}
+        <AppRoutes
+          user={user}
+          apps={apps}
+          selectedAppId={selectedAppId}
+          setSelectedAppId={setSelectedAppId}
+          handleCreateApp={handleCreateApp}
+          handleLogout={handleLogout}
+          setIsLoginModalOpen={setIsLoginModalOpen}
+          setIsCreateModalOpen={setIsCreateModalOpen}
+          onOpenDriveModal={() => setIsDriveModalOpen(true)}
+          showAlert={showAlert}
+          showConfirm={showConfirm}
+          setUser={setUser}
+          onContactClick={() => setIsContactModalOpen(true)}
+        />
       </div>
 
       {/* Google Login Modal */}
@@ -240,114 +234,34 @@ export default function App() {
         onCreateApp={handleCreateApp}
         user={user}
         showAlert={showAlert}
+        onOpenDriveModal={() => setIsDriveModalOpen(true)}
       />
 
-      {/* Global Alert Modal */}
-      {alertConfig && (
-        <div className="modal-overlay" onClick={() => setAlertConfig(null)}>
-          <div
-            className="modal-content glass-card animate-fade-in"
-            style={{ maxWidth: '400px', textAlign: 'center' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-              {alertConfig.type === 'error' ? (
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'rgba(239, 68, 68, 0.1)',
-                    color: 'var(--accent-danger)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Icons.AlertTriangle size={24} />
-                </div>
-              ) : alertConfig.type === 'success' ? (
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'rgba(16, 185, 129, 0.1)',
-                    color: 'var(--accent-success)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Icons.CheckCircle size={24} />
-                </div>
-              ) : (
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    borderRadius: '50%',
-                    background: 'rgba(139, 92, 246, 0.1)',
-                    color: 'var(--accent-primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Icons.Info size={24} />
-                </div>
-              )}
-              <h3 style={{ fontSize: '1.25rem' }}>{alertConfig.title}</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{alertConfig.message}</p>
-              <button className="btn btn-primary" style={{ width: '100%', marginTop: '8px' }} onClick={() => setAlertConfig(null)}>
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Drive Configuration Modal */}
+      <DriveConfigModal
+        isOpen={isDriveModalOpen}
+        onClose={() => setIsDriveModalOpen(false)}
+        user={user}
+        showAlert={showAlert}
+        onDriveConfigured={() => setUser(prev => ({ ...prev, isDriveConfigured: true }))}
+      />
 
-      {/* Global Confirmation Modal */}
-      {confirmConfig && (
-        <div className="modal-overlay" onClick={() => setConfirmConfig(null)}>
-          <div
-            className="modal-content glass-card animate-fade-in"
-            style={{ maxWidth: '400px', textAlign: 'center' }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(245, 158, 11, 0.1)',
-                  color: 'var(--accent-warning)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Icons.HelpCircle size={24} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem' }}>{confirmConfig.title}</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{confirmConfig.message}</p>
-              <div style={{ display: 'flex', gap: '12px', width: '100%', marginTop: '8px' }}>
-                <button className="btn btn-secondary" style={{ flex: 1 }} onClick={() => setConfirmConfig(null)}>
-                  Cancel
-                </button>
-                <button
-                  className="btn btn-primary"
-                  style={{ flex: 1 }}
-                  onClick={() => {
-                    confirmConfig.onConfirm();
-                    setConfirmConfig(null);
-                  }}
-                >
-                  Confirm
-                </button>
-              </div>
-            </div>
+      {/* Contact Support Modal */}
+      <ContactSupportModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        user={user}
+      />
+
+      <AlertModal config={alertConfig} onClose={() => setAlertConfig(null)} />
+      <ConfirmModal config={confirmConfig} onClose={() => setConfirmConfig(null)} />
+
+      {isLoggingOut && (
+        <div className="modal-overlay flex-center" style={{ zIndex: 9999, background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(10px)' }}>
+          <div className="google-loading-state" style={{ color: '#ffffff' }}>
+            <div className="spinner"></div>
+            <p style={{ marginTop: '16px', fontSize: '1.1rem', fontWeight: '500' }}>{t('DASHBOARD.LOGGING_OUT')}</p>
+            <span className="loading-subtext" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{t('DASHBOARD.LOGGING_OUT_SUBTEXT')}</span>
           </div>
         </div>
       )}

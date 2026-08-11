@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "管理者ポータル",
+    "subtitle": "サインインして TestAPK を管理する",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "button": "サインイン",
+    "error": "メールアドレスまたはパスワードが無効です"
+  },
+  "dashboard": {
+    "title": "管理者ダッシュボード",
+    "logout": "ログアウト",
+    "welcome": "お帰りなさい、{0}さん！",
+    "welcomeSubtitle": "アプリケーション、リリース、およびシステム設定を管理する完全なアクセス権があります。",
+    "role": "管理者",
+    "logoutConfirmTitle": "サインアウト",
+    "logoutConfirmMessage": "管理者ポータルからサインアウトしてもよろしいですか？",
+    "stats": {
+      "totalApps": "アプリ総数",
+      "totalDownloads": "ダウンロード総数",
+      "activeUsers": "アクティブユーザー",
+      "totalFeedbacks": "フィードバック総数"
+    },
+    "recentActivity": "最近のアクティビティ",
+    "noActivity": "最近のアクティビティはありません。"
+  },
+  "support": {
+    "title": "サポートリクエスト",
+    "name": "名前",
+    "email": "メールアドレス",
+    "subject": "件名",
+    "message": "メッセージ",
+    "date": "日付",
+    "status": "ステータス",
+    "actions": "操作",
+    "view": "メッセージを表示",
+    "noRequests": "サポートリクエストが見つかりません。",
+    "pending": "保留中",
+    "resolved": "解決済み",
+    "reply": "メールで返信",
+    "searchPlaceholder": "名前、メール、または件名で検索...",
+    "allStatuses": "すべてのステータス",
+    "new": "新規",
+    "closed": "クローズ済み",
+    "allTime": "全期間",
+    "today": "本日",
+    "yesterday": "昨日",
+    "last7Days": "過去7日間",
+    "noMatchingRequests": "一致するサポートリクエストが見つかりません。",
+    "pendingRequests": "新規サポートリクエスト"
+  },
+  "common": {
+    "loading": "読み込み中..."
+  },
+  "feedback": {
+    "title": "ユーザーフィードバック",
+    "category": "カテゴリ",
+    "rating": "評価",
+    "titleLabel": "タイトル",
+    "description": "説明",
+    "deviceInfo": "デバイス情報",
+    "date": "日付",
+    "user": "ユーザー",
+    "noFeedbacks": "フィードバックが見つかりません。",
+    "searchPlaceholder": "タイトル、説明、またはユーザーで検索...",
+    "allCategories": "すべてのカテゴリ",
+    "allRatings": "すべての評価",
+    "anonymous": "匿名",
+    "categories": {
+      "bug": "バグ",
+      "feature_request": "機能リクエスト",
+      "other": "その他"
+    },
+    "ratings": {
+      "stars": "星{0}",
+      "star": "星1"
+    }
+  },
+  "users": {
+    "title": "登録ユーザー",
+    "name": "名前",
+    "email": "メールアドレス",
+    "role": "役割",
+    "joinedDate": "登録日",
+    "noUsers": "ユーザーが見つかりません。",
+    "searchPlaceholder": "名前またはメールアドレスで検索...",
+    "admin": "管理者",
+    "user": "ユーザー",
+    "allUsers": "すべてのユーザー",
+    "active": "アクティブ",
+    "inactive": "非アクティブ",
+    "status": "ステータス",
+    "allRoles": "すべての役割",
+    "startDate": "開始日",
+    "endDate": "終了日"
+  }
+}

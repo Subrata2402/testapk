@@ -1,4 +1,4 @@
-import 'release_model.dart';
+import 'package:flutterapp/models/release_model.dart';
 
 class MemberModel {
   final String email;
@@ -6,12 +6,7 @@ class MemberModel {
   final String status;
   final String name;
 
-  const MemberModel({
-    required this.email,
-    required this.role,
-    required this.status,
-    required this.name,
-  });
+  const MemberModel({required this.email, required this.role, required this.status, required this.name});
 
   factory MemberModel.fromJson(Map<String, dynamic> json) => MemberModel(
     email: json['email'] as String? ?? '',
@@ -29,6 +24,7 @@ class AppModel {
   final List<ReleaseModel> releases;
   final List<MemberModel> members;
   final String? memberRole;
+  final String? icon;
 
   const AppModel({
     required this.id,
@@ -38,28 +34,26 @@ class AppModel {
     required this.releases,
     required this.members,
     this.memberRole,
+    this.icon,
   });
 
-  factory AppModel.fromJson(Map<String, dynamic> json) => AppModel(
-    id: json['_id'] as String? ?? json['id'] as String,
-    name: json['name'] as String,
-    packageName: json['packageName'] as String? ?? '',
-    description: json['description'] as String? ?? '',
-    releases:
-        (json['releases'] as List?)
-            ?.map((r) => ReleaseModel.fromJson(r as Map<String, dynamic>))
-            .toList() ??
-        [],
-    members:
-        (json['members'] as List?)
-            ?.map((m) => MemberModel.fromJson(m as Map<String, dynamic>))
-            .toList() ??
-        [],
-    memberRole: json['memberRole'] as String?,
-  );
+  factory AppModel.fromJson(Map<String, dynamic> json) {
+    final membersList = json['members'] as List? ?? [];
+    final releasesList = json['releases'] as List? ?? [];
 
-  ReleaseModel? get latestRelease =>
-      releases.isNotEmpty ? releases.first : null;
+    return AppModel(
+      id: json['_id'] as String? ?? json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      packageName: json['packageName'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      releases: releasesList.map((r) => ReleaseModel.fromJson(r as Map<String, dynamic>)).toList(),
+      members: membersList.map((m) => MemberModel.fromJson(m as Map<String, dynamic>)).toList(),
+      memberRole: json['memberRole'] as String?,
+      icon: json['icon'] as String?,
+    );
+  }
+
+  ReleaseModel? get latestRelease => releases.isNotEmpty ? releases.first : null;
 
   String get initials {
     final parts = name.trim().split(' ');

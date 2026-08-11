@@ -4,16 +4,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
+    "dev:local": "vite --host --mode development",
+    "dev:staging": "vite --host --mode staging",
+    "dev:prod": "vite --host --mode production",
     "build": "vite build",
+    "build:local": "vite build --mode development",
+    "build:staging": "vite build --mode staging",
+    "build:prod": "vite build --mode production",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
     "@react-oauth/google": "^0.13.5",
+    "axios": "^1.7.9",
     "lucide-react": "^1.24.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",

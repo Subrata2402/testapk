@@ -1,0 +1,148 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "成功",
+    "STATUS_FAIL": "失败",
+    "STATUS_ERROR": "错误",
+    "USER_NOT_AUTHENTICATED": "用户未认证",
+    "SOMETHING_WENT_WRONG": "发生了一些错误",
+    "TOO_MANY_REQUESTS": "来自此 IP 的请求过多，请稍后再试。",
+    "VALIDATION_FAILED": "验证失败"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "需要 Google ID 令牌",
+    "INVALID_GOOGLE_ID_TOKEN": "无效的 Google ID 令牌",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "无效的 Google ID 令牌有效负载",
+    "MISSING_EMAIL_OR_NAME": "Google 账号缺失电子邮件或姓名",
+    "LOGGED_OUT": "成功退出登录",
+    "NOT_LOGGED_IN": "您尚未登录！请登录以获取访问权限。",
+    "INVALID_EXPIRED_TOKEN": "无效或过期的令牌。请重新登录。",
+    "USER_NOT_FOUND": "该令牌所属的用户已不存在。",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "您的账号已被删除。请联系支持人员以重新启用您的账号。",
+    "EMAIL_PASSWORD_REQUIRED": "电子邮箱和密码是必填项",
+    "INVALID_EMAIL_PASSWORD": "邮箱或密码无效",
+    "ACCESS_DENIED": "拒绝访问。仅限管理员。"
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "应用名称、包名和描述是必填项",
+    "PACKAGE_ALREADY_EXISTS": "已存在使用此包名的应用",
+    "NOT_FOUND": "未找到应用",
+    "NOT_MEMBER": "您不是此应用的成员",
+    "INVITE_FIELDS_REQUIRED": "电子邮件和角色是必填项",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "只有所有者和开发者可以邀请成员",
+    "INVITE_YOURSELF": "您不能邀请自己",
+    "INVITE_NOT_REGISTERED": "用户未注册。只能邀请已注册的用户。",
+    "INVITE_ALREADY_MEMBER": "用户已是成员或有待处理的邀请",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "只有所有者和开发者可以移除成员",
+    "REMOVE_OWNER_RESTRICTED": "无法移除应用所有者",
+    "INVITATION_NOT_FOUND": "未找到邀请",
+    "INVITATION_REJECTED": "成功拒绝邀请",
+    "INVITATION_NOTIFICATION_TITLE": "邀请加入 {0}",
+    "INVITATION_NOTIFICATION_BODY": "您已被邀请以 {1} 身份加入 {0}。"
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "请上传 APK 文件",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "只有所有者和开发者允许上传 APK",
+    "PARSE_FAILED": "解析 APK 文件失败。请确保它是有效的 Android 安装包。",
+    "PACKAGE_MISMATCH": "包名不匹配。预期：{0}，实际：{1}",
+    "BUILD_ALREADY_EXISTS": "已存在构建版本号为 #{0} 的发布版本",
+    "BUILD_NUMBER_TOO_LOW": "无法使用构建版本号 #{0}，因为最新发布的构建版本号为 #{1}。请增加构建版本号并重试。",
+    "DRIVE_NOT_CONFIGURED": "未为该应用的所有者配置 Google Drive。",
+    "DRIVE_REVOKED": "Google Drive 访问权限已被撤销或无效。请在应用设置中重新配置 Google Drive。",
+    "DRIVE_UPLOAD_FAILED": "上传 APK 到 Google Drive 失败：{0}",
+    "NO_RELEASE_NOTES": "未提供版本说明",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "{0} 的新版本发布",
+    "NEW_RELEASE_NOTIFICATION_BODY": "版本 {0} (构建号 #{1}) 现已可用。",
+    "NOT_FOUND": "未找到版本",
+    "DRIVE_FILE_NOT_FOUND": "在 Google Drive 上未找到 APK 文件。它可能已被删除。",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "只有所有者和开发者允许删除发布版本"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "需要令牌",
+    "INVALID_USED_TOKEN": "无效或已使用的令牌",
+    "LINK_EXPIRED": "此授权链接已过期",
+    "LINK_ALREADY_USED": "此链接已被使用",
+    "USER_CODE_REQUIRED": "需要用户代码",
+    "INVALID_CODE": "无效的授权码。请检查代码并重试。",
+    "CODE_EXPIRED": "此授权码已过期。请生成一个新代码。",
+    "SUCCESSFULLY_AUTHORIZED": "设备授权成功",
+    "DEVICE_CODE_REQUIRED": "需要设备代码",
+    "DEVICE_CODE_EXPIRED": "设备代码已过期。请请求一个新代码。",
+    "AUTHORIZATION_PENDING": "用户尚未授权该设备。",
+    "USER_NOT_FOUND": "未找到用户"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "类别、评分、标题和描述是必填项"
+  },
+  "HEALTH": {
+    "RUNNING": "服务器运行正常"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "请提供姓名、电子邮件、主题和消息",
+    "SENT_SUCCESS": "消息发送成功。",
+    "SENT_ERROR": "发送支持邮件时出错。请稍后再试。",
+    "INVALID_STATUS": "无效的状态值。必须是待处理或已解决。",
+    "NOT_FOUND": "未找到支持请求"
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "需要授权码",
+    "REFRESH_TOKEN_FAILED": "获取刷新令牌失败。请确保您授予了离线访问权限和同意。",
+    "DRIVE_CONFIGURED": "Google Drive 配置成功",
+    "FCM_TOKEN_REQUIRED": "需要 FCM 令牌",
+    "FCM_TOKEN_UPDATED": "FCM 令牌更新成功",
+    "NOT_FOUND": "用户未找到",
+    "DELETED_SUCCESS": "账号删除成功"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "欢迎使用 TestAPK！",
+    "WELCOME_TEXT": "你好 {0}，\n\n欢迎使用 TestAPK！我们很高兴您能加入我们。\n\n顺祝商祺，\nTestAPK 团队",
+    "WELCOME_HTML": "\n          <h3>欢迎使用 TestAPK！</h3>\n          <p>你好 {0}，</p>\n          <p>我们很高兴您能加入我们。TestAPK 帮助您无缝地管理并分发您的 APK 版本给测试人员。</p>\n          <br/>\n          <p>顺祝商祺，</p>\n          <p><strong>TestAPK 团队</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[TestAPK 支持] {0}",
+    "SUPPORT_TEXT": "姓名：{0}\n电子邮件：{1}\n\n消息：\n{2}",
+    "SUPPORT_HTML": "\n        <h3>新的支持请求</h3>\n        <p><strong>姓名：</strong> {0}</p>\n        <p><strong>电子邮件：</strong> {1}</p>\n        <p><strong>主题：</strong> {2}</p>\n        <br/>\n        <p><strong>消息：</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "SMTP 未配置。模拟发送欢迎邮件至 {0}。",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "SMTP 未配置。支持消息已记录到控制台：",
+    "WELCOME_SENT": "欢迎邮件已发送至 {0}",
+    "SUPPORT_SENT": "支持邮件已发送至 {0}",
+    "INVITATION_SUBJECT": "邀请您在 TestAPK 上加入 {0}",
+    "INVITATION_TEXT": "你好，\n\n您已被邀请在 TestAPK 上以 {1} 身份加入应用程序 \"{0}\"。\n\n请登录 TestAPK 应用以接受或拒绝此邀请。\n\n顺祝商祺，\nTestAPK 团队",
+    "INVITATION_HTML": "\n        <h3>邀请您在 TestAPK 上加入 {0}</h3>\n        <p>你好，</p>\n        <p>您已被邀请在 TestAPK 上以 <strong>{1}</strong> 身份加入应用程序 <strong>{0}</strong>。</p>\n        <p>请登录 TestAPK 应用以接受或拒绝此邀请。</p>\n        <br/>\n        <p>顺祝商祺，</p>\n        <p><strong>TestAPK 团队</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "SMTP 未配置。模拟发送邀请邮件至 {0}。",
+    "INVITATION_SENT": "邀请邮件已发送至 {0}"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "未配置 Google Drive 凭据。",
+    "FOLDER_CREATE_FAILED": "在 Google Drive 中创建文件夹失败",
+    "UPLOAD_FAILED_NO_ID": "上传文件到 Google Drive 失败：未返回 ID"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ Firebase Cloud Messaging 初始化成功。",
+    "FCM_INIT_FAILED": "❌ 初始化 Firebase Cloud Messaging 失败：",
+    "FCM_NOT_INITIALIZED": "⚠️ FCM 未初始化。跳过通知。",
+    "FCM_KEY_NOT_FOUND": "⚠️ 未在 {0} 找到 Firebase 服务账号文件。推送通知将被禁用。",
+    "FCM_SEND_FAILED": "❌ 发送推送通知到令牌 {0} 失败："
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "Android 应用",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "用户 ID 是必填项",
+      "CATEGORY_REQUIRED": "类别是必填项",
+      "RATING_REQUIRED": "评分是必填项",
+      "TITLE_REQUIRED": "标题是必填项",
+      "DESCRIPTION_REQUIRED": "描述是必填项"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "电子邮件是必填项",
+      "NAME_REQUIRED": "姓名是必填项"
+    }
+  }
+}

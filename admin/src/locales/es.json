@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "Portal de Administración",
+    "subtitle": "Inicie sesión para administrar TestAPK",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "button": "Iniciar Sesión",
+    "error": "Correo o contraseña incorrectos"
+  },
+  "dashboard": {
+    "title": "Panel de Administración",
+    "logout": "Cerrar Sesión",
+    "welcome": "¡Bienvenido de nuevo, {0}!",
+    "welcomeSubtitle": "Tiene acceso completo para administrar aplicaciones, versiones y configuraciones del sistema.",
+    "role": "Administrador",
+    "logoutConfirmTitle": "Cerrar Sesión",
+    "logoutConfirmMessage": "¿Está seguro de que desea cerrar la sesión del portal de administración?",
+    "stats": {
+      "totalApps": "Aplicaciones Totales",
+      "totalDownloads": "Descargas Totales",
+      "activeUsers": "Usuarios Activos",
+      "totalFeedbacks": "Comentarios Totales"
+    },
+    "recentActivity": "Actividad Reciente",
+    "noActivity": "No se encontró actividad reciente."
+  },
+  "support": {
+    "title": "Solicitudes de Soporte",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "date": "Fecha",
+    "status": "Estado",
+    "actions": "Acciones",
+    "view": "Ver Mensaje",
+    "noRequests": "No se encontraron solicitudes de soporte.",
+    "pending": "Pendiente",
+    "resolved": "Resuelto",
+    "reply": "Responder por Correo",
+    "searchPlaceholder": "Buscar por nombre, correo o asunto...",
+    "allStatuses": "Todos los estados",
+    "new": "Nuevo",
+    "closed": "Cerrado",
+    "allTime": "Todo el tiempo",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "last7Days": "Últimos 7 días",
+    "noMatchingRequests": "No se encontraron solicitudes de soporte coincidentes.",
+    "pendingRequests": "Nuevas solicitudes de soporte"
+  },
+  "feedback": {
+    "title": "Comentarios de Usuarios",
+    "category": "Categoría",
+    "rating": "Calificación",
+    "titleLabel": "Título",
+    "description": "Descripción",
+    "deviceInfo": "Información del Dispositivo",
+    "date": "Fecha",
+    "user": "Usuario",
+    "noFeedbacks": "No se encontraron comentarios.",
+    "searchPlaceholder": "Buscar por título, descripción o usuario...",
+    "allCategories": "Todas las categorías",
+    "allRatings": "Todas las calificaciones",
+    "anonymous": "Anónimo",
+    "categories": {
+      "bug": "Error",
+      "feature_request": "Solicitud de Función",
+      "other": "Otro"
+    },
+    "ratings": {
+      "stars": "{0} Estrellas",
+      "star": "1 Estrella"
+    }
+  },
+  "common": {
+    "loading": "Cargando..."
+  },
+  "users": {
+    "title": "Usuarios Registrados",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "role": "Rol",
+    "joinedDate": "Fecha de registro",
+    "noUsers": "No se encontraron usuarios.",
+    "searchPlaceholder": "Buscar por nombre o correo...",
+    "admin": "Administrador",
+    "user": "Usuario",
+    "allUsers": "Todos los usuarios",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "status": "Estado",
+    "allRoles": "Todos los roles",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de finalización"
+  }
+}

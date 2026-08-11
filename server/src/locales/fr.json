@@ -1,0 +1,148 @@
+{
+  "COMMON": {
+    "STATUS_SUCCESS": "succès",
+    "STATUS_FAIL": "échec",
+    "STATUS_ERROR": "erreur",
+    "USER_NOT_AUTHENTICATED": "Utilisateur non authentifié",
+    "SOMETHING_WENT_WRONG": "Une erreur est survenue",
+    "TOO_MANY_REQUESTS": "Trop de requêtes depuis cette IP, veuillez réessayer plus tard.",
+    "VALIDATION_FAILED": "Échec de la validation"
+  },
+  "AUTH": {
+    "GOOGLE_ID_TOKEN_REQUIRED": "Le jeton d'identification Google est requis",
+    "INVALID_GOOGLE_ID_TOKEN": "Jeton d'identification Google invalide",
+    "INVALID_GOOGLE_ID_TOKEN_PAYLOAD": "Contenu du jeton d'identification Google invalide",
+    "MISSING_EMAIL_OR_NAME": "Le compte Google ne contient pas d'adresse e-mail ou de nom",
+    "LOGGED_OUT": "Déconnexion réussie",
+    "NOT_LOGGED_IN": "Vous n'êtes pas connecté ! Veuillez vous connecter pour y accéder.",
+    "INVALID_EXPIRED_TOKEN": "Jeton invalide ou expiré. Veuillez vous reconnecter.",
+    "USER_NOT_FOUND": "L'utilisateur associé à ce jeton n'existe plus.",
+    "ACCOUNT_DELETED_CONTACT_SUPPORT": "Votre compte a été supprimé. Veuillez contacter le support pour le rouvrir.",
+    "EMAIL_PASSWORD_REQUIRED": "L'adresse e-mail et le mot de passe sont requis",
+    "INVALID_EMAIL_PASSWORD": "E-mail ou mot de passe invalide",
+    "ACCESS_DENIED": "Accès refusé. Réservé aux administrateurs."
+  },
+  "APP": {
+    "FIELDS_REQUIRED": "Le nom de l'application, le nom du package et la description sont requis",
+    "PACKAGE_ALREADY_EXISTS": "Une application avec ce nom de package existe déjà",
+    "NOT_FOUND": "Application non trouvée",
+    "NOT_MEMBER": "Vous n'êtes pas membre de cette application",
+    "INVITE_FIELDS_REQUIRED": "L'adresse e-mail et le rôle sont requis",
+    "INVITE_ONLY_OWNERS_DEVELOPERS": "Seuls les propriétaires et les développeurs peuvent inviter des membres",
+    "INVITE_YOURSELF": "Vous ne pouvez pas vous inviter vous-même",
+    "INVITE_NOT_REGISTERED": "L'utilisateur n'est pas enregistré. Seuls les utilisateurs enregistrés peuvent être invités.",
+    "INVITE_ALREADY_MEMBER": "L'utilisateur est déjà membre ou a une invitation en attente",
+    "REMOVE_ONLY_OWNERS_DEVELOPERS": "Seuls les propriétaires et les développeurs peuvent supprimer des membres",
+    "REMOVE_OWNER_RESTRICTED": "Impossible de supprimer le propriétaire de l'application",
+    "INVITATION_NOT_FOUND": "Invitation non trouvée",
+    "INVITATION_REJECTED": "Invitation rejetée avec succès",
+    "INVITATION_NOTIFICATION_TITLE": "Invitation à rejoindre {0}",
+    "INVITATION_NOTIFICATION_BODY": "Vous avez été invité à rejoindre {0} en tant que {1}."
+  },
+  "RELEASE": {
+    "UPLOAD_REQUIRED": "Veuillez télécharger un fichier APK",
+    "UPLOAD_ONLY_OWNERS_DEVELOPERS": "Seuls les propriétaires et les développeurs sont autorisés à télécharger des APK",
+    "PARSE_FAILED": "Échec de l'analyse du fichier APK. Assurez-vous qu'il s'agit d'un package Android valide.",
+    "PACKAGE_MISMATCH": "Incohérence du nom de package. Attendu : {0}, Trouvé : {1}",
+    "BUILD_ALREADY_EXISTS": "Une version avec le numéro de build #{0} existe déjà",
+    "BUILD_NUMBER_TOO_LOW": "Le numéro de build #{0} ne peut pas être utilisé car le dernier numéro de build publié est #{1}. Veuillez incrémenter le numéro de build et réessayer.",
+    "DRIVE_NOT_CONFIGURED": "Google Drive n'est pas configuré pour le propriétaire de cette application.",
+    "DRIVE_REVOKED": "L'accès à Google Drive a été révoqué ou est invalide. Veuillez reconfigurer Google Drive dans les paramètres de votre application.",
+    "DRIVE_UPLOAD_FAILED": "Échec du téléchargement de l'APK sur Google Drive : {0}",
+    "NO_RELEASE_NOTES": "Aucune note de version fournie",
+    "NEW_RELEASE_NOTIFICATION_TITLE": "Nouvelle version pour {0}",
+    "NEW_RELEASE_NOTIFICATION_BODY": "La version {0} (Build #{1}) est désormais disponible.",
+    "NOT_FOUND": "Version non trouvée",
+    "DRIVE_FILE_NOT_FOUND": "Le fichier APK n'a pas été trouvé sur Google Drive. Il a peut-être été supprimé.",
+    "DELETE_ONLY_OWNERS_DEVELOPERS": "Seuls les propriétaires et les développeurs sont autorisés à supprimer des versions"
+  },
+  "DEVICE": {
+    "TOKEN_REQUIRED": "Le jeton est requis",
+    "INVALID_USED_TOKEN": "Jeton invalide ou déjà utilisé",
+    "LINK_EXPIRED": "Ce lien d'autorisation a expiré",
+    "LINK_ALREADY_USED": "Ce lien a déjà été utilisé",
+    "USER_CODE_REQUIRED": "Le code utilisateur est requis",
+    "INVALID_CODE": "Code d'autorisation invalide. Veuillez vérifier le code et réessayer.",
+    "CODE_EXPIRED": "Ce code d'autorisation a expiré. Veuillez en générer un nouveau.",
+    "SUCCESSFULLY_AUTHORIZED": "Appareil autorisé avec succès",
+    "DEVICE_CODE_REQUIRED": "Le code de l'appareil est requis",
+    "DEVICE_CODE_EXPIRED": "Le code de l'appareil a expiré. Veuillez en demander un nouveau.",
+    "AUTHORIZATION_PENDING": "L'utilisateur n'a pas encore autorisé l'appareil.",
+    "USER_NOT_FOUND": "Utilisateur non trouvé"
+  },
+  "FEEDBACK": {
+    "FIELDS_REQUIRED": "La catégorie, la note, le titre et la description sont requis"
+  },
+  "HEALTH": {
+    "RUNNING": "Le serveur est sain et en cours d'exécution"
+  },
+  "SUPPORT": {
+    "FIELDS_REQUIRED": "Veuillez fournir un nom, une adresse e-mail, un sujet et un message",
+    "SENT_SUCCESS": "Message envoyé avec succès.",
+    "SENT_ERROR": "Erreur lors de l'envoi de l'e-mail de support. Veuillez réessayer plus tard.",
+    "INVALID_STATUS": "Valeur de statut invalide. Doit être en attente ou résolu.",
+    "NOT_FOUND": "Demande de support non trouvée"
+  },
+  "USER": {
+    "AUTH_CODE_REQUIRED": "Le code d'autorisation est requis",
+    "REFRESH_TOKEN_FAILED": "Échec de l'obtention du jeton de rafraîchissement. Veuillez vous assurer d'accorder l'accès hors ligne et le consentement.",
+    "DRIVE_CONFIGURED": "Google Drive configuré avec succès",
+    "FCM_TOKEN_REQUIRED": "Le jeton FCM est requis",
+    "FCM_TOKEN_UPDATED": "Jeton FCM mis à jour avec succès",
+    "NOT_FOUND": "Utilisateur non trouvé",
+    "DELETED_SUCCESS": "Compte supprimé avec succès"
+  },
+  "EMAIL": {
+    "WELCOME_SUBJECT": "Bienvenue sur TestAPK !",
+    "WELCOME_TEXT": "Bonjour {0},\n\nBienvenue sur TestAPK ! Nous sommes ravis de vous compter parmi nous.\n\nCordialement,\nL'équipe TestAPK",
+    "WELCOME_HTML": "\n          <h3>Bienvenue sur TestAPK !</h3>\n          <p>Bonjour {0},</p>\n          <p>Nous sommes ravis de vous compter parmi nous. TestAPK vous aide à gérer et distribuer vos versions APK aux testeurs en toute simplicité.</p>\n          <br/>\n          <p>Cordialement,</p>\n          <p><strong>L'équipe TestAPK</strong></p>\n        ",
+    "SUPPORT_SUBJECT": "[Support TestAPK] {0}",
+    "SUPPORT_TEXT": "Nom : {0}\nE-mail : {1}\n\nMessage :\n{2}",
+    "SUPPORT_HTML": "\n        <h3>Nouvelle demande de support</h3>\n        <p><strong>Nom :</strong> {0}</p>\n        <p><strong>E-mail :</strong> {1}</p>\n        <p><strong>Sujet :</strong> {2}</p>\n        <br/>\n        <p><strong>Message :</strong></p>\n        <p style=\"white-space: pre-wrap;\">{3}</p>\n      ",
+    "SMTP_NOT_CONFIGURED_WELCOME": "Le SMTP n'est pas configuré. E-mail de bienvenue pour {0} simulé.",
+    "SMTP_NOT_CONFIGURED_SUPPORT": "Le SMTP n'est pas configuré. Message de support enregistré dans la console :",
+    "WELCOME_SENT": "E-mail de bienvenue envoyé à {0}",
+    "SUPPORT_SENT": "E-mail de support envoyé à {0}",
+    "INVITATION_SUBJECT": "Invitation à rejoindre {0} sur TestAPK",
+    "INVITATION_TEXT": "Bonjour,\n\nVous avez été invité à rejoindre l'application \"{0}\" en tant que {1} sur TestAPK.\n\nVeuillez vous connecter à l'application TestAPK pour accepter ou rejeter l'invitation.\n\nCordialement,\nL'équipe TestAPK",
+    "INVITATION_HTML": "\n        <h3>Invitation à rejoindre {0} sur TestAPK</h3>\n        <p>Bonjour,</p>\n        <p>Vous avez été invité à rejoindre l'application <strong>{0}</strong> en tant que <strong>{1}</strong> sur TestAPK.</p>\n        <p>Veuillez vous connecter à l'application TestAPK pour accepter ou rejeter l'invitation.</p>\n        <br/>\n        <p>Cordialement,</p>\n        <p><strong>L'équipe TestAPK</strong></p>\n      ",
+    "SMTP_NOT_CONFIGURED_INVITATION": "Le SMTP n'est pas configuré. E-mail d'invitation pour {0} simulé.",
+    "INVITATION_SENT": "E-mail d'invitation envoyé à {0}"
+  },
+  "DRIVE": {
+    "NOT_CONFIGURED": "Les identifiants Google Drive ne sont pas configurés.",
+    "FOLDER_CREATE_FAILED": "Échec de la création du dossier dans Google Drive",
+    "UPLOAD_FAILED_NO_ID": "Échec du téléchargement du fichier sur Google Drive : aucun ID renvoyé"
+  },
+  "NOTIFICATIONS": {
+    "FCM_INIT_SUCCESS": "✅ Firebase Cloud Messaging initialisé avec succès.",
+    "FCM_INIT_FAILED": "❌ Échec de l'initialisation de Firebase Cloud Messaging :",
+    "FCM_NOT_INITIALIZED": "⚠️ FCM non initialisé. Notification ignorée.",
+    "FCM_KEY_NOT_FOUND": "⚠️ Fichier de compte de service Firebase introuvable à l'adresse {0}. Les notifications push seront désactivées.",
+    "FCM_SEND_FAILED": "❌ Échec de l'envoi de la notification push au jeton {0} :"
+  },
+  "MODELS": {
+    "APP": {
+      "DEFAULT_CATEGORY": "Application Android",
+      "DEFAULT_ICON": "Android",
+      "DEFAULT_DOWNLOADS": "0",
+      "DEFAULT_RATING": "0.0",
+      "DEFAULT_ACTIVE_USERS": "0",
+      "DEFAULT_SCREENSHOTS": [
+        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        "linear-gradient(135deg, #2af598 0%, #009efd 100%)"
+      ]
+    },
+    "FEEDBACK": {
+      "USER_ID_REQUIRED": "L'identifiant de l'utilisateur est requis",
+      "CATEGORY_REQUIRED": "La catégorie est requise",
+      "RATING_REQUIRED": "La note est requise",
+      "TITLE_REQUIRED": "Le titre est requis",
+      "DESCRIPTION_REQUIRED": "La description est requise"
+    },
+    "USER": {
+      "EMAIL_REQUIRED": "L'adresse e-mail est requise",
+      "NAME_REQUIRED": "Le nom est requis"
+    }
+  }
+}

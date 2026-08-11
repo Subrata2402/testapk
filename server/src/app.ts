@@ -4,21 +4,29 @@ import helmet from 'helmet';
 import { env } from './config/env.js';
 import { rateLimiter } from './middlewares/rateLimiter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import { localeMiddleware } from './middlewares/locale.middleware.js';
 import { AppError } from './utils/appError.js';
 
 import healthRoutes from './routes/health.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import userRoutes from './routes/user.routes.js';
 import appRoutes from './routes/app.routes.js';
+import deviceAuthRoutes from './routes/device-auth.routes.js';
+import feedbackRoutes from './routes/feedback.route.js';
+import supportRoutes from './routes/support.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
 
 // Set security HTTP headers
 app.use(helmet());
 
+// Use locale middleware
+app.use(localeMiddleware);
+
 // Enable CORS
 const corsOptions: cors.CorsOptions = {
-  origin: env.CORS_ORIGIN === '*' ? '*' : env.CORS_ORIGIN.split(','),
+  origin: env.CORS_ORIGIN == '*' ? '*' : env.CORS_ORIGIN.split(','),
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -37,6 +45,10 @@ app.use('/api/v1', healthRoutes);
 app.use('/api/v1', authRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', appRoutes);
+app.use('/api/v1', feedbackRoutes);
+app.use('/api/v1/support', supportRoutes);
+app.use('/api/v1/auth/device', deviceAuthRoutes);
+app.use('/api/v1/admin', adminRoutes);
 
 // Handle undefined routes
 app.use((req, res, next) => {

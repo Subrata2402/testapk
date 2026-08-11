@@ -1,0 +1,97 @@
+{
+  "login": {
+    "title": "एडमिन पोर्टल",
+    "subtitle": "TestAPK को प्रबंधित करने के लिए साइन इन करें",
+    "email": "ईमेल पता",
+    "password": "पासवर्ड",
+    "button": "साइन इन करें",
+    "error": "अमान्य ईमेल या पासवर्ड"
+  },
+  "dashboard": {
+    "title": "एडमिन डैशबोर्ड",
+    "logout": "लॉगआउट",
+    "welcome": "वापसी पर आपका स्वागत है, {0}!",
+    "welcomeSubtitle": "आपके पास अनुप्रयोगों, रिलीज़ और सिस्टम सेटिंग्स को प्रबंधित करने की पूर्ण पहुंच है।",
+    "role": "प्रशासक",
+    "logoutConfirmTitle": "साइन आउट",
+    "logoutConfirmMessage": "क्या आप वाकई एडमिन पोर्टल से साइन आउट करना चाहते हैं?",
+    "stats": {
+      "totalApps": "कुल ऐप्स",
+      "totalDownloads": "कुल डाउनलोड",
+      "activeUsers": "सक्रिय उपयोगकर्ता",
+      "totalFeedbacks": "कुल फीडबैक"
+    },
+    "recentActivity": "हाल की गतिविधि",
+    "noActivity": "कोई हाल की गतिविधि नहीं मिली।"
+  },
+  "support": {
+    "title": "सहायता अनुरोध",
+    "name": "नाम",
+    "email": "ईमेल",
+    "subject": "विषय",
+    "message": "संदेश",
+    "date": "दिनांक",
+    "status": "स्थिति",
+    "actions": "कार्रवाई",
+    "view": "संदेश देखें",
+    "noRequests": "कोई सहायता अनुरोध नहीं मिला।",
+    "pending": "लंबित",
+    "resolved": "हल किया गया",
+    "reply": "ईमेल के माध्यम से उत्तर दें",
+    "searchPlaceholder": "नाम, ईमेल या विषय से खोजें...",
+    "allStatuses": "सभी स्थितियाँ",
+    "new": "नया",
+    "closed": "बंद",
+    "allTime": "कुल समय",
+    "today": "आज",
+    "yesterday": "कल",
+    "last7Days": "पिछले 7 दिन",
+    "noMatchingRequests": "कोई मेल खाने वाला सहायता अनुरोध नहीं मिला।",
+    "pendingRequests": "नए सहायता अनुरोध"
+  },
+  "common": {
+    "loading": "लोड हो रहा है..."
+  },
+  "feedback": {
+    "title": "उपयोगकर्ता फीडबैक",
+    "category": "श्रेणी",
+    "rating": "रेटिंग",
+    "titleLabel": "शीर्षक",
+    "description": "विवरण",
+    "deviceInfo": "डिवाइस की जानकारी",
+    "date": "दिनांक",
+    "user": "उपयोगकर्ता",
+    "noFeedbacks": "कोई फीडबैक नहीं मिला।",
+    "searchPlaceholder": "शीर्षक, विवरण या उपयोगकर्ता द्वारा खोजें...",
+    "allCategories": "सभी श्रेणियां",
+    "allRatings": "सभी रेटिंग",
+    "anonymous": "अनाम",
+    "categories": {
+      "bug": "बग",
+      "feature_request": "सुविधा का अनुरोध",
+      "other": "अन्य"
+    },
+    "ratings": {
+      "stars": "{0} स्टार",
+      "star": "1 स्टार"
+    }
+  },
+  "users": {
+    "title": "पंजीकृत उपयोगकर्ता",
+    "name": "नाम",
+    "email": "ईमेल",
+    "role": "भूमिका",
+    "joinedDate": "शामिल होने की तिथि",
+    "noUsers": "कोई उपयोगकर्ता नहीं मिला।",
+    "searchPlaceholder": "नाम या ईमेल द्वारा खोजें...",
+    "admin": "प्रशासक",
+    "user": "उपयोगकर्ता",
+    "allUsers": "सभी उपयोगकर्ता",
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय",
+    "status": "स्थिति",
+    "allRoles": "सभी भूमिकाएँ",
+    "startDate": "प्रारंभ तिथि",
+    "endDate": "अंतिम तिथि"
+  }
+}
