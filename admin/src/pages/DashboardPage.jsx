@@ -8,7 +8,9 @@ import {
   LogOut,
   Shield,
   LayoutDashboard,
-  Mail
+  Mail,
+  MessageSquare,
+  Users
 } from 'lucide-react';
 import './DashboardPage.css';
 
@@ -36,6 +38,15 @@ export default function DashboardPage() {
   };
 
   const isSupportTab = location.pathname.includes('/dashboard/support');
+  const isFeedbacksTab = location.pathname.includes('/dashboard/feedbacks');
+  const isUsersTab = location.pathname.includes('/dashboard/users');
+
+  const getHeaderTitle = () => {
+    if (isSupportTab) return t('support.title');
+    if (isFeedbacksTab) return t('feedback.title');
+    if (isUsersTab) return t('users.title');
+    return t('dashboard.title');
+  };
 
   return (
     <div className="dashboard-container">
@@ -62,6 +73,20 @@ export default function DashboardPage() {
             <Mail size={18} />
             <span>{t('support.title')}</span>
           </NavLink>
+          <NavLink
+            to="/dashboard/feedbacks"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <MessageSquare size={18} />
+            <span>{t('feedback.title')}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/users"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Users size={18} />
+            <span>{t('users.title')}</span>
+          </NavLink>
         </nav>
 
         <div className="sidebar-footer">
@@ -86,7 +111,7 @@ export default function DashboardPage() {
         {/* Top Header */}
         <header className="dashboard-header glass-card">
           <div className="header-title-section">
-            <h1>{isSupportTab ? t('support.title') : t('dashboard.title')}</h1>
+            <h1>{getHeaderTitle()}</h1>
           </div>
           <div className="header-actions">
             <CustomDropdown

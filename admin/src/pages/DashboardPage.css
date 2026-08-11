@@ -404,6 +404,7 @@
 
 .support-table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.95rem;
@@ -694,7 +695,7 @@
 
 /* Ensure dropdown menu displays above table elements and isn't clipped */
 .support-table-wrapper {
-  overflow: visible; /* Allow dropdown menus to overflow the table wrapper */
+  overflow-x: auto;
 }
 
 .support-table td {

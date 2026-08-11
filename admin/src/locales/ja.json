@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "アプリ総数",
       "totalDownloads": "ダウンロード総数",
-      "activeUsers": "アクティブユーザー"
+      "activeUsers": "アクティブユーザー",
+      "totalFeedbacks": "フィードバック総数"
     },
     "recentActivity": "最近のアクティビティ",
     "noActivity": "最近のアクティビティはありません。"
@@ -50,5 +51,47 @@
   },
   "common": {
     "loading": "読み込み中..."
+  },
+  "feedback": {
+    "title": "ユーザーフィードバック",
+    "category": "カテゴリ",
+    "rating": "評価",
+    "titleLabel": "タイトル",
+    "description": "説明",
+    "deviceInfo": "デバイス情報",
+    "date": "日付",
+    "user": "ユーザー",
+    "noFeedbacks": "フィードバックが見つかりません。",
+    "searchPlaceholder": "タイトル、説明、またはユーザーで検索...",
+    "allCategories": "すべてのカテゴリ",
+    "allRatings": "すべての評価",
+    "anonymous": "匿名",
+    "categories": {
+      "bug": "バグ",
+      "feature_request": "機能リクエスト",
+      "other": "その他"
+    },
+    "ratings": {
+      "stars": "星{0}",
+      "star": "星1"
+    }
+  },
+  "users": {
+    "title": "登録ユーザー",
+    "name": "名前",
+    "email": "メールアドレス",
+    "role": "役割",
+    "joinedDate": "登録日",
+    "noUsers": "ユーザーが見つかりません。",
+    "searchPlaceholder": "名前またはメールアドレスで検索...",
+    "admin": "管理者",
+    "user": "ユーザー",
+    "allUsers": "すべてのユーザー",
+    "active": "アクティブ",
+    "inactive": "非アクティブ",
+    "status": "ステータス",
+    "allRoles": "すべての役割",
+    "startDate": "開始日",
+    "endDate": "終了日"
   }
 }

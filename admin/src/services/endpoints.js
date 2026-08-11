@@ -4,8 +4,9 @@ export const ENDPOINTS = {
     LOGOUT: '/auth/logout',
   },
   USERS: {
-    ALL: '/users',
+    ALL: '/admin/users',
     BY_ID: (id) => `/users/${id}`,
+    UPDATE_STATUS: (id) => `/admin/users/${id}/status`,
   },
   APPS: {
     BASE: '/apps',
@@ -21,5 +22,8 @@ export const ENDPOINTS = {
   },
   ADMIN: {
     STATS: '/admin/stats',
+  },
+  FEEDBACK: {
+    ALL: '/feedback',
   },
 };

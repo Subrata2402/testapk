@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "应用总数",
       "totalDownloads": "下载总数",
-      "activeUsers": "活跃用户"
+      "activeUsers": "活跃用户",
+      "totalFeedbacks": "反馈总数"
     },
     "recentActivity": "近期活动",
     "noActivity": "未找到近期活动。"
@@ -50,5 +51,47 @@
   },
   "common": {
     "loading": "加载中..."
+  },
+  "feedback": {
+    "title": "用户反馈",
+    "category": "类别",
+    "rating": "评分",
+    "titleLabel": "标题",
+    "description": "描述",
+    "deviceInfo": "设备信息",
+    "date": "日期",
+    "user": "用户",
+    "noFeedbacks": "未找到反馈。",
+    "searchPlaceholder": "按标题、描述或用户搜索...",
+    "allCategories": "所有类别",
+    "allRatings": "所有评分",
+    "anonymous": "匿名",
+    "categories": {
+      "bug": "缺陷",
+      "feature_request": "功能建议",
+      "other": "其他"
+    },
+    "ratings": {
+      "stars": "{0} 星",
+      "star": "1 星"
+    }
+  },
+  "users": {
+    "title": "已注册用户",
+    "name": "姓名",
+    "email": "电子邮箱",
+    "role": "角色",
+    "joinedDate": "加入日期",
+    "noUsers": "未找到用户。",
+    "searchPlaceholder": "按姓名或邮箱搜索...",
+    "admin": "管理员",
+    "user": "用户",
+    "allUsers": "所有用户",
+    "active": "活跃",
+    "inactive": "不活跃",
+    "status": "状态",
+    "allRoles": "所有角色",
+    "startDate": "开始日期",
+    "endDate": "结束日期"
   }
 }

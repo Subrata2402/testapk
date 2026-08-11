@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, RefreshCw, Eye, Search } from 'lucide-react';
+import { Mail, RefreshCw, Eye, Search, Calendar } from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
+import CustomDatePicker from '../common/CustomDatePicker';
 
 export default function SupportList({ requests, isLoading, onRefresh, onViewDetails, onStatusChange, t }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'pending' | 'resolved'
-  const [dateFilter, setDateFilter] = useState('all'); // 'all' | 'today' | 'yesterday' | 'week'
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
   // Filter requests
@@ -20,24 +22,25 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
     const matchesStatus = statusFilter === 'all' || req.status === statusFilter;
 
     // Date filter
-    let matchesDate = true;
-    if (dateFilter !== 'all') {
+    const matchesDate = (() => {
+      if (!startDate && !endDate) return true;
       const reqDate = new Date(req.createdAt);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
+      reqDate.setHours(0, 0, 0, 0);
 
-      if (dateFilter === 'today') {
-        matchesDate = reqDate >= today;
-      } else if (dateFilter === 'yesterday') {
-        const yesterday = new Date(today);
-        yesterday.setDate(yesterday.getDate() - 1);
-        matchesDate = reqDate >= yesterday && reqDate < today;
-      } else if (dateFilter === 'week') {
-        const lastWeek = new Date(today);
-        lastWeek.setDate(lastWeek.getDate() - 7);
-        matchesDate = reqDate >= lastWeek;
+      if (startDate) {
+        const start = new Date(startDate);
+        start.setHours(0, 0, 0, 0);
+        if (reqDate < start) return false;
       }
-    }
+
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        if (reqDate > end) return false;
+      }
+
+      return true;
+    })();
 
     return matchesSearch && matchesStatus && matchesDate;
   });
@@ -55,13 +58,6 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
     { value: 'all', label: t('support.allStatuses') },
     { value: 'pending', label: t('support.new') },
     { value: 'resolved', label: t('support.closed') }
-  ];
-
-  const dateFilterOptions = [
-    { value: 'all', label: t('support.allTime') },
-    { value: 'today', label: t('support.today') },
-    { value: 'yesterday', label: t('support.yesterday') },
-    { value: 'week', label: t('support.last7Days') }
   ];
 
   const getStatusOptions = (currentStatus) => [
@@ -87,34 +83,37 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="support-filters-bar">
-        <div className="search-input-wrapper">
-          <Search size={16} className="search-icon" />
-          <input
-            type="text"
-            placeholder={t('support.searchPlaceholder')}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="filter-input search-input"
-          />
-        </div>
-
-        <div className="filters-group">
-          <div className="filter-dropdown-wrapper">
-            <CustomDropdown
-              options={statusFilterOptions}
-              value={statusFilter}
-              onChange={setStatusFilter}
-              placeholder={t('support.allStatuses')}
+      <div className="support-filters-bar" style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
+        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', width: '100%' }}>
+          <div className="search-input-wrapper" style={{ flex: 1, minWidth: '250px' }}>
+            <Search size={16} className="search-icon" />
+            <input
+              type="text"
+              placeholder={t('support.searchPlaceholder')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="filter-input search-input"
             />
           </div>
 
-          <div className="filter-dropdown-wrapper">
-            <CustomDropdown
-              options={dateFilterOptions}
-              value={dateFilter}
-              onChange={setDateFilter}
-              placeholder={t('support.allTime')}
+          <div className="filters-group" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div className="filter-dropdown-wrapper" style={{ width: '160px' }}>
+              <CustomDropdown
+                options={statusFilterOptions}
+                value={statusFilter}
+                onChange={setStatusFilter}
+                placeholder={t('support.allStatuses')}
+              />
+            </div>
+
+            <CustomDatePicker
+              startDate={startDate}
+              endDate={endDate}
+              onChange={(start, end) => {
+                setStartDate(start);
+                setEndDate(end);
+              }}
+              placeholder={t('users.startDate') + ' - ' + t('users.endDate')}
             />
           </div>
         </div>
@@ -180,7 +179,7 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
                         value={req.status}
                         onChange={(val) => handleStatusChange(req._id, val)}
                         placeholder={t('support.status')}
-                        disabled={updatingStatusId === req._id}
+                        loading={updatingStatusId === req._id}
                       />
                     </div>
                   </td>

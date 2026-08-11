@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
-import { Smartphone, Mail, Users, Activity, Clock } from 'lucide-react';
+import { Smartphone, Mail, Users, Activity, Clock, MessageSquare } from 'lucide-react';
 import { adminService } from '../services/api';
 
 export default function DashboardOverview() {
   const { user } = useAuth();
   const { t } = useTranslation();
-  const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0 });
+  const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0, totalFeedbacks: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function DashboardOverview() {
 
         {/* Stats Grid Skeleton */}
         <div className="stats-grid">
-          {[1, 2, 3].map((_, idx) => (
+          {[1, 2, 3, 4].map((_, idx) => (
             <div key={idx} className="stat-card glass-card skeleton-shimmer">
               <div className="stat-card-header">
                 <div className="skeleton-label"></div>
@@ -93,6 +93,13 @@ export default function DashboardOverview() {
       icon: Users,
       color: 'var(--accent-success)',
       glow: 'var(--accent-success-glow)'
+    },
+    {
+      label: t('dashboard.stats.totalFeedbacks'),
+      value: statsData.totalFeedbacks || 0,
+      icon: MessageSquare,
+      color: '#ff9f43',
+      glow: 'rgba(255, 159, 67, 0.15)'
     }
   ];
 

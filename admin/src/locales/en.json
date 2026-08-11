@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "Total Apps",
       "totalDownloads": "Total Downloads",
-      "activeUsers": "Active Users"
+      "activeUsers": "Active Users",
+      "totalFeedbacks": "Total Feedbacks"
     },
     "recentActivity": "Recent Activity",
     "noActivity": "No recent activity found."
@@ -48,7 +49,49 @@
     "noMatchingRequests": "No matching support requests found.",
     "pendingRequests": "New Support Requests"
   },
+  "feedback": {
+    "title": "User Feedbacks",
+    "category": "Category",
+    "rating": "Rating",
+    "titleLabel": "Title",
+    "description": "Description",
+    "deviceInfo": "Device Info",
+    "date": "Date",
+    "user": "User",
+    "noFeedbacks": "No feedbacks found.",
+    "searchPlaceholder": "Search by title, description, or user...",
+    "allCategories": "All Categories",
+    "allRatings": "All Ratings",
+    "anonymous": "Anonymous",
+    "categories": {
+      "bug": "Bug",
+      "feature_request": "Feature Request",
+      "other": "Other"
+    },
+    "ratings": {
+      "stars": "{0} Stars",
+      "star": "1 Star"
+    }
+  },
   "common": {
     "loading": "Loading..."
+  },
+  "users": {
+    "title": "Registered Users",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "joinedDate": "Joined Date",
+    "noUsers": "No users found.",
+    "searchPlaceholder": "Search by name or email...",
+    "admin": "Admin",
+    "user": "User",
+    "allUsers": "All Users",
+    "active": "Active",
+    "inactive": "Inactive",
+    "status": "Status",
+    "allRoles": "All Roles",
+    "startDate": "Start Date",
+    "endDate": "End Date"
   }
 }

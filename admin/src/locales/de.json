@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "Apps insgesamt",
       "totalDownloads": "Downloads insgesamt",
-      "activeUsers": "Aktive Benutzer"
+      "activeUsers": "Aktive Benutzer",
+      "totalFeedbacks": "Feedback insgesamt"
     },
     "recentActivity": "Letzte Aktivität",
     "noActivity": "Keine kürzlichen Aktivitäten gefunden."
@@ -50,5 +51,47 @@
   },
   "common": {
     "loading": "Laden..."
+  },
+  "feedback": {
+    "title": "Benutzer-Feedback",
+    "category": "Kategorie",
+    "rating": "Bewertung",
+    "titleLabel": "Titel",
+    "description": "Beschreibung",
+    "deviceInfo": "Geräteinformationen",
+    "date": "Datum",
+    "user": "Benutzer",
+    "noFeedbacks": "Kein Feedback gefunden.",
+    "searchPlaceholder": "Suche nach Titel, Beschreibung oder Benutzer...",
+    "allCategories": "Alle Kategorien",
+    "allRatings": "Alle Bewertungen",
+    "anonymous": "Anonym",
+    "categories": {
+      "bug": "Fehler",
+      "feature_request": "Funktionsanfrage",
+      "other": "Sonstiges"
+    },
+    "ratings": {
+      "stars": "{0} Sterne",
+      "star": "1 Stern"
+    }
+  },
+  "users": {
+    "title": "Registrierte Benutzer",
+    "name": "Name",
+    "email": "E-Mail",
+    "role": "Rolle",
+    "joinedDate": "Beigetreten am",
+    "noUsers": "Keine Benutzer gefunden.",
+    "searchPlaceholder": "Suche nach Name oder E-Mail...",
+    "admin": "Admin",
+    "user": "Benutzer",
+    "allUsers": "Alle Benutzer",
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "status": "Status",
+    "allRoles": "Alle Rollen",
+    "startDate": "Startdatum",
+    "endDate": "Enddatum"
   }
 }

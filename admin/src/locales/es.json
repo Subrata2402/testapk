@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "Aplicaciones Totales",
       "totalDownloads": "Descargas Totales",
-      "activeUsers": "Usuarios Activos"
+      "activeUsers": "Usuarios Activos",
+      "totalFeedbacks": "Comentarios Totales"
     },
     "recentActivity": "Actividad Reciente",
     "noActivity": "No se encontró actividad reciente."
@@ -48,7 +49,49 @@
     "noMatchingRequests": "No se encontraron solicitudes de soporte coincidentes.",
     "pendingRequests": "Nuevas solicitudes de soporte"
   },
+  "feedback": {
+    "title": "Comentarios de Usuarios",
+    "category": "Categoría",
+    "rating": "Calificación",
+    "titleLabel": "Título",
+    "description": "Descripción",
+    "deviceInfo": "Información del Dispositivo",
+    "date": "Fecha",
+    "user": "Usuario",
+    "noFeedbacks": "No se encontraron comentarios.",
+    "searchPlaceholder": "Buscar por título, descripción o usuario...",
+    "allCategories": "Todas las categorías",
+    "allRatings": "Todas las calificaciones",
+    "anonymous": "Anónimo",
+    "categories": {
+      "bug": "Error",
+      "feature_request": "Solicitud de Función",
+      "other": "Otro"
+    },
+    "ratings": {
+      "stars": "{0} Estrellas",
+      "star": "1 Estrella"
+    }
+  },
   "common": {
     "loading": "Cargando..."
+  },
+  "users": {
+    "title": "Usuarios Registrados",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "role": "Rol",
+    "joinedDate": "Fecha de registro",
+    "noUsers": "No se encontraron usuarios.",
+    "searchPlaceholder": "Buscar por nombre o correo...",
+    "admin": "Administrador",
+    "user": "Usuario",
+    "allUsers": "Todos los usuarios",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "status": "Estado",
+    "allRoles": "Todos los roles",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de finalización"
   }
 }

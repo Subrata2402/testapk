@@ -43,6 +43,7 @@ export const authService = {
 export const userService = {
   getAll: () => apiClient.get(ENDPOINTS.USERS.ALL),
   getById: (id) => apiClient.get(ENDPOINTS.USERS.BY_ID(id)),
+  updateStatus: (id, isDeleted) => apiClient.patch(ENDPOINTS.USERS.UPDATE_STATUS(id), { isDeleted }),
 };
 
 export const appService = {
@@ -62,6 +63,10 @@ export const supportService = {
 
 export const adminService = {
   getStats: () => apiClient.get(ENDPOINTS.ADMIN.STATS),
+};
+
+export const feedbackService = {
+  getFeedbacks: () => apiClient.get(ENDPOINTS.FEEDBACK.ALL),
 };
 
 export default apiClient;

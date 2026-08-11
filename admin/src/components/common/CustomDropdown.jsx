@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Check, Loader2 } from 'lucide-react';
 import './CustomDropdown.css';
 
-export default function CustomDropdown({ options, value, onChange, placeholder = 'Select option', disabled = false }) {
+export default function CustomDropdown({ options, value, onChange, placeholder = 'Select option', disabled = false, loading = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -20,31 +20,31 @@ export default function CustomDropdown({ options, value, onChange, placeholder =
   const selectedOption = options.find(opt => opt.value === value) || { value, label: value || placeholder };
 
   const handleTriggerClick = () => {
-    if (!disabled) {
+    if (!disabled && !loading) {
       setIsOpen(!isOpen);
     }
   };
 
   return (
-    <div className={`custom-dropdown ${disabled ? 'disabled' : ''}`} ref={dropdownRef}>
+    <div className={`custom-dropdown ${disabled || loading ? 'disabled' : ''}`} ref={dropdownRef}>
       <button
         type="button"
-        className={`dropdown-trigger ${isOpen ? 'open' : ''} ${disabled ? 'disabled' : ''}`}
+        className={`dropdown-trigger ${isOpen ? 'open' : ''} ${disabled || loading ? 'disabled' : ''}`}
         onClick={handleTriggerClick}
-        disabled={disabled}
+        disabled={disabled || loading}
       >
         <div className="trigger-content">
           {selectedOption.flag && <span className="dropdown-item-flag">{selectedOption.flag}</span>}
           <span>{selectedOption.label}</span>
         </div>
-        {disabled ? (
+        {loading ? (
           <Loader2 size={14} className="dropdown-spinner animate-spin" />
         ) : (
           <ChevronDown size={16} className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
         )}
       </button>
 
-      {isOpen && !disabled && (
+      {isOpen && !disabled && !loading && (
         <div className="dropdown-menu animate-fade-in">
           {options.map((opt) => {
             const isSelected = opt.value === value;

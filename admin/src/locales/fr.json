@@ -18,7 +18,8 @@
     "stats": {
       "totalApps": "Total des applications",
       "totalDownloads": "Total des téléchargements",
-      "activeUsers": "Utilisateurs actifs"
+      "activeUsers": "Utilisateurs actifs",
+      "totalFeedbacks": "Total des retours"
     },
     "recentActivity": "Activité récente",
     "noActivity": "Aucune activité récente trouvée."
@@ -50,5 +51,47 @@
   },
   "common": {
     "loading": "Chargement..."
+  },
+  "feedback": {
+    "title": "Retours d'utilisateurs",
+    "category": "Catégorie",
+    "rating": "Note",
+    "titleLabel": "Titre",
+    "description": "Description",
+    "deviceInfo": "Infos de l'appareil",
+    "date": "Date",
+    "user": "Utilisateur",
+    "noFeedbacks": "Aucun retour trouvé.",
+    "searchPlaceholder": "Rechercher par titre, description ou utilisateur...",
+    "allCategories": "Toutes les catégories",
+    "allRatings": "Toutes les notes",
+    "anonymous": "Anonyme",
+    "categories": {
+      "bug": "Bogue",
+      "feature_request": "Demande de fonctionnalité",
+      "other": "Autre"
+    },
+    "ratings": {
+      "stars": "{0} Étoiles",
+      "star": "1 Étoile"
+    }
+  },
+  "users": {
+    "title": "Utilisateurs enregistrés",
+    "name": "Nom",
+    "email": "E-mail",
+    "role": "Rôle",
+    "joinedDate": "Date d'inscription",
+    "noUsers": "Aucun utilisateur trouvé.",
+    "searchPlaceholder": "Rechercher par nom ou e-mail...",
+    "admin": "Admin",
+    "user": "Utilisateur",
+    "allUsers": "Tous les utilisateurs",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "status": "Statut",
+    "allRoles": "Tous les rôles",
+    "startDate": "Date de début",
+    "endDate": "Date de fin"
   }
 }
