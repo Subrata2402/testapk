@@ -77,6 +77,16 @@
       "star": "1 Stern"
     }
   },
+  "apps": {
+    "title": "Anwendungen",
+    "searchPlaceholder": "Suche nach Name, Paket oder Besitzer...",
+    "createdDate": "Erstellungsdatum",
+    "name": "App-Name",
+    "packageName": "Paketname",
+    "owner": "Besitzer",
+    "releases": "Releases",
+    "noApps": "Keine Anwendungen gefunden"
+  },
   "users": {
     "title": "Registrierte Benutzer",
     "name": "Name",

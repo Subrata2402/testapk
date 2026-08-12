@@ -74,6 +74,16 @@
       "star": "1 Estrella"
     }
   },
+  "apps": {
+    "title": "Aplicaciones",
+    "searchPlaceholder": "Buscar por nombre, paquete o propietario...",
+    "createdDate": "Fecha de creación",
+    "name": "Nombre de la aplicación",
+    "packageName": "Nombre del paquete",
+    "owner": "Propietario",
+    "releases": "Versiones",
+    "noApps": "No se encontraron aplicaciones"
+  },
   "common": {
     "loading": "Cargando..."
   },

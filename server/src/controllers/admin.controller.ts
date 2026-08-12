@@ -113,3 +113,40 @@ export const updateUserStatus = async (req: Request, res: Response, next: NextFu
   }
 };
 
+export const getAllApps = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const apps = await App.find()
+      .populate({
+        path: 'releases',
+        options: { sort: { buildNumber: -1 } },
+        perDocumentLimit: 1,
+      })
+      .populate('releasesCount')
+      .sort({ createdAt: -1 });
+
+    // Populate member names
+    const emails = apps.flatMap(app => app.members.map((m: any) => m.email.toLowerCase()));
+    const users = await User.find({ email: { $in: emails } });
+    const userMap = new Map(users.map(u => [u.email.toLowerCase(), u.name]));
+
+    const appsWithMemberNames = apps.map(app => {
+      const appObj = app.toObject ? app.toObject() : app;
+      appObj.members = appObj.members.map((m: any) => ({
+        ...m,
+        name: userMap.get(m.email.toLowerCase()) || m.email.split('@')[0],
+      }));
+      return appObj;
+    });
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      results: apps.length,
+      data: {
+        apps: appsWithMemberNames
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

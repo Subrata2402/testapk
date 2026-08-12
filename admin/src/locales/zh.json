@@ -77,6 +77,16 @@
       "star": "1 星"
     }
   },
+  "apps": {
+    "title": "应用列表",
+    "searchPlaceholder": "按名称、包名或所有者搜索...",
+    "createdDate": "创建日期",
+    "name": "应用名称",
+    "packageName": "包名",
+    "owner": "所有者",
+    "releases": "版本数",
+    "noApps": "未找到应用"
+  },
   "users": {
     "title": "已注册用户",
     "name": "姓名",

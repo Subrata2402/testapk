@@ -77,6 +77,16 @@
       "star": "1 Estrela"
     }
   },
+  "apps": {
+    "title": "Aplicativos",
+    "searchPlaceholder": "Pesquisar por nome, pacote ou proprietário...",
+    "createdDate": "Data de criação",
+    "name": "Nome do aplicativo",
+    "packageName": "Nome do pacote",
+    "owner": "Proprietário",
+    "releases": "Versões",
+    "noApps": "Nenhum aplicativo encontrado"
+  },
   "users": {
     "title": "Usuários Registrados",
     "name": "Nome",

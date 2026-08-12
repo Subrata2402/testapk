@@ -77,6 +77,16 @@
       "star": "星1"
     }
   },
+  "apps": {
+    "title": "アプリケーション",
+    "searchPlaceholder": "名前、パッケージ、または所有者で検索...",
+    "createdDate": "作成日",
+    "name": "アプリ名",
+    "packageName": "パッケージ名",
+    "owner": "所有者",
+    "releases": "リリース",
+    "noApps": "アプリケーションが見つかりません"
+  },
   "users": {
     "title": "登録ユーザー",
     "name": "名前",

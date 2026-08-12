@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 import { Smartphone, Mail, Users, Activity, Clock, MessageSquare } from 'lucide-react';
@@ -10,6 +11,7 @@ import DoughnutChart from '../components/analytics/DoughnutChart';
 export default function DashboardOverview() {
   const { user } = useAuth();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0, totalFeedbacks: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -103,28 +105,32 @@ export default function DashboardOverview() {
       value: statsData.totalApps,
       icon: Smartphone,
       color: 'var(--accent-primary)',
-      glow: 'var(--accent-primary-glow)'
+      glow: 'var(--accent-primary-glow)',
+      path: '/dashboard/apps'
     },
     {
       label: t('support.pendingRequests'),
       value: statsData.newSupportRequests,
       icon: Mail,
       color: 'var(--accent-secondary)',
-      glow: 'var(--accent-secondary-glow)'
+      glow: 'var(--accent-secondary-glow)',
+      path: '/dashboard/support'
     },
     {
       label: t('dashboard.stats.activeUsers'),
       value: statsData.totalActiveUsers,
       icon: Users,
       color: 'var(--accent-success)',
-      glow: 'var(--accent-success-glow)'
+      glow: 'var(--accent-success-glow)',
+      path: '/dashboard/users'
     },
     {
       label: t('dashboard.stats.totalFeedbacks'),
       value: statsData.totalFeedbacks || 0,
       icon: MessageSquare,
       color: '#ff9f43',
-      glow: 'rgba(255, 159, 67, 0.15)'
+      glow: 'rgba(255, 159, 67, 0.15)',
+      path: '/dashboard/feedbacks'
     }
   ];
 
@@ -149,7 +155,12 @@ export default function DashboardOverview() {
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="stat-card glass-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+            <div 
+              key={idx} 
+              className="stat-card glass-card animate-fade-in" 
+              style={{ animationDelay: `${idx * 0.1}s`, cursor: 'pointer' }}
+              onClick={() => navigate(stat.path)}
+            >
               <div className="stat-card-header">
                 <span className="stat-label">{stat.label}</span>
                 <div className="stat-icon-wrapper" style={{ backgroundColor: stat.glow, color: stat.color }}>

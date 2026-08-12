@@ -10,7 +10,8 @@ import {
   LayoutDashboard,
   Mail,
   MessageSquare,
-  Users
+  Users,
+  Smartphone
 } from 'lucide-react';
 import './DashboardPage.css';
 
@@ -37,11 +38,13 @@ export default function DashboardPage() {
     }
   };
 
+  const isAppsTab = location.pathname.includes('/dashboard/apps');
   const isSupportTab = location.pathname.includes('/dashboard/support');
   const isFeedbacksTab = location.pathname.includes('/dashboard/feedbacks');
   const isUsersTab = location.pathname.includes('/dashboard/users');
 
   const getHeaderTitle = () => {
+    if (isAppsTab) return t('apps.title') || 'Applications';
     if (isSupportTab) return t('support.title');
     if (isFeedbacksTab) return t('feedback.title');
     if (isUsersTab) return t('users.title');
@@ -65,6 +68,13 @@ export default function DashboardPage() {
           >
             <LayoutDashboard size={18} />
             <span>{t('dashboard.title')}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/apps"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Smartphone size={18} />
+            <span>{t('apps.title') || 'Applications'}</span>
           </NavLink>
           <NavLink
             to="/dashboard/support"

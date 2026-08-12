@@ -74,6 +74,16 @@
       "star": "1 Star"
     }
   },
+  "apps": {
+    "title": "Applications",
+    "searchPlaceholder": "Search by name, package, or owner...",
+    "createdDate": "Created Date",
+    "name": "App Name",
+    "packageName": "Package Name",
+    "owner": "Owner",
+    "releases": "Releases",
+    "noApps": "No applications found"
+  },
   "common": {
     "loading": "Loading..."
   },
