@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "サポートリクエスト",
+    "requests": "リクエスト",
     "name": "名前",
     "email": "メールアドレス",
     "subject": "件名",
@@ -93,5 +94,10 @@
     "allRoles": "すべての役割",
     "startDate": "開始日",
     "endDate": "終了日"
+  },
+  "analytics": {
+    "userTrend": "ユーザー登録トレンド（過去7日間）",
+    "feedbackRatings": "フィードバック評価の分布",
+    "supportStatus": "サポートリクエストのステータス"
   }
 }

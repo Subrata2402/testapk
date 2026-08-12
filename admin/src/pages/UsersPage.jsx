@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon } from 'lucide-react';
+import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon, ChevronUp, ChevronDown } from 'lucide-react';
 import { userService } from '../services/api';
 import CustomDropdown from '../components/common/CustomDropdown';
 import CustomDatePicker from '../components/common/CustomDatePicker';
@@ -100,6 +100,51 @@ export default function UsersPage() {
     })();
 
     return matchesSearch && matchesStatus && matchesRole && matchesDate;
+  });
+
+  const [sortField, setSortField] = useState('createdAt');
+  const [sortDirection, setSortDirection] = useState('desc');
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const renderSortIcon = (field) => {
+    if (sortField !== field) return <ChevronDown size={14} style={{ opacity: 0.3, marginLeft: '4px' }} />;
+    return sortDirection === 'asc' 
+      ? <ChevronUp size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />
+      : <ChevronDown size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />;
+  };
+
+  const sortedUsers = [...filteredUsers].sort((a, b) => {
+    let aVal = a[sortField];
+    let bVal = b[sortField];
+
+    if (sortField === 'name') {
+      aVal = (a.name || '').toLowerCase();
+      bVal = (b.name || '').toLowerCase();
+    } else if (sortField === 'email') {
+      aVal = (a.email || '').toLowerCase();
+      bVal = (b.email || '').toLowerCase();
+    } else if (sortField === 'role') {
+      aVal = (a.role || '').toLowerCase();
+      bVal = (b.role || '').toLowerCase();
+    } else if (sortField === 'isDeleted') {
+      aVal = a.isDeleted ? 1 : 0;
+      bVal = b.isDeleted ? 1 : 0;
+    } else if (sortField === 'createdAt') {
+      aVal = new Date(a.createdAt).getTime();
+      bVal = new Date(b.createdAt).getTime();
+    }
+
+    if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+    return 0;
   });
 
   return (
@@ -202,15 +247,35 @@ export default function UsersPage() {
           <table className="support-table">
             <thead>
               <tr>
-                <th>{t('users.name')}</th>
-                <th>{t('users.email')}</th>
-                <th>{t('users.role')}</th>
-                <th>{t('users.status')}</th>
-                <th>{t('users.joinedDate')}</th>
+                <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('users.name')} {renderSortIcon('name')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('email')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('users.email')} {renderSortIcon('email')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('role')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('users.role')} {renderSortIcon('role')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('isDeleted')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('users.status')} {renderSortIcon('isDeleted')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('users.joinedDate')} {renderSortIcon('createdAt')}
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user) => (
+              {sortedUsers.map((user) => (
                 <tr key={user._id}>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>

@@ -66,6 +66,11 @@
   box-shadow: var(--glass-shadow);
 }
 
+.dropdown-menu.upward {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
 .dropdown-item {
   display: flex;
   align-items: center;

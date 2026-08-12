@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "Solicitações de Suporte",
+    "requests": "Solicitações",
     "name": "Nome",
     "email": "E-mail",
     "subject": "Assunto",
@@ -93,5 +94,10 @@
     "allRoles": "Todas as Funções",
     "startDate": "Data de Início",
     "endDate": "Data de Término"
+  },
+  "analytics": {
+    "userTrend": "Tendência de registro de usuários (últimos 7 dias)",
+    "feedbackRatings": "Distribuição de avaliações de feedback",
+    "supportStatus": "Status das solicitações de suporte"
   }
 }

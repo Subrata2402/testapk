@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, RefreshCw, Eye, Search, Calendar } from 'lucide-react';
+import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown } from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import CustomDatePicker from '../common/CustomDatePicker';
 
@@ -43,6 +43,51 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
     })();
 
     return matchesSearch && matchesStatus && matchesDate;
+  });
+
+  const [sortField, setSortField] = useState('createdAt');
+  const [sortDirection, setSortDirection] = useState('desc');
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const renderSortIcon = (field) => {
+    if (sortField !== field) return <ChevronDown size={14} style={{ opacity: 0.3, marginLeft: '4px' }} />;
+    return sortDirection === 'asc' 
+      ? <ChevronUp size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />
+      : <ChevronDown size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />;
+  };
+
+  const sortedRequests = [...filteredRequests].sort((a, b) => {
+    let aVal = a[sortField];
+    let bVal = b[sortField];
+
+    if (sortField === 'name') {
+      aVal = (a.name || '').toLowerCase();
+      bVal = (b.name || '').toLowerCase();
+    } else if (sortField === 'email') {
+      aVal = (a.email || '').toLowerCase();
+      bVal = (b.email || '').toLowerCase();
+    } else if (sortField === 'subject') {
+      aVal = (a.subject || '').toLowerCase();
+      bVal = (b.subject || '').toLowerCase();
+    } else if (sortField === 'status') {
+      aVal = (a.status || '').toLowerCase();
+      bVal = (b.status || '').toLowerCase();
+    } else if (sortField === 'createdAt') {
+      aVal = new Date(a.createdAt).getTime();
+      bVal = new Date(b.createdAt).getTime();
+    }
+
+    if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+    return 0;
   });
 
   const handleStatusChange = async (id, newStatus) => {
@@ -151,16 +196,36 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
           <table className="support-table">
             <thead>
               <tr>
-                <th>{t('support.name')}</th>
-                <th>{t('support.email')}</th>
-                <th>{t('support.subject')}</th>
-                <th>{t('support.date')}</th>
-                <th>{t('support.status')}</th>
+                <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('support.name')} {renderSortIcon('name')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('email')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('support.email')} {renderSortIcon('email')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('subject')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('support.subject')} {renderSortIcon('subject')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('support.date')} {renderSortIcon('createdAt')}
+                  </div>
+                </th>
+                <th onClick={() => handleSort('status')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {t('support.status')} {renderSortIcon('status')}
+                  </div>
+                </th>
                 <th>{t('support.actions')}</th>
               </tr>
             </thead>
             <tbody>
-              {filteredRequests.map((req) => (
+              {sortedRequests.map((req) => (
                 <tr key={req._id}>
                   <td className="font-semibold">{req.name}</td>
                   <td>

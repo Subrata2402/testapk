@@ -3,6 +3,9 @@ import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 import { Smartphone, Mail, Users, Activity, Clock, MessageSquare } from 'lucide-react';
 import { adminService } from '../services/api';
+import TrendChart from '../components/analytics/TrendChart';
+import BarChart from '../components/analytics/BarChart';
+import DoughnutChart from '../components/analytics/DoughnutChart';
 
 export default function DashboardOverview() {
   const { user } = useAuth();
@@ -49,8 +52,30 @@ export default function DashboardOverview() {
           ))}
         </div>
 
+        {/* Analytics Charts Grid Skeleton */}
+        <div className="analytics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginTop: '24px' }}>
+          {[1, 2, 3].map((_, idx) => (
+            <div key={idx} className="analytics-chart-card glass-card skeleton-shimmer" style={{ height: '280px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div className="skeleton-title" style={{ width: '60%', marginBottom: '24px' }}></div>
+              <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '16px', padding: '0 16px 16px' }}>
+                {[1, 2, 3, 4, 5].map((_, barIdx) => (
+                  <div
+                    key={barIdx}
+                    style={{
+                      flex: 1,
+                      height: `${30 + (barIdx * 15) % 60}%`,
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      borderRadius: '4px'
+                    }}
+                  ></div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Recent Activity Skeleton */}
-        <section className="activity-section glass-card skeleton-shimmer">
+        <section className="activity-section glass-card skeleton-shimmer" style={{ marginTop: '24px' }}>
           <div className="section-header">
             <div className="skeleton-icon" style={{ width: '20px', height: '20px' }}></div>
             <div className="skeleton-title-small"></div>
@@ -137,8 +162,17 @@ export default function DashboardOverview() {
         })}
       </div>
 
+      {/* Analytics Charts Grid */}
+      {statsData.analytics && (
+        <div className="analytics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginTop: '24px' }}>
+          <TrendChart data={statsData.analytics.userTrend || []} />
+          <BarChart data={statsData.analytics.ratingDistribution || []} />
+          <DoughnutChart data={statsData.analytics.supportDistribution || []} />
+        </div>
+      )}
+
       {/* Recent Activity Section */}
-      <section className="activity-section glass-card animate-fade-in" style={{ animationDelay: '0.3s' }}>
+      <section className="activity-section glass-card animate-fade-in" style={{ animationDelay: '0.3s', marginTop: '24px' }}>
         <div className="section-header">
           <Activity size={20} className="section-icon" />
           <h3>{t('dashboard.recentActivity')}</h3>

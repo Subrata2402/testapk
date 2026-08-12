@@ -13,13 +13,55 @@ export const getDashboardStats = async (req: Request, res: Response, next: NextF
     const totalActiveUsers = await User.countDocuments({ isDeleted: { $ne: true } });
     const totalFeedbacks = await Feedback.countDocuments();
 
+    // 1. User Registration Trend (last 7 days)
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    sevenDaysAgo.setHours(0, 0, 0, 0);
+
+    const userTrend = await User.aggregate([
+      { $match: { createdAt: { $gte: sevenDaysAgo } } },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // 2. Feedback Rating Distribution
+    const ratingDistribution = await Feedback.aggregate([
+      {
+        $group: {
+          _id: "$rating",
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // 3. Support Status Distribution
+    const supportDistribution = await Support.aggregate([
+      {
+        $group: {
+          _id: "$status",
+          count: { $sum: 1 }
+        }
+      }
+    ]);
+
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
       data: {
         totalApps,
         newSupportRequests,
         totalActiveUsers,
-        totalFeedbacks
+        totalFeedbacks,
+        analytics: {
+          userTrend,
+          ratingDistribution,
+          supportDistribution
+        }
       }
     });
   } catch (error) {

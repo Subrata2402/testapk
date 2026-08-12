@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { MessageSquare, RefreshCw, Search, Star, Info, X } from 'lucide-react';
+import { MessageSquare, RefreshCw, Search, Star, Info, X, ChevronUp, ChevronDown } from 'lucide-react';
 import { feedbackService } from '../services/api';
 import CustomDropdown from '../components/common/CustomDropdown';
 import CustomDatePicker from '../components/common/CustomDatePicker';
@@ -84,6 +84,51 @@ export default function FeedbackPage() {
     })();
 
     return matchesSearch && matchesCategory && matchesRating && matchesDate;
+  });
+
+  const [sortField, setSortField] = useState('createdAt');
+  const [sortDirection, setSortDirection] = useState('desc');
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const renderSortIcon = (field) => {
+    if (sortField !== field) return <ChevronDown size={14} style={{ opacity: 0.3, marginLeft: '4px' }} />;
+    return sortDirection === 'asc' 
+      ? <ChevronUp size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />
+      : <ChevronDown size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />;
+  };
+
+  const sortedFeedbacks = [...filteredFeedbacks].sort((a, b) => {
+    let aVal = a[sortField];
+    let bVal = b[sortField];
+
+    if (sortField === 'user') {
+      aVal = (a.userId?.name || a.userId?.email || '').toLowerCase();
+      bVal = (b.userId?.name || b.userId?.email || '').toLowerCase();
+    } else if (sortField === 'category') {
+      aVal = (a.category || '').toLowerCase();
+      bVal = (b.category || '').toLowerCase();
+    } else if (sortField === 'rating') {
+      aVal = a.rating || 0;
+      bVal = b.rating || 0;
+    } else if (sortField === 'title') {
+      aVal = (a.title || '').toLowerCase();
+      bVal = (b.title || '').toLowerCase();
+    } else if (sortField === 'createdAt') {
+      aVal = new Date(a.createdAt).getTime();
+      bVal = new Date(b.createdAt).getTime();
+    }
+
+    if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+    return 0;
   });
 
   return (
@@ -182,16 +227,36 @@ export default function FeedbackPage() {
             <table className="support-table">
               <thead>
                 <tr>
-                  <th>{t('feedback.user')}</th>
-                  <th>{t('feedback.category')}</th>
-                  <th>{t('feedback.rating')}</th>
-                  <th>{t('feedback.titleLabel')}</th>
-                  <th>{t('feedback.date')}</th>
+                  <th onClick={() => handleSort('user')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {t('feedback.user')} {renderSortIcon('user')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('category')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {t('feedback.category')} {renderSortIcon('category')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('rating')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {t('feedback.rating')} {renderSortIcon('rating')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('title')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {t('feedback.titleLabel')} {renderSortIcon('title')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {t('feedback.date')} {renderSortIcon('createdAt')}
+                    </div>
+                  </th>
                   <th>{t('support.actions')}</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredFeedbacks.map((fb) => (
+                {sortedFeedbacks.map((fb) => (
                   <tr key={fb._id}>
                     <td>
                       {fb.userId ? (

@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "支持请求",
+    "requests": "请求",
     "name": "姓名",
     "email": "电子邮箱",
     "subject": "主题",
@@ -93,5 +94,10 @@
     "allRoles": "所有角色",
     "startDate": "开始日期",
     "endDate": "结束日期"
+  },
+  "analytics": {
+    "userTrend": "用户注册趋势（过去 7 天）",
+    "feedbackRatings": "反馈评分分布",
+    "supportStatus": "支持请求状态"
   }
 }
