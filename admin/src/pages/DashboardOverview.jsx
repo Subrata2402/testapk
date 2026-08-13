@@ -7,6 +7,7 @@ import { adminService } from '../services/api';
 import TrendChart from '../components/analytics/TrendChart';
 import BarChart from '../components/analytics/BarChart';
 import DoughnutChart from '../components/analytics/DoughnutChart';
+import './DashboardOverview.css';
 
 export default function DashboardOverview() {
   const { user } = useAuth();
@@ -55,19 +56,17 @@ export default function DashboardOverview() {
         </div>
 
         {/* Analytics Charts Grid Skeleton */}
-        <div className="analytics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginTop: '24px' }}>
+        <div className="analytics-grid dashboard-charts-grid">
           {[1, 2, 3].map((_, idx) => (
-            <div key={idx} className="analytics-chart-card glass-card skeleton-shimmer" style={{ height: '280px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div className="skeleton-title" style={{ width: '60%', marginBottom: '24px' }}></div>
-              <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', gap: '16px', padding: '0 16px 16px' }}>
+            <div key={idx} className="analytics-chart-card glass-card skeleton-shimmer dashboard-skeleton-chart-card">
+              <div className="skeleton-title dashboard-skeleton-chart-title"></div>
+              <div className="dashboard-skeleton-chart-bars">
                 {[1, 2, 3, 4, 5].map((_, barIdx) => (
                   <div
                     key={barIdx}
+                    className="dashboard-skeleton-chart-bar"
                     style={{
-                      flex: 1,
-                      height: `${30 + (barIdx * 15) % 60}%`,
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      borderRadius: '4px'
+                      height: `${30 + (barIdx * 15) % 60}%`
                     }}
                   ></div>
                 ))}
@@ -77,16 +76,16 @@ export default function DashboardOverview() {
         </div>
 
         {/* Recent Activity Skeleton */}
-        <section className="activity-section glass-card skeleton-shimmer" style={{ marginTop: '24px' }}>
+        <section className="activity-section glass-card skeleton-shimmer dashboard-activity-section-margin">
           <div className="section-header">
-            <div className="skeleton-icon" style={{ width: '20px', height: '20px' }}></div>
+            <div className="skeleton-icon dashboard-skeleton-activity-icon-wrapper"></div>
             <div className="skeleton-title-small"></div>
           </div>
           <div className="activity-list">
             {[1, 2, 3, 4].map((_, idx) => (
-              <div key={idx} className="activity-item" style={{ gap: '16px', display: 'flex', alignItems: 'flex-start' }}>
+              <div key={idx} className="activity-item dashboard-skeleton-activity-item">
                 <div className="skeleton-activity-icon"></div>
-                <div className="activity-details" style={{ flex: 1 }}>
+                <div className="activity-details dashboard-skeleton-activity-details">
                   <div className="skeleton-text-long"></div>
                   <div className="skeleton-text-short"></div>
                 </div>
@@ -157,8 +156,8 @@ export default function DashboardOverview() {
           return (
             <div 
               key={idx} 
-              className="stat-card glass-card animate-fade-in" 
-              style={{ animationDelay: `${idx * 0.1}s`, cursor: 'pointer' }}
+              className="stat-card glass-card animate-fade-in dashboard-stat-card-clickable" 
+              style={{ animationDelay: `${idx * 0.1}s` }}
               onClick={() => navigate(stat.path)}
             >
               <div className="stat-card-header">
@@ -175,7 +174,7 @@ export default function DashboardOverview() {
 
       {/* Analytics Charts Grid */}
       {statsData.analytics && (
-        <div className="analytics-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginTop: '24px' }}>
+        <div className="analytics-grid dashboard-charts-grid">
           <TrendChart data={statsData.analytics.userTrend || []} />
           <BarChart data={statsData.analytics.ratingDistribution || []} />
           <DoughnutChart data={statsData.analytics.supportDistribution || []} />
@@ -183,7 +182,7 @@ export default function DashboardOverview() {
       )}
 
       {/* Recent Activity Section */}
-      <section className="activity-section glass-card animate-fade-in" style={{ animationDelay: '0.3s', marginTop: '24px' }}>
+      <section className="activity-section glass-card animate-fade-in dashboard-activity-section-margin" style={{ animationDelay: '0.3s' }}>
         <div className="section-header">
           <Activity size={20} className="section-icon" />
           <h3>{t('dashboard.recentActivity')}</h3>

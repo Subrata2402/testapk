@@ -3,6 +3,7 @@ import { useTranslation } from '../context/LanguageContext';
 import { Smartphone, RefreshCw, Search, Calendar, ChevronUp, ChevronDown } from 'lucide-react';
 import { adminService } from '../services/api';
 import CustomDatePicker from '../components/common/CustomDatePicker';
+import './ApplicationsPage.css';
 
 export default function ApplicationsPage() {
   const { t } = useTranslation();
@@ -42,10 +43,10 @@ export default function ApplicationsPage() {
   };
 
   const renderSortIcon = (field) => {
-    if (sortField !== field) return <ChevronDown size={14} style={{ opacity: 0.3, marginLeft: '4px' }} />;
+    if (sortField !== field) return <ChevronDown size={14} className="sort-icon-inactive" />;
     return sortDirection === 'asc' 
-      ? <ChevronUp size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />
-      : <ChevronDown size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />;
+      ? <ChevronUp size={14} className="sort-icon-active" />
+      : <ChevronDown size={14} className="sort-icon-active" />;
   };
 
   const filteredApps = apps.filter(app => {
@@ -128,9 +129,9 @@ export default function ApplicationsPage() {
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="support-filters-bar" style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', width: '100%' }}>
-          <div className="search-input-wrapper" style={{ flex: 1, minWidth: '250px' }}>
+      <div className="support-filters-bar apps-filters-bar">
+        <div className="apps-filters-row">
+          <div className="search-input-wrapper apps-search-wrapper">
             <Search size={16} className="search-icon" />
             <input
               type="text"
@@ -141,10 +142,10 @@ export default function ApplicationsPage() {
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', padding: '10px 16px', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="apps-date-wrapper">
+            <div className="apps-date-label-container">
               <Calendar size={16} className="text-muted" />
-              <span className="font-semibold" style={{ fontSize: '0.9rem' }}>{t('apps.createdDate') || 'Created Date'}:</span>
+              <span className="font-semibold apps-date-label">{t('apps.createdDate') || 'Created Date'}:</span>
             </div>
             <CustomDatePicker
               startDate={startDate}
@@ -177,7 +178,7 @@ export default function ApplicationsPage() {
                   <td><div className="skeleton-text-short"></div></td>
                   <td><div className="skeleton-text-long"></div></td>
                   <td><div className="skeleton-text-short"></div></td>
-                  <td><div className="skeleton-text-short" style={{ width: '40px', height: '24px', borderRadius: '12px' }}></div></td>
+                  <td><div className="skeleton-text-short apps-skeleton-badge"></div></td>
                   <td><div className="skeleton-text-short"></div></td>
                 </tr>
               ))}
@@ -189,28 +190,28 @@ export default function ApplicationsPage() {
           <table className="support-table">
             <thead>
               <tr>
-                <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('name')} className="apps-table-header-clickable">
+                  <div className="apps-table-header-content">
                     {t('apps.name') || 'App Name'} {renderSortIcon('name')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('packageName')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('packageName')} className="apps-table-header-clickable">
+                  <div className="apps-table-header-content">
                     {t('apps.packageName') || 'Package Name'} {renderSortIcon('packageName')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('owner')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('owner')} className="apps-table-header-clickable">
+                  <div className="apps-table-header-content">
                     {t('apps.owner') || 'Owner'} {renderSortIcon('owner')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('releasesCount')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('releasesCount')} className="apps-table-header-clickable">
+                  <div className="apps-table-header-content">
                     {t('apps.releases') || 'Releases'} {renderSortIcon('releasesCount')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('createdAt')} className="apps-table-header-clickable">
+                  <div className="apps-table-header-content">
                     {t('apps.createdDate') || 'Created Date'} {renderSortIcon('createdAt')}
                   </div>
                 </th>
@@ -222,10 +223,10 @@ export default function ApplicationsPage() {
                 return (
                   <tr key={app._id}>
                     <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <div className="user-avatar" style={{ width: '32px', height: '32px', borderRadius: '8px', fontSize: '0.9rem' }}>
+                      <div className="apps-name-cell">
+                        <div className="user-avatar apps-avatar">
                           {app.icon ? (
-                            <img src={app.icon} alt={app.name} style={{ width: '100%', height: '100%', borderRadius: '8px', objectFit: 'cover' }} />
+                            <img src={app.icon} alt={app.name} className="apps-avatar-img" />
                           ) : (
                             app.name?.[0]?.toUpperCase() || 'A'
                           )}
@@ -235,13 +236,13 @@ export default function ApplicationsPage() {
                     </td>
                     <td className="text-muted">{app.packageName}</td>
                     <td>
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <div className="apps-owner-cell">
                         <span className="font-semibold">{owner?.name || owner?.email?.split('@')[0]}</span>
-                        <span className="text-muted" style={{ fontSize: '0.8rem' }}>{owner?.email}</span>
+                        <span className="text-muted apps-owner-email">{owner?.email}</span>
                       </div>
                     </td>
                     <td>
-                      <span className="badge badge-info" style={{ background: 'var(--accent-primary-glow)', color: 'var(--accent-primary)', border: '1px solid rgba(124, 58, 237, 0.2)' }}>
+                      <span className="badge badge-info apps-releases-badge">
                         {app.releasesCount || 0}
                       </span>
                     </td>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from '../context/LanguageContext';
 import { Activity, Cpu, HardDrive, Clock, Database, Terminal, RefreshCw, Search, AlertTriangle } from 'lucide-react';
 import { adminService } from '../services/api';
+import './SystemHealthPage.css';
 
 export default function SystemHealthPage() {
   const { t } = useTranslation();
@@ -98,7 +99,7 @@ export default function SystemHealthPage() {
     }
 
     return (
-      <div key={idx} style={{ color, fontFamily: 'monospace', whiteSpace: 'pre-wrap', marginBottom: '4px', fontSize: '0.85rem' }}>
+      <div key={idx} style={{ color }} className="font-monospace text-sm mb-1">
         {cleanLine}
       </div>
     );
@@ -107,10 +108,10 @@ export default function SystemHealthPage() {
   if (isLoading && !healthData) {
     return (
       <div className="support-section glass-card skeleton-shimmer">
-        <div className="skeleton-title" style={{ width: '200px', marginBottom: '24px' }}></div>
-        <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+        <div className="skeleton-title health-skeleton-title"></div>
+        <div className="stats-grid health-metrics-grid">
           {[1, 2, 3, 4].map((_, idx) => (
-            <div key={idx} className="stat-card glass-card skeleton-shimmer" style={{ height: '120px' }}></div>
+            <div key={idx} className="stat-card glass-card skeleton-shimmer health-skeleton-card"></div>
           ))}
         </div>
       </div>
@@ -121,19 +122,19 @@ export default function SystemHealthPage() {
   const dbStatus = healthData?.database?.status || 'Disconnected';
 
   return (
-    <div className="support-section glass-card animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div className="support-section glass-card animate-fade-in health-container">
       <div className="section-header support-header">
         <div className="header-left">
           <Activity size={20} className="section-icon" />
           <h3>{t('system.title') || 'System Health'}</h3>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.85rem' }}>
+        <div className="health-header-right">
+          <label className="health-refresh-label">
             <input
               type="checkbox"
               checked={autoRefresh}
               onChange={(e) => setAutoRefresh(e.target.checked)}
-              style={{ cursor: 'pointer' }}
+              className="health-refresh-checkbox"
             />
             <span>{t('system.autoRefresh') || 'Auto Refresh (5s)'}</span>
           </label>
@@ -150,7 +151,7 @@ export default function SystemHealthPage() {
 
       {/* Metrics Grid */}
       {metrics && (
-        <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+        <div className="stats-grid health-metrics-grid">
           {/* CPU Card */}
           <div className="stat-card glass-card">
             <div className="stat-card-header">
@@ -160,10 +161,10 @@ export default function SystemHealthPage() {
               </div>
             </div>
             <span className="stat-value">{metrics.cpu.usage}%</span>
-            <div className="progress-bar-container" style={{ width: '100%', height: '6px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '3px', marginTop: '8px', overflow: 'hidden' }}>
-              <div style={{ width: `${metrics.cpu.usage}%`, height: '100%', background: 'var(--accent-primary)', borderRadius: '3px', transition: 'width 0.3s ease' }}></div>
+            <div className="progress-bar-container health-progress-container">
+              <div className="health-progress-bar health-progress-primary" style={{ width: `${metrics.cpu.usage}%` }}></div>
             </div>
-            <span className="text-muted" style={{ fontSize: '0.75rem', marginTop: '6px', display: 'block' }}>
+            <span className="text-muted health-card-desc">
               {metrics.cpu.model} ({metrics.cpu.cores} Cores)
             </span>
           </div>
@@ -177,10 +178,10 @@ export default function SystemHealthPage() {
               </div>
             </div>
             <span className="stat-value">{metrics.memory.usagePercentage}%</span>
-            <div className="progress-bar-container" style={{ width: '100%', height: '6px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '3px', marginTop: '8px', overflow: 'hidden' }}>
-              <div style={{ width: `${metrics.memory.usagePercentage}%`, height: '100%', background: 'var(--accent-secondary)', borderRadius: '3px', transition: 'width 0.3s ease' }}></div>
+            <div className="progress-bar-container health-progress-container">
+              <div className="health-progress-bar health-progress-secondary" style={{ width: `${metrics.memory.usagePercentage}%` }}></div>
             </div>
-            <span className="text-muted" style={{ fontSize: '0.75rem', marginTop: '6px', display: 'block' }}>
+            <span className="text-muted health-card-desc">
               {formatBytes(metrics.memory.used)} / {formatBytes(metrics.memory.total)}
             </span>
           </div>
@@ -193,8 +194,8 @@ export default function SystemHealthPage() {
                 <Clock size={20} />
               </div>
             </div>
-            <span className="stat-value" style={{ fontSize: '1.4rem' }}>{formatUptime(metrics.os.processUptime)}</span>
-            <span className="text-muted" style={{ fontSize: '0.75rem', marginTop: '12px', display: 'block' }}>
+            <span className="stat-value health-value-small">{formatUptime(metrics.os.processUptime)}</span>
+            <span className="text-muted health-card-desc-large">
               OS Uptime: {formatUptime(metrics.os.uptime)}
             </span>
           </div>
@@ -207,10 +208,10 @@ export default function SystemHealthPage() {
                 <Database size={20} />
               </div>
             </div>
-            <span className="stat-value" style={{ fontSize: '1.4rem', color: dbStatus === 'Connected' ? 'var(--accent-success)' : '#ef4444' }}>
+            <span className={dbStatus === 'Connected' ? 'health-db-connected' : 'health-db-disconnected'}>
               {dbStatus === 'Connected' ? (t('system.connected') || 'Connected') : (t('system.disconnected') || 'Disconnected')}
             </span>
-            <span className="text-muted" style={{ fontSize: '0.75rem', marginTop: '12px', display: 'block' }}>
+            <span className="text-muted health-card-desc-large">
               Platform: {metrics.os.platform} ({metrics.os.release})
             </span>
           </div>
@@ -218,48 +219,28 @@ export default function SystemHealthPage() {
       )}
 
       {/* Logs Viewer Section */}
-      <div className="glass-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div className="glass-card health-logs-card">
+        <div className="health-logs-header">
+          <div className="health-logs-title-group">
             <Terminal size={18} className="text-muted" />
-            <h4 style={{ margin: 0 }}>{t('system.logsViewer') || 'Logs Viewer'}</h4>
-            <div style={{ display: 'flex', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '6px', padding: '2px' }}>
+            <h4>{t('system.logsViewer') || 'Logs Viewer'}</h4>
+            <div className="health-logs-tabs">
               <button
                 onClick={() => setLogType('all')}
-                style={{
-                  padding: '4px 12px',
-                  borderRadius: '4px',
-                  border: 'none',
-                  background: logType === 'all' ? 'var(--accent-primary)' : 'transparent',
-                  color: '#ffffff',
-                  fontSize: '0.8rem',
-                  cursor: 'pointer',
-                  fontWeight: 600,
-                  transition: 'all 0.2s'
-                }}
+                className={`health-logs-tab-btn ${logType === 'all' ? 'health-logs-tab-btn-all' : 'health-logs-tab-btn-inactive'}`}
               >
                 {t('system.allLogs') || 'All Logs'}
               </button>
               <button
                 onClick={() => setLogType('error')}
-                style={{
-                  padding: '4px 12px',
-                  borderRadius: '4px',
-                  border: 'none',
-                  background: logType === 'error' ? '#ff4d4f' : 'transparent',
-                  color: '#ffffff',
-                  fontSize: '0.8rem',
-                  cursor: 'pointer',
-                  fontWeight: 600,
-                  transition: 'all 0.2s'
-                }}
+                className={`health-logs-tab-btn ${logType === 'error' ? 'health-logs-tab-btn-error' : 'health-logs-tab-btn-inactive'}`}
               >
                 {t('system.errorLogs') || 'Error Logs'}
               </button>
             </div>
           </div>
 
-          <div className="search-input-wrapper" style={{ minWidth: '250px' }}>
+          <div className="search-input-wrapper health-logs-search-wrapper">
             <Search size={16} className="search-icon" />
             <input
               type="text"
@@ -272,25 +253,15 @@ export default function SystemHealthPage() {
         </div>
 
         {/* Terminal Box */}
-        <div
-          style={{
-            background: '#0d1117',
-            borderRadius: '8px',
-            padding: '16px',
-            height: '350px',
-            overflowY: 'auto',
-            border: '1px solid var(--border-color)',
-            boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)'
-          }}
-        >
+        <div className="health-terminal-box">
           {getLogLines().length > 0 ? (
             <>
               {getLogLines().map((line, idx) => renderLogLine(line, idx))}
               <div ref={terminalEndRef} />
             </>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-secondary)', gap: '12px' }}>
-              <AlertTriangle size={32} style={{ opacity: 0.5 }} />
+            <div className="health-terminal-empty">
+              <AlertTriangle size={32} className="health-terminal-empty-icon" />
               <span>{t('system.noLogs') || 'No matching log entries found'}</span>
             </div>
           )}

@@ -1,0 +1,171 @@
+.health-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.health-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.health-refresh-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.health-refresh-checkbox {
+  cursor: pointer;
+}
+
+.health-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.health-progress-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.health-progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.health-progress-primary {
+  background: var(--accent-primary);
+}
+
+.health-progress-secondary {
+  background: var(--accent-secondary);
+}
+
+.health-card-desc {
+  font-size: 0.75rem;
+  margin-top: 6px;
+  display: block;
+}
+
+.health-card-desc-large {
+  font-size: 0.75rem;
+  margin-top: 12px;
+  display: block;
+}
+
+.health-value-small {
+  font-size: 1.4rem;
+}
+
+.health-db-connected {
+  font-size: 1.4rem;
+  color: var(--accent-success);
+}
+
+.health-db-disconnected {
+  font-size: 1.4rem;
+  color: #ef4444;
+}
+
+.health-logs-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.health-logs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.health-logs-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.health-logs-title-group h4 {
+  margin: 0;
+}
+
+.health-logs-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.health-logs-tab-btn {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  color: #ffffff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.health-logs-tab-btn-all {
+  background: var(--accent-primary);
+}
+
+.health-logs-tab-btn-error {
+  background: #ff4d4f;
+}
+
+.health-logs-tab-btn-inactive {
+  background: transparent;
+}
+
+.health-logs-search-wrapper {
+  min-width: 250px;
+}
+
+.health-terminal-box {
+  background: #0d1117;
+  border-radius: 8px;
+  padding: 16px;
+  height: 350px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.health-terminal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-secondary);
+  gap: 12px;
+}
+
+.health-terminal-empty-icon {
+  opacity: 0.5;
+}
+
+/* Skeleton styles */
+.health-skeleton-title {
+  width: 200px;
+  margin-bottom: 24px;
+}
+
+.health-skeleton-card {
+  height: 120px;
+}
