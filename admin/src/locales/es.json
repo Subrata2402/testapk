@@ -84,6 +84,21 @@
     "releases": "Versiones",
     "noApps": "No se encontraron aplicaciones"
   },
+  "system": {
+    "title": "Estado del Sistema",
+    "autoRefresh": "Auto-refrescar (5s)",
+    "cpuUsage": "Uso de CPU",
+    "memoryUsage": "Uso de Memoria",
+    "uptime": "Tiempo de actividad",
+    "database": "Base de datos",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "logsViewer": "Visor de Registros",
+    "allLogs": "Todos los Registros",
+    "errorLogs": "Registros de Errores",
+    "searchLogs": "Filtrar registros...",
+    "noLogs": "No se encontraron registros coincidentes"
+  },
   "common": {
     "loading": "Cargando..."
   },

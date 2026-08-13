@@ -87,6 +87,21 @@
     "releases": "Versões",
     "noApps": "Nenhum aplicativo encontrado"
   },
+  "system": {
+    "title": "Saúde do Sistema",
+    "autoRefresh": "Atualização Automática (5s)",
+    "cpuUsage": "Uso de CPU",
+    "memoryUsage": "Uso de Memória",
+    "uptime": "Tempo de atividade",
+    "database": "Banco de dados",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "logsViewer": "Visualizador de Logs",
+    "allLogs": "Todos os Logs",
+    "errorLogs": "Logs de Erro",
+    "searchLogs": "Filtrar logs...",
+    "noLogs": "Nenhum registro de log correspondente encontrado"
+  },
   "users": {
     "title": "Usuários Registrados",
     "name": "Nome",

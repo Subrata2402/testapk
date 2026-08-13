@@ -5,6 +5,8 @@ import User from '../models/user.model.js';
 import { Feedback } from '../models/feedback.model.js';
 import { STRINGS } from '../constants/strings.js';
 import { AppError } from '../utils/appError.js';
+import { getSystemMetrics, readLastLines } from '../services/system.service.js';
+import mongoose from 'mongoose';
 
 export const getDashboardStats = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -144,6 +146,35 @@ export const getAllApps = async (req: Request, res: Response, next: NextFunction
       data: {
         apps: appsWithMemberNames
       }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getSystemHealth = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const metrics = await getSystemMetrics();
+    
+    // Get database status
+    const dbStatus = mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected';
+    
+    // Read logs
+    const errorLogs = readLastLines('logs/error.log', 100);
+    const allLogs = readLastLines('logs/all.log', 100);
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      data: {
+        metrics,
+        database: {
+          status: dbStatus,
+        },
+        logs: {
+          error: errorLogs,
+          all: allLogs,
+        },
+      },
     });
   } catch (error) {
     next(error);

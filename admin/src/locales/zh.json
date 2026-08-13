@@ -87,6 +87,21 @@
     "releases": "版本数",
     "noApps": "未找到应用"
   },
+  "system": {
+    "title": "系统状态",
+    "autoRefresh": "自动刷新 (5秒)",
+    "cpuUsage": "CPU 使用率",
+    "memoryUsage": "内存使用率",
+    "uptime": "运行时间",
+    "database": "数据库",
+    "connected": "已连接",
+    "disconnected": "已断开",
+    "logsViewer": "日志查看器",
+    "allLogs": "所有日志",
+    "errorLogs": "错误日志",
+    "searchLogs": "过滤日志...",
+    "noLogs": "未找到匹配的日志条目"
+  },
   "users": {
     "title": "已注册用户",
     "name": "姓名",

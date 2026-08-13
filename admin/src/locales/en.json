@@ -84,6 +84,21 @@
     "releases": "Releases",
     "noApps": "No applications found"
   },
+  "system": {
+    "title": "System Health",
+    "autoRefresh": "Auto Refresh (5s)",
+    "cpuUsage": "CPU Usage",
+    "memoryUsage": "Memory Usage",
+    "uptime": "Uptime",
+    "database": "Database",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "logsViewer": "Logs Viewer",
+    "allLogs": "All Logs",
+    "errorLogs": "Error Logs",
+    "searchLogs": "Filter logs...",
+    "noLogs": "No matching log entries found"
+  },
   "common": {
     "loading": "Loading..."
   },

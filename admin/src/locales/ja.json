@@ -87,6 +87,21 @@
     "releases": "リリース",
     "noApps": "アプリケーションが見つかりません"
   },
+  "system": {
+    "title": "システム状態",
+    "autoRefresh": "自動更新 (5秒)",
+    "cpuUsage": "CPU使用率",
+    "memoryUsage": "メモリ使用率",
+    "uptime": "稼働時間",
+    "database": "データベース",
+    "connected": "接続済み",
+    "disconnected": "切断",
+    "logsViewer": "ログビューア",
+    "allLogs": "すべてのログ",
+    "errorLogs": "エラーログ",
+    "searchLogs": "ログをフィルター...",
+    "noLogs": "一致するログエントリが見つかりません"
+  },
   "users": {
     "title": "登録ユーザー",
     "name": "名前",

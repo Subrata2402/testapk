@@ -8,6 +8,7 @@ import SupportRequestsPage from '../pages/SupportRequestsPage';
 import FeedbackPage from '../pages/FeedbackPage';
 import UsersPage from '../pages/UsersPage';
 import ApplicationsPage from '../pages/ApplicationsPage';
+import SystemHealthPage from '../pages/SystemHealthPage';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -43,6 +44,7 @@ export default function AppRoutes() {
         <Route path="support" element={<SupportRequestsPage />} />
         <Route path="feedbacks" element={<FeedbackPage />} />
         <Route path="users" element={<UsersPage />} />
+        <Route path="system" element={<SystemHealthPage />} />
       </Route>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

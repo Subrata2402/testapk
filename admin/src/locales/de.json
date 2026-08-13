@@ -87,6 +87,21 @@
     "releases": "Releases",
     "noApps": "Keine Anwendungen gefunden"
   },
+  "system": {
+    "title": "Systemstatus",
+    "autoRefresh": "Automatisches Aktualisieren (5s)",
+    "cpuUsage": "CPU-Auslastung",
+    "memoryUsage": "Speicherauslastung",
+    "uptime": "Betriebszeit",
+    "database": "Datenbank",
+    "connected": "Verbunden",
+    "disconnected": "Getrennt",
+    "logsViewer": "Protokollanzeige",
+    "allLogs": "Alle Protokolle",
+    "errorLogs": "Fehlerprotokolle",
+    "searchLogs": "Protokolle filtern...",
+    "noLogs": "Keine passenden Protokolleinträge gefunden"
+  },
   "users": {
     "title": "Registrierte Benutzer",
     "name": "Name",
