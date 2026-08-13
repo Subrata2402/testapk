@@ -65,6 +65,8 @@ export const adminService = {
   getStats: () => apiClient.get(ENDPOINTS.ADMIN.STATS),
   getAllApps: () => apiClient.get(ENDPOINTS.ADMIN.APPS),
   getSystemHealth: () => apiClient.get(ENDPOINTS.ADMIN.HEALTH),
+  getSettings: () => apiClient.get(ENDPOINTS.SETTINGS.BASE),
+  updateSettings: (settings) => apiClient.put(ENDPOINTS.SETTINGS.BASE, settings),
 };
 
 export const feedbackService = {

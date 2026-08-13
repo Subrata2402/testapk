@@ -144,5 +144,9 @@
       "EMAIL_REQUIRED": "电子邮件是必填项",
       "NAME_REQUIRED": "姓名是必填项"
     }
+  },
+  "SETTINGS": {
+    "UPDATED_SUCCESS": "设置更新成功",
+    "MAINTENANCE_ACTIVE": "系统目前正在维护中。请稍后再试。"
   }
 }

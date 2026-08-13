@@ -5,6 +5,7 @@ import { env } from './config/env.js';
 import { rateLimiter } from './middlewares/rateLimiter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { localeMiddleware } from './middlewares/locale.middleware.js';
+import { checkMaintenanceMode } from './middlewares/maintenance.middleware.js';
 import { AppError } from './utils/appError.js';
 
 import healthRoutes from './routes/health.routes.js';
@@ -15,6 +16,7 @@ import deviceAuthRoutes from './routes/device-auth.routes.js';
 import feedbackRoutes from './routes/feedback.route.js';
 import supportRoutes from './routes/support.routes.js';
 import adminRoutes from './routes/admin.routes.js';
+import settingRoutes from './routes/setting.routes.js';
 
 const app = express();
 
@@ -40,6 +42,9 @@ app.use('/api', rateLimiter);
 app.use(express.json({ limit: '10kb' })); // Limit body size to prevent DOS
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
+// Check maintenance mode
+app.use('/api/v1', checkMaintenanceMode);
+
 // Register routes
 app.use('/api/v1', healthRoutes);
 app.use('/api/v1', authRoutes);
@@ -49,6 +54,7 @@ app.use('/api/v1', feedbackRoutes);
 app.use('/api/v1/support', supportRoutes);
 app.use('/api/v1/auth/device', deviceAuthRoutes);
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/settings', settingRoutes);
 
 // Handle undefined routes
 app.use((req, res, next) => {

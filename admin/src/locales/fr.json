@@ -51,7 +51,9 @@
     "pendingRequests": "Nouvelles demandes de support"
   },
   "common": {
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "save": "Enregistrer les paramètres",
+    "saving": "Enregistrement..."
   },
   "feedback": {
     "title": "Retours d'utilisateurs",
@@ -101,6 +103,22 @@
     "errorLogs": "Logs d'Erreurs",
     "searchLogs": "Filtrer les logs...",
     "noLogs": "Aucune entrée de log correspondante trouvée"
+  },
+  "settings": {
+    "title": "Paramètres Globaux",
+    "maintenanceMode": "Mode Maintenance",
+    "active": "Actif",
+    "maintenanceDesc": "Désactivez temporairement l'accès au système pour tous les utilisateurs non administrateurs.",
+    "maintenanceWarning": "Avertissement : L'activation du mode maintenance bloquera l'accès de tous les développeurs et testeurs aux applications web et mobiles.",
+    "allowRegistration": "Autoriser l'Inscription des Utilisateurs",
+    "registrationDesc": "Activez ou désactivez les nouvelles inscriptions d'utilisateurs sur la plateforme.",
+    "maxApkSize": "Taille Maximale de Téléchargement d'APK",
+    "maxApkDesc": "Limitez la taille maximale des fichiers pour les versions d'APK téléchargées.",
+    "announcementBanner": "Bannière d'Annonce du Système",
+    "announcementDesc": "Affichez une bannière de notification globale en haut de l'application pour tous les utilisateurs.",
+    "announcementPlaceholder": "Saisissez le message d'annonce (laisser vide pour désactiver)...",
+    "saveSuccess": "Paramètres enregistrés avec succès !",
+    "saveError": "Échec de l'enregistrement des paramètres."
   },
   "users": {
     "title": "Utilisateurs enregistrés",

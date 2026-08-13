@@ -144,5 +144,9 @@
       "EMAIL_REQUIRED": "メールアドレスが必要です",
       "NAME_REQUIRED": "名前が必要です"
     }
+  },
+  "SETTINGS": {
+    "UPDATED_SUCCESS": "設定が正常に更新されました",
+    "MAINTENANCE_ACTIVE": "システムは現在メンテナンス中です。後でもう一度お試しください。"
   }
 }

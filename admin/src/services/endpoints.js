@@ -28,4 +28,7 @@ export const ENDPOINTS = {
   FEEDBACK: {
     ALL: '/feedback',
   },
+  SETTINGS: {
+    BASE: '/settings',
+  },
 };

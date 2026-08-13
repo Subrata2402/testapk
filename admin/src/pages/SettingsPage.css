@@ -1,0 +1,136 @@
+/* .settings-container {
+  max-width: 800px;
+} */
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-title-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-title-container h4 {
+  margin: 0;
+}
+
+.settings-badge-active {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.settings-desc {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.settings-warning-banner {
+  display: flex;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.settings-warning-icon {
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.settings-warning-text {
+  font-size: 0.85rem;
+  color: #ef4444;
+}
+
+.settings-input-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 200px;
+  margin-top: 4px;
+}
+
+.settings-number-input {
+  width: 100px;
+  text-align: right;
+}
+
+.settings-unit {
+  font-weight: bold;
+}
+
+.settings-textarea {
+  width: 100%;
+  resize: vertical;
+  margin-top: 4px;
+  padding: 12px;
+}
+
+.settings-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.settings-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+}
+
+.settings-status-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-success);
+  font-size: 0.9rem;
+}
+
+.settings-status-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ef4444;
+  font-size: 0.9rem;
+}
+
+/* Skeleton styles */
+.settings-skeleton-title {
+  width: 200px;
+  margin-bottom: 24px;
+}
+
+.settings-skeleton-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-skeleton-row {
+  height: 40px;
+}

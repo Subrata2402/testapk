@@ -51,7 +51,9 @@
     "pendingRequests": "新規サポートリクエスト"
   },
   "common": {
-    "loading": "読み込み中..."
+    "loading": "読み込み中...",
+    "save": "設定を保存",
+    "saving": "保存中..."
   },
   "feedback": {
     "title": "ユーザーフィードバック",
@@ -101,6 +103,22 @@
     "errorLogs": "エラーログ",
     "searchLogs": "ログをフィルター...",
     "noLogs": "一致するログエントリが見つかりません"
+  },
+  "settings": {
+    "title": "グローバル設定",
+    "maintenanceMode": "メンテナンスモード",
+    "active": "有効",
+    "maintenanceDesc": "管理者以外のすべてのユーザーのシステムへのアクセスを一時的に無効にします。",
+    "maintenanceWarning": "警告：メンテナンスモードを有効にすると、すべての開発者およびテスターがWebおよびモバイルアプリケーションにアクセスできなくなります。",
+    "allowRegistration": "新規ユーザー登録を許可",
+    "registrationDesc": "プラットフォームでの新規ユーザー登録の有効化または無効化。",
+    "maxApkSize": "最大APKアップロードサイズ",
+    "maxApkDesc": "アップロードされるAPKリリースの最大ファイルサイズを制限します。",
+    "announcementBanner": "システム告知バナー",
+    "announcementDesc": "すべてのユーザーに対してアプリケーションの上部にグローバルな通知バナーを表示します。",
+    "announcementPlaceholder": "告知メッセージを入力（無効にする場合は空欄）...",
+    "saveSuccess": "設定が正常に保存されました！",
+    "saveError": "設定の保存に失敗しました。"
   },
   "users": {
     "title": "登録ユーザー",

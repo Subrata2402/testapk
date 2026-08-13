@@ -12,7 +12,8 @@ import {
   MessageSquare,
   Users,
   Smartphone,
-  Activity
+  Activity,
+  Settings
 } from 'lucide-react';
 import './DashboardPage.css';
 
@@ -44,6 +45,7 @@ export default function DashboardPage() {
   const isFeedbacksTab = location.pathname.includes('/dashboard/feedbacks');
   const isUsersTab = location.pathname.includes('/dashboard/users');
   const isSystemTab = location.pathname.includes('/dashboard/system');
+  const isSettingsTab = location.pathname.includes('/dashboard/settings');
 
   const getHeaderTitle = () => {
     if (isAppsTab) return t('apps.title') || 'Applications';
@@ -51,6 +53,7 @@ export default function DashboardPage() {
     if (isFeedbacksTab) return t('feedback.title');
     if (isUsersTab) return t('users.title');
     if (isSystemTab) return t('system.title') || 'System Health';
+    if (isSettingsTab) return t('settings.title') || 'Global Settings';
     return t('dashboard.title');
   };
 
@@ -106,6 +109,13 @@ export default function DashboardPage() {
           >
             <Activity size={18} />
             <span>{t('system.title') || 'System Health'}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/settings"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Settings size={18} />
+            <span>{t('settings.title') || 'Global Settings'}</span>
           </NavLink>
         </nav>
 

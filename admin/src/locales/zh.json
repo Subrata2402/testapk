@@ -51,7 +51,9 @@
     "pendingRequests": "新支持请求"
   },
   "common": {
-    "loading": "加载中..."
+    "loading": "加载中...",
+    "save": "保存设置",
+    "saving": "保存中..."
   },
   "feedback": {
     "title": "用户反馈",
@@ -101,6 +103,22 @@
     "errorLogs": "错误日志",
     "searchLogs": "过滤日志...",
     "noLogs": "未找到匹配的日志条目"
+  },
+  "settings": {
+    "title": "全局设置",
+    "maintenanceMode": "维护模式",
+    "active": "已启用",
+    "maintenanceDesc": "临时禁用非管理员用户对系统的访问。",
+    "maintenanceWarning": "警告：启用维护模式将阻止所有开发人员和测试人员访问 Web 和移动应用。",
+    "allowRegistration": "允许用户注册",
+    "registrationDesc": "启用或禁用平台上的新用户注册。",
+    "maxApkSize": "最大 APK 上传限制",
+    "maxApkDesc": "限制上传的 APK 版本的最大文件大小。",
+    "announcementBanner": "系统公告横幅",
+    "announcementDesc": "在应用顶部向所有用户显示全局通知横幅。",
+    "announcementPlaceholder": "输入公告内容（留空以禁用）...",
+    "saveSuccess": "设置保存成功！",
+    "saveError": "保存设置失败。"
   },
   "users": {
     "title": "已注册用户",

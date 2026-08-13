@@ -99,8 +99,26 @@
     "searchLogs": "Filtrar registros...",
     "noLogs": "No se encontraron registros coincidentes"
   },
+  "settings": {
+    "title": "Configuración Global",
+    "maintenanceMode": "Modo de Mantenimiento",
+    "active": "Activo",
+    "maintenanceDesc": "Deshabilitar temporalmente el acceso al sistema para todos los usuarios no administradores.",
+    "maintenanceWarning": "Advertencia: Habilitar el modo de mantenimiento bloqueará el acceso de todos los desarrolladores y evaluadores a las aplicaciones web y móviles.",
+    "allowRegistration": "Permitir Registro de Usuarios",
+    "registrationDesc": "Habilitar o deshabilitar nuevos registros de usuarios en la plataforma.",
+    "maxApkSize": "Tamaño Máximo de Carga de APK",
+    "maxApkDesc": "Limitar el tamaño máximo de archivo para las versiones de APK cargadas.",
+    "announcementBanner": "Banner de Anuncio del Sistema",
+    "announcementDesc": "Mostrar un banner de notificación global en la parte superior de la aplicación para todos los usuarios.",
+    "announcementPlaceholder": "Ingrese el mensaje de anuncio (dejar vacío para deshabilitar)...",
+    "saveSuccess": "¡Configuración guardada con éxito!",
+    "saveError": "Error al guardar la configuración."
+  },
   "common": {
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "save": "Guardar Configuración",
+    "saving": "Guardando..."
   },
   "users": {
     "title": "Usuarios Registrados",

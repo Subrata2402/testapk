@@ -99,8 +99,26 @@
     "searchLogs": "Filter logs...",
     "noLogs": "No matching log entries found"
   },
+  "settings": {
+    "title": "Global Settings",
+    "maintenanceMode": "Maintenance Mode",
+    "active": "Active",
+    "maintenanceDesc": "Temporarily disable access to the system for all non-admin users.",
+    "maintenanceWarning": "Warning: Enabling maintenance mode will block all developers and testers from accessing the web and mobile applications.",
+    "allowRegistration": "Allow User Registration",
+    "registrationDesc": "Enable or disable new user sign-ups on the platform.",
+    "maxApkSize": "Maximum APK Upload Size",
+    "maxApkDesc": "Limit the maximum file size for uploaded APK releases.",
+    "announcementBanner": "System Announcement Banner",
+    "announcementDesc": "Display a global notification banner at the top of the application for all users.",
+    "announcementPlaceholder": "Enter announcement message (leave empty to disable)...",
+    "saveSuccess": "Settings saved successfully!",
+    "saveError": "Failed to save settings."
+  },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "save": "Save Settings",
+    "saving": "Saving..."
   },
   "users": {
     "title": "Registered Users",

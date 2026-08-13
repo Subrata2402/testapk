@@ -51,7 +51,9 @@
     "pendingRequests": "Novas Solicitações de Suporte"
   },
   "common": {
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "save": "Salvar Configurações",
+    "saving": "Salvando..."
   },
   "feedback": {
     "title": "Feedbacks dos Usuários",
@@ -101,6 +103,22 @@
     "errorLogs": "Logs de Erro",
     "searchLogs": "Filtrar logs...",
     "noLogs": "Nenhum registro de log correspondente encontrado"
+  },
+  "settings": {
+    "title": "Configurações Globais",
+    "maintenanceMode": "Modo de Manutenção",
+    "active": "Ativo",
+    "maintenanceDesc": "Desative temporariamente o acesso ao sistema para todos os usuários não administradores.",
+    "maintenanceWarning": "Aviso: A ativação do modo de manutenção bloqueará o acesso de todos os desenvolvedores e testadores aos aplicativos web e móveis.",
+    "allowRegistration": "Permitir Registro de Usuário",
+    "registrationDesc": "Ative ou desative novos cadastros de usuários na plataforma.",
+    "maxApkSize": "Tamanho Máximo de Upload de APK",
+    "maxApkDesc": "Limite o tamanho máximo do arquivo para as versões de APK enviadas.",
+    "announcementBanner": "Banner de Anúncio do Sistema",
+    "announcementDesc": "Exiba um banner de notificação global no topo do aplicativo para todos os usuários.",
+    "announcementPlaceholder": "Digite a mensagem do anúncio (deixe em branco para desativar)...",
+    "saveSuccess": "Configurações salvas com sucesso!",
+    "saveError": "Falha ao salvar as configurações."
   },
   "users": {
     "title": "Usuários Registrados",

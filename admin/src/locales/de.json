@@ -51,7 +51,9 @@
     "pendingRequests": "Neue Support-Anfragen"
   },
   "common": {
-    "loading": "Laden..."
+    "loading": "Laden...",
+    "save": "Einstellungen speichern",
+    "saving": "Speichern..."
   },
   "feedback": {
     "title": "Benutzer-Feedback",
@@ -101,6 +103,22 @@
     "errorLogs": "Fehlerprotokolle",
     "searchLogs": "Protokolle filtern...",
     "noLogs": "Keine passenden Protokolleinträge gefunden"
+  },
+  "settings": {
+    "title": "Globale Einstellungen",
+    "maintenanceMode": "Wartungsmodus",
+    "active": "Aktiv",
+    "maintenanceDesc": "Deaktivieren Sie vorübergehend den Zugriff auf das System für alle Nicht-Admin-Benutzer.",
+    "maintenanceWarning": "Warnung: Die Aktivierung des Wartungsmodus blockiert den Zugriff aller Entwickler und Tester auf die Web- und Mobilanwendungen.",
+    "allowRegistration": "Benutzerregistrierung zulassen",
+    "registrationDesc": "Aktivieren oder deaktivieren Sie neue Benutzerregistrierungen auf der Plattform.",
+    "maxApkSize": "Maximale APK-Upload-Größe",
+    "maxApkDesc": "Begrenzen Sie die maximale Dateigröße für hochgeladene APK-Releases.",
+    "announcementBanner": "Systemankündigungsbanner",
+    "announcementDesc": "Zeigen Sie allen Benutzern oben in der Anwendung ein globales Benachrichtigungsbanner an.",
+    "announcementPlaceholder": "Ankündigungsnachricht eingeben (leer lassen zum Deaktivieren)...",
+    "saveSuccess": "Einstellungen erfolgreich gespeichert!",
+    "saveError": "Fehler beim Speichern der Einstellungen."
   },
   "users": {
     "title": "Registrierte Benutzer",
