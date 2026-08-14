@@ -29,6 +29,9 @@ apiClient.interceptors.response.use(
     return response.data;
   },
   (error) => {
+    if (error.response?.status === 503) {
+      window.dispatchEvent(new CustomEvent('maintenance-mode'));
+    }
     const message = error.response?.data?.message || error.message || 'API request failed';
     return Promise.reject(new Error(message));
   }
@@ -101,4 +104,9 @@ export const deviceAuthService = {
     
   authorize: (userCode) => 
     apiClient.post(ENDPOINTS.DEVICE_AUTH.AUTHORIZE, { userCode }),
+};
+
+export const settingService = {
+  getPublicSettings: () => 
+    apiClient.get(ENDPOINTS.SETTINGS.PUBLIC),
 };

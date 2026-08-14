@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/api_service.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/presentations/app_list/screens/app_list_screen.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
+import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/presentations/splash/widgets/splash_logo.dart';
@@ -33,10 +35,33 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   Future<void> _checkAuth() async {
+    final settingsFuture = ApiService.instance.getPublicSettings();
+    final loginFuture = AuthService.instance.tryAutoLogin();
+
     await Future.delayed(const Duration(milliseconds: 1800));
     if (!mounted) return;
-    final user = await AuthService.instance.tryAutoLogin();
+
+    bool isMaintenanceActive = false;
+    try {
+      final response = await settingsFuture;
+      if (response.statusCode == 200 && response.data != null) {
+        final settings = response.data['data']?['settings'];
+        isMaintenanceActive = settings?['maintenance_mode'] ?? false;
+      }
+    } catch (e) {
+      debugPrint('Failed to fetch public settings: $e');
+    }
+
+    final user = await loginFuture;
     if (!mounted) return;
+
+    if (isMaintenanceActive && user?.role != 'admin') {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const MaintenanceScreen()),
+      );
+      return;
+    }
+
     Navigator.of(
       context,
     ).pushReplacement(MaterialPageRoute(builder: (_) => user != null ? const AppListScreen() : const LoginScreen()));

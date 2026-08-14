@@ -225,5 +225,11 @@
   "faqQuestion5": "هل بياناتي آمنة؟",
   "faqAnswer5": "نعم، يستخدم TestAPK نظام Google OAuth للمصادقة الآمنة ولا يصل إلى أي ملفات في Google Drive الخاص بك بخلاف تلك التي تم إنشاؤها بواسطة التطبيق.",
   "faqQuestion6": "أين أقوم برفع ملف APK؟",
-  "faqAnswer6": "يمكنك رفع ملفات APK عبر لوحة التحكم على الويب على https://testapk.clipboux.online/ أو باستخدام أداة TestAPK CLI."
+  "faqAnswer6": "يمكنك رفع ملفات APK عبر لوحة التحكم على الويب على https://testapk.clipboux.online/ أو باستخدام أداة TestAPK CLI.",
+  "maintenanceTitle": "صيانة النظام",
+  "maintenanceDescription": "نقوم حاليًا بإجراء تحديثات مجدولة للنظام لتحسين الأداء والأمان. سنعود للعمل قريبًا.",
+  "maintenanceCheckAgain": "التحقق مرة أخرى",
+  "maintenanceStillActive": "النظام لا يزال قيد الصيانة. يرجى المحاولة مرة أخرى لاحقًا.",
+  "maintenanceCheckFailed": "فشل التحقق من حالة النظام. يرجى المحاولة مرة أخرى.",
+  "maintenanceChecking": "جاري التحقق..."
 }

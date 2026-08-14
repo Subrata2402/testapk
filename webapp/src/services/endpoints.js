@@ -22,4 +22,7 @@ export const ENDPOINTS = {
     CHECK_URL: (token) => `/auth/device/check-url?token=${token}`,
     AUTHORIZE: '/auth/device/authorize',
   },
+  SETTINGS: {
+    PUBLIC: '/settings/public',
+  },
 };

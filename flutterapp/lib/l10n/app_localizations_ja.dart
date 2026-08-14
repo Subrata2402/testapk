@@ -695,4 +695,23 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。';
+
+  @override
+  String get maintenanceTitle => 'システムメンテナンス';
+
+  @override
+  String get maintenanceDescription =>
+      '現在、パフォーマンスとセキュリティ向上のため、定期的なシステムアップデートを行っています。間もなくオンラインに戻ります。';
+
+  @override
+  String get maintenanceCheckAgain => '再試行';
+
+  @override
+  String get maintenanceStillActive => 'システムはまだメンテナンス中です。後ほどもう一度お試しください。';
+
+  @override
+  String get maintenanceCheckFailed => 'システムステータスの確認に失敗しました。もう一度お試しください。';
+
+  @override
+  String get maintenanceChecking => '確認中...';
 }

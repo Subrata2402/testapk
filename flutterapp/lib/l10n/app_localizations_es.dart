@@ -728,4 +728,25 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'Puede subir archivos APK a través del panel web en https://testapk.clipboux.online/ o utilizando la herramienta CLI de TestAPK.';
+
+  @override
+  String get maintenanceTitle => 'Mantenimiento del sistema';
+
+  @override
+  String get maintenanceDescription =>
+      'Actualmente estamos realizando actualizaciones programadas del sistema para mejorar el rendimiento y la seguridad. Volveremos a estar en línea en breve.';
+
+  @override
+  String get maintenanceCheckAgain => 'Comprobar de nuevo';
+
+  @override
+  String get maintenanceStillActive =>
+      'El sistema aún está en mantenimiento. Por favor, inténtelo de nuevo más tarde.';
+
+  @override
+  String get maintenanceCheckFailed =>
+      'Error al comprobar el estado del sistema. Por favor, inténtelo de nuevo.';
+
+  @override
+  String get maintenanceChecking => 'Comprobando...';
 }

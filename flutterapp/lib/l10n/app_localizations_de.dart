@@ -729,4 +729,25 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen.';
+
+  @override
+  String get maintenanceTitle => 'Systemwartung';
+
+  @override
+  String get maintenanceDescription =>
+      'Wir führen derzeit geplante Systemaktualisierungen durch, um Leistung und Sicherheit zu verbessern. Wir sind in Kürze wieder online.';
+
+  @override
+  String get maintenanceCheckAgain => 'Erneut prüfen';
+
+  @override
+  String get maintenanceStillActive =>
+      'Das System wird derzeit noch gewartet. Bitte versuchen Sie es später noch einmal.';
+
+  @override
+  String get maintenanceCheckFailed =>
+      'Systemstatus konnte nicht überprüft werden. Bitte versuchen Sie es erneut.';
+
+  @override
+  String get maintenanceChecking => 'Prüfung...';
 }

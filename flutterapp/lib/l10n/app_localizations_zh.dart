@@ -686,4 +686,22 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       '您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。';
+
+  @override
+  String get maintenanceTitle => '系统维护';
+
+  @override
+  String get maintenanceDescription => '我们目前正在进行计划中的系统更新，以提高性能和安全性。我们将很快恢复在线。';
+
+  @override
+  String get maintenanceCheckAgain => '再次检查';
+
+  @override
+  String get maintenanceStillActive => '系统仍在维护中。请稍后再试。';
+
+  @override
+  String get maintenanceCheckFailed => '无法检查系统状态。请再试一次。';
+
+  @override
+  String get maintenanceChecking => '检查中...';
 }

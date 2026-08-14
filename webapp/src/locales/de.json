@@ -326,5 +326,12 @@
     "ANSWER_10": "Wählen Sie im Dashboard Ihre App aus, gehen Sie auf die Registerkarte 'Team' und fügen Sie die E-Mail-Adressen Ihrer Tester oder Entwickler hinzu. Tester erhalten eine Einladung in ihrer Begleit-App.",
     "QUESTION_11": "Speichert TestAPK meine APK-Dateien?",
     "ANSWER_11": "Nein, TestAPK speichert Ihre APK-Dateien nicht auf seinen Servern. Alle Dateien werden direkt in Ihr eigenes Google Drive gestreamt und dort gespeichert."
+  },
+  "MAINTENANCE": {
+    "TITLE": "Systemwartung",
+    "DESCRIPTION": "Wir führen derzeit geplante Systemaktualisierungen durch, um Leistung und Sicherheit zu verbessern. Wir sind in Kürze wieder online.",
+    "CHECK_AGAIN": "Erneut prüfen",
+    "STILL_ACTIVE": "Das System wird derzeit noch gewartet. Bitte versuchen Sie es später noch einmal.",
+    "CHECK_FAILED": "Systemstatus konnte nicht überprüft werden. Bitte versuchen Sie es erneut."
   }
 }

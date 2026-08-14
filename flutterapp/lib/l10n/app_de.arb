@@ -225,5 +225,11 @@
   "faqQuestion5": "Sind meine Daten sicher?",
   "faqAnswer5": "Ja, TestAPK verwendet Google OAuth für eine sichere Authentifizierung und greift nicht auf andere Dateien in Ihrem Google Drive zu als auf die von der App erstellten.",
   "faqQuestion6": "Wo lade ich die APK hoch?",
-  "faqAnswer6": "Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen."
+  "faqAnswer6": "Sie können APKs über das Web-Dashboard unter https://testapk.clipboux.online/ oder mit dem TestAPK-CLI-Tool hochladen.",
+  "maintenanceTitle": "Systemwartung",
+  "maintenanceDescription": "Wir führen derzeit geplante Systemaktualisierungen durch, um Leistung und Sicherheit zu verbessern. Wir sind in Kürze wieder online.",
+  "maintenanceCheckAgain": "Erneut prüfen",
+  "maintenanceStillActive": "Das System wird derzeit noch gewartet. Bitte versuchen Sie es später noch einmal.",
+  "maintenanceCheckFailed": "Systemstatus konnte nicht überprüft werden. Bitte versuchen Sie es erneut.",
+  "maintenanceChecking": "Prüfung..."
 }

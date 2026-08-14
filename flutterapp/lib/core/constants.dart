@@ -39,6 +39,14 @@ String get kLoginConfirmation => _l10n?.loginConfirmation ?? 'By signing in, you
 /// Splash Screen
 String get kSplashSubtitle => _l10n?.splashSubtitle ?? 'Release Manager for Testers';
 
+/// Maintenance Screen
+String get kMaintenanceTitle => _l10n?.maintenanceTitle ?? 'System Maintenance';
+String get kMaintenanceDescription => _l10n?.maintenanceDescription ?? 'We are currently performing scheduled system updates to improve performance and security. We\'ll be back online shortly.';
+String get kMaintenanceCheckAgain => _l10n?.maintenanceCheckAgain ?? 'Check Again';
+String get kMaintenanceStillActive => _l10n?.maintenanceStillActive ?? 'System is still undergoing maintenance. Please try again later.';
+String get kMaintenanceCheckFailed => _l10n?.maintenanceCheckFailed ?? 'Failed to check system status. Please try again.';
+String get kMaintenanceChecking => _l10n?.maintenanceChecking ?? 'Checking...';
+
 /// App List Screen
 String get kAppListErrorFailedToLoad => _l10n?.appListErrorFailedToLoad ?? 'Failed to load data';
 String get kAppListErrorConnection => _l10n?.appListErrorConnection ?? 'Connection error: ';

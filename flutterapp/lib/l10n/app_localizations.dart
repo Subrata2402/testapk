@@ -1425,6 +1425,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.'**
   String get faqAnswer6;
+
+  /// No description provided for @maintenanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System Maintenance'**
+  String get maintenanceTitle;
+
+  /// No description provided for @maintenanceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We are currently performing scheduled system updates to improve performance and security. We\'ll be back online shortly.'**
+  String get maintenanceDescription;
+
+  /// No description provided for @maintenanceCheckAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Again'**
+  String get maintenanceCheckAgain;
+
+  /// No description provided for @maintenanceStillActive.
+  ///
+  /// In en, this message translates to:
+  /// **'System is still undergoing maintenance. Please try again later.'**
+  String get maintenanceStillActive;
+
+  /// No description provided for @maintenanceCheckFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to check system status. Please try again.'**
+  String get maintenanceCheckFailed;
+
+  /// No description provided for @maintenanceChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking...'**
+  String get maintenanceChecking;
 }
 
 class _AppLocalizationsDelegate

@@ -724,4 +724,25 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'आप वेब डैशबोर्ड के माध्यम से https://testapk.clipboux.online/ पर या TestAPK CLI टूल का उपयोग करके APK अपलोड कर सकते हैं।';
+
+  @override
+  String get maintenanceTitle => 'सिस्टम रखरखाव';
+
+  @override
+  String get maintenanceDescription =>
+      'हम वर्तमान में प्रदर्शन और सुरक्षा में सुधार के लिए अनुसूचित सिस्टम अपडेट कर रहे हैं। हम जल्द ही वापस ऑनलाइन होंगे।';
+
+  @override
+  String get maintenanceCheckAgain => 'फिर से जांचें';
+
+  @override
+  String get maintenanceStillActive =>
+      'सिस्टम अभी भी रखरखाव के अधीन है। कृपया बाद में पुनः प्रयास करें।';
+
+  @override
+  String get maintenanceCheckFailed =>
+      'सिस्टम स्थिति की जांच करने में विफल। कृपया पुनः प्रयास करें।';
+
+  @override
+  String get maintenanceChecking => 'जाँच हो रही है...';
 }

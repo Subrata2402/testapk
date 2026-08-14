@@ -730,4 +730,25 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'Vous pouvez télécharger des APK via le tableau de bord Web à l\'adresse https://testapk.clipboux.online/ ou en utilisant l\'outil CLI TestAPK.';
+
+  @override
+  String get maintenanceTitle => 'Maintenance du système';
+
+  @override
+  String get maintenanceDescription =>
+      'Nous effectuons actuellement des mises à jour système planifiées pour améliorer les performances et la sécurité. Nous serons de retour en ligne sous peu.';
+
+  @override
+  String get maintenanceCheckAgain => 'Vérifier à nouveau';
+
+  @override
+  String get maintenanceStillActive =>
+      'Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.';
+
+  @override
+  String get maintenanceCheckFailed =>
+      'Échec de la vérification de l\'état du système. Veuillez réessayer.';
+
+  @override
+  String get maintenanceChecking => 'Vérification...';
 }

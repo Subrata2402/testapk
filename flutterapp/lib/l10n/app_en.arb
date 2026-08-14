@@ -225,5 +225,11 @@
   "faqQuestion5": "Is my data secure?",
   "faqAnswer5": "Yes, TestAPK uses Google OAuth for secure authentication and does not access any files in your Google Drive other than those created by the app.",
   "faqQuestion6": "Where do I upload the APK?",
-  "faqAnswer6": "You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool."
+  "faqAnswer6": "You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.",
+  "maintenanceTitle": "System Maintenance",
+  "maintenanceDescription": "We are currently performing scheduled system updates to improve performance and security. We'll be back online shortly.",
+  "maintenanceCheckAgain": "Check Again",
+  "maintenanceStillActive": "System is still undergoing maintenance. Please try again later.",
+  "maintenanceCheckFailed": "Failed to check system status. Please try again.",
+  "maintenanceChecking": "Checking..."
 }

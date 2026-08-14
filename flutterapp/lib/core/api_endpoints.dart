@@ -7,6 +7,7 @@ class ApiEndpoints {
   static const String logout = '/auth/logout';
   static const String supportContact = '/support/contact';
   static const String deleteMe = '/users/me';
+  static const String publicSettings = '/settings/public';
 
   static String acceptInvitation(String appId) => '/apps/$appId/invitations/accept';
   static String rejectInvitation(String appId) => '/apps/$appId/invitations/reject';

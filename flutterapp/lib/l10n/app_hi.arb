@@ -225,5 +225,11 @@
   "faqQuestion5": "क्या मेरा डेटा सुरक्षित है?",
   "faqAnswer5": "हाँ, TestAPK सुरक्षित प्रमाणीकरण के लिए Google OAuth का उपयोग करता है और ऐप द्वारा बनाई गई फ़ाइलों के अलावा आपके Google Drive में किसी भी फ़ाइल तक पहुँच नहीं पाता है।",
   "faqQuestion6": "मैं APK कहाँ अपलोड करूँ?",
-  "faqAnswer6": "आप वेब डैशबोर्ड के माध्यम से https://testapk.clipboux.online/ पर या TestAPK CLI टूल का उपयोग करके APK अपलोड कर सकते हैं।"
+  "faqAnswer6": "आप वेब डैशबोर्ड के माध्यम से https://testapk.clipboux.online/ पर या TestAPK CLI टूल का उपयोग करके APK अपलोड कर सकते हैं।",
+  "maintenanceTitle": "सिस्टम रखरखाव",
+  "maintenanceDescription": "हम वर्तमान में प्रदर्शन और सुरक्षा में सुधार के लिए अनुसूचित सिस्टम अपडेट कर रहे हैं। हम जल्द ही वापस ऑनलाइन होंगे।",
+  "maintenanceCheckAgain": "फिर से जांचें",
+  "maintenanceStillActive": "सिस्टम अभी भी रखरखाव के अधीन है। कृपया बाद में पुनः प्रयास करें।",
+  "maintenanceCheckFailed": "सिस्टम स्थिति की जांच करने में विफल। कृपया पुनः प्रयास करें।",
+  "maintenanceChecking": "जाँच हो रही है..."
 }
