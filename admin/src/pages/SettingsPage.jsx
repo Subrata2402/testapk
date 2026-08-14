@@ -82,14 +82,38 @@ export default function SettingsPage() {
 
   return (
     <div className="support-section glass-card animate-fade-in settings-container">
-      <div className="section-header support-header">
-        <div className="header-left">
-          <Settings size={20} className="section-icon" />
-          <h3>{t('settings.title') || 'Global Settings'}</h3>
-        </div>
-      </div>
-
       <form onSubmit={handleSave} className="settings-form">
+        <div className="section-header support-header">
+          <div className="header-left">
+            <Settings size={20} className="section-icon" />
+            <h3>{t('settings.title') || 'Global Settings'}</h3>
+          </div>
+          <div className="settings-header-actions">
+            {saveStatus === 'success' && (
+              <div className="settings-status-success">
+                <CheckCircle size={18} />
+                <span>{t('settings.saveSuccess') || 'Settings saved successfully!'}</span>
+              </div>
+            )}
+
+            {saveStatus === 'error' && (
+              <div className="settings-status-error">
+                <AlertTriangle size={18} />
+                <span>{t('settings.saveError') || 'Failed to save settings.'}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSaving}
+              className="btn btn-primary settings-save-btn"
+            >
+              <Save size={16} />
+              <span>{isSaving ? (t('common.saving') || 'Saving...') : (t('common.save') || 'Save Settings')}</span>
+            </button>
+          </div>
+        </div>
+
         {/* Maintenance Mode */}
         <div className="glass-card settings-card">
           <div className="settings-row">
@@ -172,32 +196,6 @@ export default function SettingsPage() {
             placeholder={t('settings.announcementPlaceholder') || 'Enter announcement message (leave empty to disable)...'}
             rows={3}
           />
-        </div>
-
-        {/* Save Actions */}
-        <div className="settings-actions">
-          <button
-            type="submit"
-            disabled={isSaving}
-            className="btn btn-primary settings-save-btn"
-          >
-            <Save size={16} />
-            <span>{isSaving ? (t('common.saving') || 'Saving...') : (t('common.save') || 'Save Settings')}</span>
-          </button>
-
-          {saveStatus === 'success' && (
-            <div className="settings-status-success">
-              <CheckCircle size={18} />
-              <span>{t('settings.saveSuccess') || 'Settings saved successfully!'}</span>
-            </div>
-          )}
-
-          {saveStatus === 'error' && (
-            <div className="settings-status-error">
-              <AlertTriangle size={18} />
-              <span>{t('settings.saveError') || 'Failed to save settings.'}</span>
-            </div>
-          )}
         </div>
       </form>
     </div>
