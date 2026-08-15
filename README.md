@@ -19,6 +19,7 @@ graph TD
         Server[Express API Server]
         DB[(MongoDB)]
         Drive[Google Drive API]
+        FCM[Firebase Cloud Messaging]
     end
 
     CLI -->|Uploads & Management| Server
@@ -28,6 +29,8 @@ graph TD
 
     Server -->|Metadata| DB
     Server -->|APK Storage| Drive
+    Server -->|Push Notifications| FCM
+    FCM -->|Delivers Notifications| App
 ```
 
 ---
