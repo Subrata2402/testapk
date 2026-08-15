@@ -73,10 +73,42 @@ The application configuration is centralized in `lib/core/constants.dart`:
 
 ## 📸 Screenshots
 
-| Login Page | Dashboard | Release List |
-| :---: | :---: | :---: |
-| ![Login Page](./screenshots/login.jpeg) | ![Dashboard](./screenshots/dashboard.jpeg) | ![Release List](./screenshots/release_list.jpeg) |
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/login.jpeg" width="250" height="500" />
+      <br />
+      Login Page
+    </td>
+    <td align="center">
+      <img src="./screenshots/dashboard.jpeg" width="250" height="500" />
+      <br />
+      Dashboard
+    </td>
+    <td align="center">
+      <img src="./screenshots/release_list.jpeg" width="250" height="500" />
+      <br />
+      Release List
+    </td>
+  </tr>
+</table>
 
-| Release Details | Menu | Languages |
-| :---: | :---: | :---: |
-| ![Release Details](./screenshots/release_details.jpeg) | ![Menu](./screenshots/menu.jpeg) | ![Languages](./screenshots/languages.jpeg) |
+<table>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/release_details.jpeg" width="250" height="500" />
+      <br />
+      Release Details
+    </td>
+    <td align="center">
+      <img src="./screenshots/menu.jpeg" width="250" height="500" />
+      <br />
+      Menu
+    </td>
+    <td align="center">
+      <img src="./screenshots/languages.jpeg" width="250" height="500" />
+      <br />
+      Languages
+    </td>
+  </tr>
+</table>
