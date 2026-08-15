@@ -12,7 +12,7 @@ import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/presentations/splash/widgets/splash_logo.dart';
 import 'package:flutterapp/presentations/splash/widgets/splash_progress_pill.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -185,24 +185,20 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   children: [
                     const SplashLogo(),
                     SizedBox(height: context.scale(24)),
-                    Text(
+                    TextViewer(
                       kAppName,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(36),
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        letterSpacing: -1.2,
-                        height: 1.0,
-                      ),
+                      fontSize: context.scale(36),
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      letterSpacing: -1.2,
+                      height: 1.0,
                     ),
                     SizedBox(height: context.scale(8)),
-                    Text(
+                    TextViewer(
                       kSplashSubtitle,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(14),
-                        color: Colors.white.withValues(alpha: 0.55),
-                        letterSpacing: -0.1,
-                      ),
+                      fontSize: context.scale(14),
+                      color: Colors.white.withValues(alpha: 0.55),
+                      letterSpacing: -0.1,
                     ),
                     SizedBox(height: context.scale(56)),
                     const SplashProgressPill(),

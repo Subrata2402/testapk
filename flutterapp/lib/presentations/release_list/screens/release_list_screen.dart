@@ -12,7 +12,7 @@ import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/presentations/release_list/widgets/release_card.dart';
 import 'package:flutterapp/presentations/release_list/widgets/member_card.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ReleaseListScreen extends StatefulWidget {
   final AppModel app;
@@ -145,14 +145,12 @@ class _ReleaseListScreenState extends State<ReleaseListScreen> {
                                     onPressed: () => Navigator.of(context).pop(),
                                   ),
                                   Expanded(
-                                    child: Text(
+                                    child: TextViewer(
                                       _app.name,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(17),
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white,
-                                        letterSpacing: -0.5,
-                                      ),
+                                      fontSize: context.scale(17),
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      letterSpacing: -0.5,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
@@ -164,7 +162,7 @@ class _ReleaseListScreenState extends State<ReleaseListScreen> {
                               indicatorWeight: 2,
                               labelColor: Colors.white,
                               unselectedLabelColor: Colors.white.withValues(alpha: 0.40),
-                              labelStyle: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: context.scale(13)),
+                              labelStyle: const TextStyle(fontWeight: FontWeight.w600),
                               dividerColor: Colors.white.withValues(alpha: 0.10),
                               tabs: [
                                 Tab(text: kTabReleases),
@@ -205,12 +203,10 @@ class _ReleaseListScreenState extends State<ReleaseListScreen> {
                                         color: Colors.white.withValues(alpha: 0.12),
                                       ),
                                       SizedBox(height: context.scale(12)),
-                                      Text(
+                                      TextViewer(
                                         kNoReleasesMsg,
-                                        style: GoogleFonts.inter(
-                                          color: Colors.white.withValues(alpha: 0.40),
-                                          fontSize: context.scale(14),
-                                        ),
+                                        color: Colors.white.withValues(alpha: 0.40),
+                                        fontSize: context.scale(14),
                                       ),
                                     ],
                                   ),
@@ -254,22 +250,18 @@ class _ReleaseListScreenState extends State<ReleaseListScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    TextViewer(
                                       kTeamMembersTitle,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(16),
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white,
-                                        letterSpacing: -0.4,
-                                      ),
+                                      fontSize: context.scale(16),
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      letterSpacing: -0.4,
                                     ),
                                     SizedBox(height: context.scale(4)),
-                                    Text(
+                                    TextViewer(
                                       kTeamMembersSubtitle,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(13),
-                                        color: Colors.white.withValues(alpha: 0.45),
-                                      ),
+                                      fontSize: context.scale(13),
+                                      color: Colors.white.withValues(alpha: 0.45),
                                     ),
                                   ],
                                 ),
@@ -293,12 +285,10 @@ class _ReleaseListScreenState extends State<ReleaseListScreen> {
                                         color: Colors.white.withValues(alpha: 0.12),
                                       ),
                                       SizedBox(height: context.scale(12)),
-                                      Text(
+                                      TextViewer(
                                         kNoMembersMsg,
-                                        style: GoogleFonts.inter(
-                                          color: Colors.white.withValues(alpha: 0.40),
-                                          fontSize: context.scale(14),
-                                        ),
+                                        color: Colors.white.withValues(alpha: 0.40),
+                                        fontSize: context.scale(14),
                                       ),
                                     ],
                                   ),

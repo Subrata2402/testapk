@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class GlassAvatar extends StatelessWidget {
   final String initials;
@@ -22,13 +22,11 @@ class GlassAvatar extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.30), width: 0.8),
       ),
       child: Center(
-        child: Text(
+        child: TextViewer(
           initials,
-          style: GoogleFonts.inter(
-            fontSize: context.scale(avatarSize * 0.3),
-            fontWeight: FontWeight.w700,
-            color: color,
-          ),
+          fontSize: context.scale(avatarSize * 0.3),
+          fontWeight: FontWeight.w700,
+          color: color,
         ),
       ),
     );

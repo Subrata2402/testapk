@@ -4,7 +4,7 @@ import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/release_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ReleaseCard extends StatelessWidget {
   final ReleaseModel release;
@@ -42,19 +42,18 @@ class ReleaseCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  TextViewer(
                     release.appName ?? '$kBuildPrefix${release.buildNumber}',
-                    style: GoogleFonts.inter(
-                      fontSize: context.scale(14),
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      letterSpacing: -0.2,
-                    ),
+                    fontSize: context.scale(14),
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    letterSpacing: -0.2,
                   ),
                   SizedBox(height: context.scale(4)),
-                  Text(
+                  TextViewer(
                     'v${release.version} (${release.buildNumber})',
-                    style: GoogleFonts.inter(fontSize: context.scale(12), color: Colors.white.withValues(alpha: 0.45)),
+                    fontSize: context.scale(12),
+                    color: Colors.white.withValues(alpha: 0.45),
                   ),
                 ],
               ),

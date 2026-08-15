@@ -6,7 +6,8 @@ import 'package:flutterapp/core/legal_texts.dart';
 import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:flutterapp/widgets/legal_section_widget.dart';
 
 class LegalDocumentViewer extends StatelessWidget {
   final String title;
@@ -112,22 +113,18 @@ class LegalDocumentViewer extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    TextViewer(
                                       title,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(18),
-                                        fontWeight: FontWeight.w700,
-                                        color: AppColors.textPrimary,
-                                        letterSpacing: -0.5,
-                                      ),
+                                      fontSize: context.scale(18),
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textPrimary,
+                                      letterSpacing: -0.5,
                                     ),
                                     SizedBox(height: context.scale(2)),
-                                    Text(
+                                    TextViewer(
                                       kLegalLastUpdated(lastUpdated),
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(11),
-                                        color: AppColors.textTertiary,
-                                      ),
+                                      fontSize: context.scale(11),
+                                      color: AppColors.textTertiary,
                                     ),
                                   ],
                                 ),
@@ -151,38 +148,7 @@ class LegalDocumentViewer extends StatelessWidget {
                     ),
                     itemCount: sections.length,
                     itemBuilder: (context, index) {
-                      final section = sections[index];
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: context.scale(24)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              section.title,
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(15),
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.accentLight,
-                                letterSpacing: -0.2,
-                              ),
-                            ),
-                            SizedBox(height: context.scale(8)),
-                            ...section.paragraphs.map(
-                              (para) => Padding(
-                                padding: EdgeInsets.only(bottom: context.scale(8)),
-                                child: Text(
-                                  para,
-                                  style: GoogleFonts.inter(
-                                    fontSize: context.scale(13),
-                                    color: Colors.white.withValues(alpha: 0.75),
-                                    height: 1.5,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
+                      return LegalSectionWidget(section: sections[index]);
                     },
                   ),
                 ),
@@ -236,19 +202,18 @@ class LegalDocumentViewer extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          TextViewer(
                             title,
-                            style: GoogleFonts.inter(
-                              fontSize: context.scale(20),
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.textPrimary,
-                              letterSpacing: -0.5,
-                            ),
+                            fontSize: context.scale(20),
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.textPrimary,
+                            letterSpacing: -0.5,
                           ),
                           SizedBox(height: context.scale(4)),
-                          Text(
+                          TextViewer(
                             kLegalLastUpdated(lastUpdated),
-                            style: GoogleFonts.inter(fontSize: context.scale(12), color: AppColors.textTertiary),
+                            fontSize: context.scale(12),
+                            color: AppColors.textTertiary,
                           ),
                         ],
                       ),
@@ -278,38 +243,7 @@ class LegalDocumentViewer extends StatelessWidget {
                   ),
                   itemCount: sections.length,
                   itemBuilder: (context, index) {
-                    final section = sections[index];
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: context.scale(24)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            section.title,
-                            style: GoogleFonts.inter(
-                              fontSize: context.scale(15),
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.accentLight,
-                              letterSpacing: -0.2,
-                            ),
-                          ),
-                          SizedBox(height: context.scale(8)),
-                          ...section.paragraphs.map(
-                            (para) => Padding(
-                              padding: EdgeInsets.only(bottom: context.scale(8)),
-                              child: Text(
-                                para,
-                                style: GoogleFonts.inter(
-                                  fontSize: context.scale(13),
-                                  color: Colors.white.withValues(alpha: 0.75),
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                    return LegalSectionWidget(section: sections[index]);
                   },
                 ),
               ),

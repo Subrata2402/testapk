@@ -13,6 +13,7 @@ import 'package:flutterapp/widgets/release_action_button.dart';
 import 'package:flutterapp/widgets/section_label.dart';
 import 'package:flutterapp/presentations/release_detail/widgets/detail_grid.dart';
 import 'package:flutterapp/presentations/release_detail/widgets/permission_chip.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -112,14 +113,12 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                               icon: Icon(Icons.arrow_back_rounded, color: Colors.white, size: context.scale(22)),
                               onPressed: () => Navigator.of(context).pop(),
                             ),
-                            Text(
+                            TextViewer(
                               kReleaseDetailsTitle,
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(17),
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                letterSpacing: -0.5,
-                              ),
+                              fontSize: context.scale(17),
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                              letterSpacing: -0.5,
                             ),
                           ],
                         ),
@@ -180,30 +179,25 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  TextViewer(
                                     release.appName ?? widget.app.name,
-                                    style: GoogleFonts.inter(
-                                      fontSize: context.scale(20),
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white,
-                                      letterSpacing: -0.5,
-                                    ),
+                                    fontSize: context.scale(20),
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                    letterSpacing: -0.5,
                                   ),
                                   SizedBox(height: context.scale(4)),
-                                  Text(
+                                  TextViewer(
                                     widget.app.packageName,
-                                    style: GoogleFonts.robotoMono(
-                                      fontSize: context.scale(11),
-                                      color: Colors.white.withValues(alpha: 0.45),
-                                    ),
+                                    fontSize: context.scale(11),
+                                    color: Colors.white.withValues(alpha: 0.45),
+                                    style: GoogleFonts.robotoMono(),
                                   ),
                                   SizedBox(height: context.scale(6)),
-                                  Text(
+                                  TextViewer(
                                     'v${release.version}  •  $dateStr',
-                                    style: GoogleFonts.inter(
-                                      fontSize: context.scale(13),
-                                      color: Colors.white.withValues(alpha: 0.50),
-                                    ),
+                                    fontSize: context.scale(13),
+                                    color: Colors.white.withValues(alpha: 0.50),
                                   ),
                                 ],
                               ),
@@ -235,15 +229,13 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                                   border: Border.all(color: AppColors.orb2.withValues(alpha: 0.30), width: 0.8),
                                 ),
                                 child: Center(
-                                  child: Text(
+                                  child: TextViewer(
                                     release.uploadedByName!
                                         .substring(0, release.uploadedByName!.length >= 2 ? 2 : 1)
                                         .toUpperCase(),
-                                    style: GoogleFonts.inter(
-                                      fontSize: context.scale(11),
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.orb2,
-                                    ),
+                                    fontSize: context.scale(11),
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.orb2,
                                   ),
                                 ),
                               ),
@@ -252,21 +244,17 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    TextViewer(
                                       release.uploadedByName!,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(13),
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white,
-                                      ),
+                                      fontSize: context.scale(13),
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
                                     ),
                                     SizedBox(height: context.scale(2)),
-                                    Text(
+                                    TextViewer(
                                       release.uploadedByEmail ?? '',
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(11),
-                                        color: Colors.white.withValues(alpha: 0.45),
-                                      ),
+                                      fontSize: context.scale(11),
+                                      color: Colors.white.withValues(alpha: 0.45),
                                     ),
                                   ],
                                 ),
@@ -283,13 +271,11 @@ class _ReleaseDetailScreenState extends State<ReleaseDetailScreen> {
                         GlassPanel(
                           padding: EdgeInsets.all(context.scale(18)),
                           borderRadius: 18,
-                          child: Text(
+                          child: TextViewer(
                             release.releaseNotes,
-                            style: GoogleFonts.inter(
-                              fontSize: context.scale(14),
-                              color: Colors.white.withValues(alpha: 0.75),
-                              height: 1.6,
-                            ),
+                            fontSize: context.scale(14),
+                            color: Colors.white.withValues(alpha: 0.75),
+                            height: 1.6,
                           ),
                         ),
                       ],
