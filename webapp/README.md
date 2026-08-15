@@ -73,3 +73,11 @@ VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
   - Invite testers by email.
   - View application details, member lists, and release history.
 - **Device Authorization**: A dedicated `/device` route that handles CLI login requests using the RFC 8628 Device Authorization Flow.
+
+---
+
+## 📸 Screenshots
+
+| Landing Page | Developer Dashboard |
+| :---: | :---: |
+| ![Landing Page](./screenshots/landing_page.png) | ![Developer Dashboard](./screenshots/dashboard.png) |

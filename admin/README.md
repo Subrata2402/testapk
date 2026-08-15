@@ -20,6 +20,18 @@ The **TestAPK Admin Dashboard** is a premium, glassmorphic web application built
 
 ---
 
+## 📸 Screenshots
+
+| Login Page | Dashboard Overview |
+| :---: | :---: |
+| ![Login Page](./screenshots/login.png) | ![Dashboard Overview](./screenshots/dashboard.png) |
+
+| System Health | Settings |
+| :---: | :---: |
+| ![System Health](./screenshots/system_health.png) | ![Settings](./screenshots/settings.png) |
+
+---
+
 ## 🛠️ Technology Stack
 
 - **Core**: React 19, Vite 8, React Router 7
