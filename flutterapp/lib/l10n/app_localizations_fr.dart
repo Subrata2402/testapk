@@ -9,8 +9,7 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get loginErrorMsg =>
-      'Échec de la connexion. Veuillez vous assurer que vous êtes un testeur enregistré.';
+  String get loginErrorMsg => 'Échec de la connexion. Veuillez vous assurer que vous êtes un testeur enregistré.';
 
   @override
   String get appName => 'TestAPK';
@@ -37,22 +36,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get infoTitleTesterAccess => 'Accès testeur uniquement';
 
   @override
-  String get infoSubtitleTesterAccess =>
-      'Seuls les testeurs invités peuvent accéder aux versions de l\'application.';
+  String get infoSubtitleTesterAccess => 'Seuls les testeurs invités peuvent accéder aux versions de l\'application.';
 
   @override
   String get infoTitleSecureStorage => 'Stockage cloud sécurisé';
 
   @override
-  String get infoSubtitleSecureStorage =>
-      'APK stockés sur Google Drive, livrés en toute sécurité.';
+  String get infoSubtitleSecureStorage => 'APK stockés sur Google Drive, livrés en toute sécurité.';
 
   @override
   String get infoTitleAlwaysUpToDate => 'Toujours à jour';
 
   @override
-  String get infoSubtitleAlwaysUpToDate =>
-      'Accès instantané aux dernières versions.';
+  String get infoSubtitleAlwaysUpToDate => 'Accès instantané aux dernières versions.';
 
   @override
   String get loginSigningIn => 'Connexion en cours…';
@@ -61,8 +57,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get loginContinueWithGoogle => 'Continuer avec Google';
 
   @override
-  String get loginConfirmation =>
-      'En vous connectant, vous confirmez que vous êtes un testeur autorisé.';
+  String get loginConfirmation => 'En vous connectant, vous confirmez que vous êtes un testeur autorisé.';
 
   @override
   String get splashSubtitle => 'Gestionnaire de versions pour les testeurs';
@@ -77,8 +72,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get inviteAcceptedMsg => 'Invitation acceptée !';
 
   @override
-  String get inviteAcceptFailedMsg =>
-      'Échec de l\'acceptation de l\'invitation';
+  String get inviteAcceptFailedMsg => 'Échec de l\'acceptation de l\'invitation';
 
   @override
   String get inviteRejectedMsg => 'Invitation rejetée';
@@ -90,12 +84,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get errorPrefix => 'Erreur : ';
 
   @override
-  String get appListEmptyTitle =>
-      'Vous n\'avez pas encore été ajouté\nà une application.';
+  String get appListEmptyTitle => 'Vous n\'avez pas encore été ajouté\nà une application.';
 
   @override
-  String get appListEmptySubtitle =>
-      'Demandez à un développeur de vous inviter en tant que testeur.';
+  String get appListEmptySubtitle => 'Demandez à un développeur de vous inviter en tant que testeur.';
 
   @override
   String get signOutTooltip => 'Se déconnecter';
@@ -119,8 +111,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get teamMembersTitle => 'Membres de l\'équipe';
 
   @override
-  String get teamMembersSubtitle =>
-      'Collaborateurs invités à cette application.';
+  String get teamMembersSubtitle => 'Collaborateurs invités à cette application.';
 
   @override
   String get noMembersMsg => 'Aucun membre pour le moment';
@@ -209,8 +200,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Échec de l\'installation : une version conflictuelle de l\'application est déjà installée.';
 
   @override
-  String get errorInstallInvalidApk =>
-      'Échec de l\'installation : le fichier APK est invalide ou corrompu.';
+  String get errorInstallInvalidApk => 'Échec de l\'installation : le fichier APK est invalide ou corrompu.';
 
   @override
   String get errorInstallInsufficientStorage =>
@@ -272,8 +262,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get supportSubjectRequired => 'Le sujet est requis';
 
   @override
-  String get supportMessageHint =>
-      'Décrivez votre problème ou votre question en détail...';
+  String get supportMessageHint => 'Décrivez votre problème ou votre question en détail...';
 
   @override
   String get supportMessageRequired => 'Le message est requis';
@@ -291,8 +280,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get aboutVersion => 'Version 1.0.0+3';
 
   @override
-  String get aboutDescription =>
-      'Une plateforme de gestion de versions APK moderne, sécurisée et auto-hébergée.';
+  String get aboutDescription => 'Une plateforme de gestion de versions APK moderne, sécurisée et auto-hébergée.';
 
   @override
   String get aboutPlatformInfoLabel => 'INFORMATIONS SUR LA PLATEFORME';
@@ -328,8 +316,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get signOutConfirmTitle => 'Se déconnecter';
 
   @override
-  String get signOutConfirmMessage =>
-      'Êtes-vous sûr de vouloir vous déconnecter de votre compte ?';
+  String get signOutConfirmMessage => 'Êtes-vous sûr de vouloir vous déconnecter de votre compte ?';
 
   @override
   String get deleteLabel => 'Supprimer';
@@ -348,24 +335,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get deleteAccountErrorMsg => 'Échec de la suppression du compte';
 
   @override
-  String get errorUnexpected =>
-      'Une erreur inattendue est survenue. Veuillez réessayer.';
+  String get errorUnexpected => 'Une erreur inattendue est survenue. Veuillez réessayer.';
 
   @override
-  String get errorTimeout =>
-      'Délai de connexion dépassé. Veuillez vérifier votre connexion Internet.';
+  String get errorTimeout => 'Délai de connexion dépassé. Veuillez vérifier votre connexion Internet.';
 
   @override
-  String get errorSessionExpired =>
-      'Session expirée. Veuillez vous reconnecter.';
+  String get errorSessionExpired => 'Session expirée. Veuillez vous reconnecter.';
 
   @override
-  String get errorServerError =>
-      'Erreur du serveur. Veuillez réessayer plus tard.';
+  String get errorServerError => 'Erreur du serveur. Veuillez réessayer plus tard.';
 
   @override
-  String get errorNoInternet =>
-      'Pas de connexion Internet. Veuillez vérifier vos paramètres réseau.';
+  String get errorNoInternet => 'Pas de connexion Internet. Veuillez vérifier vos paramètres réseau.';
 
   @override
   String get errorRequestCancelled => 'La requête a été annulée.';
@@ -374,12 +356,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get errorRequestFailedPrefix => 'Échec de la requête : ';
 
   @override
-  String get errorBadRequest =>
-      'Requête incorrecte. Veuillez vérifier votre saisie.';
+  String get errorBadRequest => 'Requête incorrecte. Veuillez vérifier votre saisie.';
 
   @override
-  String get errorForbidden =>
-      'Accès refusé. Vous n\'avez pas l\'autorisation d\'effectuer cette action.';
+  String get errorForbidden => 'Accès refusé. Vous n\'avez pas l\'autorisation d\'effectuer cette action.';
 
   @override
   String get selectLanguage => 'Choisir la langue';
@@ -448,8 +428,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get aboutWebDashboardTitle => 'Tableau de bord Web';
 
   @override
-  String get aboutWebDashboardSubtitle =>
-      'Stockage Google Drive, gestion d\'équipe, historique des versions';
+  String get aboutWebDashboardSubtitle => 'Stockage Google Drive, gestion d\'équipe, historique des versions';
 
   @override
   String get aboutFlutterClientTitle => 'Client Flutter';
@@ -548,16 +527,13 @@ class AppLocalizationsFr extends AppLocalizations {
       '• Métadonnées de l\'application : nous collectons des métadonnées sur les fichiers APK que vous téléchargez (telles que le nom du package, le code de version, le nom de version et les notes de version) afin de les afficher sur votre tableau de bord et votre application mobile.';
 
   @override
-  String get privacyPolicyTitle3 =>
-      '3. Comment nous utilisons vos informations';
+  String get privacyPolicyTitle3 => '3. Comment nous utilisons vos informations';
 
   @override
-  String get privacyPolicyPara3_1 =>
-      'Nous utilisons les informations collectées aux fins suivantes :';
+  String get privacyPolicyPara3_1 => 'Nous utilisons les informations collectées aux fins suivantes :';
 
   @override
-  String get privacyPolicyPara3_2 =>
-      '• Pour authentifier votre identité et gérer votre compte.';
+  String get privacyPolicyPara3_2 => '• Pour authentifier votre identité et gérer votre compte.';
 
   @override
   String get privacyPolicyPara3_3 =>
@@ -589,8 +565,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get privacyPolicyTitle6 => '6. Vos droits et choix';
 
   @override
-  String get privacyPolicyPara6_1 =>
-      'Vous avez un contrôle total sur vos données :';
+  String get privacyPolicyPara6_1 => 'Vous avez un contrôle total sur vos données :';
 
   @override
   String get privacyPolicyPara6_2 =>
@@ -646,16 +621,14 @@ class AppLocalizationsFr extends AppLocalizations {
   String get termsOfServiceTitle5 => '5. Utilisation acceptable';
 
   @override
-  String get termsOfServicePara5_1 =>
-      'Vous acceptez de ne pas utiliser le service pour :';
+  String get termsOfServicePara5_1 => 'Vous acceptez de ne pas utiliser le service pour :';
 
   @override
   String get termsOfServicePara5_2 =>
       '• Télécharger ou distribuer des logiciels malveillants, des virus ou tout code conçu pour endommager ou perturber les appareils.';
 
   @override
-  String get termsOfServicePara5_3 =>
-      '• Enfreindre les droits de propriété intellectuelle d\'autrui.';
+  String get termsOfServicePara5_3 => '• Enfreindre les droits de propriété intellectuelle d\'autrui.';
 
   @override
   String get termsOfServicePara5_4 =>
@@ -742,12 +715,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get maintenanceCheckAgain => 'Vérifier à nouveau';
 
   @override
-  String get maintenanceStillActive =>
-      'Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.';
+  String get maintenanceStillActive => 'Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.';
 
   @override
-  String get maintenanceCheckFailed =>
-      'Échec de la vérification de l\'état du système. Veuillez réessayer.';
+  String get maintenanceCheckFailed => 'Échec de la vérification de l\'état du système. Veuillez réessayer.';
 
   @override
   String get maintenanceChecking => 'Vérification...';
@@ -763,8 +734,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get updateNowBtnLabel => 'Mettre à jour maintenant';
 
   @override
-  String get downloadLinkNotConfigured =>
-      'Le lien de téléchargement n\'est pas configuré.';
+  String get downloadLinkNotConfigured => 'Le lien de téléchargement n\'est pas configuré.';
 
   @override
   String downloadLinkLaunchError(String link) {

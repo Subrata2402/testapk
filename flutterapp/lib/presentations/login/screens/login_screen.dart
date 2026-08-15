@@ -25,11 +25,7 @@ class LoginScreen extends StatefulWidget {
   final bool isUpdateOptional;
   final String latestVersionDownloadLink;
 
-  const LoginScreen({
-    super.key,
-    this.isUpdateOptional = false,
-    this.latestVersionDownloadLink = '',
-  });
+  const LoginScreen({super.key, this.isUpdateOptional = false, this.latestVersionDownloadLink = ''});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();

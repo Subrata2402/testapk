@@ -22,11 +22,7 @@ class AppListScreen extends StatefulWidget {
   final bool isUpdateOptional;
   final String latestVersionDownloadLink;
 
-  const AppListScreen({
-    super.key,
-    this.isUpdateOptional = false,
-    this.latestVersionDownloadLink = '',
-  });
+  const AppListScreen({super.key, this.isUpdateOptional = false, this.latestVersionDownloadLink = ''});
 
   @override
   State<AppListScreen> createState() => _AppListScreenState();

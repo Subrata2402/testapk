@@ -38,11 +38,7 @@ class LoginInfoRow extends StatelessWidget {
                 letterSpacing: -0.2,
               ),
               SizedBox(height: context.scale(2)),
-              TextViewer(
-                subtitle,
-                fontSize: context.scale(12),
-                color: AppColors.textSecondary,
-              ),
+              TextViewer(subtitle, fontSize: context.scale(12), color: AppColors.textSecondary),
             ],
           ),
         ),

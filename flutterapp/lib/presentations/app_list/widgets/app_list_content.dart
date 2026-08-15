@@ -55,11 +55,7 @@ class AppListContent extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: context.scale(24)),
             child: Center(
-              child: TextViewer(
-                kNoApplicationsMsg,
-                color: AppColors.textTertiary,
-                fontSize: context.scale(13),
-              ),
+              child: TextViewer(kNoApplicationsMsg, color: AppColors.textTertiary, fontSize: context.scale(13)),
             ),
           )
         else

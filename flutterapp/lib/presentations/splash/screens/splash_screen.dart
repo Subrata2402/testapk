@@ -113,32 +113,22 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     if (!mounted) return;
 
     if (isUpdateMandatory) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (_) => AppUpdateScreen(downloadLink: latestVersionDownloadLink),
-        ),
-      );
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => AppUpdateScreen(downloadLink: latestVersionDownloadLink)));
       return;
     }
 
     if (isMaintenanceActive && user?.role != 'admin') {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const MaintenanceScreen()),
-      );
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const MaintenanceScreen()));
       return;
     }
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (_) => user != null
-            ? AppListScreen(
-                isUpdateOptional: isUpdateOptional,
-                latestVersionDownloadLink: latestVersionDownloadLink,
-              )
-            : LoginScreen(
-                isUpdateOptional: isUpdateOptional,
-                latestVersionDownloadLink: latestVersionDownloadLink,
-              ),
+            ? AppListScreen(isUpdateOptional: isUpdateOptional, latestVersionDownloadLink: latestVersionDownloadLink)
+            : LoginScreen(isUpdateOptional: isUpdateOptional, latestVersionDownloadLink: latestVersionDownloadLink),
       ),
     );
   }

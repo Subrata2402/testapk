@@ -119,12 +119,7 @@ class AppCard extends StatelessWidget {
           letterSpacing: 0.5,
         ),
         SizedBox(height: context.scale(2)),
-        TextViewer(
-          value,
-          fontSize: context.scale(12),
-          fontWeight: FontWeight.w600,
-          color: AppColors.textPrimary,
-        ),
+        TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
       ],
     );
   }

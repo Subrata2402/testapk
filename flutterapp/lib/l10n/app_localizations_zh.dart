@@ -507,16 +507,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyPara2_1 => '我们收集您在使用我们服务时直接向我们提供的信息：';
 
   @override
-  String get privacyPolicyPara2_2 =>
-      '• 账号信息：当您使用 Google OAuth 登录时，我们会收到您的姓名、电子邮件地址和个人资料图片。';
+  String get privacyPolicyPara2_2 => '• 账号信息：当您使用 Google OAuth 登录时，我们会收到您的姓名、电子邮件地址和个人资料图片。';
 
   @override
   String get privacyPolicyPara2_3 =>
       '• Google 云端硬盘集成：为了启用 APK 存储和管理，我们的应用程序会请求访问您的 Google 云端硬盘的权限。我们仅访问、创建和修改由 TestAPK 应用程序创建或通过其上传的文件（使用 drive.file 范围）。我们不会访问或读取您 Google 云端硬盘中的任何其他文件。';
 
   @override
-  String get privacyPolicyPara2_4 =>
-      '• 应用元数据：我们收集有关您上传的 APK 文件的元数据（例如包名、版本代码、版本名称和版本说明），以便在您的控制台和移动应用中显示它们。';
+  String get privacyPolicyPara2_4 => '• 应用元数据：我们收集有关您上传的 APK 文件的元数据（例如包名、版本代码、版本名称和版本说明），以便在您的控制台和移动应用中显示它们。';
 
   @override
   String get privacyPolicyTitle3 => '3. 我们如何使用您的信息';
@@ -528,8 +526,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyPara3_2 => '• 验证您的身份并管理您的账号。';
 
   @override
-  String get privacyPolicyPara3_3 =>
-      '• 便于直接在您自己的 Google 云端硬盘存储中上传、存储 and 检索 APK 文件。';
+  String get privacyPolicyPara3_3 => '• 便于直接在您自己的 Google 云端硬盘存储中上传、存储 and 检索 APK 文件。';
 
   @override
   String get privacyPolicyPara3_4 => '• 在您的控制台和移动客户端上显示应用版本历史记录和详情。';
@@ -548,8 +545,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyTitle5 => '5. 数据安全';
 
   @override
-  String get privacyPolicyPara5_1 =>
-      'We 实施行业标准的安全措施来保护您的账号元数据和身份验证令牌。您的 Google OAuth 令牌将安全传输并使用加密方式存储。';
+  String get privacyPolicyPara5_1 => 'We 实施行业标准的安全措施来保护您的账号元数据和身份验证令牌。您的 Google OAuth 令牌将安全传输并使用加密方式存储。';
 
   @override
   String get privacyPolicyTitle6 => '6. 您的权利与选择';
@@ -561,8 +557,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyPara6_2 => '• 您可以随时通过控制台设置断开 Google 云端硬盘集成。';
 
   @override
-  String get privacyPolicyPara6_3 =>
-      '• 您可以通过访问 Google 账号权限页面完全撤销 TestAPK 对您 Google 账号的访问权限。';
+  String get privacyPolicyPara6_3 => '• 您可以通过访问 Google 账号权限页面完全撤销 TestAPK 对您 Google 账号的访问权限。';
 
   @override
   String get privacyPolicyPara6_4 => '• 您可以通过联系我们请求删除您的 TestAPK 账号和相关元数据。';
@@ -571,8 +566,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicyTitle7 => '7. 联系我们';
 
   @override
-  String get privacyPolicyPara7_1 =>
-      '如果您对本隐私政策有任何疑问或建议，请通过 subrata3250das@gmail.com 与我们联系。';
+  String get privacyPolicyPara7_1 => '如果您对本隐私政策有任何疑问或建议，请通过 subrata3250das@gmail.com 与我们联系。';
 
   @override
   String get termsOfServiceLastUpdated => '2026年7月18日';
@@ -581,8 +575,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get termsOfServiceTitle1 => '1. 同意条款';
 
   @override
-  String get termsOfServicePara1_1 =>
-      '通过访问或使用 TestAPK，您同意受本服务条款的约束。如果您不同意这些条款，请勿使用我们的服务。';
+  String get termsOfServicePara1_1 => '通过访问或使用 TestAPK，您同意受本服务条款的约束。如果您不同意这些条款，请勿使用我们的服务。';
 
   @override
   String get termsOfServiceTitle2 => '2. 服务说明';
@@ -634,15 +627,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get termsOfServiceTitle7 => '7. 条款变更';
 
   @override
-  String get termsOfServicePara7_1 =>
-      '我们保留随时修改或替换这些服务条款的权利。如有任何变更，我们将通过在此页面上发布新条款来通知您。您在任何变更后继续使用服务即表示您接受新条款。';
+  String get termsOfServicePara7_1 => '我们保留随时修改或替换这些服务条款的权利。如有任何变更，我们将通过在此页面上发布新条款来通知您。您在任何变更后继续使用服务即表示您接受新条款。';
 
   @override
   String get termsOfServiceTitle8 => '8. 联系我们';
 
   @override
-  String get termsOfServicePara8_1 =>
-      '如果您对这些服务条款有任何疑问，请通过 subrata3250das@gmail.com 与我们联系。';
+  String get termsOfServicePara8_1 => '如果您对这些服务条款有任何疑问，请通过 subrata3250das@gmail.com 与我们联系。';
 
   @override
   String get faqTitle => '常见问题';
@@ -651,8 +642,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get faqQuestion1 => '什么是 TestAPK？';
 
   @override
-  String get faqAnswer1 =>
-      'TestAPK 是一个现代、安全且自托管的 APK 版本管理平台，允许开发人员将测试版本直接分发给测试人员。';
+  String get faqAnswer1 => 'TestAPK 是一个现代、安全且自托管的 APK 版本管理平台，允许开发人员将测试版本直接分发给测试人员。';
 
   @override
   String get faqQuestion2 => '如何安装更新？';
@@ -664,8 +654,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get faqQuestion3 => 'APK 文件存储在哪里？';
 
   @override
-  String get faqAnswer3 =>
-      '所有 APK 文件都安全地存储在开发人员的 Google 云端硬盘中，从而确保对数据的完全控制和所有权。';
+  String get faqAnswer3 => '所有 APK 文件都安全地存储在开发人员的 Google 云端硬盘中，从而确保对数据的完全控制和所有权。';
 
   @override
   String get faqQuestion4 => '如何获取应用的访问权限？';
@@ -677,15 +666,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get faqQuestion5 => '我的数据安全吗？';
 
   @override
-  String get faqAnswer5 =>
-      '是的，TestAPK 使用 Google OAuth 进行安全身份验证，并且不会访问您 Google 云端硬盘中除该应用创建的文件之外的任何文件。';
+  String get faqAnswer5 => '是的，TestAPK 使用 Google OAuth 进行安全身份验证，并且不会访问您 Google 云端硬盘中除该应用创建的文件之外的任何文件。';
 
   @override
   String get faqQuestion6 => '我在哪里上传 APK？';
 
   @override
-  String get faqAnswer6 =>
-      '您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。';
+  String get faqAnswer6 => '您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。';
 
   @override
   String get maintenanceTitle => '系统维护';

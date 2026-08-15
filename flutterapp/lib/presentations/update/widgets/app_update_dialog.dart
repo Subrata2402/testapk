@@ -67,33 +67,21 @@ class _AppUpdateDialogState extends State<AppUpdateDialog> {
           children: [
             const Icon(Icons.system_update_rounded, color: AppColors.warning),
             const SizedBox(width: 8),
-            TextViewer(
-              kUpdateAvailableTitle,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            TextViewer(kUpdateAvailableTitle, fontWeight: FontWeight.bold, color: Colors.white),
           ],
         ),
-        content: TextViewer(
-          kUpdateAvailableDescription,
-          color: Colors.white.withValues(alpha: 0.8),
-        ),
+        content: TextViewer(kUpdateAvailableDescription, color: Colors.white.withValues(alpha: 0.8)),
         actions: [
           TextButton(
             onPressed: _isLaunching ? null : () => Navigator.of(context).pop(),
-            child: TextViewer(
-              kLaterBtnLabel,
-              color: Colors.white.withValues(alpha: 0.6),
-            ),
+            child: TextViewer(kLaterBtnLabel, color: Colors.white.withValues(alpha: 0.6)),
           ),
           ElevatedButton(
             onPressed: _isLaunching ? null : _launchURL,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.accent,
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
             child: _isLaunching
                 ? const SizedBox(
@@ -104,11 +92,7 @@ class _AppUpdateDialogState extends State<AppUpdateDialog> {
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
                   )
-                : TextViewer(
-                    kUpdateBtnLabel,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                : TextViewer(kUpdateBtnLabel, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ],
       ),

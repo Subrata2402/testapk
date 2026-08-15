@@ -76,15 +76,8 @@ class _MaintenanceCardState extends State<MaintenanceCard> {
           Container(
             width: context.scale(80),
             height: context.scale(80),
-            decoration: BoxDecoration(
-              color: AppColors.orb2.withValues(alpha: 0.15),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.build_rounded,
-              size: context.scale(36),
-              color: AppColors.orb2,
-            ),
+            decoration: BoxDecoration(color: AppColors.orb2.withValues(alpha: 0.15), shape: BoxShape.circle),
+            child: Icon(Icons.build_rounded, size: context.scale(36), color: AppColors.orb2),
           ),
           SizedBox(height: context.scale(24)),
 
@@ -137,9 +130,7 @@ class _MaintenanceCardState extends State<MaintenanceCard> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(context.scale(12)),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(context.scale(12))),
                 elevation: 0,
               ),
               child: _isChecking

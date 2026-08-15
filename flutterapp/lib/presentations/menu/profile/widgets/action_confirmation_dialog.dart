@@ -45,12 +45,7 @@ class ActionConfirmationDialog extends StatelessWidget {
                 ),
                 SizedBox(height: context.scale(16)),
                 // Title
-                TextViewer(
-                  title,
-                  fontSize: context.scale(18),
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
+                TextViewer(title, fontSize: context.scale(18), fontWeight: FontWeight.w700, color: Colors.white),
                 SizedBox(height: context.scale(8)),
                 // Content
                 TextViewer(

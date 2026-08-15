@@ -24,12 +24,7 @@ class AppListError extends StatelessWidget {
           children: [
             Icon(Icons.wifi_off_rounded, size: context.scale(48), color: Colors.white.withValues(alpha: 0.25)),
             SizedBox(height: context.scale(16)),
-            TextViewer(
-              error,
-              color: AppColors.textSecondary,
-              fontSize: context.scale(14),
-              textAlign: TextAlign.center,
-            ),
+            TextViewer(error, color: AppColors.textSecondary, fontSize: context.scale(14), textAlign: TextAlign.center),
             SizedBox(height: context.scale(20)),
             GlassButton(
               label: kRetryBtnLabel,

@@ -61,12 +61,7 @@ class ProfileInfoCard extends StatelessWidget {
                   letterSpacing: 0.3,
                 ),
                 SizedBox(height: context.scale(3)),
-                TextViewer(
-                  value,
-                  fontSize: context.scale(13),
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                TextViewer(value, fontSize: context.scale(13), color: Colors.white, fontWeight: FontWeight.w500),
               ],
             ),
           ),

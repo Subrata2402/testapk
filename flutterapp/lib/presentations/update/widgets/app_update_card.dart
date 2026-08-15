@@ -66,15 +66,8 @@ class _AppUpdateCardState extends State<AppUpdateCard> {
           Container(
             width: context.scale(80),
             height: context.scale(80),
-            decoration: BoxDecoration(
-              color: AppColors.warning.withValues(alpha: 0.15),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.system_update_rounded,
-              size: context.scale(36),
-              color: AppColors.warning,
-            ),
+            decoration: BoxDecoration(color: AppColors.warning.withValues(alpha: 0.15), shape: BoxShape.circle),
+            child: Icon(Icons.system_update_rounded, size: context.scale(36), color: AppColors.warning),
           ),
           SizedBox(height: context.scale(24)),
 
@@ -108,9 +101,7 @@ class _AppUpdateCardState extends State<AppUpdateCard> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.accent,
                 foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(context.scale(12)),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(context.scale(12))),
                 elevation: 0,
               ),
               child: _isLaunching
