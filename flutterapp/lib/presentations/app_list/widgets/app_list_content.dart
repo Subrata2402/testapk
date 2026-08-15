@@ -7,7 +7,7 @@ import 'package:flutterapp/presentations/app_list/widgets/invitation_card.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/section_label.dart';
 import 'package:flutterapp/presentations/app_list/widgets/app_list_empty.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class AppListContent extends StatelessWidget {
   final List<AppModel> apps;
@@ -55,9 +55,10 @@ class AppListContent extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: context.scale(24)),
             child: Center(
-              child: Text(
+              child: TextViewer(
                 kNoApplicationsMsg,
-                style: GoogleFonts.inter(color: AppColors.textTertiary, fontSize: context.scale(13)),
+                color: AppColors.textTertiary,
+                fontSize: context.scale(13),
               ),
             ),
           )

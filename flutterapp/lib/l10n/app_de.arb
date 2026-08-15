@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "Erneut prüfen",
   "maintenanceStillActive": "Das System wird derzeit noch gewartet. Bitte versuchen Sie es später noch einmal.",
   "maintenanceCheckFailed": "Systemstatus konnte nicht überprüft werden. Bitte versuchen Sie es erneut.",
-  "maintenanceChecking": "Prüfung..."
+  "maintenanceChecking": "Prüfung...",
+  "updateRequiredTitle": "Update erforderlich",
+  "updateRequiredDescription": "Diese Version der App wird nicht mehr unterstützt. Bitte aktualisieren Sie auf die neueste Version, um fortzufahren.",
+  "updateNowBtnLabel": "Jetzt aktualisieren",
+  "downloadLinkNotConfigured": "Download-Link ist nicht konfiguriert.",
+  "downloadLinkLaunchError": "Download-Link konnte nicht gestartet werden: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "Update verfügbar",
+  "updateAvailableDescription": "Eine neue Version der App ist verfügbar. Möchten Sie jetzt aktualisieren?",
+  "laterBtnLabel": "Später"
 }

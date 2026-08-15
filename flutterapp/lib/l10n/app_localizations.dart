@@ -1461,6 +1461,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Checking...'**
   String get maintenanceChecking;
+
+  /// No description provided for @updateRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Required'**
+  String get updateRequiredTitle;
+
+  /// No description provided for @updateRequiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This version of the app is no longer supported. Please update to the latest version to continue.'**
+  String get updateRequiredDescription;
+
+  /// No description provided for @updateNowBtnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Now'**
+  String get updateNowBtnLabel;
+
+  /// No description provided for @downloadLinkNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'Download link is not configured.'**
+  String get downloadLinkNotConfigured;
+
+  /// No description provided for @downloadLinkLaunchError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch download link: {link}'**
+  String downloadLinkLaunchError(String link);
+
+  /// No description provided for @updateAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Available'**
+  String get updateAvailableTitle;
+
+  /// No description provided for @updateAvailableDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A new version of the app is available. Would you like to update now?'**
+  String get updateAvailableDescription;
+
+  /// No description provided for @laterBtnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get laterBtnLabel;
 }
 
 class _AppLocalizationsDelegate

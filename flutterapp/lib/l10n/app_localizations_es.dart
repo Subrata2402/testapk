@@ -749,4 +749,33 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get maintenanceChecking => 'Comprobando...';
+
+  @override
+  String get updateRequiredTitle => 'Actualización Requerida';
+
+  @override
+  String get updateRequiredDescription =>
+      'Esta versión de la aplicación ya no es compatible. Por favor, actualice a la última versión para continuar.';
+
+  @override
+  String get updateNowBtnLabel => 'Actualizar Ahora';
+
+  @override
+  String get downloadLinkNotConfigured =>
+      'El enlace de descarga no está configurado.';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'No se pudo iniciar el enlace de descarga: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'Actualización Disponible';
+
+  @override
+  String get updateAvailableDescription =>
+      'Una nueva versión de la aplicación está disponible. ¿Desea actualizar ahora?';
+
+  @override
+  String get laterBtnLabel => 'Más tarde';
 }

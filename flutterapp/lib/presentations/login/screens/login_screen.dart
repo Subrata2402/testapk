@@ -18,9 +18,18 @@ import 'package:flutterapp/presentations/login/widgets/login_sign_in_button.dart
 import 'package:flutterapp/presentations/login/widgets/login_separator.dart';
 import 'package:flutterapp/l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:flutterapp/presentations/update/widgets/app_update_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final bool isUpdateOptional;
+  final String latestVersionDownloadLink;
+
+  const LoginScreen({
+    super.key,
+    this.isUpdateOptional = false,
+    this.latestVersionDownloadLink = '',
+  });
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -64,6 +73,20 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           sections: LegalTexts.privacyPolicy,
         );
       };
+
+    if (widget.isUpdateOptional) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showUpdateDialog();
+      });
+    }
+  }
+
+  void _showUpdateDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
+    );
   }
 
   @override
@@ -148,24 +171,20 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       SizedBox(height: context.scale(20)),
 
                       // Title
-                      Text(
+                      TextViewer(
                         kAppName,
-                        style: GoogleFonts.inter(
-                          fontSize: context.scale(34),
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textPrimary,
-                          letterSpacing: -1.0,
-                          height: 1.1,
-                        ),
+                        fontSize: context.scale(34),
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textPrimary,
+                        letterSpacing: -1.0,
+                        height: 1.1,
                       ),
                       SizedBox(height: context.scale(7)),
-                      Text(
+                      TextViewer(
                         kLoginSubtitle,
-                        style: GoogleFonts.inter(
-                          fontSize: context.scale(15),
-                          color: AppColors.textSecondary,
-                          letterSpacing: -0.1,
-                        ),
+                        fontSize: context.scale(15),
+                        color: AppColors.textSecondary,
+                        letterSpacing: -0.1,
                         textAlign: TextAlign.center,
                       ),
 

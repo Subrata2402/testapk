@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "Comprobar de nuevo",
   "maintenanceStillActive": "El sistema aún está en mantenimiento. Por favor, inténtelo de nuevo más tarde.",
   "maintenanceCheckFailed": "Error al comprobar el estado del sistema. Por favor, inténtelo de nuevo.",
-  "maintenanceChecking": "Comprobando..."
+  "maintenanceChecking": "Comprobando...",
+  "updateRequiredTitle": "Actualización Requerida",
+  "updateRequiredDescription": "Esta versión de la aplicación ya no es compatible. Por favor, actualice a la última versión para continuar.",
+  "updateNowBtnLabel": "Actualizar Ahora",
+  "downloadLinkNotConfigured": "El enlace de descarga no está configurado.",
+  "downloadLinkLaunchError": "No se pudo iniciar el enlace de descarga: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "Actualización Disponible",
+  "updateAvailableDescription": "Una nueva versión de la aplicación está disponible. ¿Desea actualizar ahora?",
+  "laterBtnLabel": "Más tarde"
 }

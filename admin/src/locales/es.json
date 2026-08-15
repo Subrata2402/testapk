@@ -113,7 +113,18 @@
     "announcementDesc": "Mostrar un banner de notificación global en la parte superior de la aplicación para todos los usuarios.",
     "announcementPlaceholder": "Ingrese el mensaje de anuncio (dejar vacío para deshabilitar)...",
     "saveSuccess": "¡Configuración guardada con éxito!",
-    "saveError": "Error al guardar la configuración."
+    "saveError": "Error al guardar la configuración.",
+    "flutterAppVersions": "Gestión de Versiones de la Aplicación Flutter",
+    "flutterAppVersionsDesc": "Administre las versiones permitidas de la aplicación Flutter y el enlace de descarga más reciente.",
+    "versionLabel": "Versión (ej. 1.0.0)",
+    "buildNumberLabel": "Número de Compilación (ej. 3)",
+    "addVersionBtn": "Agregar Versión",
+    "allowedVersionsLabel": "Versiones Permitidas",
+    "version": "Versión",
+    "build": "Compilación",
+    "removeBtn": "Eliminar",
+    "noVersionsAdded": "Aún no se han agregado versiones. Si está vacío, todas las versiones se considerarán inválidas (actualización obligatoria).",
+    "latestVersionDownloadLink": "Enlace de Descarga de la Última Versión"
   },
   "common": {
     "loading": "Cargando...",

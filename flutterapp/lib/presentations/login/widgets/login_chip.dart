@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class LoginChip extends StatelessWidget {
   final IconData icon;
@@ -28,14 +28,12 @@ class LoginChip extends StatelessWidget {
             children: [
               Icon(icon, size: context.scale(13), color: AppColors.accentLight),
               SizedBox(width: context.scale(5)),
-              Text(
+              TextViewer(
                 label,
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(12),
-                  color: AppColors.textPrimary,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: -0.1,
-                ),
+                fontSize: context.scale(12),
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w500,
+                letterSpacing: -0.1,
               ),
             ],
           ),

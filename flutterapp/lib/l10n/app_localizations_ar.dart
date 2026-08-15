@@ -736,4 +736,32 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get maintenanceChecking => 'جاري التحقق...';
+
+  @override
+  String get updateRequiredTitle => 'التحديث مطلوب';
+
+  @override
+  String get updateRequiredDescription =>
+      'هذا الإصدار من التطبيق لم يعد مدعومًا. يرجى التحديث إلى أحدث إصدار للمتابعة.';
+
+  @override
+  String get updateNowBtnLabel => 'التحديث الآن';
+
+  @override
+  String get downloadLinkNotConfigured => 'رابط التنزيل غير مهيأ.';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'تعذر تشغيل رابط التنزيل: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'التحديث متاح';
+
+  @override
+  String get updateAvailableDescription =>
+      'يتوفر إصدار جديد من التطبيق. هل ترغب في التحديث الآن؟';
+
+  @override
+  String get laterBtnLabel => 'لاحقاً';
 }

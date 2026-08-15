@@ -118,7 +118,18 @@
     "announcementDesc": "Zeigen Sie allen Benutzern oben in der Anwendung ein globales Benachrichtigungsbanner an.",
     "announcementPlaceholder": "Ankündigungsnachricht eingeben (leer lassen zum Deaktivieren)...",
     "saveSuccess": "Einstellungen erfolgreich gespeichert!",
-    "saveError": "Fehler beim Speichern der Einstellungen."
+    "saveError": "Fehler beim Speichern der Einstellungen.",
+    "flutterAppVersions": "Flutter-App-Versionsverwaltung",
+    "flutterAppVersionsDesc": "Verwalten Sie zulässige Flutter-App-Versionen und den neuesten Download-Link.",
+    "versionLabel": "Version (z. B. 1.0.0)",
+    "buildNumberLabel": "Build-Nummer (z. B. 3)",
+    "addVersionBtn": "Version hinzufügen",
+    "allowedVersionsLabel": "Zugelassene Versionen",
+    "version": "Version",
+    "build": "Build",
+    "removeBtn": "Entfernen",
+    "noVersionsAdded": "Noch keine Versionen hinzugefügt. Wenn leer, werden alle Versionen als ungültig betrachtet (erforderliches Update).",
+    "latestVersionDownloadLink": "Download-Link für die neueste Version"
   },
   "users": {
     "title": "Registrierte Benutzer",

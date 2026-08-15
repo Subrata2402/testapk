@@ -186,6 +186,16 @@ String get kAboutPlatformInfoLabel => _l10n?.aboutPlatformInfoLabel ?? 'PLATFORM
 String get kAboutSupportChannelsLabel => _l10n?.aboutSupportChannelsLabel ?? 'SUPPORT CHANNELS';
 String get kAboutLaunchError => _l10n?.aboutLaunchError ?? 'Could not launch ';
 
+/// Version Control / Updates
+String get kUpdateRequiredTitle => _l10n?.updateRequiredTitle ?? 'Update Required';
+String get kUpdateRequiredDescription => _l10n?.updateRequiredDescription ?? 'This version of the app is no longer supported. Please update to the latest version to continue.';
+String get kUpdateNowBtnLabel => _l10n?.updateNowBtnLabel ?? 'Update Now';
+String get kDownloadLinkNotConfigured => _l10n?.downloadLinkNotConfigured ?? 'Download link is not configured.';
+String kDownloadLinkLaunchError(String link) => _l10n?.downloadLinkLaunchError(link) ?? 'Could not launch download link: $link';
+String get kUpdateAvailableTitle => _l10n?.updateAvailableTitle ?? 'Update Available';
+String get kUpdateAvailableDescription => _l10n?.updateAvailableDescription ?? 'A new version of the app is available. Would you like to update now?';
+String get kLaterBtnLabel => _l10n?.laterBtnLabel ?? 'Later';
+
 /// Legal & Profile Labels
 String get kLabelSendFeedback => _l10n?.labelSendFeedback ?? 'Send Feedback';
 String get kLabelTermsOfService => _l10n?.labelTermsOfService ?? 'Terms of Service';

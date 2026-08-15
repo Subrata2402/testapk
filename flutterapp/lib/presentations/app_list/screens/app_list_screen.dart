@@ -16,9 +16,17 @@ import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/notification_manager.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
+import 'package:flutterapp/presentations/update/widgets/app_update_dialog.dart';
 
 class AppListScreen extends StatefulWidget {
-  const AppListScreen({super.key});
+  final bool isUpdateOptional;
+  final String latestVersionDownloadLink;
+
+  const AppListScreen({
+    super.key,
+    this.isUpdateOptional = false,
+    this.latestVersionDownloadLink = '',
+  });
 
   @override
   State<AppListScreen> createState() => _AppListScreenState();
@@ -37,6 +45,20 @@ class _AppListScreenState extends State<AppListScreen> {
     super.initState();
     _fetchData();
     NotificationManager().addListener(_onNotificationReceived);
+
+    if (widget.isUpdateOptional) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showUpdateDialog();
+      });
+    }
+  }
+
+  void _showUpdateDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
+    );
   }
 
   @override

@@ -118,7 +118,18 @@
     "announcementDesc": "Exiba um banner de notificação global no topo do aplicativo para todos os usuários.",
     "announcementPlaceholder": "Digite a mensagem do anúncio (deixe em branco para desativar)...",
     "saveSuccess": "Configurações salvas com sucesso!",
-    "saveError": "Falha ao salvar as configurações."
+    "saveError": "Falha ao salvar as configurações.",
+    "flutterAppVersions": "Gerenciamento de Versões do Aplicativo Flutter",
+    "flutterAppVersionsDesc": "Gerencie as versões permitidas do aplicativo Flutter e o link de download mais recente.",
+    "versionLabel": "Versão (ex. 1.0.0)",
+    "buildNumberLabel": "Número de Compilação (ex. 3)",
+    "addVersionBtn": "Adicionar Versão",
+    "allowedVersionsLabel": "Versões Permitidas",
+    "version": "Versão",
+    "build": "Compilação",
+    "removeBtn": "Remover",
+    "noVersionsAdded": "Nenhuma versão adicionada ainda. Se estiver vazio, todas as versões serão consideradas inválidas (atualização obrigatória).",
+    "latestVersionDownloadLink": "Link de Download da Última Versão"
   },
   "users": {
     "title": "Usuários Registrados",

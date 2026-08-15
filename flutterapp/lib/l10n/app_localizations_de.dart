@@ -750,4 +750,33 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get maintenanceChecking => 'Prüfung...';
+
+  @override
+  String get updateRequiredTitle => 'Update erforderlich';
+
+  @override
+  String get updateRequiredDescription =>
+      'Diese Version der App wird nicht mehr unterstützt. Bitte aktualisieren Sie auf die neueste Version, um fortzufahren.';
+
+  @override
+  String get updateNowBtnLabel => 'Jetzt aktualisieren';
+
+  @override
+  String get downloadLinkNotConfigured =>
+      'Download-Link ist nicht konfiguriert.';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'Download-Link konnte nicht gestartet werden: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'Update verfügbar';
+
+  @override
+  String get updateAvailableDescription =>
+      'Eine neue Version der App ist verfügbar. Möchten Sie jetzt aktualisieren?';
+
+  @override
+  String get laterBtnLabel => 'Später';
 }

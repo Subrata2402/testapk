@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Settings, Save, AlertTriangle, ShieldAlert, CheckCircle } from 'lucide-react';
+import { Settings, Save, AlertTriangle, ShieldAlert, CheckCircle, Plus, Trash2 } from 'lucide-react';
 import { adminService } from '../services/api';
 import Switch from '../components/common/Switch';
 import './SettingsPage.css';
@@ -12,7 +12,11 @@ export default function SettingsPage() {
     allow_registration: true,
     max_apk_size: 100, // stored in MB on frontend
     announcement_banner: '',
+    flutter_app_versions: [],
+    latest_version_download_link: '',
   });
+  const [newVersion, setNewVersion] = useState('');
+  const [newBuildNumber, setNewBuildNumber] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState(null); // 'success' or 'error'
@@ -28,6 +32,8 @@ export default function SettingsPage() {
             allow_registration: data.allow_registration?.value ?? true,
             max_apk_size: Math.round((data.max_apk_size?.value ?? 104857600) / (1024 * 1024)),
             announcement_banner: data.announcement_banner?.value ?? '',
+            flutter_app_versions: data.flutter_app_versions?.value ?? [],
+            latest_version_download_link: data.latest_version_download_link?.value ?? '',
           });
         }
       } catch (err) {
@@ -40,6 +46,35 @@ export default function SettingsPage() {
     fetchSettings();
   }, []);
 
+  const handleAddVersion = () => {
+    if (!newVersion.trim() || !newBuildNumber.trim()) return;
+    const buildNum = parseInt(newBuildNumber);
+    if (isNaN(buildNum)) return;
+
+    const exists = settings.flutter_app_versions.some(
+      (v) => v.version === newVersion.trim() && v.buildNumber === buildNum
+    );
+    if (exists) return;
+
+    setSettings({
+      ...settings,
+      flutter_app_versions: [
+        ...settings.flutter_app_versions,
+        { version: newVersion.trim(), buildNumber: buildNum },
+      ],
+    });
+    setNewVersion('');
+    setNewBuildNumber('');
+  };
+
+  const handleRemoveVersion = (index) => {
+    const updatedVersions = settings.flutter_app_versions.filter((_, i) => i !== index);
+    setSettings({
+      ...settings,
+      flutter_app_versions: updatedVersions,
+    });
+  };
+
   const handleSave = async (e) => {
     e.preventDefault();
     setIsSaving(true);
@@ -50,6 +85,8 @@ export default function SettingsPage() {
         allow_registration: settings.allow_registration,
         max_apk_size: settings.max_apk_size * 1024 * 1024, // convert to bytes
         announcement_banner: settings.announcement_banner,
+        flutter_app_versions: settings.flutter_app_versions,
+        latest_version_download_link: settings.latest_version_download_link,
       };
 
       const response = await adminService.updateSettings(payload);
@@ -196,6 +233,93 @@ export default function SettingsPage() {
             placeholder={t('settings.announcementPlaceholder') || 'Enter announcement message (leave empty to disable)...'}
             rows={3}
           />
+        </div>
+
+        {/* Flutter App Version Settings */}
+        <div className="glass-card settings-card">
+          <div>
+            <h4 style={{ margin: '0 0 4px 0' }}>{t('settings.flutterAppVersions') || 'Flutter App Version Management'}</h4>
+            <p className="text-muted settings-desc">
+              {t('settings.flutterAppVersionsDesc') || 'Manage allowed Flutter app versions and the latest download link.'}
+            </p>
+          </div>
+
+          {/* Add Version Form */}
+          <div className="settings-version-inputs" style={{ display: 'flex', gap: '12px', marginTop: '16px', alignItems: 'flex-end' }}>
+            <div style={{ flex: 1 }}>
+              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.versionLabel') || 'Version (e.g. 1.0.0)'}</label>
+              <input
+                type="text"
+                placeholder="1.0.0"
+                value={newVersion}
+                onChange={(e) => setNewVersion(e.target.value)}
+                className="filter-input"
+                style={{ width: '100%' }}
+              />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.buildNumberLabel') || 'Build Number (e.g. 3)'}</label>
+              <input
+                type="number"
+                placeholder="3"
+                value={newBuildNumber}
+                onChange={(e) => setNewBuildNumber(e.target.value)}
+                className="filter-input"
+                style={{ width: '100%' }}
+              />
+            </div>
+            <button
+              type="button"
+              onClick={handleAddVersion}
+              className="btn btn-secondary"
+              style={{ height: '42px', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              <Plus size={16} />
+              <span>{t('settings.addVersionBtn') || 'Add Version'}</span>
+            </button>
+          </div>
+
+          {/* Version List */}
+          {settings.flutter_app_versions && settings.flutter_app_versions.length > 0 ? (
+            <div className="settings-version-list" style={{ marginTop: '16px' }}>
+              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '8px' }}>{t('settings.allowedVersionsLabel') || 'Allowed Versions'}</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {settings.flutter_app_versions.map((v, idx) => (
+                  <div key={idx} className="glass-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', background: 'rgba(255, 255, 255, 0.03)' }}>
+                    <span>
+                      <strong>{t('settings.version') || 'Version'}:</strong> {v.version} &nbsp;&nbsp;|&nbsp;&nbsp; <strong>{t('settings.build') || 'Build'}:</strong> {v.buildNumber}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveVersion(idx)}
+                      className="btn btn-danger"
+                      style={{ padding: '4px 8px', fontSize: '12px', minHeight: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}
+                    >
+                      <Trash2 size={14} />
+                      <span>{t('settings.removeBtn') || 'Remove'}</span>
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="text-muted" style={{ fontSize: '13px', marginTop: '16px', fontStyle: 'italic' }}>
+              {t('settings.noVersionsAdded') || 'No versions added yet. If empty, all versions will be considered invalid (mandatory update).'}
+            </p>
+          )}
+
+          {/* Download Link */}
+          <div style={{ marginTop: '20px' }}>
+            <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.latestVersionDownloadLink') || 'Latest Version Download Link'}</label>
+            <input
+              type="text"
+              placeholder="https://example.com/app.apk"
+              value={settings.latest_version_download_link}
+              onChange={(e) => setSettings({ ...settings, latest_version_download_link: e.target.value })}
+              className="filter-input"
+              style={{ width: '100%' }}
+            />
+          </div>
         </div>
       </form>
     </div>

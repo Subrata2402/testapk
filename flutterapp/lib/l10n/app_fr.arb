@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "Vérifier à nouveau",
   "maintenanceStillActive": "Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.",
   "maintenanceCheckFailed": "Échec de la vérification de l'état du système. Veuillez réessayer.",
-  "maintenanceChecking": "Vérification..."
+  "maintenanceChecking": "Vérification...",
+  "updateRequiredTitle": "Mise à jour requise",
+  "updateRequiredDescription": "Cette version de l'application n'est plus prise en charge. Veuillez mettre à jour vers la dernière version pour continuer.",
+  "updateNowBtnLabel": "Mettre à jour maintenant",
+  "downloadLinkNotConfigured": "Le lien de téléchargement n'est pas configuré.",
+  "downloadLinkLaunchError": "Impossible de lancer le lien de téléchargement : {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "Mise à jour disponible",
+  "updateAvailableDescription": "Une nouvelle version de l'application est disponible. Souhaitez-vous mettre à jour maintenant ?",
+  "laterBtnLabel": "Plus tard"
 }

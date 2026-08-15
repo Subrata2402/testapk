@@ -118,7 +118,18 @@
     "announcementDesc": "عرض شريط إشعار عام في الجزء العلوي من التطبيق لجميع المستخدمين.",
     "announcementPlaceholder": "أدخل رسالة الإعلان (اتركه فارغًا للتعطيل)...",
     "saveSuccess": "تم حفظ الإعدادات بنجاح!",
-    "saveError": "فشل في حفظ الإعدادات."
+    "saveError": "فشل في حفظ الإعدادات.",
+    "flutterAppVersions": "إدارة إصدارات تطبيق فلاتر",
+    "flutterAppVersionsDesc": "إدارة إصدارات تطبيق فلاتر المسموح بها ورابط التنزيل الأخير.",
+    "versionLabel": "الإصدار (مثال: 1.0.0)",
+    "buildNumberLabel": "رقم البناء (مثال: 3)",
+    "addVersionBtn": "إضافة إصدار",
+    "allowedVersionsLabel": "الإصدارات المسموح بها",
+    "version": "الإصدار",
+    "build": "البناء",
+    "removeBtn": "إزالة",
+    "noVersionsAdded": "لم يتم إضافة أي إصدارات بعد. إذا كان فارغًا، فستعتبر جميع الإصدارات غير صالحة (تحديث إلزامي).",
+    "latestVersionDownloadLink": "رابط تنزيل أحدث إصدار"
   },
   "users": {
     "title": "المستخدمين المسجلين",

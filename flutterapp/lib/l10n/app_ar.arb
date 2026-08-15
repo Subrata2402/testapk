@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "التحقق مرة أخرى",
   "maintenanceStillActive": "النظام لا يزال قيد الصيانة. يرجى المحاولة مرة أخرى لاحقًا.",
   "maintenanceCheckFailed": "فشل التحقق من حالة النظام. يرجى المحاولة مرة أخرى.",
-  "maintenanceChecking": "جاري التحقق..."
+  "maintenanceChecking": "جاري التحقق...",
+  "updateRequiredTitle": "التحديث مطلوب",
+  "updateRequiredDescription": "هذا الإصدار من التطبيق لم يعد مدعومًا. يرجى التحديث إلى أحدث إصدار للمتابعة.",
+  "updateNowBtnLabel": "التحديث الآن",
+  "downloadLinkNotConfigured": "رابط التنزيل غير مهيأ.",
+  "downloadLinkLaunchError": "تعذر تشغيل رابط التنزيل: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "التحديث متاح",
+  "updateAvailableDescription": "يتوفر إصدار جديد من التطبيق. هل ترغب في التحديث الآن؟",
+  "laterBtnLabel": "لاحقاً"
 }

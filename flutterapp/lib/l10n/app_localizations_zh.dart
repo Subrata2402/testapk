@@ -704,4 +704,30 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get maintenanceChecking => '检查中...';
+
+  @override
+  String get updateRequiredTitle => '需要更新';
+
+  @override
+  String get updateRequiredDescription => '此版本的应用已不再受支持。请更新到最新版本以继续使用。';
+
+  @override
+  String get updateNowBtnLabel => '立即更新';
+
+  @override
+  String get downloadLinkNotConfigured => '未配置下载链接。';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return '无法启动下载链接：$link';
+  }
+
+  @override
+  String get updateAvailableTitle => '有可用更新';
+
+  @override
+  String get updateAvailableDescription => '有新版本的应用可用。您现在要更新吗？';
+
+  @override
+  String get laterBtnLabel => '稍后';
 }

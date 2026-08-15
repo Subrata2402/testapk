@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ProfileAvatar extends StatelessWidget {
   final UserModel user;
@@ -32,13 +32,11 @@ class ProfileAvatar extends StatelessWidget {
           : CircleAvatar(
               radius: context.scale(44),
               backgroundColor: AppColors.accent.withValues(alpha: 0.25),
-              child: Text(
+              child: TextViewer(
                 user.initials,
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(32),
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.accentLight,
-                ),
+                fontSize: context.scale(32),
+                fontWeight: FontWeight.w600,
+                color: AppColors.accentLight,
               ),
             ),
     );

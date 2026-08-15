@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "再次检查",
   "maintenanceStillActive": "系统仍在维护中。请稍后再试。",
   "maintenanceCheckFailed": "无法检查系统状态。请再试一次。",
-  "maintenanceChecking": "检查中..."
+  "maintenanceChecking": "检查中...",
+  "updateRequiredTitle": "需要更新",
+  "updateRequiredDescription": "此版本的应用已不再受支持。请更新到最新版本以继续使用。",
+  "updateNowBtnLabel": "立即更新",
+  "downloadLinkNotConfigured": "未配置下载链接。",
+  "downloadLinkLaunchError": "无法启动下载链接：{link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "有可用更新",
+  "updateAvailableDescription": "有新版本的应用可用。您现在要更新吗？",
+  "laterBtnLabel": "稍后"
 }

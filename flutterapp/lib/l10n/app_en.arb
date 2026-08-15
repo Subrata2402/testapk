@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "Check Again",
   "maintenanceStillActive": "System is still undergoing maintenance. Please try again later.",
   "maintenanceCheckFailed": "Failed to check system status. Please try again.",
-  "maintenanceChecking": "Checking..."
+  "maintenanceChecking": "Checking...",
+  "updateRequiredTitle": "Update Required",
+  "updateRequiredDescription": "This version of the app is no longer supported. Please update to the latest version to continue.",
+  "updateNowBtnLabel": "Update Now",
+  "downloadLinkNotConfigured": "Download link is not configured.",
+  "downloadLinkLaunchError": "Could not launch download link: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "Update Available",
+  "updateAvailableDescription": "A new version of the app is available. Would you like to update now?",
+  "laterBtnLabel": "Later"
 }

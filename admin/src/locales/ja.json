@@ -118,7 +118,18 @@
     "announcementDesc": "すべてのユーザーに対してアプリケーションの上部にグローバルな通知バナーを表示します。",
     "announcementPlaceholder": "告知メッセージを入力（無効にする場合は空欄）...",
     "saveSuccess": "設定が正常に保存されました！",
-    "saveError": "設定の保存に失敗しました。"
+    "saveError": "設定の保存に失敗しました。",
+    "flutterAppVersions": "Flutterアプリのバージョン管理",
+    "flutterAppVersionsDesc": "許可されたFlutterアプリのバージョンと最新のダウンロードリンクを管理します。",
+    "versionLabel": "バージョン (例: 1.0.0)",
+    "buildNumberLabel": "ビルド番号 (例: 3)",
+    "addVersionBtn": "バージョンを追加",
+    "allowedVersionsLabel": "許可されたバージョン",
+    "version": "バージョン",
+    "build": "ビルド",
+    "removeBtn": "削除",
+    "noVersionsAdded": "バージョンはまだ追加されていません。空の場合、すべてのバージョンが無効と見なされます（必須アップデート）。",
+    "latestVersionDownloadLink": "最新バージョンのダウンロードリンク"
   },
   "users": {
     "title": "登録ユーザー",

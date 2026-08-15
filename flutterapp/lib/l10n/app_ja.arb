@@ -231,5 +231,20 @@
   "maintenanceCheckAgain": "再試行",
   "maintenanceStillActive": "システムはまだメンテナンス中です。後ほどもう一度お試しください。",
   "maintenanceCheckFailed": "システムステータスの確認に失敗しました。もう一度お試しください。",
-  "maintenanceChecking": "確認中..."
+  "maintenanceChecking": "確認中...",
+  "updateRequiredTitle": "アップデートが必要です",
+  "updateRequiredDescription": "このバージョンのアプリはサポートされていません。続行するには最新バージョンにアップデートしてください。",
+  "updateNowBtnLabel": "今すぐアップデート",
+  "downloadLinkNotConfigured": "ダウンロードリンクが設定されていません。",
+  "downloadLinkLaunchError": "ダウンロードリンクを起動できませんでした: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "アップデートが利用可能です",
+  "updateAvailableDescription": "新しいバージョンのアプリが利用可能です。今すぐアップデートしますか？",
+  "laterBtnLabel": "後で"
 }

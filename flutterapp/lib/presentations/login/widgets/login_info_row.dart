@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class LoginInfoRow extends StatelessWidget {
   final IconData icon;
@@ -30,19 +30,18 @@ class LoginInfoRow extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              TextViewer(
                 title,
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(13),
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
-                  letterSpacing: -0.2,
-                ),
+                fontSize: context.scale(13),
+                fontWeight: FontWeight.w600,
+                color: AppColors.textPrimary,
+                letterSpacing: -0.2,
               ),
               SizedBox(height: context.scale(2)),
-              Text(
+              TextViewer(
                 subtitle,
-                style: GoogleFonts.inter(fontSize: context.scale(12), color: AppColors.textSecondary),
+                fontSize: context.scale(12),
+                color: AppColors.textSecondary,
               ),
             ],
           ),

@@ -745,4 +745,32 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get maintenanceChecking => 'जाँच हो रही है...';
+
+  @override
+  String get updateRequiredTitle => 'अपडेट आवश्यक';
+
+  @override
+  String get updateRequiredDescription =>
+      'ऐप का यह संस्करण अब समर्थित नहीं है। जारी रखने के लिए कृपया नवीनतम संस्करण में अपडेट करें।';
+
+  @override
+  String get updateNowBtnLabel => 'अभी अपडेट करें';
+
+  @override
+  String get downloadLinkNotConfigured => 'डाउनलोड लिंक कॉन्फ़िगर नहीं है।';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'डाउनलोड लिंक लॉन्च नहीं किया जा सका: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'अपडेट उपलब्ध';
+
+  @override
+  String get updateAvailableDescription =>
+      'ऐप का एक नया संस्करण उपलब्ध है। क्या आप अभी अपडेट करना चाहेंगे?';
+
+  @override
+  String get laterBtnLabel => 'बाद में';
 }

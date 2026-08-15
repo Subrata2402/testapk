@@ -714,4 +714,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get maintenanceChecking => '確認中...';
+
+  @override
+  String get updateRequiredTitle => 'アップデートが必要です';
+
+  @override
+  String get updateRequiredDescription =>
+      'このバージョンのアプリはサポートされていません。続行するには最新バージョンにアップデートしてください。';
+
+  @override
+  String get updateNowBtnLabel => '今すぐアップデート';
+
+  @override
+  String get downloadLinkNotConfigured => 'ダウンロードリンクが設定されていません。';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'ダウンロードリンクを起動できませんでした: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'アップデートが利用可能です';
+
+  @override
+  String get updateAvailableDescription => '新しいバージョンのアプリが利用可能です。今すぐアップデートしますか？';
+
+  @override
+  String get laterBtnLabel => '後で';
 }

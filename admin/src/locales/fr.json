@@ -118,7 +118,18 @@
     "announcementDesc": "Affichez une bannière de notification globale en haut de l'application pour tous les utilisateurs.",
     "announcementPlaceholder": "Saisissez le message d'annonce (laisser vide pour désactiver)...",
     "saveSuccess": "Paramètres enregistrés avec succès !",
-    "saveError": "Échec de l'enregistrement des paramètres."
+    "saveError": "Échec de l'enregistrement des paramètres.",
+    "flutterAppVersions": "Gestion des versions de l'application Flutter",
+    "flutterAppVersionsDesc": "Gérez les versions autorisées de l'application Flutter et le dernier lien de téléchargement.",
+    "versionLabel": "Version (ex. 1.0.0)",
+    "buildNumberLabel": "Numéro de build (ex. 3)",
+    "addVersionBtn": "Ajouter une version",
+    "allowedVersionsLabel": "Versions autorisées",
+    "version": "Version",
+    "build": "Build",
+    "removeBtn": "Supprimer",
+    "noVersionsAdded": "Aucune version ajoutée pour le moment. Si vide, toutes les versions seront considérées comme invalides (mise à jour obligatoire).",
+    "latestVersionDownloadLink": "Lien de téléchargement de la dernière version"
   },
   "users": {
     "title": "Utilisateurs enregistrés",

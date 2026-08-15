@@ -113,7 +113,18 @@
     "announcementDesc": "Display a global notification banner at the top of the application for all users.",
     "announcementPlaceholder": "Enter announcement message (leave empty to disable)...",
     "saveSuccess": "Settings saved successfully!",
-    "saveError": "Failed to save settings."
+    "saveError": "Failed to save settings.",
+    "flutterAppVersions": "Flutter App Version Management",
+    "flutterAppVersionsDesc": "Manage allowed Flutter app versions and the latest download link.",
+    "versionLabel": "Version (e.g. 1.0.0)",
+    "buildNumberLabel": "Build Number (e.g. 3)",
+    "addVersionBtn": "Add Version",
+    "allowedVersionsLabel": "Allowed Versions",
+    "version": "Version",
+    "build": "Build",
+    "removeBtn": "Remove",
+    "noVersionsAdded": "No versions added yet. If empty, all versions will be considered invalid (mandatory update).",
+    "latestVersionDownloadLink": "Latest Version Download Link"
   },
   "common": {
     "loading": "Loading...",

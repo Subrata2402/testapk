@@ -9,6 +9,8 @@ const DEFAULT_SETTINGS = [
   { key: 'allow_registration', value: true, description: 'Allow new user registration' },
   { key: 'max_apk_size', value: 104857600, description: 'Maximum APK upload size in bytes (default 100MB)' },
   { key: 'announcement_banner', value: '', description: 'System-wide announcement banner text' },
+  { key: 'flutter_app_versions', value: [], description: 'List of allowed Flutter app versions and build numbers' },
+  { key: 'latest_version_download_link', value: '', description: 'Download link for the latest Flutter app version' },
 ];
 
 export const seedSettings = async (): Promise<void> => {
@@ -74,7 +76,13 @@ export const updateSettings = async (req: Request, res: Response, next: NextFunc
 export const getPublicSettings = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     await seedSettings();
-    const publicKeys = ['maintenance_mode', 'allow_registration', 'announcement_banner'];
+    const publicKeys = [
+      'maintenance_mode',
+      'allow_registration',
+      'announcement_banner',
+      'flutter_app_versions',
+      'latest_version_download_link'
+    ];
     const settings = await Setting.find({ key: { $in: publicKeys } });
 
     const publicSettings = settings.reduce((acc: any, curr) => {
