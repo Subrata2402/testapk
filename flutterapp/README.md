@@ -73,42 +73,44 @@ The application configuration is centralized in `lib/core/constants.dart`:
 
 ## 📸 Screenshots
 
-<table>
+<h3 align="center">Screenshots</h3>
+
+<table align="center">
+  <tr>
+    <th>Login Page</th>
+    <th>Dashboard</th>
+    <th>Release List</th>
+  </tr>
   <tr>
     <td align="center">
-      <img src="./screenshots/login.jpeg" width="250" height="500" />
-      <br />
-      Login Page
+      <img src="./screenshots/login.jpeg" width="250" />
     </td>
     <td align="center">
-      <img src="./screenshots/dashboard.jpeg" width="250" height="500" />
-      <br />
-      Dashboard
+      <img src="./screenshots/dashboard.jpeg" width="250" />
     </td>
     <td align="center">
-      <img src="./screenshots/release_list.jpeg" width="250" height="500" />
-      <br />
-      Release List
+      <img src="./screenshots/release_list.jpeg" width="250" />
     </td>
   </tr>
 </table>
 
-<table>
+<br />
+
+<table align="center">
+  <tr>
+    <th>Release Details</th>
+    <th>Menu</th>
+    <th>Languages</th>
+  </tr>
   <tr>
     <td align="center">
-      <img src="./screenshots/release_details.jpeg" width="250" height="500" />
-      <br />
-      Release Details
+      <img src="./screenshots/release_details.jpeg" width="250" />
     </td>
     <td align="center">
-      <img src="./screenshots/menu.jpeg" width="250" height="500" />
-      <br />
-      Menu
+      <img src="./screenshots/menu.jpeg" width="250" />
     </td>
     <td align="center">
-      <img src="./screenshots/languages.jpeg" width="250" height="500" />
-      <br />
-      Languages
+      <img src="./screenshots/languages.jpeg" width="250" />
     </td>
   </tr>
 </table>
