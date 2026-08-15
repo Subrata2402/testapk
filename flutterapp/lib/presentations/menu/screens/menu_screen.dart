@@ -14,7 +14,7 @@ import 'package:flutterapp/presentations/menu/profile/widgets/profile_logout_but
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class MenuScreen extends StatelessWidget {
   final UserModel user;
@@ -116,14 +116,12 @@ class MenuScreen extends StatelessWidget {
                               icon: Icon(Icons.arrow_back_rounded, color: Colors.white, size: context.scale(22)),
                               onPressed: () => Navigator.of(context).pop(),
                             ),
-                            Text(
+                            TextViewer(
                               'Menu',
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(18),
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textPrimary,
-                                letterSpacing: -0.5,
-                              ),
+                              fontSize: context.scale(18),
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textPrimary,
+                              letterSpacing: -0.5,
                             ),
                           ],
                         ),
@@ -168,13 +166,11 @@ class MenuScreen extends StatelessWidget {
                                         : CircleAvatar(
                                             radius: context.scale(24),
                                             backgroundColor: AppColors.accent.withValues(alpha: 0.25),
-                                            child: Text(
+                                            child: TextViewer(
                                               user.initials,
-                                              style: GoogleFonts.inter(
-                                                fontSize: context.scale(16),
-                                                fontWeight: FontWeight.w600,
-                                                color: AppColors.accentLight,
-                                              ),
+                                              fontSize: context.scale(16),
+                                              fontWeight: FontWeight.w600,
+                                              color: AppColors.accentLight,
                                             ),
                                           ),
                                   ),
@@ -184,22 +180,18 @@ class MenuScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(
+                                        TextViewer(
                                           user.name,
-                                          style: GoogleFonts.inter(
-                                            fontSize: context.scale(16),
-                                            fontWeight: FontWeight.w700,
-                                            color: AppColors.textPrimary,
-                                            letterSpacing: -0.3,
-                                          ),
+                                          fontSize: context.scale(16),
+                                          fontWeight: FontWeight.w700,
+                                          color: AppColors.textPrimary,
+                                          letterSpacing: -0.3,
                                         ),
                                         SizedBox(height: context.scale(2)),
-                                        Text(
+                                        TextViewer(
                                           user.email,
-                                          style: GoogleFonts.inter(
-                                            fontSize: context.scale(12),
-                                            color: AppColors.textSecondary,
-                                          ),
+                                          fontSize: context.scale(12),
+                                          color: AppColors.textSecondary,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),

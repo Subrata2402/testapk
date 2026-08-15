@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class GlassButton extends StatelessWidget {
   final String label;
@@ -40,14 +40,12 @@ class GlassButton extends StatelessWidget {
                         child: const CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                       ),
                     )
-                  : Text(
+                  : TextViewer(
                       label,
-                      textAlign: .center,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(13),
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                      textAlign: TextAlign.center,
+                      fontSize: context.scale(13),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
                     ),
             ),
           ),

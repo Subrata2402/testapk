@@ -9,7 +9,7 @@ import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/presentations/menu/support/widgets/contact_support_submit_button.dart';
 
 class ContactSupportScreen extends StatefulWidget {
   const ContactSupportScreen({super.key});
@@ -170,33 +170,7 @@ class _ContactSupportScreenState extends State<ContactSupportScreen> {
                           SizedBox(height: context.scale(32)),
 
                           // Submit Button
-                          SizedBox(
-                            width: double.infinity,
-                            height: context.scale(50),
-                            child: ElevatedButton(
-                              onPressed: _isLoading ? null : _submitSupportRequest,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.accent,
-                                foregroundColor: Colors.white,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(context.scale(14))),
-                                disabledBackgroundColor: AppColors.accent.withValues(alpha: 0.50),
-                              ),
-                              child: _isLoading
-                                  ? SizedBox(
-                                      width: context.scale(20),
-                                      height: context.scale(20),
-                                      child: const CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
-                                    )
-                                  : Text(
-                                      kSupportSubmitButton,
-                                      style: GoogleFonts.inter(
-                                        fontSize: context.scale(15),
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                            ),
-                          ),
+                          ContactSupportSubmitButton(isLoading: _isLoading, onPressed: _submitSupportRequest),
                         ],
                       ),
                     ),

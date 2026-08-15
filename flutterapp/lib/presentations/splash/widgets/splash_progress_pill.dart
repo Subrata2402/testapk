@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class SplashProgressPill extends StatelessWidget {
   const SplashProgressPill({super.key});
@@ -31,13 +31,11 @@ class SplashProgressPill extends StatelessWidget {
                 ),
               ),
               SizedBox(width: context.scale(10)),
-              Text(
+              TextViewer(
                 'Loading…',
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(13),
-                  color: Colors.white.withValues(alpha: 0.70),
-                  fontWeight: FontWeight.w500,
-                ),
+                fontSize: context.scale(13),
+                color: Colors.white.withValues(alpha: 0.70),
+                fontWeight: FontWeight.w500,
               ),
             ],
           ),

@@ -5,7 +5,7 @@ import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:flutterapp/presentations/release_list/widgets/role_chip.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class MemberCard extends StatelessWidget {
   final MemberModel member;
@@ -34,13 +34,11 @@ class MemberCard extends StatelessWidget {
               border: Border.all(color: AppColors.orb2.withValues(alpha: 0.30), width: 0.8),
             ),
             child: Center(
-              child: Text(
+              child: TextViewer(
                 initials,
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(13),
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.orb2,
-                ),
+                fontSize: context.scale(13),
+                fontWeight: FontWeight.w700,
+                color: AppColors.orb2,
               ),
             ),
           ),
@@ -49,20 +47,19 @@ class MemberCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                TextViewer(
                   displayName,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(14),
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    letterSpacing: -0.2,
-                  ),
+                  fontSize: context.scale(14),
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                  letterSpacing: -0.2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: context.scale(2)),
-                Text(
+                TextViewer(
                   member.email,
-                  style: GoogleFonts.inter(fontSize: context.scale(12), color: Colors.white.withValues(alpha: 0.45)),
+                  fontSize: context.scale(12),
+                  color: Colors.white.withValues(alpha: 0.45),
                   overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: context.scale(5)),

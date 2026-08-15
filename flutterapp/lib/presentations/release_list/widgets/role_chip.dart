@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class TagChip extends StatelessWidget {
   final String label;
@@ -18,10 +18,7 @@ class TagChip extends StatelessWidget {
       borderRadius: BorderRadius.circular(context.scale(6)),
       border: Border.all(color: border),
     ),
-    child: Text(
-      label,
-      style: GoogleFonts.inter(fontSize: context.scale(10), color: color, fontWeight: FontWeight.w600),
-    ),
+    child: TextViewer(label, fontSize: context.scale(10), color: color, fontWeight: FontWeight.w600),
   );
 }
 

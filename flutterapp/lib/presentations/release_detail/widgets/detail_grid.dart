@@ -4,7 +4,7 @@ import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/models/release_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class DetailGrid extends StatelessWidget {
   final ReleaseModel release;
@@ -44,18 +44,18 @@ class DetailGrid extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              TextViewer(
                 item['label']!,
-                style: GoogleFonts.inter(
-                  fontSize: context.scale(10),
-                  color: Colors.white.withValues(alpha: 0.40),
-                  letterSpacing: 0.4,
-                ),
+                fontSize: context.scale(10),
+                color: Colors.white.withValues(alpha: 0.40),
+                letterSpacing: 0.4,
               ),
               SizedBox(height: context.scale(3)),
-              Text(
+              TextViewer(
                 item['value']!,
-                style: GoogleFonts.inter(fontSize: context.scale(13), fontWeight: FontWeight.w600, color: Colors.white),
+                fontSize: context.scale(13),
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
                 overflow: TextOverflow.ellipsis,
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PermissionChip extends StatelessWidget {
@@ -16,9 +17,11 @@ class PermissionChip extends StatelessWidget {
       borderRadius: 8,
       blur: 12,
       borderColor: Colors.white.withValues(alpha: 0.16),
-      child: Text(
+      child: TextViewer(
         short,
-        style: GoogleFonts.robotoMono(fontSize: context.scale(11), color: Colors.white.withValues(alpha: 0.65)),
+        fontSize: context.scale(11),
+        color: Colors.white.withValues(alpha: 0.65),
+        style: GoogleFonts.robotoMono(),
       ),
     );
   }
