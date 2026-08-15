@@ -68,3 +68,15 @@ The application configuration is centralized in `lib/core/constants.dart`:
 - **Detailed Release Info**: View build numbers, minimum/target SDK versions, file sizes, required permissions, and release notes.
 - **In-App APK Installation**: Download APKs securely and trigger the Android package installer directly within the app.
 - **Premium Glassmorphic UI**: Beautiful iOS-inspired design featuring gradient backgrounds, translucent panels, and smooth micro-animations.
+
+---
+
+## 📸 Screenshots
+
+| Login Page | Dashboard | Release List |
+| :---: | :---: | :---: |
+| ![Login Page](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) | ![Release List](./screenshots/release_list.png) |
+
+| Release Details | Menu | Languages |
+| :---: | :---: | :---: |
+| ![Release Details](./screenshots/release_details.png) | ![Menu](./screenshots/menu.png) | ![Languages](./screenshots/languages.png) |
