@@ -69,8 +69,7 @@ import 'app_localizations_zh.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -78,8 +77,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -91,13 +89,12 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -1425,10 +1422,93 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can upload APKs via the web dashboard at https://testapk.clipboux.online/ or by using the TestAPK CLI tool.'**
   String get faqAnswer6;
+
+  /// No description provided for @maintenanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System Maintenance'**
+  String get maintenanceTitle;
+
+  /// No description provided for @maintenanceDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We are currently performing scheduled system updates to improve performance and security. We\'ll be back online shortly.'**
+  String get maintenanceDescription;
+
+  /// No description provided for @maintenanceCheckAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Again'**
+  String get maintenanceCheckAgain;
+
+  /// No description provided for @maintenanceStillActive.
+  ///
+  /// In en, this message translates to:
+  /// **'System is still undergoing maintenance. Please try again later.'**
+  String get maintenanceStillActive;
+
+  /// No description provided for @maintenanceCheckFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to check system status. Please try again.'**
+  String get maintenanceCheckFailed;
+
+  /// No description provided for @maintenanceChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking...'**
+  String get maintenanceChecking;
+
+  /// No description provided for @updateRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Required'**
+  String get updateRequiredTitle;
+
+  /// No description provided for @updateRequiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This version of the app is no longer supported. Please update to the latest version to continue.'**
+  String get updateRequiredDescription;
+
+  /// No description provided for @updateNowBtnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Now'**
+  String get updateNowBtnLabel;
+
+  /// No description provided for @downloadLinkNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'Download link is not configured.'**
+  String get downloadLinkNotConfigured;
+
+  /// No description provided for @downloadLinkLaunchError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not launch download link: {link}'**
+  String downloadLinkLaunchError(String link);
+
+  /// No description provided for @updateAvailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Available'**
+  String get updateAvailableTitle;
+
+  /// No description provided for @updateAvailableDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A new version of the app is available. Would you like to update now?'**
+  String get updateAvailableDescription;
+
+  /// No description provided for @laterBtnLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get laterBtnLabel;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1437,17 +1517,8 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-    'ar',
-    'de',
-    'en',
-    'es',
-    'fr',
-    'hi',
-    'ja',
-    'pt',
-    'zh',
-  ].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'de', 'en', 'es', 'fr', 'hi', 'ja', 'pt', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;

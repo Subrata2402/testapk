@@ -225,5 +225,26 @@
   "faqQuestion5": "¿Es seguro mi dato?",
   "faqAnswer5": "Sí, TestAPK utiliza Google OAuth para una autenticación segura y no accede a ningún archivo en su Google Drive que no sea el creado por la aplicación.",
   "faqQuestion6": "¿Dónde subo el APK?",
-  "faqAnswer6": "Puede subir archivos APK a través del panel web en https://testapk.clipboux.online/ o utilizando la herramienta CLI de TestAPK."
+  "faqAnswer6": "Puede subir archivos APK a través del panel web en https://testapk.clipboux.online/ o utilizando la herramienta CLI de TestAPK.",
+  "maintenanceTitle": "Mantenimiento del sistema",
+  "maintenanceDescription": "Actualmente estamos realizando actualizaciones programadas del sistema para mejorar el rendimiento y la seguridad. Volveremos a estar en línea en breve.",
+  "maintenanceCheckAgain": "Comprobar de nuevo",
+  "maintenanceStillActive": "El sistema aún está en mantenimiento. Por favor, inténtelo de nuevo más tarde.",
+  "maintenanceCheckFailed": "Error al comprobar el estado del sistema. Por favor, inténtelo de nuevo.",
+  "maintenanceChecking": "Comprobando...",
+  "updateRequiredTitle": "Actualización Requerida",
+  "updateRequiredDescription": "Esta versión de la aplicación ya no es compatible. Por favor, actualice a la última versión para continuar.",
+  "updateNowBtnLabel": "Actualizar Ahora",
+  "downloadLinkNotConfigured": "El enlace de descarga no está configurado.",
+  "downloadLinkLaunchError": "No se pudo iniciar el enlace de descarga: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "Actualización Disponible",
+  "updateAvailableDescription": "Una nueva versión de la aplicación está disponible. ¿Desea actualizar ahora?",
+  "laterBtnLabel": "Más tarde"
 }

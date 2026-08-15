@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "支持请求",
+    "requests": "请求",
     "name": "姓名",
     "email": "电子邮箱",
     "subject": "主题",
@@ -50,7 +51,9 @@
     "pendingRequests": "新支持请求"
   },
   "common": {
-    "loading": "加载中..."
+    "loading": "加载中...",
+    "save": "保存设置",
+    "saving": "保存中..."
   },
   "feedback": {
     "title": "用户反馈",
@@ -76,6 +79,58 @@
       "star": "1 星"
     }
   },
+  "apps": {
+    "title": "应用列表",
+    "searchPlaceholder": "按名称、包名或所有者搜索...",
+    "createdDate": "创建日期",
+    "name": "应用名称",
+    "packageName": "包名",
+    "owner": "所有者",
+    "releases": "版本数",
+    "noApps": "未找到应用"
+  },
+  "system": {
+    "title": "系统状态",
+    "autoRefresh": "自动刷新 (5秒)",
+    "cpuUsage": "CPU 使用率",
+    "memoryUsage": "内存使用率",
+    "uptime": "运行时间",
+    "database": "数据库",
+    "connected": "已连接",
+    "disconnected": "已断开",
+    "logsViewer": "日志查看器",
+    "allLogs": "所有日志",
+    "errorLogs": "错误日志",
+    "searchLogs": "过滤日志...",
+    "noLogs": "未找到匹配的日志条目"
+  },
+  "settings": {
+    "title": "全局设置",
+    "maintenanceMode": "维护模式",
+    "active": "已启用",
+    "maintenanceDesc": "临时禁用非管理员用户对系统的访问。",
+    "maintenanceWarning": "警告：启用维护模式将阻止所有开发人员和测试人员访问 Web 和移动应用。",
+    "allowRegistration": "允许用户注册",
+    "registrationDesc": "启用或禁用平台上的新用户注册。",
+    "maxApkSize": "最大 APK 上传限制",
+    "maxApkDesc": "限制上传的 APK 版本的最大文件大小。",
+    "announcementBanner": "系统公告横幅",
+    "announcementDesc": "在应用顶部向所有用户显示全局通知横幅。",
+    "announcementPlaceholder": "输入公告内容（留空以禁用）...",
+    "saveSuccess": "设置保存成功！",
+    "saveError": "保存设置失败。",
+    "flutterAppVersions": "Flutter 应用版本管理",
+    "flutterAppVersionsDesc": "管理允许的 Flutter 应用版本和最新的下载链接。",
+    "versionLabel": "版本 (例如 1.0.0)",
+    "buildNumberLabel": "构建号 (例如 3)",
+    "addVersionBtn": "添加版本",
+    "allowedVersionsLabel": "允许的版本",
+    "version": "版本",
+    "build": "构建号",
+    "removeBtn": "移除",
+    "noVersionsAdded": "尚未添加任何版本。如果为空，所有版本都将被视为无效（强制更新）。",
+    "latestVersionDownloadLink": "最新版本下载链接"
+  },
   "users": {
     "title": "已注册用户",
     "name": "姓名",
@@ -93,5 +148,10 @@
     "allRoles": "所有角色",
     "startDate": "开始日期",
     "endDate": "结束日期"
+  },
+  "analytics": {
+    "userTrend": "用户注册趋势（过去 7 天）",
+    "feedbackRatings": "反馈评分分布",
+    "supportStatus": "支持请求状态"
   }
 }

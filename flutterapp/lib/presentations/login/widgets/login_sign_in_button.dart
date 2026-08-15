@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class LoginSignInButton extends StatelessWidget {
   final bool isLoading;
@@ -63,14 +63,12 @@ class LoginSignInButton extends StatelessWidget {
                         errorBuilder: (_, _, _) => Icon(Icons.login, color: Colors.white, size: context.scale(20)),
                       ),
                     SizedBox(width: context.scale(10)),
-                    Text(
+                    TextViewer(
                       isLoading ? kSigningIn : kContinueWithGoogle,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(15),
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        letterSpacing: -0.2,
-                      ),
+                      fontSize: context.scale(15),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      letterSpacing: -0.2,
                     ),
                   ],
                 ),

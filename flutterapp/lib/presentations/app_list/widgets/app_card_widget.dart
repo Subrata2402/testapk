@@ -6,6 +6,7 @@ import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
 import 'package:flutterapp/widgets/release_action_button.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppCard extends StatelessWidget {
@@ -72,17 +73,15 @@ class AppCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      TextViewer(
                         app.name,
-                        style: GoogleFonts.inter(
-                          fontSize: context.scale(16),
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.textPrimary,
-                          letterSpacing: -0.3,
-                        ),
+                        fontSize: context.scale(16),
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textPrimary,
+                        letterSpacing: -0.3,
                       ),
                       SizedBox(height: context.scale(2)),
-                      Text(
+                      TextViewer(
                         app.packageName,
                         style: GoogleFonts.robotoMono(fontSize: context.scale(11), color: AppColors.textTertiary),
                       ),
@@ -112,24 +111,15 @@ class AppCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        TextViewer(
           label.toUpperCase(),
-          style: GoogleFonts.inter(
-            fontSize: context.scale(9),
-            fontWeight: FontWeight.w600,
-            color: AppColors.textTertiary,
-            letterSpacing: 0.5,
-          ),
+          fontSize: context.scale(9),
+          fontWeight: FontWeight.w600,
+          color: AppColors.textTertiary,
+          letterSpacing: 0.5,
         ),
         SizedBox(height: context.scale(2)),
-        Text(
-          value,
-          style: GoogleFonts.inter(
-            fontSize: context.scale(12),
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
+        TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
       ],
     );
   }

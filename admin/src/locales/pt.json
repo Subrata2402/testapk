@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "Solicitações de Suporte",
+    "requests": "Solicitações",
     "name": "Nome",
     "email": "E-mail",
     "subject": "Assunto",
@@ -50,7 +51,9 @@
     "pendingRequests": "Novas Solicitações de Suporte"
   },
   "common": {
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "save": "Salvar Configurações",
+    "saving": "Salvando..."
   },
   "feedback": {
     "title": "Feedbacks dos Usuários",
@@ -76,6 +79,58 @@
       "star": "1 Estrela"
     }
   },
+  "apps": {
+    "title": "Aplicativos",
+    "searchPlaceholder": "Pesquisar por nome, pacote ou proprietário...",
+    "createdDate": "Data de criação",
+    "name": "Nome do aplicativo",
+    "packageName": "Nome do pacote",
+    "owner": "Proprietário",
+    "releases": "Versões",
+    "noApps": "Nenhum aplicativo encontrado"
+  },
+  "system": {
+    "title": "Saúde do Sistema",
+    "autoRefresh": "Atualização Automática (5s)",
+    "cpuUsage": "Uso de CPU",
+    "memoryUsage": "Uso de Memória",
+    "uptime": "Tempo de atividade",
+    "database": "Banco de dados",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "logsViewer": "Visualizador de Logs",
+    "allLogs": "Todos os Logs",
+    "errorLogs": "Logs de Erro",
+    "searchLogs": "Filtrar logs...",
+    "noLogs": "Nenhum registro de log correspondente encontrado"
+  },
+  "settings": {
+    "title": "Configurações Globais",
+    "maintenanceMode": "Modo de Manutenção",
+    "active": "Ativo",
+    "maintenanceDesc": "Desative temporariamente o acesso ao sistema para todos os usuários não administradores.",
+    "maintenanceWarning": "Aviso: A ativação do modo de manutenção bloqueará o acesso de todos os desenvolvedores e testadores aos aplicativos web e móveis.",
+    "allowRegistration": "Permitir Registro de Usuário",
+    "registrationDesc": "Ative ou desative novos cadastros de usuários na plataforma.",
+    "maxApkSize": "Tamanho Máximo de Upload de APK",
+    "maxApkDesc": "Limite o tamanho máximo do arquivo para as versões de APK enviadas.",
+    "announcementBanner": "Banner de Anúncio do Sistema",
+    "announcementDesc": "Exiba um banner de notificação global no topo do aplicativo para todos os usuários.",
+    "announcementPlaceholder": "Digite a mensagem do anúncio (deixe em branco para desativar)...",
+    "saveSuccess": "Configurações salvas com sucesso!",
+    "saveError": "Falha ao salvar as configurações.",
+    "flutterAppVersions": "Gerenciamento de Versões do Aplicativo Flutter",
+    "flutterAppVersionsDesc": "Gerencie as versões permitidas do aplicativo Flutter e o link de download mais recente.",
+    "versionLabel": "Versão (ex. 1.0.0)",
+    "buildNumberLabel": "Número de Compilação (ex. 3)",
+    "addVersionBtn": "Adicionar Versão",
+    "allowedVersionsLabel": "Versões Permitidas",
+    "version": "Versão",
+    "build": "Compilação",
+    "removeBtn": "Remover",
+    "noVersionsAdded": "Nenhuma versão adicionada ainda. Se estiver vazio, todas as versões serão consideradas inválidas (atualização obrigatória).",
+    "latestVersionDownloadLink": "Link de Download da Última Versão"
+  },
   "users": {
     "title": "Usuários Registrados",
     "name": "Nome",
@@ -93,5 +148,10 @@
     "allRoles": "Todas as Funções",
     "startDate": "Data de Início",
     "endDate": "Data de Término"
+  },
+  "analytics": {
+    "userTrend": "Tendência de registro de usuários (últimos 7 dias)",
+    "feedbackRatings": "Distribuição de avaliações de feedback",
+    "supportStatus": "Status das solicitações de suporte"
   }
 }

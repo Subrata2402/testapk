@@ -10,12 +10,9 @@ import FaqPage from '../pages/FaqPage';
 export default function AppRoutes({
   user,
   apps,
-  selectedAppId,
-  setSelectedAppId,
   handleCreateApp,
   handleLogout,
   setIsLoginModalOpen,
-  setIsCreateModalOpen,
   onOpenDriveModal,
   showAlert,
   showConfirm,
@@ -80,11 +77,44 @@ export default function AppRoutes({
             <Dashboard
               user={user}
               apps={apps}
-              selectedAppId={selectedAppId}
-              onSelectApp={setSelectedAppId}
               onCreateApp={handleCreateApp}
               onLogout={handleLogout}
-              onOpenCreateModal={() => setIsCreateModalOpen(true)}
+              onOpenDriveModal={onOpenDriveModal}
+              showAlert={showAlert}
+              showConfirm={showConfirm}
+            />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        }
+      />
+      <Route
+        path="/dashboard/apps/:appId"
+        element={
+          user ? (
+            <Dashboard
+              user={user}
+              apps={apps}
+              onCreateApp={handleCreateApp}
+              onLogout={handleLogout}
+              onOpenDriveModal={onOpenDriveModal}
+              showAlert={showAlert}
+              showConfirm={showConfirm}
+            />
+          ) : (
+            <Navigate to="/" replace />
+          )
+        }
+      />
+      <Route
+        path="/dashboard/create-app"
+        element={
+          user ? (
+            <Dashboard
+              user={user}
+              apps={apps}
+              onCreateApp={handleCreateApp}
+              onLogout={handleLogout}
               onOpenDriveModal={onOpenDriveModal}
               showAlert={showAlert}
               showConfirm={showConfirm}

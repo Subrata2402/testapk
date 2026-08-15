@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "サポートリクエスト",
+    "requests": "リクエスト",
     "name": "名前",
     "email": "メールアドレス",
     "subject": "件名",
@@ -50,7 +51,9 @@
     "pendingRequests": "新規サポートリクエスト"
   },
   "common": {
-    "loading": "読み込み中..."
+    "loading": "読み込み中...",
+    "save": "設定を保存",
+    "saving": "保存中..."
   },
   "feedback": {
     "title": "ユーザーフィードバック",
@@ -76,6 +79,58 @@
       "star": "星1"
     }
   },
+  "apps": {
+    "title": "アプリケーション",
+    "searchPlaceholder": "名前、パッケージ、または所有者で検索...",
+    "createdDate": "作成日",
+    "name": "アプリ名",
+    "packageName": "パッケージ名",
+    "owner": "所有者",
+    "releases": "リリース",
+    "noApps": "アプリケーションが見つかりません"
+  },
+  "system": {
+    "title": "システム状態",
+    "autoRefresh": "自動更新 (5秒)",
+    "cpuUsage": "CPU使用率",
+    "memoryUsage": "メモリ使用率",
+    "uptime": "稼働時間",
+    "database": "データベース",
+    "connected": "接続済み",
+    "disconnected": "切断",
+    "logsViewer": "ログビューア",
+    "allLogs": "すべてのログ",
+    "errorLogs": "エラーログ",
+    "searchLogs": "ログをフィルター...",
+    "noLogs": "一致するログエントリが見つかりません"
+  },
+  "settings": {
+    "title": "グローバル設定",
+    "maintenanceMode": "メンテナンスモード",
+    "active": "有効",
+    "maintenanceDesc": "管理者以外のすべてのユーザーのシステムへのアクセスを一時的に無効にします。",
+    "maintenanceWarning": "警告：メンテナンスモードを有効にすると、すべての開発者およびテスターがWebおよびモバイルアプリケーションにアクセスできなくなります。",
+    "allowRegistration": "新規ユーザー登録を許可",
+    "registrationDesc": "プラットフォームでの新規ユーザー登録の有効化または無効化。",
+    "maxApkSize": "最大APKアップロードサイズ",
+    "maxApkDesc": "アップロードされるAPKリリースの最大ファイルサイズを制限します。",
+    "announcementBanner": "システム告知バナー",
+    "announcementDesc": "すべてのユーザーに対してアプリケーションの上部にグローバルな通知バナーを表示します。",
+    "announcementPlaceholder": "告知メッセージを入力（無効にする場合は空欄）...",
+    "saveSuccess": "設定が正常に保存されました！",
+    "saveError": "設定の保存に失敗しました。",
+    "flutterAppVersions": "Flutterアプリのバージョン管理",
+    "flutterAppVersionsDesc": "許可されたFlutterアプリのバージョンと最新のダウンロードリンクを管理します。",
+    "versionLabel": "バージョン (例: 1.0.0)",
+    "buildNumberLabel": "ビルド番号 (例: 3)",
+    "addVersionBtn": "バージョンを追加",
+    "allowedVersionsLabel": "許可されたバージョン",
+    "version": "バージョン",
+    "build": "ビルド",
+    "removeBtn": "削除",
+    "noVersionsAdded": "バージョンはまだ追加されていません。空の場合、すべてのバージョンが無効と見なされます（必須アップデート）。",
+    "latestVersionDownloadLink": "最新バージョンのダウンロードリンク"
+  },
   "users": {
     "title": "登録ユーザー",
     "name": "名前",
@@ -93,5 +148,10 @@
     "allRoles": "すべての役割",
     "startDate": "開始日",
     "endDate": "終了日"
+  },
+  "analytics": {
+    "userTrend": "ユーザー登録トレンド（過去7日間）",
+    "feedbackRatings": "フィードバック評価の分布",
+    "supportStatus": "サポートリクエストのステータス"
   }
 }

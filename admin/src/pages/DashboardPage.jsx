@@ -10,7 +10,10 @@ import {
   LayoutDashboard,
   Mail,
   MessageSquare,
-  Users
+  Users,
+  Smartphone,
+  Activity,
+  Settings
 } from 'lucide-react';
 import './DashboardPage.css';
 
@@ -37,14 +40,20 @@ export default function DashboardPage() {
     }
   };
 
+  const isAppsTab = location.pathname.includes('/dashboard/apps');
   const isSupportTab = location.pathname.includes('/dashboard/support');
   const isFeedbacksTab = location.pathname.includes('/dashboard/feedbacks');
   const isUsersTab = location.pathname.includes('/dashboard/users');
+  const isSystemTab = location.pathname.includes('/dashboard/system');
+  const isSettingsTab = location.pathname.includes('/dashboard/settings');
 
   const getHeaderTitle = () => {
+    if (isAppsTab) return t('apps.title') || 'Applications';
     if (isSupportTab) return t('support.title');
     if (isFeedbacksTab) return t('feedback.title');
     if (isUsersTab) return t('users.title');
+    if (isSystemTab) return t('system.title') || 'System Health';
+    if (isSettingsTab) return t('settings.title') || 'Global Settings';
     return t('dashboard.title');
   };
 
@@ -67,6 +76,13 @@ export default function DashboardPage() {
             <span>{t('dashboard.title')}</span>
           </NavLink>
           <NavLink
+            to="/dashboard/apps"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Smartphone size={18} />
+            <span>{t('apps.title') || 'Applications'}</span>
+          </NavLink>
+          <NavLink
             to="/dashboard/support"
             className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
           >
@@ -86,6 +102,20 @@ export default function DashboardPage() {
           >
             <Users size={18} />
             <span>{t('users.title')}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/system"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Activity size={18} />
+            <span>{t('system.title') || 'System Health'}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/settings"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <Settings size={18} />
+            <span>{t('settings.title') || 'Global Settings'}</span>
           </NavLink>
         </nav>
 

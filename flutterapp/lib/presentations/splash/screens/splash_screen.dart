@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterapp/core/app_colors.dart';
+import 'package:flutterapp/core/api_service.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/presentations/app_list/screens/app_list_screen.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
+import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.dart';
+import 'package:flutterapp/presentations/update/screens/app_update_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/presentations/splash/widgets/splash_logo.dart';
@@ -33,13 +37,100 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
 
   Future<void> _checkAuth() async {
+    final settingsFuture = ApiService.instance.getPublicSettings();
+    final loginFuture = AuthService.instance.tryAutoLogin();
+
     await Future.delayed(const Duration(milliseconds: 1800));
     if (!mounted) return;
-    final user = await AuthService.instance.tryAutoLogin();
+
+    bool isMaintenanceActive = false;
+    bool isUpdateMandatory = false;
+    bool isUpdateOptional = false;
+    String latestVersionDownloadLink = '';
+
+    try {
+      final response = await settingsFuture;
+      if (response.statusCode == 200 && response.data != null) {
+        final settings = response.data['data']?['settings'];
+        isMaintenanceActive = settings?['maintenance_mode'] ?? false;
+
+        final List<dynamic> allowedVersions = settings?['flutter_app_versions'] ?? [];
+        latestVersionDownloadLink = settings?['latest_version_download_link'] ?? '';
+
+        // Get current app version info using MethodChannel
+        const platform = MethodChannel(kMethodChannelName);
+        final Map<dynamic, dynamic>? currentInfo = await platform.invokeMethod('getInstalledVersionInfo', {
+          'packageName': 'com.testapk.app',
+        });
+
+        if (currentInfo != null) {
+          final currentVersion = currentInfo['versionName'] as String? ?? '';
+          final currentBuild = currentInfo['versionCode'] as int? ?? -1;
+
+          debugPrint('Splash: Current Version: $currentVersion, Build: $currentBuild');
+          debugPrint('Splash: Allowed Versions: $allowedVersions');
+
+          if (currentBuild != -1 && currentVersion.isNotEmpty) {
+            // Check if current version is in the allowed list
+            bool isAllowed = false;
+            for (final v in allowedVersions) {
+              if (v is Map) {
+                final vName = v['version'] as String? ?? '';
+                final vBuild = v['buildNumber'] as int? ?? -1;
+                if (vName == currentVersion && vBuild == currentBuild) {
+                  isAllowed = true;
+                  break;
+                }
+              }
+            }
+
+            // Find the latest version from the allowed list (highest build number)
+            int latestBuild = -1;
+            for (final v in allowedVersions) {
+              if (v is Map) {
+                final vBuild = v['buildNumber'] as int? ?? -1;
+                if (vBuild > latestBuild) {
+                  latestBuild = vBuild;
+                }
+              }
+            }
+
+            if (!isAllowed) {
+              // If current version is not listed in versions, then the update is mandatory
+              isUpdateMandatory = true;
+            } else if (currentBuild < latestBuild) {
+              // If current version is listed but is a downgrade (lower build number than latest), update is optional
+              isUpdateOptional = true;
+            }
+          }
+        }
+      }
+    } catch (e) {
+      debugPrint('Failed to fetch public settings or check version: $e');
+    }
+
+    final user = await loginFuture;
     if (!mounted) return;
-    Navigator.of(
-      context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => user != null ? const AppListScreen() : const LoginScreen()));
+
+    if (isUpdateMandatory) {
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => AppUpdateScreen(downloadLink: latestVersionDownloadLink)));
+      return;
+    }
+
+    if (isMaintenanceActive && user?.role != 'admin') {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const MaintenanceScreen()));
+      return;
+    }
+
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => user != null
+            ? AppListScreen(isUpdateOptional: isUpdateOptional, latestVersionDownloadLink: latestVersionDownloadLink)
+            : LoginScreen(isUpdateOptional: isUpdateOptional, latestVersionDownloadLink: latestVersionDownloadLink),
+      ),
+    );
   }
 
   @override

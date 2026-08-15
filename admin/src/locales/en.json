@@ -26,6 +26,7 @@
   },
   "support": {
     "title": "Support Requests",
+    "requests": "Requests",
     "name": "Name",
     "email": "Email",
     "subject": "Subject",
@@ -73,8 +74,62 @@
       "star": "1 Star"
     }
   },
+  "apps": {
+    "title": "Applications",
+    "searchPlaceholder": "Search by name, package, or owner...",
+    "createdDate": "Created Date",
+    "name": "App Name",
+    "packageName": "Package Name",
+    "owner": "Owner",
+    "releases": "Releases",
+    "noApps": "No applications found"
+  },
+  "system": {
+    "title": "System Health",
+    "autoRefresh": "Auto Refresh (5s)",
+    "cpuUsage": "CPU Usage",
+    "memoryUsage": "Memory Usage",
+    "uptime": "Uptime",
+    "database": "Database",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "logsViewer": "Logs Viewer",
+    "allLogs": "All Logs",
+    "errorLogs": "Error Logs",
+    "searchLogs": "Filter logs...",
+    "noLogs": "No matching log entries found"
+  },
+  "settings": {
+    "title": "Global Settings",
+    "maintenanceMode": "Maintenance Mode",
+    "active": "Active",
+    "maintenanceDesc": "Temporarily disable access to the system for all non-admin users.",
+    "maintenanceWarning": "Warning: Enabling maintenance mode will block all developers and testers from accessing the web and mobile applications.",
+    "allowRegistration": "Allow User Registration",
+    "registrationDesc": "Enable or disable new user sign-ups on the platform.",
+    "maxApkSize": "Maximum APK Upload Size",
+    "maxApkDesc": "Limit the maximum file size for uploaded APK releases.",
+    "announcementBanner": "System Announcement Banner",
+    "announcementDesc": "Display a global notification banner at the top of the application for all users.",
+    "announcementPlaceholder": "Enter announcement message (leave empty to disable)...",
+    "saveSuccess": "Settings saved successfully!",
+    "saveError": "Failed to save settings.",
+    "flutterAppVersions": "Flutter App Version Management",
+    "flutterAppVersionsDesc": "Manage allowed Flutter app versions and the latest download link.",
+    "versionLabel": "Version (e.g. 1.0.0)",
+    "buildNumberLabel": "Build Number (e.g. 3)",
+    "addVersionBtn": "Add Version",
+    "allowedVersionsLabel": "Allowed Versions",
+    "version": "Version",
+    "build": "Build",
+    "removeBtn": "Remove",
+    "noVersionsAdded": "No versions added yet. If empty, all versions will be considered invalid (mandatory update).",
+    "latestVersionDownloadLink": "Latest Version Download Link"
+  },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "save": "Save Settings",
+    "saving": "Saving..."
   },
   "users": {
     "title": "Registered Users",
@@ -93,5 +148,10 @@
     "allRoles": "All Roles",
     "startDate": "Start Date",
     "endDate": "End Date"
+  },
+  "analytics": {
+    "userTrend": "User Registration Trend (Last 7 Days)",
+    "feedbackRatings": "Feedback Ratings Distribution",
+    "supportStatus": "Support Requests Status"
   }
 }

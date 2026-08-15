@@ -105,6 +105,10 @@ export const ENGLISH_STRINGS = {
     NOT_FOUND: 'User not found',
     DELETED_SUCCESS: 'Account deleted successfully',
   },
+  SETTINGS: {
+    UPDATED_SUCCESS: 'Settings updated successfully',
+    MAINTENANCE_ACTIVE: 'System is currently under maintenance. Please try again later.',
+  },
   EMAIL: {
     WELCOME_SUBJECT: 'Welcome to TestAPK!',
     WELCOME_TEXT: (name: string) =>

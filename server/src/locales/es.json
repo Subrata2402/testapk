@@ -144,5 +144,9 @@
       "EMAIL_REQUIRED": "Se requiere el correo electrónico",
       "NAME_REQUIRED": "Se requiere el nombre"
     }
+  },
+  "SETTINGS": {
+    "UPDATED_SUCCESS": "Configuración actualizada con éxito",
+    "MAINTENANCE_ACTIVE": "El sistema se encuentra actualmente en mantenimiento. Por favor, inténtelo de nuevo más tarde."
   }
 }

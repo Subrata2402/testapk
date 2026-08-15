@@ -1,0 +1,107 @@
+.users-filters-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.users-filters-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.users-search-wrapper {
+  flex: 1;
+  min-width: 250px;
+}
+
+.users-filters-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.users-dropdown-wrapper {
+  width: 160px;
+}
+
+.users-date-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.users-date-label-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.users-date-label {
+  font-size: 0.9rem;
+}
+
+.users-skeleton-badge {
+  width: 60px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.users-table-header-clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.users-table-header-content {
+  display: flex;
+  align-items: center;
+}
+
+.users-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.users-avatar-container {
+  width: 32px;
+  height: 32px;
+  font-size: 0.9rem;
+}
+
+.users-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.users-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.users-status-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.users-status-badge {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+}
+
+.users-joined-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

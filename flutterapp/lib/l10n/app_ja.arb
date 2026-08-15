@@ -225,5 +225,26 @@
   "faqQuestion5": "データは安全ですか？",
   "faqAnswer5": "はい、TestAPKは安全な認証にGoogle OAuthを使用しており、アプリによって作成されたもの以外のGoogleドライブ内のファイルにはアクセスしません。",
   "faqQuestion6": "APKはどこにアップロードしますか？",
-  "faqAnswer6": "APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。"
+  "faqAnswer6": "APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。",
+  "maintenanceTitle": "システムメンテナンス",
+  "maintenanceDescription": "現在、パフォーマンスとセキュリティ向上のため、定期的なシステムアップデートを行っています。間もなくオンラインに戻ります。",
+  "maintenanceCheckAgain": "再試行",
+  "maintenanceStillActive": "システムはまだメンテナンス中です。後ほどもう一度お試しください。",
+  "maintenanceCheckFailed": "システムステータスの確認に失敗しました。もう一度お試しください。",
+  "maintenanceChecking": "確認中...",
+  "updateRequiredTitle": "アップデートが必要です",
+  "updateRequiredDescription": "このバージョンのアプリはサポートされていません。続行するには最新バージョンにアップデートしてください。",
+  "updateNowBtnLabel": "今すぐアップデート",
+  "downloadLinkNotConfigured": "ダウンロードリンクが設定されていません。",
+  "downloadLinkLaunchError": "ダウンロードリンクを起動できませんでした: {link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "アップデートが利用可能です",
+  "updateAvailableDescription": "新しいバージョンのアプリが利用可能です。今すぐアップデートしますか？",
+  "laterBtnLabel": "後で"
 }

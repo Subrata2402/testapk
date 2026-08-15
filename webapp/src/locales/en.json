@@ -326,5 +326,12 @@
     "ANSWER_10": "In the dashboard, select your app, go to the 'Team' tab, and add the email addresses of your testers or developers. Testers will receive an invitation in their companion app.",
     "QUESTION_11": "Does TestAPK store my APK files?",
     "ANSWER_11": "No, TestAPK does not store your APK files on its servers. All files are streamed directly to and stored in your own Google Drive."
+  },
+  "MAINTENANCE": {
+    "TITLE": "System Maintenance",
+    "DESCRIPTION": "We are currently performing scheduled system updates to improve performance and security. We'll be back online shortly.",
+    "CHECK_AGAIN": "Check Again",
+    "STILL_ACTIVE": "System is still undergoing maintenance. Please try again later.",
+    "CHECK_FAILED": "Failed to check system status. Please try again."
   }
 }

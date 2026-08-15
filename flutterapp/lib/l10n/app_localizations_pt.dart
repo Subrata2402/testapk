@@ -9,8 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get loginErrorMsg =>
-      'Falha ao iniciar sessão. Certifique-se de que é um testador registado.';
+  String get loginErrorMsg => 'Falha ao iniciar sessão. Certifique-se de que é um testador registado.';
 
   @override
   String get appName => 'TestAPK';
@@ -37,22 +36,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get infoTitleTesterAccess => 'Apenas Acesso a Testadores';
 
   @override
-  String get infoSubtitleTesterAccess =>
-      'Apenas testadores convidados podem aceder aos lançamentos.';
+  String get infoSubtitleTesterAccess => 'Apenas testadores convidados podem aceder aos lançamentos.';
 
   @override
   String get infoTitleSecureStorage => 'Armazenamento em Nuvem Seguro';
 
   @override
-  String get infoSubtitleSecureStorage =>
-      'APKs armazenados no Google Drive, entregues com segurança.';
+  String get infoSubtitleSecureStorage => 'APKs armazenados no Google Drive, entregues com segurança.';
 
   @override
   String get infoTitleAlwaysUpToDate => 'Sempre Atualizado';
 
   @override
-  String get infoSubtitleAlwaysUpToDate =>
-      'Acesso instantâneo às compilações mais recentes.';
+  String get infoSubtitleAlwaysUpToDate => 'Acesso instantâneo às compilações mais recentes.';
 
   @override
   String get loginSigningIn => 'A iniciar sessão…';
@@ -61,8 +57,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get loginContinueWithGoogle => 'Continuar com o Google';
 
   @override
-  String get loginConfirmation =>
-      'Ao iniciar sessão, confirma que é um testador autorizado.';
+  String get loginConfirmation => 'Ao iniciar sessão, confirma que é um testador autorizado.';
 
   @override
   String get splashSubtitle => 'Gestor de Lançamentos para Testadores';
@@ -89,12 +84,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get errorPrefix => 'Erro: ';
 
   @override
-  String get appListEmptyTitle =>
-      'Ainda não foi adicionado\na nenhuma aplicação.';
+  String get appListEmptyTitle => 'Ainda não foi adicionado\na nenhuma aplicação.';
 
   @override
-  String get appListEmptySubtitle =>
-      'Peça a um programador para o convidar como testador.';
+  String get appListEmptySubtitle => 'Peça a um programador para o convidar como testador.';
 
   @override
   String get signOutTooltip => 'Terminar sessão';
@@ -118,8 +111,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get teamMembersTitle => 'Membros da Equipa';
 
   @override
-  String get teamMembersSubtitle =>
-      'Colaboradores convidados para esta aplicação.';
+  String get teamMembersSubtitle => 'Colaboradores convidados para esta aplicação.';
 
   @override
   String get noMembersMsg => 'Nenhum membro ainda';
@@ -200,16 +192,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get acceptBtnLabel => 'Aceitar';
 
   @override
-  String get errorInstallCancelled =>
-      'Instalação cancelada: Por favor, conceda permissão para instalar a aplicação.';
+  String get errorInstallCancelled => 'Instalação cancelada: Por favor, conceda permissão para instalar a aplicação.';
 
   @override
   String get errorInstallConflictingVersion =>
       'Falha na instalação: Já existe uma versão em conflito da aplicação instalada.';
 
   @override
-  String get errorInstallInvalidApk =>
-      'Falha na instalação: O ficheiro APK é inválido ou está corrompido.';
+  String get errorInstallInvalidApk => 'Falha na instalação: O ficheiro APK é inválido ou está corrompido.';
 
   @override
   String get errorInstallInsufficientStorage =>
@@ -243,8 +233,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get feedbackTitleRequired => 'O título é obrigatório';
 
   @override
-  String get feedbackDescriptionHint =>
-      'Forneça detalhes sobre a sua experiência, erro ou pedido de funcionalidade...';
+  String get feedbackDescriptionHint => 'Forneça detalhes sobre a sua experiência, erro ou pedido de funcionalidade...';
 
   @override
   String get feedbackDescriptionRequired => 'A descrição é obrigatória';
@@ -271,8 +260,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get supportSubjectRequired => 'O assunto é obrigatório';
 
   @override
-  String get supportMessageHint =>
-      'Descreva o seu problema ou questão em detalhe...';
+  String get supportMessageHint => 'Descreva o seu problema ou questão em detalhe...';
 
   @override
   String get supportMessageRequired => 'A mensagem é obrigatória';
@@ -290,8 +278,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get aboutVersion => 'Versão 1.0.0+3';
 
   @override
-  String get aboutDescription =>
-      'Uma plataforma moderna, segura e auto-hospedada para gestão de lançamentos de APK.';
+  String get aboutDescription => 'Uma plataforma moderna, segura e auto-hospedada para gestão de lançamentos de APK.';
 
   @override
   String get aboutPlatformInfoLabel => 'INFORMAÇÃO DA PLATAFORMA';
@@ -327,8 +314,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get signOutConfirmTitle => 'Terminar Sessão';
 
   @override
-  String get signOutConfirmMessage =>
-      'Tem a certeza de que deseja terminar sessão na sua conta?';
+  String get signOutConfirmMessage => 'Tem a certeza de que deseja terminar sessão na sua conta?';
 
   @override
   String get deleteLabel => 'Eliminar';
@@ -347,24 +333,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get deleteAccountErrorMsg => 'Falha ao eliminar a conta';
 
   @override
-  String get errorUnexpected =>
-      'Ocorreu um erro inesperado. Por favor, tente novamente.';
+  String get errorUnexpected => 'Ocorreu um erro inesperado. Por favor, tente novamente.';
 
   @override
-  String get errorTimeout =>
-      'Tempo limite de ligação esgotado. Por favor, verifique a sua ligação à internet.';
+  String get errorTimeout => 'Tempo limite de ligação esgotado. Por favor, verifique a sua ligação à internet.';
 
   @override
-  String get errorSessionExpired =>
-      'Sessão expirada. Por favor, inicie sessão novamente.';
+  String get errorSessionExpired => 'Sessão expirada. Por favor, inicie sessão novamente.';
 
   @override
-  String get errorServerError =>
-      'Erro do servidor. Por favor, tente novamente mais tarde.';
+  String get errorServerError => 'Erro do servidor. Por favor, tente novamente mais tarde.';
 
   @override
-  String get errorNoInternet =>
-      'Sem ligação à internet. Por favor, verifique as definições de rede.';
+  String get errorNoInternet => 'Sem ligação à internet. Por favor, verifique as definições de rede.';
 
   @override
   String get errorRequestCancelled => 'O pedido foi cancelado.';
@@ -373,12 +354,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get errorRequestFailedPrefix => 'Falha no pedido: ';
 
   @override
-  String get errorBadRequest =>
-      'Pedido incorreto. Por favor, verifique os dados de entrada.';
+  String get errorBadRequest => 'Pedido incorreto. Por favor, verifique os dados de entrada.';
 
   @override
-  String get errorForbidden =>
-      'Acesso negado. Não tem permissão para realizar esta ação.';
+  String get errorForbidden => 'Acesso negado. Não tem permissão para realizar esta ação.';
 
   @override
   String get selectLanguage => 'Selecionar Idioma';
@@ -447,15 +426,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get aboutWebDashboardTitle => 'Painel Web';
 
   @override
-  String get aboutWebDashboardSubtitle =>
-      'Armazenamento no Google Drive, Gestão de Equipas, Histórico de Lançamentos';
+  String get aboutWebDashboardSubtitle => 'Armazenamento no Google Drive, Gestão de Equipas, Histórico de Lançamentos';
 
   @override
   String get aboutFlutterClientTitle => 'Cliente Flutter';
 
   @override
-  String get aboutFlutterClientSubtitle =>
-      'Design Glassmorphic, Instalação com um Toque, Deteção de Versões';
+  String get aboutFlutterClientSubtitle => 'Design Glassmorphic, Instalação com um Toque, Deteção de Versões';
 
   @override
   String get aboutCliToolTitle => 'Ferramenta CLI';
@@ -550,12 +527,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get privacyPolicyTitle3 => '3. Como utilizamos as suas informações';
 
   @override
-  String get privacyPolicyPara3_1 =>
-      'Utilizamos as informações recolhidas para os seguintes fins:';
+  String get privacyPolicyPara3_1 => 'Utilizamos as informações recolhidas para os seguintes fins:';
 
   @override
-  String get privacyPolicyPara3_2 =>
-      '• Para autenticar a sua identidade e gerir a sua conta.';
+  String get privacyPolicyPara3_2 => '• Para autenticar a sua identidade e gerir a sua conta.';
 
   @override
   String get privacyPolicyPara3_3 =>
@@ -566,8 +541,7 @@ class AppLocalizationsPt extends AppLocalizations {
       '• Para exibir o histórico e detalhes de lançamento da aplicação no seu painel e cliente móvel.';
 
   @override
-  String get privacyPolicyPara3_5 =>
-      '• Para suportar os fluxos de autenticação e envio da ferramenta CLI.';
+  String get privacyPolicyPara3_5 => '• Para suportar os fluxos de autenticação e envio da ferramenta CLI.';
 
   @override
   String get privacyPolicyTitle4 => '4. Partilha e divulgação de dados';
@@ -643,16 +617,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get termsOfServiceTitle5 => '5. Utilização Aceitável';
 
   @override
-  String get termsOfServicePara5_1 =>
-      'Concorda em não utilizar o serviço para:';
+  String get termsOfServicePara5_1 => 'Concorda em não utilizar o serviço para:';
 
   @override
   String get termsOfServicePara5_2 =>
       '• Enviar ou distribuir software malicioso, vírus ou qualquer código concebido para danificar ou interromper dispositivos.';
 
   @override
-  String get termsOfServicePara5_3 =>
-      '• Infringir os direitos de propriedade intelectual de terceiros.';
+  String get termsOfServicePara5_3 => '• Infringir os direitos de propriedade intelectual de terceiros.';
 
   @override
   String get termsOfServicePara5_4 =>
@@ -727,4 +699,50 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'Você pode enviar APKs através do painel web em https://testapk.clipboux.online/ ou usando a ferramenta CLI do TestAPK.';
+
+  @override
+  String get maintenanceTitle => 'Manutenção do Sistema';
+
+  @override
+  String get maintenanceDescription =>
+      'Estamos realizando atualizações programadas no sistema para melhorar o desempenho e a segurança. Voltaremos a estar online em breve.';
+
+  @override
+  String get maintenanceCheckAgain => 'Verificar Novamente';
+
+  @override
+  String get maintenanceStillActive => 'O sistema ainda está em manutenção. Por favor, tente novamente mais tarde.';
+
+  @override
+  String get maintenanceCheckFailed => 'Falha ao verificar o status do sistema. Por favor, tente novamente.';
+
+  @override
+  String get maintenanceChecking => 'Verificando...';
+
+  @override
+  String get updateRequiredTitle => 'Atualização necessária';
+
+  @override
+  String get updateRequiredDescription =>
+      'Esta versão da aplicação já não é suportada. Por favor, atualize para a versão mais recente para continuar.';
+
+  @override
+  String get updateNowBtnLabel => 'Atualizar agora';
+
+  @override
+  String get downloadLinkNotConfigured => 'O link de download não está configurado.';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'Não foi possível iniciar o link de download: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'Atualização disponível';
+
+  @override
+  String get updateAvailableDescription => 'Uma nova versão da aplicação está disponível. Deseja atualizar agora?';
+
+  @override
+  String get laterBtnLabel => 'Mais tarde';
 }

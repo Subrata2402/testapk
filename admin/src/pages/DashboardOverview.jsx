@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 import { Smartphone, Mail, Users, Activity, Clock, MessageSquare } from 'lucide-react';
 import { adminService } from '../services/api';
+import TrendChart from '../components/analytics/TrendChart';
+import BarChart from '../components/analytics/BarChart';
+import DoughnutChart from '../components/analytics/DoughnutChart';
+import './DashboardOverview.css';
 
 export default function DashboardOverview() {
   const { user } = useAuth();
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0, totalFeedbacks: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,17 +55,37 @@ export default function DashboardOverview() {
           ))}
         </div>
 
+        {/* Analytics Charts Grid Skeleton */}
+        <div className="analytics-grid dashboard-charts-grid">
+          {[1, 2, 3].map((_, idx) => (
+            <div key={idx} className="analytics-chart-card glass-card skeleton-shimmer dashboard-skeleton-chart-card">
+              <div className="skeleton-title dashboard-skeleton-chart-title"></div>
+              <div className="dashboard-skeleton-chart-bars">
+                {[1, 2, 3, 4, 5].map((_, barIdx) => (
+                  <div
+                    key={barIdx}
+                    className="dashboard-skeleton-chart-bar"
+                    style={{
+                      height: `${30 + (barIdx * 15) % 60}%`
+                    }}
+                  ></div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Recent Activity Skeleton */}
-        <section className="activity-section glass-card skeleton-shimmer">
+        <section className="activity-section glass-card skeleton-shimmer dashboard-activity-section-margin">
           <div className="section-header">
-            <div className="skeleton-icon" style={{ width: '20px', height: '20px' }}></div>
+            <div className="skeleton-icon dashboard-skeleton-activity-icon-wrapper"></div>
             <div className="skeleton-title-small"></div>
           </div>
           <div className="activity-list">
             {[1, 2, 3, 4].map((_, idx) => (
-              <div key={idx} className="activity-item" style={{ gap: '16px', display: 'flex', alignItems: 'flex-start' }}>
+              <div key={idx} className="activity-item dashboard-skeleton-activity-item">
                 <div className="skeleton-activity-icon"></div>
-                <div className="activity-details" style={{ flex: 1 }}>
+                <div className="activity-details dashboard-skeleton-activity-details">
                   <div className="skeleton-text-long"></div>
                   <div className="skeleton-text-short"></div>
                 </div>
@@ -78,28 +104,32 @@ export default function DashboardOverview() {
       value: statsData.totalApps,
       icon: Smartphone,
       color: 'var(--accent-primary)',
-      glow: 'var(--accent-primary-glow)'
+      glow: 'var(--accent-primary-glow)',
+      path: '/dashboard/apps'
     },
     {
       label: t('support.pendingRequests'),
       value: statsData.newSupportRequests,
       icon: Mail,
       color: 'var(--accent-secondary)',
-      glow: 'var(--accent-secondary-glow)'
+      glow: 'var(--accent-secondary-glow)',
+      path: '/dashboard/support'
     },
     {
       label: t('dashboard.stats.activeUsers'),
       value: statsData.totalActiveUsers,
       icon: Users,
       color: 'var(--accent-success)',
-      glow: 'var(--accent-success-glow)'
+      glow: 'var(--accent-success-glow)',
+      path: '/dashboard/users'
     },
     {
       label: t('dashboard.stats.totalFeedbacks'),
       value: statsData.totalFeedbacks || 0,
       icon: MessageSquare,
       color: '#ff9f43',
-      glow: 'rgba(255, 159, 67, 0.15)'
+      glow: 'rgba(255, 159, 67, 0.15)',
+      path: '/dashboard/feedbacks'
     }
   ];
 
@@ -124,7 +154,12 @@ export default function DashboardOverview() {
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="stat-card glass-card animate-fade-in" style={{ animationDelay: `${idx * 0.1}s` }}>
+            <div 
+              key={idx} 
+              className="stat-card glass-card animate-fade-in dashboard-stat-card-clickable" 
+              style={{ animationDelay: `${idx * 0.1}s` }}
+              onClick={() => navigate(stat.path)}
+            >
               <div className="stat-card-header">
                 <span className="stat-label">{stat.label}</span>
                 <div className="stat-icon-wrapper" style={{ backgroundColor: stat.glow, color: stat.color }}>
@@ -137,8 +172,17 @@ export default function DashboardOverview() {
         })}
       </div>
 
+      {/* Analytics Charts Grid */}
+      {statsData.analytics && (
+        <div className="analytics-grid dashboard-charts-grid">
+          <TrendChart data={statsData.analytics.userTrend || []} />
+          <BarChart data={statsData.analytics.ratingDistribution || []} />
+          <DoughnutChart data={statsData.analytics.supportDistribution || []} />
+        </div>
+      )}
+
       {/* Recent Activity Section */}
-      <section className="activity-section glass-card animate-fade-in" style={{ animationDelay: '0.3s' }}>
+      <section className="activity-section glass-card animate-fade-in dashboard-activity-section-margin" style={{ animationDelay: '0.3s' }}>
         <div className="section-header">
           <Activity size={20} className="section-icon" />
           <h3>{t('dashboard.recentActivity')}</h3>

@@ -144,5 +144,9 @@
       "EMAIL_REQUIRED": "O e-mail é obrigatório",
       "NAME_REQUIRED": "O nome é obrigatório"
     }
+  },
+  "SETTINGS": {
+    "UPDATED_SUCCESS": "Configurações atualizadas com sucesso",
+    "MAINTENANCE_ACTIVE": "O sistema está atualmente em manutenção. Por favor, tente novamente mais tarde."
   }
 }

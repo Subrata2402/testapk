@@ -4,7 +4,7 @@ import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ProfileInfoCard extends StatelessWidget {
   final UserModel user;
@@ -54,23 +54,14 @@ class ProfileInfoCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                TextViewer(
                   label,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(11),
-                    color: Colors.white.withValues(alpha: 0.40),
-                    letterSpacing: 0.3,
-                  ),
+                  fontSize: context.scale(11),
+                  color: Colors.white.withValues(alpha: 0.40),
+                  letterSpacing: 0.3,
                 ),
                 SizedBox(height: context.scale(3)),
-                Text(
-                  value,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(13),
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                TextViewer(value, fontSize: context.scale(13), color: Colors.white, fontWeight: FontWeight.w500),
               ],
             ),
           ),

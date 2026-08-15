@@ -326,5 +326,12 @@
     "ANSWER_10": "Dans le tableau de bord, sélectionnez votre application, allez dans l'onglet 'Équipe' et ajoutez les adresses e-mail de vos testeurs ou développeurs. Les testeurs recevront une invitation dans leur application compagnon.",
     "QUESTION_11": "TestAPK stocke-t-il mes fichiers APK ?",
     "ANSWER_11": "Non, TestAPK ne stocke pas vos fichiers APK sur ses serveurs. Tous les fichiers sont diffusés directement et stockés dans votre propre Google Drive."
+  },
+  "MAINTENANCE": {
+    "TITLE": "Maintenance du système",
+    "DESCRIPTION": "Nous effectuons actuellement des mises à jour système planifiées pour améliorer les performances et la sécurité. Nous serons de retour en ligne sous peu.",
+    "CHECK_AGAIN": "Vérifier à nouveau",
+    "STILL_ACTIVE": "Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.",
+    "CHECK_FAILED": "Échec de la vérification de l'état du système. Veuillez réessayer."
   }
 }

@@ -15,7 +15,7 @@ import 'package:flutterapp/presentations/menu/profile/widgets/profile_delete_acc
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ProfileScreen extends StatelessWidget {
   final UserModel user;
@@ -133,14 +133,12 @@ class ProfileScreen extends StatelessWidget {
                               icon: Icon(Icons.arrow_back_rounded, color: Colors.white, size: context.scale(22)),
                               onPressed: () => Navigator.of(context).pop(),
                             ),
-                            Text(
+                            TextViewer(
                               kProfileTitle,
-                              style: GoogleFonts.inter(
-                                fontSize: context.scale(18),
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.textPrimary,
-                                letterSpacing: -0.5,
-                              ),
+                              fontSize: context.scale(18),
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textPrimary,
+                              letterSpacing: -0.5,
                             ),
                           ],
                         ),
@@ -163,22 +161,21 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(height: context.scale(20)),
 
                         // Name
-                        Text(
+                        TextViewer(
                           user.name,
-                          style: GoogleFonts.inter(
-                            fontSize: context.scale(22),
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.textPrimary,
-                            letterSpacing: -0.5,
-                          ),
+                          fontSize: context.scale(22),
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textPrimary,
+                          letterSpacing: -0.5,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: context.scale(6)),
 
                         // Email
-                        Text(
+                        TextViewer(
                           user.email,
-                          style: GoogleFonts.inter(fontSize: context.scale(14), color: AppColors.textSecondary),
+                          fontSize: context.scale(14),
+                          color: AppColors.textSecondary,
                           textAlign: TextAlign.center,
                         ),
 
@@ -192,14 +189,12 @@ class ProfileScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(context.scale(20)),
                             border: Border.all(color: AppColors.accent.withValues(alpha: 0.35), width: 0.8),
                           ),
-                          child: Text(
+                          child: TextViewer(
                             user.role[0].toUpperCase() + user.role.substring(1),
-                            style: GoogleFonts.inter(
-                              fontSize: context.scale(12),
-                              fontWeight: FontWeight.w600,
-                              color: AppColors.accentLight,
-                              letterSpacing: 0.2,
-                            ),
+                            fontSize: context.scale(12),
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.accentLight,
+                            letterSpacing: 0.2,
                           ),
                         ),
 

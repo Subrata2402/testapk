@@ -74,4 +74,8 @@ class ApiService {
   Future<Response> deleteAccount() {
     return _client.delete(ApiEndpoints.deleteMe);
   }
+
+  Future<Response> getPublicSettings() {
+    return _client.get(ApiEndpoints.publicSettings);
+  }
 }

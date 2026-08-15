@@ -5,7 +5,7 @@ import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/presentations/menu/screens/menu_screen.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class AppListAppBar extends StatelessWidget implements PreferredSizeWidget {
   final UserModel? user;
@@ -56,14 +56,12 @@ class AppListAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   SizedBox(width: context.scale(12)),
-                  Text(
+                  TextViewer(
                     kAppName,
-                    style: GoogleFonts.inter(
-                      fontSize: context.scale(18),
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
-                      letterSpacing: -0.5,
-                    ),
+                    fontSize: context.scale(18),
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                    letterSpacing: -0.5,
                   ),
                   const Spacer(),
                   // Tappable Avatar → opens ProfileScreen
@@ -79,13 +77,11 @@ class AppListAppBar extends StatelessWidget implements PreferredSizeWidget {
                           : CircleAvatar(
                               radius: context.scale(16),
                               backgroundColor: AppColors.accent.withValues(alpha: 0.25),
-                              child: Text(
+                              child: TextViewer(
                                 user?.initials ?? '?',
-                                style: GoogleFonts.inter(
-                                  fontSize: context.scale(12),
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.accentLight,
-                                ),
+                                fontSize: context.scale(12),
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.accentLight,
                               ),
                             ),
                     ),

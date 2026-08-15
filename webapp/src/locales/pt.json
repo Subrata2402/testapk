@@ -326,5 +326,12 @@
     "ANSWER_10": "No painel, selecione seu aplicativo, vá para a guia 'Equipe' e adicione os endereços de e-mail de seus testadores ou desenvolvedores. Os testadores receberão um convite em seu aplicativo complementar.",
     "QUESTION_11": "O TestAPK armazena meus arquivos APK?",
     "ANSWER_11": "Não, o TestAPK não armazena seus arquivos APK em seus servidores. Todos os arquivos são transmitidos diretamente e armazenados em seu próprio Google Drive."
+  },
+  "MAINTENANCE": {
+    "TITLE": "Manutenção do Sistema",
+    "DESCRIPTION": "Estamos realizando atualizações programadas no sistema para melhorar o desempenho e a segurança. Voltaremos a estar online em breve.",
+    "CHECK_AGAIN": "Verificar Novamente",
+    "STILL_ACTIVE": "O sistema ainda está em manutenção. Por favor, tente novamente mais tarde.",
+    "CHECK_FAILED": "Falha ao verificar o status do sistema. Por favor, tente novamente."
   }
 }

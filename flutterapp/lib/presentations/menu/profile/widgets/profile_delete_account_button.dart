@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ProfileDeleteAccountButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -38,13 +38,11 @@ class ProfileDeleteAccountButton extends StatelessWidget {
                   ),
                   SizedBox(width: context.scale(10)),
                   Expanded(
-                    child: Text(
+                    child: TextViewer(
                       kDeleteAccountLabel,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(15),
-                        fontWeight: FontWeight.w600,
-                        color: Colors.redAccent.withValues(alpha: 0.7),
-                      ),
+                      fontSize: context.scale(15),
+                      fontWeight: FontWeight.w600,
+                      color: Colors.redAccent.withValues(alpha: 0.7),
                     ),
                   ),
                   SizedBox(width: context.scale(10)),

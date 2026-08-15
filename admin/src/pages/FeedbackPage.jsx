@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { MessageSquare, RefreshCw, Search, Star, Info, X } from 'lucide-react';
+import { MessageSquare, RefreshCw, Search, Star, Info, X, ChevronUp, ChevronDown } from 'lucide-react';
 import { feedbackService } from '../services/api';
 import CustomDropdown from '../components/common/CustomDropdown';
 import CustomDatePicker from '../components/common/CustomDatePicker';
+import './FeedbackPage.css';
 
 export default function FeedbackPage() {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ export default function FeedbackPage() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [selectedFeedback, setSelectedFeedback] = useState(null);
+  const [sortField, setSortField] = useState('createdAt');
+  const [sortDirection, setSortDirection] = useState('desc');
 
   const fetchFeedbacks = async () => {
     setIsLoading(true);
@@ -86,6 +89,48 @@ export default function FeedbackPage() {
     return matchesSearch && matchesCategory && matchesRating && matchesDate;
   });
 
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  const renderSortIcon = (field) => {
+    if (sortField !== field) return <ChevronDown size={14} className="sort-icon-inactive" />;
+    return sortDirection === 'asc' 
+      ? <ChevronUp size={14} className="sort-icon-active" />
+      : <ChevronDown size={14} className="sort-icon-active" />;
+  };
+
+  const sortedFeedbacks = [...filteredFeedbacks].sort((a, b) => {
+    let aVal = a[sortField];
+    let bVal = b[sortField];
+
+    if (sortField === 'user') {
+      aVal = (a.userId?.name || a.userId?.email || '').toLowerCase();
+      bVal = (b.userId?.name || b.userId?.email || '').toLowerCase();
+    } else if (sortField === 'category') {
+      aVal = (a.category || '').toLowerCase();
+      bVal = (b.category || '').toLowerCase();
+    } else if (sortField === 'rating') {
+      aVal = a.rating || 0;
+      bVal = b.rating || 0;
+    } else if (sortField === 'title') {
+      aVal = (a.title || '').toLowerCase();
+      bVal = (b.title || '').toLowerCase();
+    } else if (sortField === 'createdAt') {
+      aVal = new Date(a.createdAt).getTime();
+      bVal = new Date(b.createdAt).getTime();
+    }
+
+    if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+    if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+    return 0;
+  });
+
   return (
     <>
       <section className="support-section glass-card animate-fade-in">
@@ -105,9 +150,9 @@ export default function FeedbackPage() {
         </div>
 
         {/* Search and Filters Bar */}
-        <div className="support-filters-bar" style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', width: '100%' }}>
-            <div className="search-input-wrapper" style={{ flex: 1, minWidth: '250px' }}>
+        <div className="support-filters-bar feedback-filters-bar">
+          <div className="feedback-filters-row">
+            <div className="search-input-wrapper feedback-search-wrapper">
               <Search size={16} className="search-icon" />
               <input
                 type="text"
@@ -118,8 +163,8 @@ export default function FeedbackPage() {
               />
             </div>
 
-            <div className="filters-group" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-              <div className="filter-dropdown-wrapper" style={{ width: '160px' }}>
+            <div className="filters-group feedback-filters-group">
+              <div className="filter-dropdown-wrapper feedback-dropdown-wrapper">
                 <CustomDropdown
                   options={categoryOptions}
                   value={categoryFilter}
@@ -128,7 +173,7 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              <div className="filter-dropdown-wrapper" style={{ width: '160px' }}>
+              <div className="filter-dropdown-wrapper feedback-dropdown-wrapper">
                 <CustomDropdown
                   options={ratingOptions}
                   value={ratingFilter}
@@ -171,7 +216,7 @@ export default function FeedbackPage() {
                     <td><div className="skeleton-text-short"></div></td>
                     <td><div className="skeleton-text-long"></div></td>
                     <td><div className="skeleton-text-short"></div></td>
-                    <td><div className="skeleton-text-short" style={{ width: '80px', height: '32px', borderRadius: '6px' }}></div></td>
+                    <td><div className="skeleton-text-short feedback-skeleton-action-btn"></div></td>
                   </tr>
                 ))}
               </tbody>
@@ -182,22 +227,42 @@ export default function FeedbackPage() {
             <table className="support-table">
               <thead>
                 <tr>
-                  <th>{t('feedback.user')}</th>
-                  <th>{t('feedback.category')}</th>
-                  <th>{t('feedback.rating')}</th>
-                  <th>{t('feedback.titleLabel')}</th>
-                  <th>{t('feedback.date')}</th>
+                  <th onClick={() => handleSort('user')} className="feedback-table-header-clickable">
+                    <div className="feedback-table-header-content">
+                      {t('feedback.user')} {renderSortIcon('user')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('category')} className="feedback-table-header-clickable">
+                    <div className="feedback-table-header-content">
+                      {t('feedback.category')} {renderSortIcon('category')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('rating')} className="feedback-table-header-clickable">
+                    <div className="feedback-table-header-content">
+                      {t('feedback.rating')} {renderSortIcon('rating')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('title')} className="feedback-table-header-clickable">
+                    <div className="feedback-table-header-content">
+                      {t('feedback.titleLabel')} {renderSortIcon('title')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('createdAt')} className="feedback-table-header-clickable">
+                    <div className="feedback-table-header-content">
+                      {t('feedback.date')} {renderSortIcon('createdAt')}
+                    </div>
+                  </th>
                   <th>{t('support.actions')}</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredFeedbacks.map((fb) => (
+                {sortedFeedbacks.map((fb) => (
                   <tr key={fb._id}>
                     <td>
                       {fb.userId ? (
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="feedback-user-cell">
                           <span className="font-semibold">{fb.userId.name}</span>
-                          <span className="text-muted" style={{ fontSize: '0.8rem' }}>{fb.userId.email}</span>
+                          <span className="text-muted feedback-user-email">{fb.userId.email}</span>
                         </div>
                       ) : (
                         <span className="text-muted">{t('feedback.anonymous')}</span>
@@ -209,7 +274,7 @@ export default function FeedbackPage() {
                       </span>
                     </td>
                     <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <div className="feedback-rating-cell">
                         <Star size={14} fill="var(--accent-warning)" color="var(--accent-warning)" />
                         <span>{fb.rating}</span>
                       </div>
@@ -275,7 +340,7 @@ export default function FeedbackPage() {
               <div className="detail-row">
                 <div className="detail-content">
                   <span className="detail-label">{t('feedback.rating')}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginTop: '4px' }}>
+                  <div className="feedback-modal-rating-container">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
@@ -301,9 +366,9 @@ export default function FeedbackPage() {
               </div>
 
               {selectedFeedback.deviceInfo && (
-                <div className="message-box" style={{ marginTop: '16px' }}>
+                <div className="message-box feedback-device-info-box">
                   <span className="detail-label">{t('feedback.deviceInfo')}</span>
-                  <pre className="message-content" style={{ fontSize: '0.85rem', fontFamily: 'monospace', whiteSpace: 'pre-wrap' }}>
+                  <pre className="message-content feedback-device-info-pre">
                     {JSON.stringify(selectedFeedback.deviceInfo, null, 2)}
                   </pre>
                 </div>

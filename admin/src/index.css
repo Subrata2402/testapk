@@ -102,9 +102,7 @@ p {
 
 /* Glassmorphism Card */
 .glass-card {
-  background: var(--bg-card);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--bg-dark);
   border: 1px solid var(--border-color);
   border-radius: 16px;
   box-shadow: var(--glass-shadow);

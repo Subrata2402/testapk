@@ -3,7 +3,7 @@ import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_button.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class AppListError extends StatelessWidget {
   final String error;
@@ -24,11 +24,7 @@ class AppListError extends StatelessWidget {
           children: [
             Icon(Icons.wifi_off_rounded, size: context.scale(48), color: Colors.white.withValues(alpha: 0.25)),
             SizedBox(height: context.scale(16)),
-            Text(
-              error,
-              style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: context.scale(14)),
-              textAlign: TextAlign.center,
-            ),
+            TextViewer(error, color: AppColors.textSecondary, fontSize: context.scale(14), textAlign: TextAlign.center),
             SizedBox(height: context.scale(20)),
             GlassButton(
               label: kRetryBtnLabel,

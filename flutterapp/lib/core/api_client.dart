@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:flutterapp/core/storage_service.dart';
 import 'package:flutterapp/core/navigation.dart';
+import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.dart';
 
 class ApiClient {
   late final Dio _dio;
@@ -34,6 +36,12 @@ class ApiClient {
           return handler.next(options);
         },
         onError: (DioException e, handler) async {
+          if (e.response?.statusCode == 503 || (e.response?.data is Map && e.response?.data['maintenance'] == true)) {
+            navigatorKey.currentState?.pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => const MaintenanceScreen()),
+              (route) => false,
+            );
+          }
           if (e.response?.statusCode == 401) {
             if (onUnauthorized != null) {
               await onUnauthorized!();
@@ -81,6 +89,9 @@ class ApiClient {
 
     if (e.response != null) {
       final statusCode = e.response!.statusCode;
+      if (statusCode == 503) {
+        return;
+      }
       if (statusCode == 401) {
         errorMessage = kErrorSessionExpired;
       } else if (statusCode == 400) {

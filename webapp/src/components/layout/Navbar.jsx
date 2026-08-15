@@ -20,7 +20,7 @@ export default function Navbar({ user, onLoginClick }) {
           <CustomDropdown
             options={languages.map((lang) => ({
               value: lang.code,
-              label: `${lang.flag} ${lang.name}`,
+              label: `${lang.flag}\u00A0\u00A0\u00A0\u00A0${lang.name}`,
             }))}
             value={language}
             onChange={changeLanguage}

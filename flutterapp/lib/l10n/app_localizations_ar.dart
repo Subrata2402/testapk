@@ -9,8 +9,7 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get loginErrorMsg =>
-      'فشل تسجيل الدخول. يرجى التأكد من أنك مختبر مسجل.';
+  String get loginErrorMsg => 'فشل تسجيل الدخول. يرجى التأكد من أنك مختبر مسجل.';
 
   @override
   String get appName => 'TestAPK';
@@ -37,15 +36,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get infoTitleTesterAccess => 'وصول المختبرين فقط';
 
   @override
-  String get infoSubtitleTesterAccess =>
-      'يمكن للمختبرين المدعوين فقط الوصول إلى إصدارات التطبيق.';
+  String get infoSubtitleTesterAccess => 'يمكن للمختبرين المدعوين فقط الوصول إلى إصدارات التطبيق.';
 
   @override
   String get infoTitleSecureStorage => 'تخزين سحابي آمن';
 
   @override
-  String get infoSubtitleSecureStorage =>
-      'يتم تخزين ملفات APK على Google Drive وتسليمها بأمان.';
+  String get infoSubtitleSecureStorage => 'يتم تخزين ملفات APK على Google Drive وتسليمها بأمان.';
 
   @override
   String get infoTitleAlwaysUpToDate => 'محدث دائماً';
@@ -195,19 +192,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get acceptBtnLabel => 'قبول';
 
   @override
-  String get errorInstallCancelled =>
-      'تم إلغاء التثبيت: يرجى منح الإذن لتثبيت التطبيق.';
+  String get errorInstallCancelled => 'تم إلغاء التثبيت: يرجى منح الإذن لتثبيت التطبيق.';
 
   @override
-  String get errorInstallConflictingVersion =>
-      'فشل التثبيت: هناك إصدار متعارض من التطبيق مثبت بالفعل.';
+  String get errorInstallConflictingVersion => 'فشل التثبيت: هناك إصدار متعارض من التطبيق مثبت بالفعل.';
 
   @override
   String get errorInstallInvalidApk => 'فشل التثبيت: ملف APK غير صالح أو تالف.';
 
   @override
-  String get errorInstallInsufficientStorage =>
-      'فشل التثبيت: مساحة تخزين غير كافية على الجهاز.';
+  String get errorInstallInsufficientStorage => 'فشل التثبيت: مساحة تخزين غير كافية على الجهاز.';
 
   @override
   String get errorInstallStartFailed => 'فشل بدء التثبيت';
@@ -237,8 +231,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get feedbackTitleRequired => 'العنوان مطلوب';
 
   @override
-  String get feedbackDescriptionHint =>
-      'قدم تفاصيل حول تجربتك أو الخطأ أو طلب الميزة...';
+  String get feedbackDescriptionHint => 'قدم تفاصيل حول تجربتك أو الخطأ أو طلب الميزة...';
 
   @override
   String get feedbackDescriptionRequired => 'الوصف مطلوب';
@@ -283,8 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get aboutVersion => 'الإصدار 1.0.0+3';
 
   @override
-  String get aboutDescription =>
-      'منصة حديثة وآمنة وذاتية الاستضافة لإدارة إصدارات APK.';
+  String get aboutDescription => 'منصة حديثة وآمنة وذاتية الاستضافة لإدارة إصدارات APK.';
 
   @override
   String get aboutPlatformInfoLabel => 'معلومات المنصة';
@@ -320,8 +312,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signOutConfirmTitle => 'تسجيل الخروج';
 
   @override
-  String get signOutConfirmMessage =>
-      'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟';
+  String get signOutConfirmMessage => 'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟';
 
   @override
   String get deleteLabel => 'حذف';
@@ -330,8 +321,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deleteAccountConfirmTitle => 'حذف الحساب؟';
 
   @override
-  String get deleteAccountConfirmMessage =>
-      'هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء دائم ولا يمكن التراجع عنه.';
+  String get deleteAccountConfirmMessage => 'هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء دائم ولا يمكن التراجع عنه.';
 
   @override
   String get deleteAccountSuccessMsg => 'تم حذف الحساب بنجاح';
@@ -343,20 +333,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorUnexpected => 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.';
 
   @override
-  String get errorTimeout =>
-      'انتهت مهلة الاتصال. يرجى التحقق من اتصالك بالإنترنت.';
+  String get errorTimeout => 'انتهت مهلة الاتصال. يرجى التحقق من اتصالك بالإنترنت.';
 
   @override
-  String get errorSessionExpired =>
-      'انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.';
+  String get errorSessionExpired => 'انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.';
 
   @override
-  String get errorServerError =>
-      'خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً.';
+  String get errorServerError => 'خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقاً.';
 
   @override
-  String get errorNoInternet =>
-      'لا يوجد اتصال بالإنترنت. يرجى التحقق من إعدادات الشبكة.';
+  String get errorNoInternet => 'لا يوجد اتصال بالإنترنت. يرجى التحقق من إعدادات الشبكة.';
 
   @override
   String get errorRequestCancelled => 'تم إلغاء الطلب.';
@@ -368,8 +354,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorBadRequest => 'طلب غير صالح. يرجى التحقق من المدخلات.';
 
   @override
-  String get errorForbidden =>
-      'تم رفض الوصول. ليس لديك إذن للقيام بهذا الإجراء.';
+  String get errorForbidden => 'تم رفض الوصول. ليس لديك إذن للقيام بهذا الإجراء.';
 
   @override
   String get selectLanguage => 'اختر اللغة';
@@ -438,22 +423,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get aboutWebDashboardTitle => 'لوحة التحكم على الويب';
 
   @override
-  String get aboutWebDashboardSubtitle =>
-      'تخزين Google Drive، إدارة الفريق، سجل الإصدارات';
+  String get aboutWebDashboardSubtitle => 'تخزين Google Drive، إدارة الفريق، سجل الإصدارات';
 
   @override
   String get aboutFlutterClientTitle => 'عميل Flutter';
 
   @override
-  String get aboutFlutterClientSubtitle =>
-      'واجهة مستخدم زجاجية، تثبيت بنقرة واحدة، كشف الإصدار';
+  String get aboutFlutterClientSubtitle => 'واجهة مستخدم زجاجية، تثبيت بنقرة واحدة، كشف الإصدار';
 
   @override
   String get aboutCliToolTitle => 'أداة CLI';
 
   @override
-  String get aboutCliToolSubtitle =>
-      'خطوات مصادقة الجهاز، تقدم في الوقت الفعلي، حالة رفع الملفات على Drive';
+  String get aboutCliToolSubtitle => 'خطوات مصادقة الجهاز، تقدم في الوقت الفعلي، حالة رفع الملفات على Drive';
 
   @override
   String get aboutEmailSupport => 'الدعم عبر البريد الإلكتروني';
@@ -522,8 +504,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacyPolicyTitle2 => '2. المعلومات التي نجمعها';
 
   @override
-  String get privacyPolicyPara2_1 =>
-      'نجمع المعلومات التي تقدمها لنا مباشرة عند استخدام خدماتنا:';
+  String get privacyPolicyPara2_1 => 'نجمع المعلومات التي تقدمها لنا مباشرة عند استخدام خدماتنا:';
 
   @override
   String get privacyPolicyPara2_2 =>
@@ -541,8 +522,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacyPolicyTitle3 => '3. كيف نستخدم معلوماتك';
 
   @override
-  String get privacyPolicyPara3_1 =>
-      'نستخدم المعلومات التي نجمعها للأغراض التالية:';
+  String get privacyPolicyPara3_1 => 'نستخدم المعلومات التي نجمعها للأغراض التالية:';
 
   @override
   String get privacyPolicyPara3_2 => '• للتحقق من هويتك وإدارة حسابك.';
@@ -556,8 +536,7 @@ class AppLocalizationsAr extends AppLocalizations {
       '• لعرض سجل إصدارات التطبيق وتفاصيله على لوحة التحكم وعميل الهاتف المحمول الخاص بك.';
 
   @override
-  String get privacyPolicyPara3_5 =>
-      '• لدعم عمليات المصادقة والرفع الخاصة بأداة CLI.';
+  String get privacyPolicyPara3_5 => '• لدعم عمليات المصادقة والرفع الخاصة بأداة CLI.';
 
   @override
   String get privacyPolicyTitle4 => '4. مشاركة البيانات والكشف عنها';
@@ -580,8 +559,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacyPolicyPara6_1 => 'لديك السيطرة الكاملة على بياناتك:';
 
   @override
-  String get privacyPolicyPara6_2 =>
-      '• يمكنك فصل تكامل Google Drive في أي وقت من خلال إعدادات لوحة التحكم.';
+  String get privacyPolicyPara6_2 => '• يمكنك فصل تكامل Google Drive في أي وقت من خلال إعدادات لوحة التحكم.';
 
   @override
   String get privacyPolicyPara6_3 =>
@@ -636,19 +614,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get termsOfServicePara5_1 => 'أنت توافق على عدم استخدام الخدمة لـ:';
 
   @override
-  String get termsOfServicePara5_2 =>
-      '• رفع أو توزيع برامج ضارة أو فيروسات أو أي رمز مصمم لإتلاف الأجهزة أو تعطيلها.';
+  String get termsOfServicePara5_2 => '• رفع أو توزيع برامج ضارة أو فيروسات أو أي رمز مصمم لإتلاف الأجهزة أو تعطيلها.';
 
   @override
   String get termsOfServicePara5_3 => '• انتهاك حقوق الملكية الفكرية للآخرين.';
 
   @override
-  String get termsOfServicePara5_4 =>
-      '• انتهاك أي قوانين محلية أو حكومية أو وطنية أو دولية معمول بها.';
+  String get termsOfServicePara5_4 => '• انتهاك أي قوانين محلية أو حكومية أو وطنية أو دولية معمول بها.';
 
   @override
-  String get termsOfServicePara5_5 =>
-      '• محاولة الحصول على وصول غير مصرح به إلى الخدمة أو الأنظمة المرتبطة بها.';
+  String get termsOfServicePara5_5 => '• محاولة الحصول على وصول غير مصرح به إلى الخدمة أو الأنظمة المرتبطة بها.';
 
   @override
   String get termsOfServiceTitle6 => '6. تحديد المسؤولية';
@@ -715,4 +690,50 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get faqAnswer6 =>
       'يمكنك رفع ملفات APK عبر لوحة التحكم على الويب على https://testapk.clipboux.online/ أو باستخدام أداة TestAPK CLI.';
+
+  @override
+  String get maintenanceTitle => 'صيانة النظام';
+
+  @override
+  String get maintenanceDescription =>
+      'نقوم حاليًا بإجراء تحديثات مجدولة للنظام لتحسين الأداء والأمان. سنعود للعمل قريبًا.';
+
+  @override
+  String get maintenanceCheckAgain => 'التحقق مرة أخرى';
+
+  @override
+  String get maintenanceStillActive => 'النظام لا يزال قيد الصيانة. يرجى المحاولة مرة أخرى لاحقًا.';
+
+  @override
+  String get maintenanceCheckFailed => 'فشل التحقق من حالة النظام. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get maintenanceChecking => 'جاري التحقق...';
+
+  @override
+  String get updateRequiredTitle => 'التحديث مطلوب';
+
+  @override
+  String get updateRequiredDescription =>
+      'هذا الإصدار من التطبيق لم يعد مدعومًا. يرجى التحديث إلى أحدث إصدار للمتابعة.';
+
+  @override
+  String get updateNowBtnLabel => 'التحديث الآن';
+
+  @override
+  String get downloadLinkNotConfigured => 'رابط التنزيل غير مهيأ.';
+
+  @override
+  String downloadLinkLaunchError(String link) {
+    return 'تعذر تشغيل رابط التنزيل: $link';
+  }
+
+  @override
+  String get updateAvailableTitle => 'التحديث متاح';
+
+  @override
+  String get updateAvailableDescription => 'يتوفر إصدار جديد من التطبيق. هل ترغب في التحديث الآن؟';
+
+  @override
+  String get laterBtnLabel => 'لاحقاً';
 }

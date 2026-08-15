@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/constants.dart';
 import 'package:flutterapp/utils/extensions.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 
 class ActionConfirmationDialog extends StatelessWidget {
   final String title;
@@ -45,23 +45,14 @@ class ActionConfirmationDialog extends StatelessWidget {
                 ),
                 SizedBox(height: context.scale(16)),
                 // Title
-                Text(
-                  title,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(18),
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
-                ),
+                TextViewer(title, fontSize: context.scale(18), fontWeight: FontWeight.w700, color: Colors.white),
                 SizedBox(height: context.scale(8)),
                 // Content
-                Text(
+                TextViewer(
                   message,
-                  style: GoogleFonts.inter(
-                    fontSize: context.scale(13),
-                    color: Colors.white.withValues(alpha: 0.60),
-                    height: 1.4,
-                  ),
+                  fontSize: context.scale(13),
+                  color: Colors.white.withValues(alpha: 0.60),
+                  height: 1.4,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: context.scale(24)),
@@ -78,13 +69,11 @@ class ActionConfirmationDialog extends StatelessWidget {
                             side: BorderSide(color: Colors.white.withValues(alpha: 0.12)),
                           ),
                         ),
-                        child: Text(
+                        child: TextViewer(
                           kCancel,
-                          style: GoogleFonts.inter(
-                            color: Colors.white70,
-                            fontWeight: FontWeight.w600,
-                            fontSize: context.scale(14),
-                          ),
+                          color: Colors.white70,
+                          fontWeight: FontWeight.w600,
+                          fontSize: context.scale(14),
                         ),
                       ),
                     ),
@@ -99,9 +88,11 @@ class ActionConfirmationDialog extends StatelessWidget {
                           padding: EdgeInsets.symmetric(vertical: context.scale(12)),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(context.scale(10))),
                         ),
-                        child: Text(
+                        child: TextViewer(
                           confirmLabel,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: context.scale(14)),
+                          fontWeight: FontWeight.w600,
+                          fontSize: context.scale(14),
+                          color: Colors.white,
                         ),
                       ),
                     ),

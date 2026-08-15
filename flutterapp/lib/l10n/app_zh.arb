@@ -225,5 +225,26 @@
   "faqQuestion5": "我的数据安全吗？",
   "faqAnswer5": "是的，TestAPK 使用 Google OAuth 进行安全身份验证，并且不会访问您 Google 云端硬盘中除该应用创建的文件之外的任何文件。",
   "faqQuestion6": "我在哪里上传 APK？",
-  "faqAnswer6": "您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。"
+  "faqAnswer6": "您可以通过 Web 控制面板（https://testapk.clipboux.online/）或使用 TestAPK CLI 工具上传 APK。",
+  "maintenanceTitle": "系统维护",
+  "maintenanceDescription": "我们目前正在进行计划中的系统更新，以提高性能和安全性。我们将很快恢复在线。",
+  "maintenanceCheckAgain": "再次检查",
+  "maintenanceStillActive": "系统仍在维护中。请稍后再试。",
+  "maintenanceCheckFailed": "无法检查系统状态。请再试一次。",
+  "maintenanceChecking": "检查中...",
+  "updateRequiredTitle": "需要更新",
+  "updateRequiredDescription": "此版本的应用已不再受支持。请更新到最新版本以继续使用。",
+  "updateNowBtnLabel": "立即更新",
+  "downloadLinkNotConfigured": "未配置下载链接。",
+  "downloadLinkLaunchError": "无法启动下载链接：{link}",
+  "@downloadLinkLaunchError": {
+    "placeholders": {
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "updateAvailableTitle": "有可用更新",
+  "updateAvailableDescription": "有新版本的应用可用。您现在要更新吗？",
+  "laterBtnLabel": "稍后"
 }

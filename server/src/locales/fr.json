@@ -144,5 +144,9 @@
       "EMAIL_REQUIRED": "L'adresse e-mail est requise",
       "NAME_REQUIRED": "Le nom est requis"
     }
+  },
+  "SETTINGS": {
+    "UPDATED_SUCCESS": "Paramètres mis à jour avec succès",
+    "MAINTENANCE_ACTIVE": "Le système est actuellement en maintenance. Veuillez réessayer plus tard."
   }
 }

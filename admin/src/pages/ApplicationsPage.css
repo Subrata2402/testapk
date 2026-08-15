@@ -1,0 +1,100 @@
+.sort-icon-inactive {
+  opacity: 0.3;
+  margin-left: 4px;
+}
+
+.sort-icon-active {
+  margin-left: 4px;
+  color: var(--accent-primary);
+}
+
+.apps-filters-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.apps-filters-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.apps-search-wrapper {
+  flex: 1;
+  min-width: 250px;
+}
+
+.apps-date-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.apps-date-label-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apps-date-label {
+  font-size: 0.9rem;
+}
+
+.apps-skeleton-badge {
+  width: 40px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.apps-table-header-clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.apps-table-header-content {
+  display: flex;
+  align-items: center;
+}
+
+.apps-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apps-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.apps-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.apps-owner-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.apps-owner-email {
+  font-size: 0.8rem;
+}
+
+.apps-releases-badge {
+  background: var(--accent-primary-glow);
+  color: var(--accent-primary);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}

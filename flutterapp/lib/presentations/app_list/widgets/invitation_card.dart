@@ -6,6 +6,7 @@ import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/glass_avatar.dart';
 import 'package:flutterapp/widgets/glass_button.dart';
 import 'package:flutterapp/widgets/glass_panel.dart';
+import 'package:flutterapp/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InvitationCard extends StatelessWidget {
@@ -47,15 +48,13 @@ class InvitationCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    TextViewer(
                       app.name,
-                      style: GoogleFonts.inter(
-                        fontSize: context.scale(14),
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
-                      ),
+                      fontSize: context.scale(14),
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textPrimary,
                     ),
-                    Text(
+                    TextViewer(
                       app.packageName,
                       style: GoogleFonts.robotoMono(fontSize: context.scale(10), color: AppColors.textTertiary),
                     ),
