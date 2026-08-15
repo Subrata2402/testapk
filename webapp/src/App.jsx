@@ -22,7 +22,6 @@ export default function App() {
   const location = useLocation();
   const [user, setUser] = useState(null); // { name, email, avatar }
   const [apps, setApps] = useState(initialApps);
-  const [selectedAppId, setSelectedAppId] = useState(initialApps[0]?.id || null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
@@ -39,11 +38,6 @@ export default function App() {
       const data = await appService.getApps();
       if (data.status === 'success') {
         setApps(data.data.apps);
-        if (data.data.apps.length > 0) {
-          setSelectedAppId(data.data.apps[0]._id || data.data.apps[0].id);
-        } else {
-          setSelectedAppId(null);
-        }
       }
     } catch (err) {
       console.error('Failed to fetch apps:', err);
@@ -199,7 +193,6 @@ export default function App() {
     localStorage.removeItem('token');
     setUser(null);
     setApps(initialApps);
-    setSelectedAppId(initialApps[0]?.id || null);
     setIsLoggingOut(false);
     navigate('/');
   };
@@ -237,7 +230,7 @@ export default function App() {
         if (data.status === 'success') {
           const createdApp = data.data.app;
           setApps([...apps, createdApp]);
-          setSelectedAppId(createdApp._id);
+          navigate(`/dashboard/apps/${createdApp._id}`);
           return true;
         } else {
           showAlert(data.message || t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
@@ -286,8 +279,6 @@ export default function App() {
     );
   }
 
-  const selectedApp = apps.find(app => (app._id === selectedAppId || app.id === selectedAppId));
-
   return (
     <div className="app-layout">
       <Navbar user={user} onLoginClick={() => setIsLoginModalOpen(true)} />
@@ -297,12 +288,9 @@ export default function App() {
         <AppRoutes
           user={user}
           apps={apps}
-          selectedAppId={selectedAppId}
-          setSelectedAppId={setSelectedAppId}
           handleCreateApp={handleCreateApp}
           handleLogout={handleLogout}
           setIsLoginModalOpen={setIsLoginModalOpen}
-          setIsCreateModalOpen={setIsCreateModalOpen}
           onOpenDriveModal={() => setIsDriveModalOpen(true)}
           showAlert={showAlert}
           showConfirm={showConfirm}
@@ -320,8 +308,8 @@ export default function App() {
 
       {/* Create App Modal */}
       <CreateAppModal
-        isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
+        isOpen={location.pathname === '/dashboard/create-app'}
+        onClose={() => navigate('/dashboard')}
         onCreateApp={handleCreateApp}
         user={user}
         showAlert={showAlert}

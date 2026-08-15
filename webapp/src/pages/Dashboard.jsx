@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import AppDetails from '../components/dashboard/AppDetails';
 import AboutPage from './AboutPage';
 import './Dashboard.css';
 import { useTranslation } from '../context/LanguageContext';
 
-export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCreateApp, onLogout, onOpenCreateModal, onOpenDriveModal, showAlert, showConfirm }) {
+export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDriveModal, showAlert, showConfirm }) {
   const { t } = useTranslation();
-  const selectedApp = apps.find(app => (app._id === selectedAppId || app.id === selectedAppId));
+  const { appId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (!appId && location.pathname !== '/dashboard/create-app' && apps.length > 0) {
+      navigate(`/dashboard/apps/${apps[0]._id || apps[0].id}`, { replace: true });
+    }
+  }, [appId, apps, navigate, location.pathname]);
+
+  const selectedApp = apps.find(app => (app._id === appId || app.id === appId));
 
   return (
     <div className="dashboard-container animate-fade-in">
@@ -18,7 +29,7 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
             <Icons.Cpu size={24} className="logo-icon" />
             <span className="logo-text">APK Manager</span>
           </div>
-          <button className="btn btn-primary flex-center gap-2" onClick={onOpenCreateModal}>
+          <button className="btn btn-primary flex-center gap-2" onClick={() => navigate('/dashboard/create-app')}>
             <Icons.Plus size={16} />
             <span>{t('DASHBOARD.CREATE_APP')}</span>
           </button>
@@ -29,12 +40,12 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
             {/* <span className="nav-section-title">Applications</span> */}
             <div className="apps-list mt-3">
               {apps.map((app) => {
-                const isSelected = app._id === selectedAppId || app.id === selectedAppId;
+                const isSelected = app._id === appId || app.id === appId;
                 return (
                   <button
                     key={app._id || app.id}
                     className={`app-nav-item ${isSelected ? 'active' : ''}`}
-                    onClick={() => onSelectApp(app._id || app.id)}
+                    onClick={() => navigate(`/dashboard/apps/${app._id || app.id}`)}
                   >
                     <div className="app-nav-icon-wrapper">
                       {app.icon && (app.icon.startsWith('data:') || app.icon.startsWith('http')) ? (
@@ -106,7 +117,7 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
 
       {/* Main Content Area */}
       <main className="dashboard-main">
-        {selectedAppId === 'about' ? (
+        {appId === 'about' ? (
           <AboutPage showAlert={showAlert} />
         ) : selectedApp ? (
           <AppDetails
@@ -130,7 +141,7 @@ export default function Dashboard({ user, apps, selectedAppId, onSelectApp, onCr
                     <button
                       key={app._id || app.id}
                       className="quick-app-card glass-card"
-                      onClick={() => onSelectApp(app._id || app.id)}
+                      onClick={() => navigate(`/dashboard/apps/${app._id || app.id}`)}
                     >
                       {app.icon && (app.icon.startsWith('data:') || app.icon.startsWith('http')) ? (
                         <img src={app.icon} alt={app.name} className="quick-app-icon-img" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', marginBottom: '8px' }} />

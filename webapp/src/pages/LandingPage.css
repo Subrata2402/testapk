@@ -499,3 +499,146 @@
     gap: 12px;
   }
 }
+
+/* Extracted from inline styles */
+.hero-app-icon-wrapper {
+  overflow: hidden;
+  padding: 0;
+}
+
+.hero-app-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-link-btn {
+  text-decoration: none;
+}
+
+.landing-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.landing-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.platform-link-btn {
+  text-decoration: none;
+  width: fit-content;
+}
+
+.oauth-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+
+.oauth-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.oauth-section-desc {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-size: 0.975rem;
+  margin-bottom: 20px;
+}
+
+.oauth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.oauth-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.oauth-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.oauth-card-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.purpose-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+
+.purpose-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.purpose-section-desc {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-size: 0.975rem;
+  margin-bottom: 16px;
+}
+
+.purpose-section-desc-last {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-size: 0.975rem;
+  margin: 0;
+}
+
+.specs-about-desc {
+  line-height: 1.6;
+}
+
+.specs-download-btn {
+  text-decoration: none;
+  width: fit-content;
+}
+
+.release-tab-footer {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.release-download-btn {
+  text-decoration: none;
+}
+
+.security-widget-icon {
+  margin-top: 2px;
+}
