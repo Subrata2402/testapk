@@ -75,8 +75,8 @@ The application configuration is centralized in `lib/core/constants.dart`:
 
 | Login Page | Dashboard | Release List |
 | :---: | :---: | :---: |
-| ![Login Page](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) | ![Release List](./screenshots/release_list.png) |
+| ![Login Page](./screenshots/login.jpeg) | ![Dashboard](./screenshots/dashboard.jpeg) | ![Release List](./screenshots/release_list.jpeg) |
 
 | Release Details | Menu | Languages |
 | :---: | :---: | :---: |
-| ![Release Details](./screenshots/release_details.png) | ![Menu](./screenshots/menu.png) | ![Languages](./screenshots/languages.png) |
+| ![Release Details](./screenshots/release_details.jpeg) | ![Menu](./screenshots/menu.jpeg) | ![Languages](./screenshots/languages.jpeg) |
