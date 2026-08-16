@@ -53,7 +53,8 @@
   "common": {
     "loading": "加载中...",
     "save": "保存设置",
-    "saving": "保存中..."
+    "saving": "保存中...",
+    "cancel": "取消"
   },
   "feedback": {
     "title": "用户反馈",
@@ -102,7 +103,10 @@
     "allLogs": "所有日志",
     "errorLogs": "错误日志",
     "searchLogs": "过滤日志...",
-    "noLogs": "未找到匹配的日志条目"
+    "noLogs": "未找到匹配的日志条目",
+    "clearLogsConfirmTitle": "清除日志",
+    "clearLogsConfirmMessage": "您确定要清除所有系统日志吗？此操作无法撤销。",
+    "clearingLogs": "清除中..."
   },
   "settings": {
     "title": "全局设置",

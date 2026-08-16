@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Activity, Cpu, HardDrive, Clock, Database, Terminal, RefreshCw, Search, AlertTriangle } from 'lucide-react';
+import { Activity, RefreshCw, Trash2 } from 'lucide-react';
 import { adminService } from '../services/api';
+import ConfirmModal from '../components/common/ConfirmModal';
+import SystemMetrics from '../components/system/SystemMetrics';
+import LogsViewer from '../components/system/LogsViewer';
 import './SystemHealthPage.css';
 
 export default function SystemHealthPage() {
   const { t } = useTranslation();
   const [healthData, setHealthData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [logType, setLogType] = useState('all'); // 'all' or 'error'
-  const [searchQuery, setSearchQuery] = useState('');
   const [autoRefresh, setAutoRefresh] = useState(false);
-  const terminalEndRef = useRef(null);
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
+  const [isClearing, setIsClearing] = useState(false);
 
   const fetchHealthData = async (showLoading = false) => {
     if (showLoading) setIsLoading(true);
@@ -24,6 +26,19 @@ export default function SystemHealthPage() {
       console.error('Failed to fetch system health:', err);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleClearLogs = async () => {
+    setIsClearing(true);
+    try {
+      await adminService.clearLogs();
+      await fetchHealthData(false);
+      setShowClearConfirm(false);
+    } catch (err) {
+      console.error('Failed to clear logs:', err);
+    } finally {
+      setIsClearing(false);
     }
   };
 
@@ -44,67 +59,6 @@ export default function SystemHealthPage() {
     };
   }, [autoRefresh]);
 
-  // Scroll to bottom of terminal when logs change
-  useEffect(() => {
-    if (terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [healthData, logType]);
-
-  const formatBytes = (bytes) => {
-    if (!bytes) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-  };
-
-  const formatUptime = (seconds) => {
-    if (!seconds) return '0s';
-    const d = Math.floor(seconds / (3600 * 24));
-    const h = Math.floor((seconds % (3600 * 24)) / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = Math.floor(seconds % 60);
-
-    const parts = [];
-    if (d > 0) parts.push(`${d}d`);
-    if (h > 0) parts.push(`${h}h`);
-    if (m > 0) parts.push(`${m}m`);
-    if (s > 0) parts.push(`${s}s`);
-    return parts.join(' ') || '0s';
-  };
-
-  const getLogLines = () => {
-    if (!healthData?.logs) return [];
-    const rawLogs = logType === 'error' ? healthData.logs.error : healthData.logs.all;
-    
-    // Filter by search query
-    if (!searchQuery) return rawLogs;
-    return rawLogs.filter(line => line.toLowerCase().includes(searchQuery.toLowerCase()));
-  };
-
-  const renderLogLine = (line, idx) => {
-    // Strip ANSI color codes if any
-    const cleanLine = line.replace(/\u001b\[\d+m/g, '');
-    
-    let color = '#ffffff';
-    if (cleanLine.includes('[error]') || cleanLine.includes('[ERROR]')) {
-      color = '#ff4d4f';
-    } else if (cleanLine.includes('[warn]') || cleanLine.includes('[WARN]')) {
-      color = '#faad14';
-    } else if (cleanLine.includes('[info]') || cleanLine.includes('[INFO]')) {
-      color = '#52c41a';
-    } else if (cleanLine.includes('[debug]') || cleanLine.includes('[DEBUG]')) {
-      color = '#1890ff';
-    }
-
-    return (
-      <div key={idx} style={{ color }} className="font-monospace text-sm mb-1">
-        {cleanLine}
-      </div>
-    );
-  };
-
   if (isLoading && !healthData) {
     return (
       <div className="support-section glass-card skeleton-shimmer">
@@ -117,9 +71,6 @@ export default function SystemHealthPage() {
       </div>
     );
   }
-
-  const metrics = healthData?.metrics;
-  const dbStatus = healthData?.database?.status || 'Disconnected';
 
   return (
     <div className="support-section glass-card animate-fade-in health-container">
@@ -150,123 +101,32 @@ export default function SystemHealthPage() {
       </div>
 
       {/* Metrics Grid */}
-      {metrics && (
-        <div className="stats-grid health-metrics-grid">
-          {/* CPU Card */}
-          <div className="stat-card glass-card">
-            <div className="stat-card-header">
-              <span className="stat-label">{t('system.cpuUsage') || 'CPU Usage'}</span>
-              <div className="stat-icon-wrapper" style={{ backgroundColor: 'var(--accent-primary-glow)', color: 'var(--accent-primary)' }}>
-                <Cpu size={20} />
-              </div>
-            </div>
-            <span className="stat-value">{metrics.cpu.usage}%</span>
-            <div className="progress-bar-container health-progress-container">
-              <div className="health-progress-bar health-progress-primary" style={{ width: `${metrics.cpu.usage}%` }}></div>
-            </div>
-            <span className="text-muted health-card-desc">
-              {metrics.cpu.model} ({metrics.cpu.cores} Cores)
-            </span>
-          </div>
-
-          {/* Memory Card */}
-          <div className="stat-card glass-card">
-            <div className="stat-card-header">
-              <span className="stat-label">{t('system.memoryUsage') || 'Memory Usage'}</span>
-              <div className="stat-icon-wrapper" style={{ backgroundColor: 'var(--accent-secondary-glow)', color: 'var(--accent-secondary)' }}>
-                <HardDrive size={20} />
-              </div>
-            </div>
-            <span className="stat-value">{metrics.memory.usagePercentage}%</span>
-            <div className="progress-bar-container health-progress-container">
-              <div className="health-progress-bar health-progress-secondary" style={{ width: `${metrics.memory.usagePercentage}%` }}></div>
-            </div>
-            <span className="text-muted health-card-desc">
-              {formatBytes(metrics.memory.used)} / {formatBytes(metrics.memory.total)}
-            </span>
-          </div>
-
-          {/* Uptime Card */}
-          <div className="stat-card glass-card">
-            <div className="stat-card-header">
-              <span className="stat-label">{t('system.uptime') || 'Uptime'}</span>
-              <div className="stat-icon-wrapper" style={{ backgroundColor: 'var(--accent-success-glow)', color: 'var(--accent-success)' }}>
-                <Clock size={20} />
-              </div>
-            </div>
-            <span className="stat-value health-value-small">{formatUptime(metrics.os.processUptime)}</span>
-            <span className="text-muted health-card-desc-large">
-              OS Uptime: {formatUptime(metrics.os.uptime)}
-            </span>
-          </div>
-
-          {/* Database Card */}
-          <div className="stat-card glass-card">
-            <div className="stat-card-header">
-              <span className="stat-label">{t('system.database') || 'Database'}</span>
-              <div className="stat-icon-wrapper" style={{ backgroundColor: dbStatus === 'Connected' ? 'var(--accent-success-glow)' : 'rgba(239, 68, 68, 0.1)', color: dbStatus === 'Connected' ? 'var(--accent-success)' : '#ef4444' }}>
-                <Database size={20} />
-              </div>
-            </div>
-            <span className={dbStatus === 'Connected' ? 'health-db-connected' : 'health-db-disconnected'}>
-              {dbStatus === 'Connected' ? (t('system.connected') || 'Connected') : (t('system.disconnected') || 'Disconnected')}
-            </span>
-            <span className="text-muted health-card-desc-large">
-              Platform: {metrics.os.platform} ({metrics.os.release})
-            </span>
-          </div>
-        </div>
-      )}
+      <SystemMetrics
+        metrics={healthData?.metrics}
+        database={healthData?.database}
+        t={t}
+      />
 
       {/* Logs Viewer Section */}
-      <div className="glass-card health-logs-card">
-        <div className="health-logs-header">
-          <div className="health-logs-title-group">
-            <Terminal size={18} className="text-muted" />
-            <h4>{t('system.logsViewer') || 'Logs Viewer'}</h4>
-            <div className="health-logs-tabs">
-              <button
-                onClick={() => setLogType('all')}
-                className={`health-logs-tab-btn ${logType === 'all' ? 'health-logs-tab-btn-all' : 'health-logs-tab-btn-inactive'}`}
-              >
-                {t('system.allLogs') || 'All Logs'}
-              </button>
-              <button
-                onClick={() => setLogType('error')}
-                className={`health-logs-tab-btn ${logType === 'error' ? 'health-logs-tab-btn-error' : 'health-logs-tab-btn-inactive'}`}
-              >
-                {t('system.errorLogs') || 'Error Logs'}
-              </button>
-            </div>
-          </div>
+      <LogsViewer
+        logs={healthData?.logs}
+        onClearLogs={() => setShowClearConfirm(true)}
+        t={t}
+      />
 
-          <div className="search-input-wrapper health-logs-search-wrapper">
-            <Search size={16} className="search-icon" />
-            <input
-              type="text"
-              placeholder={t('system.searchLogs') || 'Filter logs...'}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="filter-input search-input"
-            />
-          </div>
-        </div>
-
-        {/* Terminal Box */}
-        <div className="health-terminal-box">
-          {getLogLines().length > 0 ? (
-            <>
-              {getLogLines().map((line, idx) => renderLogLine(line, idx))}
-              <div ref={terminalEndRef} />
-            </>
-          ) : (
-            <div className="health-terminal-empty">
-              <AlertTriangle size={32} className="health-terminal-empty-icon" />
-              <span>{t('system.noLogs') || 'No matching log entries found'}</span>
-            </div>
-          )}
-        </div>
-      </div>
+      <ConfirmModal
+        config={showClearConfirm ? {
+          title: t('system.clearLogsConfirmTitle') || 'Clear Logs',
+          message: t('system.clearLogsConfirmMessage') || 'Are you sure you want to clear all system logs? This action cannot be undone.',
+          onConfirm: handleClearLogs,
+          isLoading: isClearing,
+          confirmText: t('system.clearLogsConfirmTitle') || 'Clear Logs',
+          confirmLoadingText: t('system.clearingLogs') || 'Clearing...',
+          cancelText: t('common.cancel') || 'Cancel',
+          icon: Trash2,
+        } : null}
+        onClose={() => !isClearing && setShowClearConfirm(false)}
+      />
     </div>
   );
 }

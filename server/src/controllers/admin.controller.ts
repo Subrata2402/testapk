@@ -181,3 +181,27 @@ export const getSystemHealth = async (req: Request, res: Response, next: NextFun
   }
 };
 
+import fs from 'fs';
+
+export const clearLogs = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const errorLogPath = 'logs/error.log';
+    const allLogPath = 'logs/all.log';
+
+    if (fs.existsSync(errorLogPath)) {
+      fs.writeFileSync(errorLogPath, '');
+    }
+    if (fs.existsSync(allLogPath)) {
+      fs.writeFileSync(allLogPath, '');
+    }
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      message: STRINGS.SETTINGS.LOGS_CLEARED_SUCCESS,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+

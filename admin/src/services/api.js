@@ -67,6 +67,7 @@ export const adminService = {
   getSystemHealth: () => apiClient.get(ENDPOINTS.ADMIN.HEALTH),
   getSettings: () => apiClient.get(ENDPOINTS.SETTINGS.BASE),
   updateSettings: (settings) => apiClient.put(ENDPOINTS.SETTINGS.BASE, settings),
+  clearLogs: () => apiClient.delete(ENDPOINTS.ADMIN.CLEAR_LOGS),
 };
 
 export const feedbackService = {

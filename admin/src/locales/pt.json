@@ -53,7 +53,8 @@
   "common": {
     "loading": "Carregando...",
     "save": "Salvar Configurações",
-    "saving": "Salvando..."
+    "saving": "Salvando...",
+    "cancel": "Cancelar"
   },
   "feedback": {
     "title": "Feedbacks dos Usuários",
@@ -102,7 +103,10 @@
     "allLogs": "Todos os Logs",
     "errorLogs": "Logs de Erro",
     "searchLogs": "Filtrar logs...",
-    "noLogs": "Nenhum registro de log correspondente encontrado"
+    "noLogs": "Nenhum registro de log correspondente encontrado",
+    "clearLogsConfirmTitle": "Limpar Logs",
+    "clearLogsConfirmMessage": "Tem certeza de que deseja limpar todos os logs do sistema? Esta ação não pode ser desfeita.",
+    "clearingLogs": "Limpando..."
   },
   "settings": {
     "title": "Configurações Globais",

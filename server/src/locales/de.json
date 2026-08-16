@@ -147,6 +147,7 @@
   },
   "SETTINGS": {
     "UPDATED_SUCCESS": "Einstellungen erfolgreich aktualisiert",
-    "MAINTENANCE_ACTIVE": "Das System wird derzeit gewartet. Bitte versuchen Sie es später noch einmal."
+    "MAINTENANCE_ACTIVE": "Das System wird derzeit gewartet. Bitte versuchen Sie es später noch einmal.",
+    "LOGS_CLEARED_SUCCESS": "Protokolle erfolgreich gelöscht"
   }
 }

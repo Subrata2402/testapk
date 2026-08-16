@@ -53,7 +53,8 @@
   "common": {
     "loading": "Chargement...",
     "save": "Enregistrer les paramètres",
-    "saving": "Enregistrement..."
+    "saving": "Enregistrement...",
+    "cancel": "Annuler"
   },
   "feedback": {
     "title": "Retours d'utilisateurs",
@@ -102,7 +103,10 @@
     "allLogs": "Tous les Logs",
     "errorLogs": "Logs d'Erreurs",
     "searchLogs": "Filtrer les logs...",
-    "noLogs": "Aucune entrée de log correspondante trouvée"
+    "noLogs": "Aucune entrée de log correspondante trouvée",
+    "clearLogsConfirmTitle": "Effacer les journaux",
+    "clearLogsConfirmMessage": "Êtes-vous sûr de vouloir effacer tous les journaux système ? Cette action est irréversible.",
+    "clearingLogs": "Effacement..."
   },
   "settings": {
     "title": "Paramètres Globaux",

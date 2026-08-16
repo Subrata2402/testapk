@@ -147,6 +147,7 @@
   },
   "SETTINGS": {
     "UPDATED_SUCCESS": "Configurações atualizadas com sucesso",
-    "MAINTENANCE_ACTIVE": "O sistema está atualmente em manutenção. Por favor, tente novamente mais tarde."
+    "MAINTENANCE_ACTIVE": "O sistema está atualmente em manutenção. Por favor, tente novamente mais tarde.",
+    "LOGS_CLEARED_SUCCESS": "Logs limpos com sucesso"
   }
 }

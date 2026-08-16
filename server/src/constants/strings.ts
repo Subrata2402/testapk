@@ -108,6 +108,7 @@ export const ENGLISH_STRINGS = {
   SETTINGS: {
     UPDATED_SUCCESS: 'Settings updated successfully',
     MAINTENANCE_ACTIVE: 'System is currently under maintenance. Please try again later.',
+    LOGS_CLEARED_SUCCESS: 'Logs cleared successfully',
   },
   EMAIL: {
     WELCOME_SUBJECT: 'Welcome to TestAPK!',

@@ -147,6 +147,7 @@
   },
   "SETTINGS": {
     "UPDATED_SUCCESS": "Settings updated successfully",
-    "MAINTENANCE_ACTIVE": "System is currently under maintenance. Please try again later."
+    "MAINTENANCE_ACTIVE": "System is currently under maintenance. Please try again later.",
+    "LOGS_CLEARED_SUCCESS": "Logs cleared successfully"
   }
 }

@@ -163,6 +163,10 @@ export default function DashboardPage() {
           message: t('dashboard.logoutConfirmMessage'),
           onConfirm: handleLogoutConfirm,
           isLoading: isLoggingOut,
+          confirmText: 'Sign Out',
+          confirmLoadingText: 'Signing out...',
+          cancelText: t('common.cancel') || 'Cancel',
+          icon: LogOut,
         } : null}
         onClose={() => !isLoggingOut && setShowLogoutConfirm(false)}
       />

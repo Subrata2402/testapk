@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Smartphone, RefreshCw, Search, Calendar, ChevronUp, ChevronDown } from 'lucide-react';
+import { Smartphone, RefreshCw, Search, Calendar, ChevronUp, ChevronDown, X } from 'lucide-react';
 import { adminService } from '../services/api';
 import CustomDatePicker from '../components/common/CustomDatePicker';
 import './ApplicationsPage.css';
@@ -140,6 +140,15 @@ export default function ApplicationsPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="filter-input search-input"
             />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')} 
+                className="search-clear-btn"
+                type="button"
+              >
+                <X size={14} />
+              </button>
+            )}
           </div>
 
           <div className="apps-date-wrapper">

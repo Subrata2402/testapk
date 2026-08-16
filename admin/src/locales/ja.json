@@ -53,7 +53,8 @@
   "common": {
     "loading": "読み込み中...",
     "save": "設定を保存",
-    "saving": "保存中..."
+    "saving": "保存中...",
+    "cancel": "キャンセル"
   },
   "feedback": {
     "title": "ユーザーフィードバック",
@@ -102,7 +103,10 @@
     "allLogs": "すべてのログ",
     "errorLogs": "エラーログ",
     "searchLogs": "ログをフィルター...",
-    "noLogs": "一致するログエントリが見つかりません"
+    "noLogs": "一致するログエントリが見つかりません",
+    "clearLogsConfirmTitle": "ログの消去",
+    "clearLogsConfirmMessage": "すべてのシステムログを消去してもよろしいですか？この操作は取り消せません。",
+    "clearingLogs": "クリア中..."
   },
   "settings": {
     "title": "グローバル設定",

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Settings, Save, AlertTriangle, ShieldAlert, CheckCircle, Plus, Trash2 } from 'lucide-react';
+import { Settings, Save, AlertTriangle, CheckCircle } from 'lucide-react';
 import { adminService } from '../services/api';
-import Switch from '../components/common/Switch';
+import MaintenanceModeCard from '../components/settings/MaintenanceModeCard';
+import RegistrationCard from '../components/settings/RegistrationCard';
+import MaxApkSizeCard from '../components/settings/MaxApkSizeCard';
+import AnnouncementBannerCard from '../components/settings/AnnouncementBannerCard';
+import FlutterVersionsCard from '../components/settings/FlutterVersionsCard';
 import './SettingsPage.css';
 
 export default function SettingsPage() {
@@ -15,8 +19,6 @@ export default function SettingsPage() {
     flutter_app_versions: [],
     latest_version_download_link: '',
   });
-  const [newVersion, setNewVersion] = useState('');
-  const [newBuildNumber, setNewBuildNumber] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState(null); // 'success' or 'error'
@@ -46,33 +48,18 @@ export default function SettingsPage() {
     fetchSettings();
   }, []);
 
-  const handleAddVersion = () => {
-    if (!newVersion.trim() || !newBuildNumber.trim()) return;
-    const buildNum = parseInt(newBuildNumber);
-    if (isNaN(buildNum)) return;
-
-    const exists = settings.flutter_app_versions.some(
-      (v) => v.version === newVersion.trim() && v.buildNumber === buildNum
-    );
-    if (exists) return;
-
-    setSettings({
-      ...settings,
-      flutter_app_versions: [
-        ...settings.flutter_app_versions,
-        { version: newVersion.trim(), buildNumber: buildNum },
-      ],
-    });
-    setNewVersion('');
-    setNewBuildNumber('');
+  const handleAddVersion = (entry) => {
+    setSettings((prev) => ({
+      ...prev,
+      flutter_app_versions: [...prev.flutter_app_versions, entry],
+    }));
   };
 
   const handleRemoveVersion = (index) => {
-    const updatedVersions = settings.flutter_app_versions.filter((_, i) => i !== index);
-    setSettings({
-      ...settings,
-      flutter_app_versions: updatedVersions,
-    });
+    setSettings((prev) => ({
+      ...prev,
+      flutter_app_versions: prev.flutter_app_versions.filter((_, i) => i !== index),
+    }));
   };
 
   const handleSave = async (e) => {
@@ -132,14 +119,12 @@ export default function SettingsPage() {
                 <span>{t('settings.saveSuccess') || 'Settings saved successfully!'}</span>
               </div>
             )}
-
             {saveStatus === 'error' && (
               <div className="settings-status-error">
                 <AlertTriangle size={18} />
                 <span>{t('settings.saveError') || 'Failed to save settings.'}</span>
               </div>
             )}
-
             <button
               type="submit"
               disabled={isSaving}
@@ -151,171 +136,38 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Maintenance Mode */}
-        <div className="glass-card settings-card">
-          <div className="settings-row">
-            <div>
-              <h4 className="settings-title-container">
-                {t('settings.maintenanceMode') || 'Maintenance Mode'}
-                {settings.maintenance_mode && (
-                  <span className="settings-badge-active">
-                    {t('settings.active') || 'Active'}
-                  </span>
-                )}
-              </h4>
-              <p className="text-muted settings-desc">
-                {t('settings.maintenanceDesc') || 'Temporarily disable access to the system for all non-admin users.'}
-              </p>
-            </div>
-            <Switch
-              checked={settings.maintenance_mode}
-              onChange={(checked) => setSettings({ ...settings, maintenance_mode: checked })}
-            />
-          </div>
+        <MaintenanceModeCard
+          value={settings.maintenance_mode}
+          onChange={(checked) => setSettings((prev) => ({ ...prev, maintenance_mode: checked }))}
+          t={t}
+        />
 
-          {settings.maintenance_mode && (
-            <div className="settings-warning-banner">
-              <ShieldAlert size={20} className="settings-warning-icon" />
-              <span className="settings-warning-text">
-                {t('settings.maintenanceWarning') || 'Warning: Enabling maintenance mode will block all developers and testers from accessing the web and mobile applications.'}
-              </span>
-            </div>
-          )}
-        </div>
+        <RegistrationCard
+          value={settings.allow_registration}
+          onChange={(checked) => setSettings((prev) => ({ ...prev, allow_registration: checked }))}
+          t={t}
+        />
 
-        {/* User Registration */}
-        <div className="glass-card settings-row settings-row-card">
-          <div>
-            <h4 className="settings-card-title">{t('settings.allowRegistration') || 'Allow User Registration'}</h4>
-            <p className="text-muted settings-desc">
-              {t('settings.registrationDesc') || 'Enable or disable new user sign-ups on the platform.'}
-            </p>
-          </div>
-          <Switch
-            checked={settings.allow_registration}
-            onChange={(checked) => setSettings({ ...settings, allow_registration: checked })}
-          />
-        </div>
+        <MaxApkSizeCard
+          value={settings.max_apk_size}
+          onChange={(val) => setSettings((prev) => ({ ...prev, max_apk_size: val }))}
+          t={t}
+        />
 
-        {/* Max APK Upload Size */}
-        <div className="glass-card settings-card">
-          <div>
-            <h4 className="settings-card-title">{t('settings.maxApkSize') || 'Maximum APK Upload Size'}</h4>
-            <p className="text-muted settings-desc">
-              {t('settings.maxApkDesc') || 'Limit the maximum file size for uploaded APK releases.'}
-            </p>
-          </div>
-          <div className="settings-input-container">
-            <input
-              type="tel"
-              min="1"
-              max="2048"
-              value={settings.max_apk_size}
-              onChange={(e) => setSettings({ ...settings, max_apk_size: parseInt(e.target.value) || 100 })}
-              className="filter-input settings-number-input"
-            />
-            <span className="settings-unit">MB</span>
-          </div>
-        </div>
+        <AnnouncementBannerCard
+          value={settings.announcement_banner}
+          onChange={(val) => setSettings((prev) => ({ ...prev, announcement_banner: val }))}
+          t={t}
+        />
 
-        {/* Announcement Banner */}
-        <div className="glass-card settings-card">
-          <div>
-            <h4 className="settings-card-title">{t('settings.announcementBanner') || 'System Announcement Banner'}</h4>
-            <p className="text-muted settings-desc">
-              {t('settings.announcementDesc') || 'Display a global notification banner at the top of the application for all users.'}
-            </p>
-          </div>
-          <textarea
-            value={settings.announcement_banner}
-            onChange={(e) => setSettings({ ...settings, announcement_banner: e.target.value })}
-            className="filter-input settings-textarea"
-            placeholder={t('settings.announcementPlaceholder') || 'Enter announcement message (leave empty to disable)...'}
-            rows={3}
-          />
-        </div>
-
-        {/* Flutter App Version Settings */}
-        <div className="glass-card settings-card">
-          <div>
-            <h4 className="settings-card-title">{t('settings.flutterAppVersions') || 'Flutter App Version Management'}</h4>
-            <p className="text-muted settings-desc">
-              {t('settings.flutterAppVersionsDesc') || 'Manage allowed Flutter app versions and the latest download link.'}
-            </p>
-          </div>
-
-          {/* Add Version Form */}
-          <div className="settings-version-inputs">
-            <div className="settings-flex-1">
-              <label className="text-muted settings-input-label">{t('settings.versionLabel') || 'Version (e.g. 1.0.0)'}</label>
-              <input
-                type="number"
-                placeholder="1.0.0"
-                value={newVersion}
-                onChange={(e) => setNewVersion(e.target.value)}
-                className="filter-input settings-width-100"
-              />
-            </div>
-            <div className="settings-flex-1">
-              <label className="text-muted settings-input-label">{t('settings.buildNumberLabel') || 'Build Number (e.g. 3)'}</label>
-              <input
-                type="number"
-                placeholder="3"
-                value={newBuildNumber}
-                onChange={(e) => setNewBuildNumber(e.target.value)}
-                className="filter-input settings-width-100"
-              />
-            </div>
-            <button
-              type="button"
-              onClick={handleAddVersion}
-              className="btn btn-secondary settings-add-btn"
-            >
-              <Plus size={16} />
-              <span>{t('settings.addVersionBtn') || 'Add Version'}</span>
-            </button>
-          </div>
-
-          {/* Version List */}
-          {settings.flutter_app_versions && settings.flutter_app_versions.length > 0 ? (
-            <div className="settings-version-list">
-              <label className="text-muted settings-list-label">{t('settings.allowedVersionsLabel') || 'Allowed Versions'}</label>
-              <div className="settings-version-items">
-                {settings.flutter_app_versions.map((v, idx) => (
-                  <div key={idx} className="glass-card settings-version-item">
-                    <span>
-                      <strong>{t('settings.version') || 'Version'}:</strong> {v.version} &nbsp;&nbsp;|&nbsp;&nbsp; <strong>{t('settings.build') || 'Build'}:</strong> {v.buildNumber}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveVersion(idx)}
-                      className="btn btn-danger settings-remove-btn"
-                    >
-                      <Trash2 size={14} />
-                      <span>{t('settings.removeBtn') || 'Remove'}</span>
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <p className="text-muted settings-no-versions">
-              {t('settings.noVersionsAdded') || 'No versions added yet. If empty, all versions will be considered invalid (mandatory update).'}
-            </p>
-          )}
-
-          {/* Download Link */}
-          <div className="settings-download-link-container">
-            <label className="text-muted settings-input-label">{t('settings.latestVersionDownloadLink') || 'Latest Version Download Link'}</label>
-            <input
-              type="text"
-              placeholder="https://example.com/app.apk"
-              value={settings.latest_version_download_link}
-              onChange={(e) => setSettings({ ...settings, latest_version_download_link: e.target.value })}
-              className="filter-input settings-width-100"
-            />
-          </div>
-        </div>
+        <FlutterVersionsCard
+          versions={settings.flutter_app_versions}
+          downloadLink={settings.latest_version_download_link}
+          onAddVersion={handleAddVersion}
+          onRemoveVersion={handleRemoveVersion}
+          onDownloadLinkChange={(val) => setSettings((prev) => ({ ...prev, latest_version_download_link: val }))}
+          t={t}
+        />
       </form>
     </div>
   );

@@ -24,6 +24,7 @@ export const ENDPOINTS = {
     STATS: '/admin/stats',
     APPS: '/admin/apps',
     HEALTH: '/admin/health',
+    CLEAR_LOGS: '/admin/logs',
   },
   FEEDBACK: {
     ALL: '/feedback',
