@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown } from 'lucide-react';
+import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown, X } from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import CustomDatePicker from '../common/CustomDatePicker';
 import './SupportList.css';
@@ -140,6 +140,15 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
               onChange={(e) => setSearchQuery(e.target.value)}
               className="filter-input search-input"
             />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')} 
+                className="search-clear-btn"
+                type="button"
+              >
+                <X size={14} />
+              </button>
+            )}
           </div>
 
           <div className="filters-group support-filters-group">

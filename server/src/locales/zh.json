@@ -147,6 +147,7 @@
   },
   "SETTINGS": {
     "UPDATED_SUCCESS": "设置更新成功",
-    "MAINTENANCE_ACTIVE": "系统目前正在维护中。请稍后再试。"
+    "MAINTENANCE_ACTIVE": "系统目前正在维护中。请稍后再试。",
+    "LOGS_CLEARED_SUCCESS": "日志清除成功"
   }
 }

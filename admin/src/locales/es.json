@@ -97,7 +97,10 @@
     "allLogs": "Todos los Registros",
     "errorLogs": "Registros de Errores",
     "searchLogs": "Filtrar registros...",
-    "noLogs": "No se encontraron registros coincidentes"
+    "noLogs": "No se encontraron registros coincidentes",
+    "clearLogsConfirmTitle": "Borrar Registros",
+    "clearLogsConfirmMessage": "¿Está seguro de que desea borrar todos los registros del sistema? Esta acción no se puede deshacer.",
+    "clearingLogs": "Borrando..."
   },
   "settings": {
     "title": "Configuración Global",
@@ -129,7 +132,8 @@
   "common": {
     "loading": "Cargando...",
     "save": "Guardar Configuración",
-    "saving": "Guardando..."
+    "saving": "Guardando...",
+    "cancel": "Cancelar"
   },
   "users": {
     "title": "Usuarios Registrados",

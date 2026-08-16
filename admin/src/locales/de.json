@@ -53,7 +53,8 @@
   "common": {
     "loading": "Laden...",
     "save": "Einstellungen speichern",
-    "saving": "Speichern..."
+    "saving": "Speichern...",
+    "cancel": "Abbrechen"
   },
   "feedback": {
     "title": "Benutzer-Feedback",
@@ -102,7 +103,10 @@
     "allLogs": "Alle Protokolle",
     "errorLogs": "Fehlerprotokolle",
     "searchLogs": "Protokolle filtern...",
-    "noLogs": "Keine passenden Protokolleinträge gefunden"
+    "noLogs": "Keine passenden Protokolleinträge gefunden",
+    "clearLogsConfirmTitle": "Protokolle löschen",
+    "clearLogsConfirmMessage": "Sind Sie sicher, dass Sie alle Systemprotokolle löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "clearingLogs": "Löschen..."
   },
   "settings": {
     "title": "Globale Einstellungen",

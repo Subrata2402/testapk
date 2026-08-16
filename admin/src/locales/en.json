@@ -97,7 +97,10 @@
     "allLogs": "All Logs",
     "errorLogs": "Error Logs",
     "searchLogs": "Filter logs...",
-    "noLogs": "No matching log entries found"
+    "noLogs": "No matching log entries found",
+    "clearLogsConfirmTitle": "Clear Logs",
+    "clearLogsConfirmMessage": "Are you sure you want to clear all system logs? This action cannot be undone.",
+    "clearingLogs": "Clearing..."
   },
   "settings": {
     "title": "Global Settings",
@@ -129,7 +132,8 @@
   "common": {
     "loading": "Loading...",
     "save": "Save Settings",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "cancel": "Cancel"
   },
   "users": {
     "title": "Registered Users",

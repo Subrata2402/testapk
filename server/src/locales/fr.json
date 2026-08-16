@@ -147,6 +147,7 @@
   },
   "SETTINGS": {
     "UPDATED_SUCCESS": "Paramètres mis à jour avec succès",
-    "MAINTENANCE_ACTIVE": "Le système est actuellement en maintenance. Veuillez réessayer plus tard."
+    "MAINTENANCE_ACTIVE": "Le système est actuellement en maintenance. Veuillez réessayer plus tard.",
+    "LOGS_CLEARED_SUCCESS": "Journaux effacés avec succès"
   }
 }

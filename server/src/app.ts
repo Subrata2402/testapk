@@ -6,6 +6,7 @@ import { rateLimiter } from './middlewares/rateLimiter.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { localeMiddleware } from './middlewares/locale.middleware.js';
 import { checkMaintenanceMode } from './middlewares/maintenance.middleware.js';
+import { requestLogger } from './middlewares/requestLogger.js';
 import { AppError } from './utils/appError.js';
 
 import healthRoutes from './routes/health.routes.js';
@@ -41,6 +42,9 @@ app.use('/api', rateLimiter);
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' })); // Limit body size to prevent DOS
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+
+// Log requests and responses
+app.use(requestLogger);
 
 // Check maintenance mode
 app.use('/api/v1', checkMaintenanceMode);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon, ChevronUp, ChevronDown } from 'lucide-react';
+import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon, ChevronUp, ChevronDown, X } from 'lucide-react';
 import { userService } from '../services/api';
 import CustomDropdown from '../components/common/CustomDropdown';
 import CustomDatePicker from '../components/common/CustomDatePicker';
@@ -176,6 +176,15 @@ export default function UsersPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="filter-input search-input"
             />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')} 
+                className="search-clear-btn"
+                type="button"
+              >
+                <X size={14} />
+              </button>
+            )}
           </div>
 
           <div className="filters-group users-filters-group">
