@@ -184,9 +184,9 @@ export default function SettingsPage() {
         </div>
 
         {/* User Registration */}
-        <div className="glass-card settings-row" style={{ padding: '20px' }}>
+        <div className="glass-card settings-row settings-row-card">
           <div>
-            <h4 style={{ margin: '0 0 4px 0' }}>{t('settings.allowRegistration') || 'Allow User Registration'}</h4>
+            <h4 className="settings-card-title">{t('settings.allowRegistration') || 'Allow User Registration'}</h4>
             <p className="text-muted settings-desc">
               {t('settings.registrationDesc') || 'Enable or disable new user sign-ups on the platform.'}
             </p>
@@ -200,14 +200,14 @@ export default function SettingsPage() {
         {/* Max APK Upload Size */}
         <div className="glass-card settings-card">
           <div>
-            <h4 style={{ margin: '0 0 4px 0' }}>{t('settings.maxApkSize') || 'Maximum APK Upload Size'}</h4>
+            <h4 className="settings-card-title">{t('settings.maxApkSize') || 'Maximum APK Upload Size'}</h4>
             <p className="text-muted settings-desc">
               {t('settings.maxApkDesc') || 'Limit the maximum file size for uploaded APK releases.'}
             </p>
           </div>
           <div className="settings-input-container">
             <input
-              type="number"
+              type="tel"
               min="1"
               max="2048"
               value={settings.max_apk_size}
@@ -221,7 +221,7 @@ export default function SettingsPage() {
         {/* Announcement Banner */}
         <div className="glass-card settings-card">
           <div>
-            <h4 style={{ margin: '0 0 4px 0' }}>{t('settings.announcementBanner') || 'System Announcement Banner'}</h4>
+            <h4 className="settings-card-title">{t('settings.announcementBanner') || 'System Announcement Banner'}</h4>
             <p className="text-muted settings-desc">
               {t('settings.announcementDesc') || 'Display a global notification banner at the top of the application for all users.'}
             </p>
@@ -238,41 +238,38 @@ export default function SettingsPage() {
         {/* Flutter App Version Settings */}
         <div className="glass-card settings-card">
           <div>
-            <h4 style={{ margin: '0 0 4px 0' }}>{t('settings.flutterAppVersions') || 'Flutter App Version Management'}</h4>
+            <h4 className="settings-card-title">{t('settings.flutterAppVersions') || 'Flutter App Version Management'}</h4>
             <p className="text-muted settings-desc">
               {t('settings.flutterAppVersionsDesc') || 'Manage allowed Flutter app versions and the latest download link.'}
             </p>
           </div>
 
           {/* Add Version Form */}
-          <div className="settings-version-inputs" style={{ display: 'flex', gap: '12px', marginTop: '16px', alignItems: 'flex-end' }}>
-            <div style={{ flex: 1 }}>
-              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.versionLabel') || 'Version (e.g. 1.0.0)'}</label>
+          <div className="settings-version-inputs">
+            <div className="settings-flex-1">
+              <label className="text-muted settings-input-label">{t('settings.versionLabel') || 'Version (e.g. 1.0.0)'}</label>
               <input
-                type="text"
+                type="number"
                 placeholder="1.0.0"
                 value={newVersion}
                 onChange={(e) => setNewVersion(e.target.value)}
-                className="filter-input"
-                style={{ width: '100%' }}
+                className="filter-input settings-width-100"
               />
             </div>
-            <div style={{ flex: 1 }}>
-              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.buildNumberLabel') || 'Build Number (e.g. 3)'}</label>
+            <div className="settings-flex-1">
+              <label className="text-muted settings-input-label">{t('settings.buildNumberLabel') || 'Build Number (e.g. 3)'}</label>
               <input
                 type="number"
                 placeholder="3"
                 value={newBuildNumber}
                 onChange={(e) => setNewBuildNumber(e.target.value)}
-                className="filter-input"
-                style={{ width: '100%' }}
+                className="filter-input settings-width-100"
               />
             </div>
             <button
               type="button"
               onClick={handleAddVersion}
-              className="btn btn-secondary"
-              style={{ height: '42px', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '6px' }}
+              className="btn btn-secondary settings-add-btn"
             >
               <Plus size={16} />
               <span>{t('settings.addVersionBtn') || 'Add Version'}</span>
@@ -281,19 +278,18 @@ export default function SettingsPage() {
 
           {/* Version List */}
           {settings.flutter_app_versions && settings.flutter_app_versions.length > 0 ? (
-            <div className="settings-version-list" style={{ marginTop: '16px' }}>
-              <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '8px' }}>{t('settings.allowedVersionsLabel') || 'Allowed Versions'}</label>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="settings-version-list">
+              <label className="text-muted settings-list-label">{t('settings.allowedVersionsLabel') || 'Allowed Versions'}</label>
+              <div className="settings-version-items">
                 {settings.flutter_app_versions.map((v, idx) => (
-                  <div key={idx} className="glass-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', background: 'rgba(255, 255, 255, 0.03)' }}>
+                  <div key={idx} className="glass-card settings-version-item">
                     <span>
                       <strong>{t('settings.version') || 'Version'}:</strong> {v.version} &nbsp;&nbsp;|&nbsp;&nbsp; <strong>{t('settings.build') || 'Build'}:</strong> {v.buildNumber}
                     </span>
                     <button
                       type="button"
                       onClick={() => handleRemoveVersion(idx)}
-                      className="btn btn-danger"
-                      style={{ padding: '4px 8px', fontSize: '12px', minHeight: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}
+                      className="btn btn-danger settings-remove-btn"
                     >
                       <Trash2 size={14} />
                       <span>{t('settings.removeBtn') || 'Remove'}</span>
@@ -303,21 +299,20 @@ export default function SettingsPage() {
               </div>
             </div>
           ) : (
-            <p className="text-muted" style={{ fontSize: '13px', marginTop: '16px', fontStyle: 'italic' }}>
+            <p className="text-muted settings-no-versions">
               {t('settings.noVersionsAdded') || 'No versions added yet. If empty, all versions will be considered invalid (mandatory update).'}
             </p>
           )}
 
           {/* Download Link */}
-          <div style={{ marginTop: '20px' }}>
-            <label className="text-muted" style={{ fontSize: '12px', display: 'block', marginBottom: '4px' }}>{t('settings.latestVersionDownloadLink') || 'Latest Version Download Link'}</label>
+          <div className="settings-download-link-container">
+            <label className="text-muted settings-input-label">{t('settings.latestVersionDownloadLink') || 'Latest Version Download Link'}</label>
             <input
               type="text"
               placeholder="https://example.com/app.apk"
               value={settings.latest_version_download_link}
               onChange={(e) => setSettings({ ...settings, latest_version_download_link: e.target.value })}
-              className="filter-input"
-              style={{ width: '100%' }}
+              className="filter-input settings-width-100"
             />
           </div>
         </div>

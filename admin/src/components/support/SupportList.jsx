@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown } from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import CustomDatePicker from '../common/CustomDatePicker';
+import './SupportList.css';
 
 export default function SupportList({ requests, isLoading, onRefresh, onViewDetails, onStatusChange, t }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,10 +59,10 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
   };
 
   const renderSortIcon = (field) => {
-    if (sortField !== field) return <ChevronDown size={14} style={{ opacity: 0.3, marginLeft: '4px' }} />;
+    if (sortField !== field) return <ChevronDown size={14} className="support-sort-icon-inactive" />;
     return sortDirection === 'asc' 
-      ? <ChevronUp size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />
-      : <ChevronDown size={14} style={{ marginLeft: '4px', color: 'var(--accent-primary)' }} />;
+      ? <ChevronUp size={14} className="support-sort-icon-active" />
+      : <ChevronDown size={14} className="support-sort-icon-active" />;
   };
 
   const sortedRequests = [...filteredRequests].sort((a, b) => {
@@ -128,9 +129,9 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="support-filters-bar" style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', width: '100%' }}>
-          <div className="search-input-wrapper" style={{ flex: 1, minWidth: '250px' }}>
+      <div className="support-filters-bar support-filters-container">
+        <div className="support-filters-wrapper">
+          <div className="search-input-wrapper support-search-wrapper">
             <Search size={16} className="search-icon" />
             <input
               type="text"
@@ -141,8 +142,8 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
             />
           </div>
 
-          <div className="filters-group" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <div className="filter-dropdown-wrapper" style={{ width: '160px' }}>
+          <div className="filters-group support-filters-group">
+            <div className="filter-dropdown-wrapper support-dropdown-wrapper">
               <CustomDropdown
                 options={statusFilterOptions}
                 value={statusFilter}
@@ -184,8 +185,8 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
                   <td><div className="skeleton-text-long"></div></td>
                   <td><div className="skeleton-text-long"></div></td>
                   <td><div className="skeleton-text-short"></div></td>
-                  <td><div className="skeleton-text-short" style={{ width: '60px', height: '24px', borderRadius: '12px' }}></div></td>
-                  <td><div className="skeleton-text-short" style={{ width: '80px', height: '32px', borderRadius: '6px' }}></div></td>
+                  <td><div className="skeleton-text-short support-skeleton-badge"></div></td>
+                  <td><div className="skeleton-text-short support-skeleton-btn"></div></td>
                 </tr>
               ))}
             </tbody>
@@ -196,28 +197,28 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
           <table className="support-table">
             <thead>
               <tr>
-                <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('name')} className="support-th-sortable">
+                  <div className="support-th-content">
                     {t('support.name')} {renderSortIcon('name')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('email')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('email')} className="support-th-sortable">
+                  <div className="support-th-content">
                     {t('support.email')} {renderSortIcon('email')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('subject')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('subject')} className="support-th-sortable">
+                  <div className="support-th-content">
                     {t('support.subject')} {renderSortIcon('subject')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('createdAt')} className="support-th-sortable">
+                  <div className="support-th-content">
                     {t('support.date')} {renderSortIcon('createdAt')}
                   </div>
                 </th>
-                <th onClick={() => handleSort('status')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                <th onClick={() => handleSort('status')} className="support-th-sortable">
+                  <div className="support-th-content">
                     {t('support.status')} {renderSortIcon('status')}
                   </div>
                 </th>
