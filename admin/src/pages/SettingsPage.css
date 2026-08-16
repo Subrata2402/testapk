@@ -73,7 +73,6 @@
 
 .settings-number-input {
   width: 100px;
-  text-align: right;
 }
 
 .settings-unit {
@@ -138,4 +137,85 @@
   align-items: center;
   gap: 16px;
 }
+
+.settings-row-card {
+  padding: 20px;
+}
+
+.settings-card-title {
+  margin: 0 0 4px 0;
+}
+
+.settings-version-inputs {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  align-items: flex-end;
+}
+
+.settings-flex-1 {
+  flex: 1;
+}
+
+.settings-input-label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.settings-width-100 {
+  width: 100%;
+}
+
+.settings-add-btn {
+  height: 42px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.settings-version-list {
+  margin-top: 16px;
+}
+
+.settings-list-label {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.settings-version-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-version-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.settings-remove-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.settings-no-versions {
+  font-size: 13px;
+  margin-top: 16px;
+  font-style: italic;
+}
+
+.settings-download-link-container {
+  margin-top: 20px;
+}
+
 

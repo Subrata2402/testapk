@@ -73,10 +73,44 @@ The application configuration is centralized in `lib/core/constants.dart`:
 
 ## 📸 Screenshots
 
-| Login Page | Dashboard | Release List |
-| :---: | :---: | :---: |
-| ![Login Page](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) | ![Release List](./screenshots/release_list.png) |
+<h3 align="center">Screenshots</h3>
 
-| Release Details | Menu | Languages |
-| :---: | :---: | :---: |
-| ![Release Details](./screenshots/release_details.png) | ![Menu](./screenshots/menu.png) | ![Languages](./screenshots/languages.png) |
+<table align="center">
+  <tr>
+    <th>Login Page</th>
+    <th>Dashboard</th>
+    <th>Release List</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/login.jpeg" width="250" />
+    </td>
+    <td align="center">
+      <img src="./screenshots/dashboard.jpeg" width="250" />
+    </td>
+    <td align="center">
+      <img src="./screenshots/release_list.jpeg" width="250" />
+    </td>
+  </tr>
+</table>
+
+<br />
+
+<table align="center">
+  <tr>
+    <th>Release Details</th>
+    <th>Menu</th>
+    <th>Languages</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./screenshots/release_details.jpeg" width="250" />
+    </td>
+    <td align="center">
+      <img src="./screenshots/menu.jpeg" width="250" />
+    </td>
+    <td align="center">
+      <img src="./screenshots/languages.jpeg" width="250" />
+    </td>
+  </tr>
+</table>
