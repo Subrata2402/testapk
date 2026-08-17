@@ -28,6 +28,7 @@ export default function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
+  const [downloadLink, setDownloadLink] = useState(null);
   const [isLoadingApps, setIsLoadingApps] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const checkRunRef = React.useRef(false);
@@ -56,6 +57,10 @@ export default function App() {
         const settingsRes = await settingService.getPublicSettings();
         if (settingsRes.status === 'success') {
           maintenanceActive = settingsRes.data.settings?.maintenance_mode ?? false;
+          const link = settingsRes.data.settings?.latest_version_download_link;
+          if (link) {
+            setDownloadLink(link);
+          }
         }
       } catch (err) {
         console.error('Failed to fetch public settings:', err);
@@ -141,6 +146,10 @@ export default function App() {
       const settingsRes = await settingService.getPublicSettings();
       if (settingsRes.status === 'success') {
         maintenanceActive = settingsRes.data.settings?.maintenance_mode ?? false;
+        const link = settingsRes.data.settings?.latest_version_download_link;
+        if (link) {
+          setDownloadLink(link);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch public settings:', err);
@@ -296,6 +305,7 @@ export default function App() {
           showConfirm={showConfirm}
           setUser={setUser}
           onContactClick={() => setIsContactModalOpen(true)}
+          downloadLink={downloadLink}
         />
       </div>
 

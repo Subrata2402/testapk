@@ -17,7 +17,8 @@ export default function AppRoutes({
   showAlert,
   showConfirm,
   setUser,
-  onContactClick
+  onContactClick,
+  downloadLink
 }) {
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ export default function AppRoutes({
             onLoginClick={() => setIsLoginModalOpen(true)}
             onContactClick={onContactClick}
             onNavigate={(view) => navigate(`/${view}`)}
+            downloadLink={downloadLink}
           />
         }
       />
@@ -82,6 +84,7 @@ export default function AppRoutes({
               onOpenDriveModal={onOpenDriveModal}
               showAlert={showAlert}
               showConfirm={showConfirm}
+              downloadLink={downloadLink}
             />
           ) : (
             <Navigate to="/" replace />
@@ -100,6 +103,7 @@ export default function AppRoutes({
               onOpenDriveModal={onOpenDriveModal}
               showAlert={showAlert}
               showConfirm={showConfirm}
+              downloadLink={downloadLink}
             />
           ) : (
             <Navigate to="/" replace />
@@ -118,6 +122,7 @@ export default function AppRoutes({
               onOpenDriveModal={onOpenDriveModal}
               showAlert={showAlert}
               showConfirm={showConfirm}
+              downloadLink={downloadLink}
             />
           ) : (
             <Navigate to="/" replace />

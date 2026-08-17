@@ -16,9 +16,11 @@ import SecurityWidget from '../components/landing/SecurityWidget';
 import DevInfoWidget from '../components/landing/DevInfoWidget';
 import Footer from '../components/landing/Footer';
 
-export default function LandingPage({ user, onLoginClick, onContactClick, onNavigate }) {
+export default function LandingPage({ user, onLoginClick, onContactClick, onNavigate, downloadLink }) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('details'); // 'details' | 'releases'
+
+  const apkLink = downloadLink || testapkDownloadLink;
 
   const appDetails = {
     name: 'TestAPK',
@@ -51,13 +53,13 @@ export default function LandingPage({ user, onLoginClick, onContactClick, onNavi
         appDetails={appDetails}
         t={t}
         onLoginClick={onLoginClick}
-        testapkDownloadLink={testapkDownloadLink}
+        testapkDownloadLink={apkLink}
       />
 
       {/* Platform Components Section */}
       <PlatformComponents
         t={t}
-        testapkDownloadLink={testapkDownloadLink}
+        testapkDownloadLink={apkLink}
       />
 
       {/* Google OAuth & Drive Usage Section */}
@@ -92,13 +94,13 @@ export default function LandingPage({ user, onLoginClick, onContactClick, onNavi
               <AppSpecsTab
                 appDetails={appDetails}
                 latestRelease={latestRelease}
-                testapkDownloadLink={testapkDownloadLink}
+                testapkDownloadLink={apkLink}
                 t={t}
               />
             ) : (
               <ReleasesTab
                 appDetails={appDetails}
-                testapkDownloadLink={testapkDownloadLink}
+                testapkDownloadLink={apkLink}
                 t={t}
               />
             )}

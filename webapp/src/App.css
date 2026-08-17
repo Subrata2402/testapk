@@ -167,7 +167,7 @@
 
 @keyframes loading-progress {
   0% { transform: scaleX(0) translateX(0); }
-  50% { transform: scaleX(0.4) translateX(100%); }
+  50% { transform: scaleX(0.5) translateX(100%); }
   100% { transform: scaleX(0) translateX(300%); }
 }
 
