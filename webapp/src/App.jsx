@@ -253,7 +253,7 @@ export default function App() {
     }
   };
 
-  if (true) {
+  if (isAuthChecking) {
     return (
       <div className="auth-loading-screen">
         <div className="splash-orbs">
