@@ -6,7 +6,7 @@ import AboutPage from './AboutPage';
 import './Dashboard.css';
 import { useTranslation } from '../context/LanguageContext';
 
-export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDriveModal, showAlert, showConfirm }) {
+export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDriveModal, showAlert, showConfirm, downloadLink }) {
   const { t } = useTranslation();
   const { appId } = useParams();
   const navigate = useNavigate();
@@ -118,7 +118,7 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
       {/* Main Content Area */}
       <main className="dashboard-main">
         {appId === 'about' ? (
-          <AboutPage showAlert={showAlert} />
+          <AboutPage showAlert={showAlert} downloadLink={downloadLink} />
         ) : selectedApp ? (
           <AppDetails
             app={selectedApp}

@@ -21,9 +21,11 @@ const GithubIcon = (props) => (
   </svg>
 );
 
-export default function AboutPage({ showAlert }) {
+export default function AboutPage({ showAlert, downloadLink }) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('info'); // 'info' | 'contact'
+
+  const apkLink = downloadLink || testapkDownloadLink;
 
   // Contact Form State
   const [name, setName] = useState('');
@@ -141,7 +143,7 @@ export default function AboutPage({ showAlert }) {
               </li>
             </ul>
             <a
-              href={`${testapkDownloadLink}`}
+              href={`${apkLink}`}
               className="btn btn-primary btn-sm flex-center gap-2 mt-4"
               style={{ textDecoration: 'none', width: 'fit-content' }}
             >
