@@ -26,6 +26,11 @@ class ApiClient {
       headers['X-Device-OS'] = 'android';
       headers['X-Device-Model'] = '${androidInfo.brand} ${androidInfo.model}';
       headers['X-Device-Version'] = androidInfo.version.release;
+      headers['X-Device-Id'] = androidInfo.id;
+      headers['X-Device-Android-Version'] = androidInfo.version.sdkInt.toString();
+      headers['X-Device-Host'] = androidInfo.host;
+      headers['X-Device-Type'] = androidInfo.type;
+      headers['X-Device-Tags'] = androidInfo.tags;
     } catch (e) {
       headers['X-Device-OS'] = 'android';
       headers['X-Device-Version'] = '';
