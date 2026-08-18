@@ -37,7 +37,8 @@ export default function LogsViewer({ logs, onClearLogs, t }) {
           .replace(/\\u001b\[\d+m/g, '')
           .replace(/\u001b\[\d+m/g, '')
           .replace(/\x1B\[\d+m/g, '');
-        return (cleanLine.includes('[Request]') || cleanLine.includes('[Response]')) && cleanLine.includes(' - Body: ');
+        return (cleanLine.includes('[Request]') || cleanLine.includes('[Response]') || cleanLine.includes('[API]')) && 
+          (cleanLine.includes(' - Body: ') || cleanLine.includes(' - Headers: ') || cleanLine.includes(' - Response: '));
       });
       const newExpanded = {};
       collapsibleLines.forEach(line => {

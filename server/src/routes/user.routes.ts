@@ -4,9 +4,9 @@ import { protect } from '../middlewares/auth.js';
 
 const router = Router();
 
-router.get('/users/me', protect, getMe);
-router.post('/users/configure-drive', protect, configureDrive);
-router.post('/users/fcm-token', protect, updateFcmToken);
-router.delete('/users/me', protect, deleteMe);
+router.get('/me', protect, getMe);
+router.post('/configure-drive', protect, configureDrive);
+router.post('/fcm-token', protect, updateFcmToken);
+router.delete('/me', protect, deleteMe);
 
 export default router;
