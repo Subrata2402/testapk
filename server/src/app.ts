@@ -9,15 +9,7 @@ import { checkMaintenanceMode } from './middlewares/maintenance.middleware.js';
 import { requestLogger } from './middlewares/requestLogger.js';
 import { AppError } from './utils/appError.js';
 
-import healthRoutes from './routes/health.routes.js';
-import authRoutes from './routes/auth.routes.js';
-import userRoutes from './routes/user.routes.js';
-import appRoutes from './routes/app.routes.js';
-import deviceAuthRoutes from './routes/device-auth.routes.js';
-import feedbackRoutes from './routes/feedback.route.js';
-import supportRoutes from './routes/support.routes.js';
-import adminRoutes from './routes/admin.routes.js';
-import settingRoutes from './routes/setting.routes.js';
+import apiRoutes from './routes/index.js';
 
 const app = express();
 
@@ -50,15 +42,21 @@ app.use(requestLogger);
 app.use('/api/v1', checkMaintenanceMode);
 
 // Register routes
-app.use('/api/v1', healthRoutes);
-app.use('/api/v1', authRoutes);
-app.use('/api/v1', userRoutes);
-app.use('/api/v1', appRoutes);
-app.use('/api/v1', feedbackRoutes);
-app.use('/api/v1/support', supportRoutes);
-app.use('/api/v1/auth/device', deviceAuthRoutes);
-app.use('/api/v1/admin', adminRoutes);
-app.use('/api/v1/settings', settingRoutes);
+app.use('/api/v1', apiRoutes);
+
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Welcome to the TestAPK API Server',
+  });
+});
+
+// Robots.txt route
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /');
+});
 
 // Handle undefined routes
 app.use((req, res, next) => {

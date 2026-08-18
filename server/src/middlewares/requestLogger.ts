@@ -6,10 +6,11 @@ const sanitizeData = (data: any): any => {
   if (!data || typeof data !== 'object') return data;
   
   const sanitized = { ...data };
-  const sensitiveFields = ['password', 'token', 'accessToken', 'refreshToken', 'clientSecret', 'googleClientId'];
+  const sensitiveFields = ['password', 'token', 'accesstoken', 'refreshtoken', 'clientsecret', 'googleclientid', 'authorization', 'cookie'];
   
   for (const key of Object.keys(sanitized)) {
-    if (sensitiveFields.includes(key)) {
+    const lowerKey = key.toLowerCase();
+    if (sensitiveFields.includes(lowerKey)) {
       sanitized[key] = '[REDACTED]';
     } else if (typeof sanitized[key] === 'object') {
       sanitized[key] = sanitizeData(sanitized[key]);
@@ -28,10 +29,6 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
   }
 
   const start = Date.now();
-  
-  // Log incoming request
-  const sanitizedBody = sanitizeData(body);
-  logger.info(`[Request] ${method} ${originalUrl} - Body: ${JSON.stringify(sanitizedBody)}`);
   
   // Capture response body
   const originalSend = res.send;
@@ -55,17 +52,15 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
       }
     }
     
+    const sanitizedBody = sanitizeData(body);
+    const sanitizedHeaders = sanitizeData(req.headers);
     const sanitizedResponse = sanitizeData(parsedResponseBody);
-    let responseStr = typeof sanitizedResponse === 'object' 
+    
+    const responseStr = typeof sanitizedResponse === 'object' 
       ? JSON.stringify(sanitizedResponse) 
       : String(sanitizedResponse);
       
-    // Truncate response body if it is too long to prevent log bloat
-    // if (responseStr && responseStr.length > 500) {
-    //   responseStr = responseStr.substring(0, 500) + '... [TRUNCATED]';
-    // }
-    
-    logger.info(`[Response] ${method} ${originalUrl} ${statusCode} - ${duration}ms - Body: ${responseStr}`);
+    logger.info(`[API] ${method} ${originalUrl} ${statusCode} - ${duration}ms - Headers: ${JSON.stringify(sanitizedHeaders)} - Body: ${JSON.stringify(sanitizedBody)} - Response: ${responseStr}`);
   });
   
   next();

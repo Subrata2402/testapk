@@ -25,17 +25,17 @@ const upload = multer({
 
 const router = Router();
 
-router.post('/apps', protect, createApp);
-router.get('/apps', protect, getApps);
-router.get('/apps/invitations', protect, getInvitations);
-router.post('/apps/:appId/invitations/accept', protect, acceptInvitation);
-router.post('/apps/:appId/invitations/reject', protect, rejectInvitation);
-router.get('/apps/:appId/members', protect, getMembers);
-router.post('/apps/:appId/members', protect, inviteMember);
-router.delete('/apps/:appId/members/:email', protect, removeMember);
-router.get('/apps/:appId/releases', protect, getReleases);
-router.post('/apps/:appId/releases', protect, upload.single('file'), uploadApk);
-router.get('/apps/:appId/releases/:buildNumber/download', protect, downloadApk);
-router.delete('/apps/:appId/releases/:buildNumber', protect, deleteRelease);
+router.post('/', protect, createApp);
+router.get('/', protect, getApps);
+router.get('/invitations', protect, getInvitations);
+router.post('/:appId/invitations/accept', protect, acceptInvitation);
+router.post('/:appId/invitations/reject', protect, rejectInvitation);
+router.get('/:appId/members', protect, getMembers);
+router.post('/:appId/members', protect, inviteMember);
+router.delete('/:appId/members/:email', protect, removeMember);
+router.get('/:appId/releases', protect, getReleases);
+router.post('/:appId/releases', protect, upload.single('file'), uploadApk);
+router.get('/:appId/releases/:buildNumber/download', protect, downloadApk);
+router.delete('/:appId/releases/:buildNumber', protect, deleteRelease);
 
 export default router;

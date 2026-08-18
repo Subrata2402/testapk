@@ -246,6 +246,18 @@
   background: #ff4d4f;
 }
 
+.health-log-api .health-log-badge {
+  background: var(--accent-primary);
+}
+
+.health-log-api.health-status-warning .health-log-badge {
+  background: #faad14;
+}
+
+.health-log-api.health-status-error .health-log-badge {
+  background: #ff4d4f;
+}
+
 .health-log-info {
   font-family: monospace;
 }
@@ -337,4 +349,18 @@
 
 .health-log-body-content {
   overflow: hidden;
+}
+
+.health-log-section {
+  margin-top: 8px;
+}
+
+.health-log-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 16px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
