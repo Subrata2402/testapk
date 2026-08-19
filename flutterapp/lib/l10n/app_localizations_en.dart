@@ -9,7 +9,8 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get loginErrorMsg => 'Sign-in failed. Please ensure you are a registered tester.';
+  String get loginErrorMsg =>
+      'Sign-in failed. Please ensure you are a registered tester.';
 
   @override
   String get appName => 'TestAPK';
@@ -36,19 +37,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get infoTitleTesterAccess => 'Tester Access Only';
 
   @override
-  String get infoSubtitleTesterAccess => 'Only invited testers can access app releases.';
+  String get infoSubtitleTesterAccess =>
+      'Only invited testers can access app releases.';
 
   @override
   String get infoTitleSecureStorage => 'Secure Cloud Storage';
 
   @override
-  String get infoSubtitleSecureStorage => 'APKs stored on Google Drive, delivered securely.';
+  String get infoSubtitleSecureStorage =>
+      'APKs stored on Google Drive, delivered securely.';
 
   @override
   String get infoTitleAlwaysUpToDate => 'Always Up-to-Date';
 
   @override
-  String get infoSubtitleAlwaysUpToDate => 'Instant access to the latest builds.';
+  String get infoSubtitleAlwaysUpToDate =>
+      'Instant access to the latest builds.';
 
   @override
   String get loginSigningIn => 'Signing in…';
@@ -57,7 +61,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginContinueWithGoogle => 'Continue with Google';
 
   @override
-  String get loginConfirmation => 'By signing in, you confirm you are an authorized tester.';
+  String get loginConfirmation =>
+      'By signing in, you confirm you are an authorized tester.';
 
   @override
   String get splashSubtitle => 'Release Manager for Testers';
@@ -87,7 +92,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appListEmptyTitle => 'You haven\'t been added\nto any app yet.';
 
   @override
-  String get appListEmptySubtitle => 'Ask a developer to invite you as a Tester.';
+  String get appListEmptySubtitle =>
+      'Ask a developer to invite you as a Tester.';
 
   @override
   String get signOutTooltip => 'Sign out';
@@ -111,7 +117,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get teamMembersTitle => 'Team Members';
 
   @override
-  String get teamMembersSubtitle => 'Collaborators invited to this application.';
+  String get teamMembersSubtitle =>
+      'Collaborators invited to this application.';
 
   @override
   String get noMembersMsg => 'No members yet';
@@ -192,17 +199,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get acceptBtnLabel => 'Accept';
 
   @override
-  String get errorInstallCancelled => 'Installation cancelled: Please grant permission to install the app.';
+  String get errorInstallCancelled =>
+      'Installation cancelled: Please grant permission to install the app.';
 
   @override
   String get errorInstallConflictingVersion =>
       'Installation failed: A conflicting version of the app is already installed.';
 
   @override
-  String get errorInstallInvalidApk => 'Installation failed: The APK file is invalid or corrupted.';
+  String get errorInstallInvalidApk =>
+      'Installation failed: The APK file is invalid or corrupted.';
 
   @override
-  String get errorInstallInsufficientStorage => 'Installation failed: Insufficient storage space on the device.';
+  String get errorInstallInsufficientStorage =>
+      'Installation failed: Insufficient storage space on the device.';
 
   @override
   String get errorInstallStartFailed => 'Failed to start installation';
@@ -232,7 +242,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackTitleRequired => 'Title is required';
 
   @override
-  String get feedbackDescriptionHint => 'Provide details about your experience, bug, or feature request...';
+  String get feedbackDescriptionHint =>
+      'Provide details about your experience, bug, or feature request...';
 
   @override
   String get feedbackDescriptionRequired => 'Description is required';
@@ -259,7 +270,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get supportSubjectRequired => 'Subject is required';
 
   @override
-  String get supportMessageHint => 'Describe your issue or question in detail...';
+  String get supportMessageHint =>
+      'Describe your issue or question in detail...';
 
   @override
   String get supportMessageRequired => 'Message is required';
@@ -277,7 +289,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutVersion => 'Version 1.0.0+3';
 
   @override
-  String get aboutDescription => 'A modern, secure, and self-hosted APK release management platform.';
+  String get aboutDescription =>
+      'A modern, secure, and self-hosted APK release management platform.';
 
   @override
   String get aboutPlatformInfoLabel => 'PLATFORM INFO';
@@ -313,7 +326,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signOutConfirmTitle => 'Sign Out';
 
   @override
-  String get signOutConfirmMessage => 'Are you sure you want to sign out of your account?';
+  String get signOutConfirmMessage =>
+      'Are you sure you want to sign out of your account?';
 
   @override
   String get deleteLabel => 'Delete';
@@ -332,10 +346,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteAccountErrorMsg => 'Failed to delete account';
 
   @override
-  String get errorUnexpected => 'An unexpected error occurred. Please try again.';
+  String get errorUnexpected =>
+      'An unexpected error occurred. Please try again.';
 
   @override
-  String get errorTimeout => 'Connection timed out. Please check your internet connection.';
+  String get errorTimeout =>
+      'Connection timed out. Please check your internet connection.';
 
   @override
   String get errorSessionExpired => 'Session expired. Please sign in again.';
@@ -344,7 +360,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorServerError => 'Server error. Please try again later.';
 
   @override
-  String get errorNoInternet => 'No internet connection. Please check your network settings.';
+  String get errorNoInternet =>
+      'No internet connection. Please check your network settings.';
 
   @override
   String get errorRequestCancelled => 'Request was cancelled.';
@@ -356,7 +373,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorBadRequest => 'Bad request. Please check your input.';
 
   @override
-  String get errorForbidden => 'Access denied. You do not have permission to perform this action.';
+  String get errorForbidden =>
+      'Access denied. You do not have permission to perform this action.';
 
   @override
   String get selectLanguage => 'Select Language';
@@ -425,19 +443,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutWebDashboardTitle => 'Web Dashboard';
 
   @override
-  String get aboutWebDashboardSubtitle => 'Google Drive Storage, Team Management, Release History';
+  String get aboutWebDashboardSubtitle =>
+      'Google Drive Storage, Team Management, Release History';
 
   @override
   String get aboutFlutterClientTitle => 'Flutter Client';
 
   @override
-  String get aboutFlutterClientSubtitle => 'Glassmorphic UI, One-Tap Install, Version Detection';
+  String get aboutFlutterClientSubtitle =>
+      'Glassmorphic UI, One-Tap Install, Version Detection';
 
   @override
   String get aboutCliToolTitle => 'CLI Tool';
 
   @override
-  String get aboutCliToolSubtitle => 'Device Auth Flow, Real-Time Progress, Drive Upload Status';
+  String get aboutCliToolSubtitle =>
+      'Device Auth Flow, Real-Time Progress, Drive Upload Status';
 
   @override
   String get aboutEmailSupport => 'Email Support';
@@ -506,7 +527,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyPolicyTitle2 => '2. Information We Collect';
 
   @override
-  String get privacyPolicyPara2_1 => 'We collect information that you provide directly to us when using our services:';
+  String get privacyPolicyPara2_1 =>
+      'We collect information that you provide directly to us when using our services:';
 
   @override
   String get privacyPolicyPara2_2 =>
@@ -524,10 +546,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyPolicyTitle3 => '3. How We Use Your Information';
 
   @override
-  String get privacyPolicyPara3_1 => 'We use the collected information for the following purposes:';
+  String get privacyPolicyPara3_1 =>
+      'We use the collected information for the following purposes:';
 
   @override
-  String get privacyPolicyPara3_2 => '• To authenticate your identity and manage your account.';
+  String get privacyPolicyPara3_2 =>
+      '• To authenticate your identity and manage your account.';
 
   @override
   String get privacyPolicyPara3_3 =>
@@ -538,7 +562,8 @@ class AppLocalizationsEn extends AppLocalizations {
       '• To display application release history and details on your dashboard and mobile client.';
 
   @override
-  String get privacyPolicyPara3_5 => '• To support the CLI tool\'s authentication and upload flows.';
+  String get privacyPolicyPara3_5 =>
+      '• To support the CLI tool\'s authentication and upload flows.';
 
   @override
   String get privacyPolicyTitle4 => '4. Data Sharing and Disclosure';
@@ -621,13 +646,16 @@ class AppLocalizationsEn extends AppLocalizations {
       '• Upload or distribute malicious software, viruses, or any code designed to damage or disrupt devices.';
 
   @override
-  String get termsOfServicePara5_3 => '• Infringe upon the intellectual property rights of others.';
+  String get termsOfServicePara5_3 =>
+      '• Infringe upon the intellectual property rights of others.';
 
   @override
-  String get termsOfServicePara5_4 => '• Violate any applicable local, state, national, or international laws.';
+  String get termsOfServicePara5_4 =>
+      '• Violate any applicable local, state, national, or international laws.';
 
   @override
-  String get termsOfServicePara5_5 => '• Attempt to gain unauthorized access to the service or its related systems.';
+  String get termsOfServicePara5_5 =>
+      '• Attempt to gain unauthorized access to the service or its related systems.';
 
   @override
   String get termsOfServiceTitle6 => '6. Limitation of Liability';
@@ -706,10 +734,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get maintenanceCheckAgain => 'Check Again';
 
   @override
-  String get maintenanceStillActive => 'System is still undergoing maintenance. Please try again later.';
+  String get maintenanceStillActive =>
+      'System is still undergoing maintenance. Please try again later.';
 
   @override
-  String get maintenanceCheckFailed => 'Failed to check system status. Please try again.';
+  String get maintenanceCheckFailed =>
+      'Failed to check system status. Please try again.';
 
   @override
   String get maintenanceChecking => 'Checking...';
@@ -736,7 +766,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get updateAvailableTitle => 'Update Available';
 
   @override
-  String get updateAvailableDescription => 'A new version of the app is available. Would you like to update now?';
+  String get updateAvailableDescription =>
+      'A new version of the app is available. Would you like to update now?';
 
   @override
   String get laterBtnLabel => 'Later';

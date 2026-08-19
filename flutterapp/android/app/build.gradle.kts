@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.testapk.app"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     flavorDimensions += "default"

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/constants.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:flutterapp/widgets/custom_snack_bar.dart';
 import 'package:flutterapp/core/storage_service.dart';
@@ -11,6 +12,33 @@ import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.
 class ApiClient {
   late final Dio _dio;
   Future<void> Function()? onUnauthorized;
+
+  static Map<String, String> _deviceHeaders = {};
+
+  static Future<Map<String, String>> _getDeviceHeaders() async {
+    if (_deviceHeaders.isNotEmpty) return _deviceHeaders;
+
+    final headers = <String, String>{};
+    final deviceInfo = DeviceInfoPlugin();
+
+    try {
+      final androidInfo = await deviceInfo.androidInfo;
+      headers['X-Device-OS'] = 'android';
+      headers['X-Device-Model'] = '${androidInfo.brand} ${androidInfo.model}';
+      headers['X-Device-Version'] = androidInfo.version.release;
+      headers['X-Device-Id'] = androidInfo.id;
+      headers['X-Device-Android-Version'] = androidInfo.version.sdkInt.toString();
+      headers['X-Device-Host'] = androidInfo.host;
+      headers['X-Device-Type'] = androidInfo.type;
+      headers['X-Device-Tags'] = androidInfo.tags;
+    } catch (e) {
+      headers['X-Device-OS'] = 'android';
+      headers['X-Device-Version'] = '';
+    }
+
+    _deviceHeaders = headers;
+    return _deviceHeaders;
+  }
 
   ApiClient._() {
     _dio = Dio(
@@ -33,6 +61,10 @@ class ApiClient {
           if (language != null) {
             options.headers['Accept-Language'] = language;
           }
+          
+          final deviceHeaders = await _getDeviceHeaders();
+          options.headers.addAll(deviceHeaders);
+          
           return handler.next(options);
         },
         onError: (DioException e, handler) async {

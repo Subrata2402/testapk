@@ -192,16 +192,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get acceptBtnLabel => '承認';
 
   @override
-  String get errorInstallCancelled => 'インストールがキャンセルされました: アプリをインストールする権限を許可してください。';
+  String get errorInstallCancelled =>
+      'インストールがキャンセルされました: アプリをインストールする権限を許可してください。';
 
   @override
-  String get errorInstallConflictingVersion => 'インストールに失敗しました: 競合するバージョンのアプリが既にインストールされています。';
+  String get errorInstallConflictingVersion =>
+      'インストールに失敗しました: 競合するバージョンのアプリが既にインストールされています。';
 
   @override
   String get errorInstallInvalidApk => 'インストールに失敗しました: APKファイルが無効か破損しています。';
 
   @override
-  String get errorInstallInsufficientStorage => 'インストールに失敗しました: デバイスの空き容量が不足しています。';
+  String get errorInstallInsufficientStorage =>
+      'インストールに失敗しました: デバイスの空き容量が不足しています。';
 
   @override
   String get errorInstallStartFailed => 'インストールの開始に失敗しました';
@@ -321,7 +324,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get deleteAccountConfirmTitle => 'アカウントを削除しますか？';
 
   @override
-  String get deleteAccountConfirmMessage => 'アカウントを削除してもよろしいですか？この操作は永続的であり、元に戻すことはできません。';
+  String get deleteAccountConfirmMessage =>
+      'アカウントを削除してもよろしいですか？この操作は永続的であり、元に戻すことはできません。';
 
   @override
   String get deleteAccountSuccessMsg => 'アカウントが正常に削除されました';
@@ -507,7 +511,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara2_1 => '当社は、お客様が当社のサービスを利用する際に直接提供する情報を収集します。';
 
   @override
-  String get privacyPolicyPara2_2 => '• アカウント情報: Google OAuthを使用してサインインすると、名前、メールアドレス、プロフィール写真が提供されます。';
+  String get privacyPolicyPara2_2 =>
+      '• アカウント情報: Google OAuthを使用してサインインすると、名前、メールアドレス、プロフィール写真が提供されます。';
 
   @override
   String get privacyPolicyPara2_3 =>
@@ -527,10 +532,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara3_2 => '• 本人確認およびアカウント管理のため。';
 
   @override
-  String get privacyPolicyPara3_3 => '• お客様自身のGoogleドライブストレージへのAPKファイルのアップロード、保存、および取得を容易にするため。';
+  String get privacyPolicyPara3_3 =>
+      '• お客様自身のGoogleドライブストレージへのAPKファイルのアップロード、保存、および取得を容易にするため。';
 
   @override
-  String get privacyPolicyPara3_4 => '• ダッシュボードおよびモバイルクライアントにアプリケーションのリリース履歴と詳細を表示するため。';
+  String get privacyPolicyPara3_4 =>
+      '• ダッシュボードおよびモバイルクライアントにアプリケーションのリリース履歴と詳細を表示するため。';
 
   @override
   String get privacyPolicyPara3_5 => '• CLIツールの認証およびアップロードフローをサポートするため。';
@@ -559,16 +566,19 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicyPara6_2 => '• ダッシュボードの設定から、いつでもGoogleドライブの統合を切断できます。';
 
   @override
-  String get privacyPolicyPara6_3 => '• Googleアカウントの権限ページにアクセスして、GoogleアカウントへのTestAPKのアクセス権を完全に無効にすることができます。';
+  String get privacyPolicyPara6_3 =>
+      '• Googleアカウントの権限ページにアクセスして、GoogleアカウントへのTestAPKのアクセス権を完全に無効にすることができます。';
 
   @override
-  String get privacyPolicyPara6_4 => '• お問い合わせいただくことで、TestAPKアカウントおよび関連するメタデータの削除をリクエストできます。';
+  String get privacyPolicyPara6_4 =>
+      '• お問い合わせいただくことで、TestAPKアカウントおよび関連するメタデータの削除をリクエストできます。';
 
   @override
   String get privacyPolicyTitle7 => '7. お問い合わせ';
 
   @override
-  String get privacyPolicyPara7_1 => 'このプライバシーポリシーに関するご質問やご不明な点がございましたら、subrata3250das@gmail.comまでお問い合わせください。';
+  String get privacyPolicyPara7_1 =>
+      'このプライバシーポリシーに関するご質問やご不明な点がございましたら、subrata3250das@gmail.comまでお問い合わせください。';
 
   @override
   String get termsOfServiceLastUpdated => '2026年7月18日';
@@ -608,7 +618,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get termsOfServicePara5_1 => 'お客様は、以下の目的でサービスを使用しないことに同意します。';
 
   @override
-  String get termsOfServicePara5_2 => '• 悪意のあるソフトウェア、ウイルス、またはデバイスに損害を与えたり妨害したりするように設計されたコードをアップロードまたは配布すること。';
+  String get termsOfServicePara5_2 =>
+      '• 悪意のあるソフトウェア、ウイルス、またはデバイスに損害を与えたり妨害したりするように設計されたコードをアップロードまたは配布すること。';
 
   @override
   String get termsOfServicePara5_3 => '• 他者の知的財産権を侵害すること。';
@@ -637,7 +648,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get termsOfServiceTitle8 => '8. お問い合わせ';
 
   @override
-  String get termsOfServicePara8_1 => 'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
+  String get termsOfServicePara8_1 =>
+      'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
 
   @override
   String get faqTitle => 'よくある質問';
@@ -646,43 +658,50 @@ class AppLocalizationsJa extends AppLocalizations {
   String get faqQuestion1 => 'TestAPKとは何ですか？';
 
   @override
-  String get faqAnswer1 => 'TestAPKは、開発者がベータビルドをテスターに直接配布できるようにする、モダンで安全なセルフホスト型のAPKリリース管理プラットフォームです。';
+  String get faqAnswer1 =>
+      'TestAPKは、開発者がベータビルドをテスターに直接配布できるようにする、モダンで安全なセルフホスト型のAPKリリース管理プラットフォームです。';
 
   @override
   String get faqQuestion2 => 'アップデートのインストール方法は？';
 
   @override
-  String get faqAnswer2 => 'アプリ一覧から最新のAPKリリースを直接ダウンロードしてインストールできます。プロンプトが表示された場合は、不明なソースからのインストールを許可してください。';
+  String get faqAnswer2 =>
+      'アプリ一覧から最新のAPKリリースを直接ダウンロードしてインストールできます。プロンプトが表示された場合は、不明なソースからのインストールを許可してください。';
 
   @override
   String get faqQuestion3 => 'APKファイルはどこに保存されますか？';
 
   @override
-  String get faqAnswer3 => 'すべてのAPKファイルは開発者のGoogleドライブに安全に保存され、データの完全な制御と所有権が保証されます。';
+  String get faqAnswer3 =>
+      'すべてのAPKファイルは開発者のGoogleドライブに安全に保存され、データの完全な制御と所有権が保証されます。';
 
   @override
   String get faqQuestion4 => 'アプリへのアクセス権を取得するには？';
 
   @override
-  String get faqAnswer4 => 'アプリの所有者または開発者からテスターとして招待される必要があります。招待されると、アプリ一覧に承認用の招待が表示されます。';
+  String get faqAnswer4 =>
+      'アプリの所有者または開発者からテスターとして招待される必要があります。招待されると、アプリ一覧に承認用の招待が表示されます。';
 
   @override
   String get faqQuestion5 => 'データは安全ですか？';
 
   @override
-  String get faqAnswer5 => 'はい、TestAPKは安全な認証にGoogle OAuthを使用しており、アプリによって作成されたもの以外のGoogleドライブ内のファイルにはアクセスしません。';
+  String get faqAnswer5 =>
+      'はい、TestAPKは安全な認証にGoogle OAuthを使用しており、アプリによって作成されたもの以外のGoogleドライブ内のファイルにはアクセスしません。';
 
   @override
   String get faqQuestion6 => 'APKはどこにアップロードしますか？';
 
   @override
-  String get faqAnswer6 => 'APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。';
+  String get faqAnswer6 =>
+      'APKは、Webダッシュボード（https://testapk.clipboux.online/）またはTestAPK CLIツールを使用してアップロードできます。';
 
   @override
   String get maintenanceTitle => 'システムメンテナンス';
 
   @override
-  String get maintenanceDescription => '現在、パフォーマンスとセキュリティ向上のため、定期的なシステムアップデートを行っています。間もなくオンラインに戻ります。';
+  String get maintenanceDescription =>
+      '現在、パフォーマンスとセキュリティ向上のため、定期的なシステムアップデートを行っています。間もなくオンラインに戻ります。';
 
   @override
   String get maintenanceCheckAgain => '再試行';
@@ -700,7 +719,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get updateRequiredTitle => 'アップデートが必要です';
 
   @override
-  String get updateRequiredDescription => 'このバージョンのアプリはサポートされていません。続行するには最新バージョンにアップデートしてください。';
+  String get updateRequiredDescription =>
+      'このバージョンのアプリはサポートされていません。続行するには最新バージョンにアップデートしてください。';
 
   @override
   String get updateNowBtnLabel => '今すぐアップデート';
