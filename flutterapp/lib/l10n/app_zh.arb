@@ -53,6 +53,7 @@
   "launchFailedMsg": "启动应用失败",
   "launchErrorMsg": "启动应用错误：",
   "downloadingMsg": "正在下载… ",
+  "installingMsg": "正在安装…",
   "installUpdateBtnLabel": "安装更新",
   "updateBtnLabel": "更新",
   "openAppBtnLabel": "打开应用",

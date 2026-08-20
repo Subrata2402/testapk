@@ -168,6 +168,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get downloadingMsg => '正在下载… ';
 
   @override
+  String get installingMsg => '正在安装…';
+
+  @override
   String get installUpdateBtnLabel => '安装更新';
 
   @override

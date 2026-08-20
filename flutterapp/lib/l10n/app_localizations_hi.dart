@@ -174,6 +174,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get downloadingMsg => 'डाउनलोड हो रहा है… ';
 
   @override
+  String get installingMsg => 'इंस्टॉल हो रहा है…';
+
+  @override
   String get installUpdateBtnLabel => 'अपडेट इंस्टॉल करें';
 
   @override

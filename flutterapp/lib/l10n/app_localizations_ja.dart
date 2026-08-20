@@ -168,6 +168,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get downloadingMsg => 'ダウンロード中… ';
 
   @override
+  String get installingMsg => 'インストール中…';
+
+  @override
   String get installUpdateBtnLabel => 'アップデートをインストール';
 
   @override

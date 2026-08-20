@@ -53,6 +53,7 @@
   "launchFailedMsg": "एप्लिकेशन लॉन्च करने में विफल",
   "launchErrorMsg": "ऐप लॉन्च करने में त्रुटि: ",
   "downloadingMsg": "डाउनलोड हो रहा है… ",
+  "installingMsg": "इंस्टॉल हो रहा है…",
   "installUpdateBtnLabel": "अपडेट इंस्टॉल करें",
   "updateBtnLabel": "अपडेट करें",
   "openAppBtnLabel": "ऐप खोलें",

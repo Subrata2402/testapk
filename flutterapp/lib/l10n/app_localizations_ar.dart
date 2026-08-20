@@ -171,6 +171,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get downloadingMsg => 'جاري التنزيل… ';
 
   @override
+  String get installingMsg => 'جاري التثبيت…';
+
+  @override
   String get installUpdateBtnLabel => 'تثبيت التحديث';
 
   @override

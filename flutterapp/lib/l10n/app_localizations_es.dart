@@ -176,6 +176,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get downloadingMsg => 'Descargando… ';
 
   @override
+  String get installingMsg => 'Instalando…';
+
+  @override
   String get installUpdateBtnLabel => 'Instalar Actualización';
 
   @override

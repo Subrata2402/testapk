@@ -53,6 +53,7 @@
   "launchFailedMsg": "فشل تشغيل التطبيق",
   "launchErrorMsg": "خطأ أثناء تشغيل التطبيق: ",
   "downloadingMsg": "جاري التنزيل… ",
+  "installingMsg": "جاري التثبيت…",
   "installUpdateBtnLabel": "تثبيت التحديث",
   "updateBtnLabel": "تحديث",
   "openAppBtnLabel": "فتح التطبيق",

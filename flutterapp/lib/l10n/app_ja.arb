@@ -53,6 +53,7 @@
   "launchFailedMsg": "アプリケーションの起動に失敗しました",
   "launchErrorMsg": "アプリ起動エラー: ",
   "downloadingMsg": "ダウンロード中… ",
+  "installingMsg": "インストール中…",
   "installUpdateBtnLabel": "アップデートをインストール",
   "updateBtnLabel": "アップデート",
   "openAppBtnLabel": "アプリを開く",

@@ -53,6 +53,7 @@
   "launchFailedMsg": "Anwendung konnte nicht gestartet werden",
   "launchErrorMsg": "Fehler beim Starten der App: ",
   "downloadingMsg": "Herunterladen… ",
+  "installingMsg": "Installieren…",
   "installUpdateBtnLabel": "Update installieren",
   "updateBtnLabel": "Aktualisieren",
   "openAppBtnLabel": "App öffnen",

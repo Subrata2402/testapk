@@ -53,6 +53,7 @@
   "launchFailedMsg": "Falha ao iniciar a aplicação",
   "launchErrorMsg": "Erro ao iniciar a aplicação: ",
   "downloadingMsg": "A transferir… ",
+  "installingMsg": "A instalar…",
   "installUpdateBtnLabel": "Instalar Atualização",
   "updateBtnLabel": "Atualizar",
   "openAppBtnLabel": "Abrir Aplicação",

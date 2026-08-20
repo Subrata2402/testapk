@@ -430,6 +430,12 @@ abstract class AppLocalizations {
   /// **'Downloading… '**
   String get downloadingMsg;
 
+  /// No description provided for @installingMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Installing…'**
+  String get installingMsg;
+
   /// No description provided for @installUpdateBtnLabel.
   ///
   /// In en, this message translates to:

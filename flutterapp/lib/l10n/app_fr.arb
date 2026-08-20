@@ -53,6 +53,7 @@
   "launchFailedMsg": "Échec du lancement de l'application",
   "launchErrorMsg": "Erreur lors du lancement de l'application : ",
   "downloadingMsg": "Téléchargement… ",
+  "installingMsg": "Installation…",
   "installUpdateBtnLabel": "Installer la mise à jour",
   "updateBtnLabel": "Mettre à jour",
   "openAppBtnLabel": "Ouvrir l'application",

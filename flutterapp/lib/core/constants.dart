@@ -129,6 +129,7 @@ String get kDownloadedMsg => _l10n?.downloadedMsg ?? 'Downloaded: ';
 String get kLaunchFailedMsg => _l10n?.launchFailedMsg ?? 'Failed to launch application';
 String get kLaunchErrorMsg => _l10n?.launchErrorMsg ?? 'Error launching app: ';
 String get kDownloadingMsg => _l10n?.downloadingMsg ?? 'Downloading… ';
+String get kInstallingMsg => _l10n?.installingMsg ?? 'Installing…';
 String get kInstallUpdateBtnLabel => _l10n?.installUpdateBtnLabel ?? 'Install Update';
 String get kUpdateBtnLabel => _l10n?.updateBtnLabel ?? 'Update';
 String get kOpenAppBtnLabel => _l10n?.openAppBtnLabel ?? 'Open App';
