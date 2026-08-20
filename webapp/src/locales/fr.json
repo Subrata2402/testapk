@@ -333,5 +333,23 @@
     "CHECK_AGAIN": "Vérifier à nouveau",
     "STILL_ACTIVE": "Le système est toujours en cours de maintenance. Veuillez réessayer plus tard.",
     "CHECK_FAILED": "Échec de la vérification de l'état du système. Veuillez réessayer."
+  },
+  "SEO": {
+    "DEFAULT_TITLE": "TestAPK - Plateforme sécurisée de distribution d'APK",
+    "DEFAULT_DESC": "TestAPK est une plateforme sécurisée de distribution d'APK pour les développeurs Android. Connectez votre Google Drive, importez des APK et partagez des builds avec des testeurs.",
+    "FAQ_TITLE": "FAQ - TestAPK",
+    "FAQ_DESC": "Questions fréquemment posées sur TestAPK : distribution d'APK auto-hébergée, intégration Google Drive et tests sécurisés.",
+    "PRIVACY_TITLE": "Politique de confidentialité - TestAPK",
+    "PRIVACY_DESC": "Politique de confidentialité de TestAPK. Découvrez comment nous gérons vos données et l'accès à Google Drive en toute sécurité.",
+    "TERMS_TITLE": "Conditions d'utilisation - TestAPK",
+    "TERMS_DESC": "Conditions d'utilisation de TestAPK. Lisez les conditions d'utilisation de notre plateforme.",
+    "DEVICE_TITLE": "Autorisation de l'appareil - TestAPK",
+    "DEVICE_DESC": "Autorisez votre appareil Android à télécharger et installer des builds depuis TestAPK.",
+    "DASHBOARD_TITLE": "Tableau de bord - TestAPK",
+    "DASHBOARD_DESC": "Gérez vos applications Android, vos versions et votre configuration Google Drive sur TestAPK.",
+    "CREATE_APP_TITLE": "Créer une application - TestAPK",
+    "CREATE_APP_DESC": "Créez un nouvel espace de travail d'application Android sur TestAPK.",
+    "APP_DETAILS_TITLE": "Détails de l'application - TestAPK",
+    "APP_DETAILS_DESC": "Affichez les versions, téléchargez des APK et gérez les testeurs pour votre application sur TestAPK."
   }
 }

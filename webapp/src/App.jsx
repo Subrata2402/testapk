@@ -11,6 +11,7 @@ import AlertModal from './components/common/AlertModal';
 import ConfirmModal from './components/common/ConfirmModal';
 import MaintenanceScreen from './components/common/MaintenanceScreen';
 import AppRoutes from './routes/AppRoutes';
+import SEOManager from './components/common/SEOManager';
 import { authService, userService, appService, settingService } from './services/api';
 import logoImg from './assets/logo.png';
 import './App.css';
@@ -290,6 +291,7 @@ export default function App() {
 
   return (
     <div className="app-layout">
+      <SEOManager />
       <Navbar user={user} onLoginClick={() => setIsLoginModalOpen(true)} />
 
       {/* Main Content */}

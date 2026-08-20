@@ -333,5 +333,23 @@
     "CHECK_AGAIN": "再次检查",
     "STILL_ACTIVE": "系统仍在维护中。请稍后再试。",
     "CHECK_FAILED": "无法检查系统状态。请再试一次。"
+  },
+  "SEO": {
+    "DEFAULT_TITLE": "TestAPK - 安全的 APK 分发平台",
+    "DEFAULT_DESC": "TestAPK 是专为 Android 开发者打造的安全 APK 分发平台。连接您的 Google 云端硬盘，上传 APK，并与测试人员共享构建版本。",
+    "FAQ_TITLE": "常见问题 - TestAPK",
+    "FAQ_DESC": "关于 TestAPK 的常见问题：自托管 APK 分发、Google 云端硬盘集成和安全测试。",
+    "PRIVACY_TITLE": "隐私政策 - TestAPK",
+    "PRIVACY_DESC": "TestAPK 隐私政策。了解我们如何安全地处理您的数据和 Google 云端硬盘访问权限。",
+    "TERMS_TITLE": "服务条款 - TestAPK",
+    "TERMS_DESC": "TestAPK 服务条款。阅读使用我们平台的条款和条件。",
+    "DEVICE_TITLE": "设备授权 - TestAPK",
+    "DEVICE_DESC": "授权您的 Android 设备从 TestAPK 下载并安装构建版本。",
+    "DASHBOARD_TITLE": "控制面板 - TestAPK",
+    "DASHBOARD_DESC": "在 TestAPK 上管理您的 Android 应用、发布版本和 Google 云端硬盘配置。",
+    "CREATE_APP_TITLE": "创建应用 - TestAPK",
+    "CREATE_APP_DESC": "在 TestAPK 上创建一个新的 Android 应用工作区。",
+    "APP_DETAILS_TITLE": "应用详情 - TestAPK",
+    "APP_DETAILS_DESC": "在 TestAPK 上查看发布版本、下载 APK 并管理应用的测试人员。"
   }
 }
