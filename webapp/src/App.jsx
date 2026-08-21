@@ -24,7 +24,6 @@ export default function App() {
   const [user, setUser] = useState(null); // { name, email, avatar }
   const [apps, setApps] = useState(initialApps);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isDriveModalOpen, setIsDriveModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
@@ -321,7 +320,7 @@ export default function App() {
       {/* Create App Modal */}
       <CreateAppModal
         isOpen={location.pathname === '/dashboard/create-app'}
-        onClose={() => navigate('/dashboard')}
+        onClose={() => navigate(-1)}
         onCreateApp={handleCreateApp}
         user={user}
         showAlert={showAlert}
@@ -348,11 +347,11 @@ export default function App() {
       <ConfirmModal config={confirmConfig} onClose={() => setConfirmConfig(null)} />
 
       {isLoggingOut && (
-        <div className="modal-overlay flex-center" style={{ zIndex: 9999, background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(10px)' }}>
-          <div className="google-loading-state" style={{ color: '#ffffff' }}>
+        <div className="modal-overlay flex-center logout-overlay">
+          <div className="google-loading-state logout-state">
             <div className="spinner"></div>
-            <p style={{ marginTop: '16px', fontSize: '1.1rem', fontWeight: '500' }}>{t('DASHBOARD.LOGGING_OUT')}</p>
-            <span className="loading-subtext" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{t('DASHBOARD.LOGGING_OUT_SUBTEXT')}</span>
+            <p className="logout-title">{t('DASHBOARD.LOGGING_OUT')}</p>
+            <span className="loading-subtext logout-subtext">{t('DASHBOARD.LOGGING_OUT_SUBTEXT')}</span>
           </div>
         </div>
       )}

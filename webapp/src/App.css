@@ -298,3 +298,24 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Logout Loading Overlay */
+.logout-overlay {
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.logout-state {
+  color: #ffffff;
+}
+
+.logout-title {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.logout-subtext {
+  color: rgba(255, 255, 255, 0.5);
+}
