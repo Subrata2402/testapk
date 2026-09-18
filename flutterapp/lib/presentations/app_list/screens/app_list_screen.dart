@@ -3,7 +3,7 @@ import 'package:flutterapp/core/api_service.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
 import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/presentations/app_list/widgets/app_list_app_bar.dart';

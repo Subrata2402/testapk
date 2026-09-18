@@ -1,4 +1,4 @@
-package com.testapk.app
+package app.testapk.com
 
 import android.app.PendingIntent
 import android.content.Intent
@@ -20,7 +20,7 @@ import android.content.IntentFilter
 import android.os.Bundle
 
 class MainActivity : FlutterActivity() {
-    private val channelLink: String = "com.testapk.app/app_launcher"
+    private val channelLink: String = "app.testapk.com/app_launcher"
     private var channel: MethodChannel? = null
 
     private val installStatusReceiver = object : BroadcastReceiver() {
@@ -45,7 +45,7 @@ class MainActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val filter = IntentFilter("com.testapk.app.INSTALL_STATUS_UPDATE")
+        val filter = IntentFilter("app.testapk.com.INSTALL_STATUS_UPDATE")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(installStatusReceiver, filter, Context.RECEIVER_EXPORTED)
         } else {
@@ -276,7 +276,7 @@ class MainActivity : FlutterActivity() {
             out.close()
 
             val intent = Intent(this, InstallReceiver::class.java).apply {
-                action = "com.testapk.app.INSTALL_STATUS"
+                action = "app.testapk.com.INSTALL_STATUS"
                 putExtra("my_package_name", apkPackageName)
             }
 

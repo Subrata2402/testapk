@@ -1,4 +1,4 @@
-package com.testapk.app
+package app.testapk.com
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -14,7 +14,7 @@ class InstallReceiver : BroadcastReceiver() {
         Log.d("InstallReceiver", "Installation status: $status, message: $message, package: $packageName")
         
         // Forward the status to MainActivity's dynamic receiver
-        val localIntent = Intent("com.testapk.app.INSTALL_STATUS_UPDATE").apply {
+        val localIntent = Intent("app.testapk.com.INSTALL_STATUS_UPDATE").apply {
             putExtra(PackageInstaller.EXTRA_STATUS, status)
             putExtra(PackageInstaller.EXTRA_STATUS_MESSAGE, message)
             putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, packageName)

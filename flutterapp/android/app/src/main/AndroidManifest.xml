@@ -51,7 +51,7 @@
             android:name=".InstallReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.testapk.app.INSTALL_STATUS" />
+                <action android:name="app.testapk.com.INSTALL_STATUS" />
             </intent-filter>
         </receiver>
 

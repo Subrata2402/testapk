@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/auth_service.dart';
 import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
 import 'package:flutterapp/models/user_model.dart';
 import 'package:flutterapp/presentations/login/screens/login_screen.dart';
 import 'package:flutterapp/presentations/menu/profile/screens/profile_screen.dart';

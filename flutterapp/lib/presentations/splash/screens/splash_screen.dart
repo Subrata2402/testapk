@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         // Get current app version info using MethodChannel
         const platform = MethodChannel(kMethodChannelName);
         final Map<dynamic, dynamic>? currentInfo = await platform.invokeMethod('getInstalledVersionInfo', {
-          'packageName': 'com.testapk.app',
+          'packageName': 'app.testapk.com',
         });
 
         if (currentInfo != null) {

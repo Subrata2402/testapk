@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/storage_service.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
 import 'package:flutterapp/main.dart';
 import 'package:flutterapp/presentations/menu/language/widgets/language_selector_app_bar.dart';
 import 'package:flutterapp/presentations/menu/language/widgets/language_selector_bottom_bar.dart';

@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
 import 'package:flutterapp/utils/extensions.dart';
 import 'package:flutterapp/widgets/orb.dart';
 import 'package:flutterapp/presentations/menu/faq/widgets/faq_tile.dart';

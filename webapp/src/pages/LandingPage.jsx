@@ -24,7 +24,7 @@ export default function LandingPage({ user, onLoginClick, onContactClick, onNavi
 
   const appDetails = {
     name: 'TestAPK',
-    packageName: 'com.testapk.app',
+    packageName: 'app.testapk.com',
     description: t('LANDING.HERO_DESCRIPTION'),
     downloads: '1.2K',
     rating: '4.9',

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/core/api_service.dart';
 import 'package:flutterapp/core/app_colors.dart';
 import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
 import 'package:flutterapp/models/app_model.dart';
 import 'package:flutterapp/models/release_model.dart';
 import 'package:flutterapp/presentations/release_detail/screens/release_detail_screen.dart';
