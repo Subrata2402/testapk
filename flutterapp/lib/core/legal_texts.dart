@@ -1,4 +1,4 @@
-import 'package:flutterapp/core/constants.dart';
+import 'package:testapk/core/constants.dart';
 
 class LegalSection {
   final String title;

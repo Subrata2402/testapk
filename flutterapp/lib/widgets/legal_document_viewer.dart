@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/core/legal_texts.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
-import 'package:flutterapp/widgets/legal_section_widget.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/core/legal_texts.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/widgets/text_viewer.dart';
+import 'package:testapk/widgets/legal_section_widget.dart';
 
 class LegalDocumentViewer extends StatelessWidget {
   final String title;

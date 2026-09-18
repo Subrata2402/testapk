@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/api_service.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/auth_service.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/models/app_model.dart';
-import 'package:flutterapp/models/user_model.dart';
-import 'package:flutterapp/presentations/app_list/widgets/app_list_app_bar.dart';
-import 'package:flutterapp/presentations/app_list/widgets/app_list_content.dart';
-import 'package:flutterapp/presentations/app_list/widgets/app_list_error.dart';
-import 'package:flutterapp/presentations/app_list/widgets/app_list_shimmer.dart';
-import 'package:flutterapp/presentations/login/screens/login_screen.dart';
-import 'package:flutterapp/presentations/release_list/screens/release_list_screen.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/notification_manager.dart';
-import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'package:flutterapp/presentations/update/widgets/app_update_dialog.dart';
+import 'package:testapk/core/api_service.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/auth_service.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/models/app_model.dart';
+import 'package:testapk/models/user_model.dart';
+import 'package:testapk/presentations/app_list/widgets/app_list_app_bar.dart';
+import 'package:testapk/presentations/app_list/widgets/app_list_content.dart';
+import 'package:testapk/presentations/app_list/widgets/app_list_error.dart';
+import 'package:testapk/presentations/app_list/widgets/app_list_shimmer.dart';
+import 'package:testapk/presentations/login/screens/login_screen.dart';
+import 'package:testapk/presentations/release_list/screens/release_list_screen.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/notification_manager.dart';
+import 'package:testapk/widgets/custom_snack_bar.dart';
 
 class AppListScreen extends StatefulWidget {
   final bool isUpdateOptional;
@@ -50,11 +49,11 @@ class _AppListScreenState extends State<AppListScreen> {
   }
 
   void _showUpdateDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
-    );
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+    //   builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
+    // );
   }
 
   @override

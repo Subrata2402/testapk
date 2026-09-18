@@ -1,4 +1,4 @@
-import 'package:flutterapp/models/release_model.dart';
+import 'package:testapk/models/release_model.dart';
 
 class MemberModel {
   final String email;

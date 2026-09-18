@@ -1,25 +1,24 @@
 import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/auth_service.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/core/legal_texts.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/presentations/app_list/screens/app_list_screen.dart';
-import 'package:flutterapp/presentations/menu/language/screens/language_selector_screen.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:flutterapp/widgets/legal_document_viewer.dart';
-import 'package:flutterapp/presentations/login/widgets/login_logo_tile.dart';
-import 'package:flutterapp/presentations/login/widgets/login_info_row.dart';
-import 'package:flutterapp/presentations/login/widgets/login_chip.dart';
-import 'package:flutterapp/presentations/login/widgets/login_sign_in_button.dart';
-import 'package:flutterapp/presentations/login/widgets/login_separator.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/auth_service.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/core/legal_texts.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/presentations/app_list/screens/app_list_screen.dart';
+import 'package:testapk/presentations/menu/language/screens/language_selector_screen.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/widgets/glass_panel.dart';
+import 'package:testapk/widgets/legal_document_viewer.dart';
+import 'package:testapk/presentations/login/widgets/login_logo_tile.dart';
+import 'package:testapk/presentations/login/widgets/login_info_row.dart';
+import 'package:testapk/presentations/login/widgets/login_chip.dart';
+import 'package:testapk/presentations/login/widgets/login_sign_in_button.dart';
+import 'package:testapk/presentations/login/widgets/login_separator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
-import 'package:flutterapp/presentations/update/widgets/app_update_dialog.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool isUpdateOptional;
@@ -78,11 +77,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   }
 
   void _showUpdateDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
-    );
+    // showDialog(
+    //   context: context,
+    //   barrierDismissible: false,
+    //   builder: (context) => AppUpdateDialog(downloadLink: widget.latestVersionDownloadLink),
+    // );
   }
 
   @override

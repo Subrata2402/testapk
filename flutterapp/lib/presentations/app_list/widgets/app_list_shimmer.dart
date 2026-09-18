@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/utils/extensions.dart';
+import 'package:testapk/utils/extensions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AppListShimmer extends StatelessWidget {

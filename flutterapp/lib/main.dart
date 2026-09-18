@@ -5,17 +5,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutterapp/configs.dart';
-import 'package:flutterapp/core/api_client.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/auth_service.dart';
-import 'package:flutterapp/core/navigation.dart';
-import 'package:flutterapp/core/storage_service.dart';
-import 'package:flutterapp/firebase_options.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/notification_manager.dart';
-import 'package:flutterapp/presentations/login/screens/login_screen.dart';
-import 'package:flutterapp/presentations/splash/screens/splash_screen.dart';
+import 'package:testapk/configs.dart';
+import 'package:testapk/core/api_client.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/auth_service.dart';
+import 'package:testapk/core/navigation.dart';
+import 'package:testapk/core/storage_service.dart';
+import 'package:testapk/firebase_options.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/notification_manager.dart';
+import 'package:testapk/presentations/login/screens/login_screen.dart';
+import 'package:testapk/presentations/splash/screens/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {

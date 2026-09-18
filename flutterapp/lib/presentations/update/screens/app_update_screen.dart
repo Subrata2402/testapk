@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/presentations/update/widgets/app_update_card.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/presentations/update/widgets/app_update_card.dart';
 
 class AppUpdateScreen extends StatefulWidget {
   final String downloadLink;

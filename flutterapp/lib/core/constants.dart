@@ -1,5 +1,5 @@
-import 'package:flutterapp/core/navigation.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/core/navigation.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
 
 const String kMethodChannelName = "app.testapk.com/app_launcher";
 

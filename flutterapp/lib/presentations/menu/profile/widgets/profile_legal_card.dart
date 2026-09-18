@@ -1,17 +1,17 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/core/legal_texts.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/presentations/menu/about/screens/about_screen.dart';
-import 'package:flutterapp/presentations/menu/feedback/screens/feedback_screen.dart';
-import 'package:flutterapp/presentations/menu/support/screens/contact_support_screen.dart';
-import 'package:flutterapp/presentations/menu/language/screens/language_selector_screen.dart';
-import 'package:flutterapp/presentations/menu/faq/screens/faq_screen.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/legal_document_viewer.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/core/legal_texts.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/presentations/menu/about/screens/about_screen.dart';
+import 'package:testapk/presentations/menu/feedback/screens/feedback_screen.dart';
+import 'package:testapk/presentations/menu/support/screens/contact_support_screen.dart';
+import 'package:testapk/presentations/menu/language/screens/language_selector_screen.dart';
+import 'package:testapk/presentations/menu/faq/screens/faq_screen.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/legal_document_viewer.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 
 class ProfileLegalCard extends StatelessWidget {
   const ProfileLegalCard({super.key});

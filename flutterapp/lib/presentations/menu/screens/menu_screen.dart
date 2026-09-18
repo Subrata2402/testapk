@@ -1,20 +1,20 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/auth_service.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/l10n/generated_files/app_localizations.dart';
-import 'package:flutterapp/models/user_model.dart';
-import 'package:flutterapp/presentations/login/screens/login_screen.dart';
-import 'package:flutterapp/presentations/menu/profile/screens/profile_screen.dart';
-import 'package:flutterapp/presentations/menu/profile/widgets/action_confirmation_dialog.dart';
-import 'package:flutterapp/presentations/menu/profile/widgets/profile_legal_card.dart';
-import 'package:flutterapp/presentations/menu/profile/widgets/profile_logout_button.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/auth_service.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
+import 'package:testapk/models/user_model.dart';
+import 'package:testapk/presentations/login/screens/login_screen.dart';
+import 'package:testapk/presentations/menu/profile/screens/profile_screen.dart';
+import 'package:testapk/presentations/menu/profile/widgets/action_confirmation_dialog.dart';
+import 'package:testapk/presentations/menu/profile/widgets/profile_legal_card.dart';
+import 'package:testapk/presentations/menu/profile/widgets/profile_logout_button.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/widgets/glass_panel.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 
 class MenuScreen extends StatelessWidget {
   final UserModel user;

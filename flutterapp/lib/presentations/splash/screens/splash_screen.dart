@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/api_service.dart';
-import 'package:flutterapp/core/auth_service.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/presentations/app_list/screens/app_list_screen.dart';
-import 'package:flutterapp/presentations/login/screens/login_screen.dart';
-import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.dart';
-import 'package:flutterapp/presentations/update/screens/app_update_screen.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/orb.dart';
-import 'package:flutterapp/presentations/splash/widgets/splash_logo.dart';
-import 'package:flutterapp/presentations/splash/widgets/splash_progress_pill.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/api_service.dart';
+import 'package:testapk/core/auth_service.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/presentations/app_list/screens/app_list_screen.dart';
+import 'package:testapk/presentations/login/screens/login_screen.dart';
+import 'package:testapk/presentations/maintenance/screens/maintenance_screen.dart';
+import 'package:testapk/presentations/update/screens/app_update_screen.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/orb.dart';
+import 'package:testapk/presentations/splash/widgets/splash_logo.dart';
+import 'package:testapk/presentations/splash/widgets/splash_progress_pill.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
           if (currentBuild != -1 && currentVersion.isNotEmpty) {
             // Check if current version is in the allowed list
-            bool isAllowed = false;
+            bool isAllowed = true;
             for (final v in allowedVersions) {
               if (v is Map) {
                 final vName = v['version'] as String? ?? '';

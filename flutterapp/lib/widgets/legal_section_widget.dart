@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/legal_texts.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/legal_texts.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 
 class LegalSectionWidget extends StatelessWidget {
   final LegalSection section;
