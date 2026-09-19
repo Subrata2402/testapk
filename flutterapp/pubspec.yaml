@@ -12,7 +12,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  google_sign_in: ^6.2.0
   dio: ^5.7.0
   pretty_dio_logger: ^1.4.0
   flutter_secure_storage: ^11.0.0
@@ -24,6 +23,7 @@ dependencies:
   permission_handler: ^11.3.1
   intl: ^0.20.2
   firebase_core: ^4.13.0
+  firebase_auth: ^6.7.0
   firebase_messaging: ^16.5.0
   firebase_crashlytics: ^5.2.7
   firebase_analytics: ^12.4.6

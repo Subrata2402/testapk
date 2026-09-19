@@ -1,35 +1,41 @@
 import 'dart:developer' as developer;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:testapk/core/api_service.dart';
-import 'package:testapk/core/constants.dart';
 import 'package:testapk/core/storage_service.dart';
 import 'package:testapk/models/user_model.dart';
 import 'package:testapk/notification_manager.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   AuthService._();
   static final AuthService instance = AuthService._();
 
-  final _googleSignIn = GoogleSignIn(serverClientId: kGoogleClientId, scopes: ['email', 'profile']);
+  final _firebaseAuth = FirebaseAuth.instance;
 
   UserModel? _currentUser;
   UserModel? get currentUser => _currentUser;
 
   Future<UserModel?> signInWithGoogle() async {
     try {
-      final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        developer.log('Google Sign-In canceled by user');
-        return null; // User canceled the sign-in
-      }
+      final googleProvider = GoogleAuthProvider();
+      googleProvider.addScope('email');
+      googleProvider.addScope('profile');
 
-      final googleAuth = await googleUser.authentication;
-      final idToken = googleAuth.idToken;
+      final userCredential = await _firebaseAuth.signInWithProvider(googleProvider);
+      
+      final credential = userCredential.credential;
+      String? idToken;
+      if (credential is OAuthCredential) {
+        idToken = credential.idToken;
+      }
+      idToken ??= await userCredential.user?.getIdToken();
+
       if (idToken == null) {
         developer.log('Google Sign-In failed: No ID token received');
-        return null; // No ID token received
+        return null;
       }
+
+      developer.log('Firebase Auth Sign-In success: ${userCredential.user?.email}');
 
       // Exchange idToken for our JWT
       final response = await ApiService.instance.loginWithGoogle(idToken);
@@ -96,7 +102,7 @@ class AuthService {
         developer.log('Error during sign-out', error: e);
       }
     }
-    await _googleSignIn.signOut();
+    await _firebaseAuth.signOut();
     await StorageService.instance.deleteToken();
     _currentUser = null;
   }

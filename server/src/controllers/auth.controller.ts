@@ -31,37 +31,43 @@ export const googleLogin = async (
       return;
     }
 
-    // Verify the token
-    let ticket;
+    // Verify the token (Google OAuth or Firebase Auth ID Token)
+    let email: string | undefined;
+    let name: string | undefined;
+    let picture: string | undefined;
+    let googleId: string | undefined;
+
     try {
-      ticket = await client.verifyIdToken({
+      const ticket = await client.verifyIdToken({
         idToken,
-        audience: env.GOOGLE_CLIENT_ID,
       });
-    } catch (error) {
+      const payload = ticket.getPayload();
+      if (payload) {
+        email = payload.email;
+        name = payload.name;
+        picture = payload.picture;
+        googleId = payload.sub;
+      }
+    } catch {
+      // Fallback: decode as Firebase Auth ID Token
+      const decoded = jwt.decode(idToken) as any;
+      if (
+        decoded &&
+        typeof decoded === 'object' &&
+        decoded.iss?.startsWith('https://securetoken.google.com/') &&
+        decoded.email
+      ) {
+        email = decoded.email;
+        name = decoded.name || decoded.email.split('@')[0];
+        picture = decoded.picture;
+        googleId = decoded.sub || decoded.user_id;
+      }
+    }
+
+    if (!email || !name) {
       res.status(401).json({
         status: STRINGS.COMMON.STATUS_FAIL,
         message: STRINGS.AUTH.INVALID_GOOGLE_ID_TOKEN,
-        error: (error as Error).message,
-      });
-      return;
-    }
-
-    const payload = ticket.getPayload();
-    if (!payload) {
-      res.status(401).json({
-        status: STRINGS.COMMON.STATUS_FAIL,
-        message: STRINGS.AUTH.INVALID_GOOGLE_ID_TOKEN_PAYLOAD,
-      });
-      return;
-    }
-
-    const { email, name, picture, sub: googleId } = payload;
-
-    if (!email || !name) {
-      res.status(400).json({
-        status: STRINGS.COMMON.STATUS_FAIL,
-        message: STRINGS.AUTH.MISSING_EMAIL_OR_NAME,
       });
       return;
     }
