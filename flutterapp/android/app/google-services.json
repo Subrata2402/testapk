@@ -14,22 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "326341519831-0se0kh64p45dbj0v9ogu3jp6emv9fehi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.testapk.com",
-            "certificate_hash": "12b5a692b95aec8f823478463d103aec3dcb0905"
-          }
-        },
-        {
-          "client_id": "326341519831-9fj10f5hk8vnbf3madv8dsucm86oslb0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "app.testapk.com",
-            "certificate_hash": "540046de14f2af91005f66e3d9cea6a226b0fb5f"
-          }
-        },
-        {
           "client_id": "326341519831-ko4d9nki6pmr4cfl2bj8sit89q0oq624.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
