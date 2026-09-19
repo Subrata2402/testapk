@@ -6,9 +6,6 @@ const String kMethodChannelName = "app.testapk.com/app_launcher";
 /// API Base URL
 String kApiBaseUrl = "";
 
-/// Google OAuth Client ID (Web Client ID from Google Console)
-const String kGoogleClientId = '229511253859-m9otrv5gp2g1l63un2mq3hosbniv598u.apps.googleusercontent.com';
-
 AppLocalizations? get _l10n {
   final context = navigatorKey.currentContext;
   if (context == null) return null;
