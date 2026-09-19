@@ -96,6 +96,7 @@ class AppCard extends StatelessWidget {
             SizedBox(height: context.scale(12)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: context.scale(12),
               children: [
                 _buildCardStat(context, kLabelLatestVersion, latestRelease),
                 if (app.releases.isNotEmpty) ReleaseActionButton(app: app, release: app.releases.first, compact: true),
@@ -108,19 +109,21 @@ class AppCard extends StatelessWidget {
   }
 
   Widget _buildCardStat(BuildContext context, String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextViewer(
-          label.toUpperCase(),
-          fontSize: context.scale(9),
-          fontWeight: FontWeight.w600,
-          color: AppColors.textTertiary,
-          letterSpacing: 0.5,
-        ),
-        SizedBox(height: context.scale(2)),
-        TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
-      ],
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextViewer(
+            label.toUpperCase(),
+            fontSize: context.scale(9),
+            fontWeight: FontWeight.w600,
+            color: AppColors.textTertiary,
+            letterSpacing: 0.5,
+          ),
+          SizedBox(height: context.scale(2)),
+          TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
+        ],
+      ),
     );
   }
 }

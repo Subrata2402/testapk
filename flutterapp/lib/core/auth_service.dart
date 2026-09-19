@@ -19,11 +19,17 @@ class AuthService {
   Future<UserModel?> signInWithGoogle() async {
     try {
       final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) return null;
+      if (googleUser == null) {
+        developer.log('Google Sign-In canceled by user');
+        return null; // User canceled the sign-in
+      }
 
       final googleAuth = await googleUser.authentication;
       final idToken = googleAuth.idToken;
-      if (idToken == null) return null;
+      if (idToken == null) {
+        developer.log('Google Sign-In failed: No ID token received');
+        return null; // No ID token received
+      }
 
       // Exchange idToken for our JWT
       final response = await ApiService.instance.loginWithGoogle(idToken);
@@ -42,7 +48,8 @@ class AuthService {
           } else {
             _currentUser = UserModel.fromJson(body['data']['user'] as Map<String, dynamic>);
           }
-        } catch (_) {
+        } catch (e) {
+          developer.log('Error fetching user profile', error: e);
           _currentUser = UserModel.fromJson(body['data']['user'] as Map<String, dynamic>);
         }
 
@@ -70,9 +77,12 @@ class AuthService {
         await NotificationManager.sendTokenToServer();
         return _currentUser;
       }
-    } catch (_) {}
+    } catch (e) {
+      developer.log('Error in auto-login', error: e);
+    }
     // Token invalid/expired – clear it
     await StorageService.instance.deleteToken();
+    developer.log('Auto-login failed: Token invalid or expired');
     return null;
   }
 
@@ -80,8 +90,11 @@ class AuthService {
     if (!localOnly) {
       try {
         final token = await FirebaseMessaging.instance.getToken();
+        developer.log('Sending FCM token to server for logout: $token');
         await ApiService.instance.logout(token);
-      } catch (_) {}
+      } catch (e) {
+        developer.log('Error during sign-out', error: e);
+      }
     }
     await _googleSignIn.signOut();
     await StorageService.instance.deleteToken();
