@@ -12,6 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  google_sign_in: ^6.2.0
   dio: ^5.7.0
   pretty_dio_logger: ^1.4.0
   flutter_secure_storage: ^11.0.0

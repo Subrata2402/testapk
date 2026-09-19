@@ -12,7 +12,20 @@
           "package_name": "app.testapk.com"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "326341519831-ko4d9nki6pmr4cfl2bj8sit89q0oq624.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.testapk.com",
+            "certificate_hash": "ddb0af8e4a53bf412ba11ac13276f78c3fb7e9ef"
+          }
+        },
+        {
+          "client_id": "326341519831-k4ajd3uurbkgtr7554mglg5t4hgnht6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC-f0BHH-ZEhZiKByZIRKJY0ribkFC76PY"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326341519831-k4ajd3uurbkgtr7554mglg5t4hgnht6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

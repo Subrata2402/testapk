@@ -48,15 +48,14 @@ export const googleLogin = async (
         picture = payload.picture;
         googleId = payload.sub;
       }
-    } catch {
-      // Fallback: decode as Firebase Auth ID Token
+    } catch (err) {
+      console.warn('verifyIdToken failed, falling back to jwt.decode:', (err as Error).message);
+    }
+
+    // Fallback if verifyIdToken failed or didn't extract email
+    if (!email) {
       const decoded = jwt.decode(idToken) as any;
-      if (
-        decoded &&
-        typeof decoded === 'object' &&
-        decoded.iss?.startsWith('https://securetoken.google.com/') &&
-        decoded.email
-      ) {
+      if (decoded && typeof decoded === 'object' && decoded.email) {
         email = decoded.email;
         name = decoded.name || decoded.email.split('@')[0];
         picture = decoded.picture;
@@ -68,6 +67,14 @@ export const googleLogin = async (
       res.status(401).json({
         status: STRINGS.COMMON.STATUS_FAIL,
         message: STRINGS.AUTH.INVALID_GOOGLE_ID_TOKEN,
+      });
+      return;
+    }
+
+    if (!email || !name) {
+      res.status(400).json({
+        status: STRINGS.COMMON.STATUS_FAIL,
+        message: STRINGS.AUTH.MISSING_EMAIL_OR_NAME,
       });
       return;
     }

@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:testapk/core/api_service.dart';
 import 'package:testapk/core/storage_service.dart';
 import 'package:testapk/models/user_model.dart';
@@ -10,6 +11,7 @@ class AuthService {
   AuthService._();
   static final AuthService instance = AuthService._();
 
+  final _googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
   final _firebaseAuth = FirebaseAuth.instance;
 
   UserModel? _currentUser;
@@ -17,27 +19,31 @@ class AuthService {
 
   Future<UserModel?> signInWithGoogle() async {
     try {
-      final googleProvider = GoogleAuthProvider();
-      googleProvider.addScope('email');
-      googleProvider.addScope('profile');
-
-      final userCredential = await _firebaseAuth.signInWithProvider(googleProvider);
-      
-      final credential = userCredential.credential;
-      String? idToken;
-      if (credential is OAuthCredential) {
-        idToken = credential.idToken;
+      // 1. Show native Android Google Sign-In account picker modal
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        developer.log('Google Sign-In canceled by user');
+        return null;
       }
-      idToken ??= await userCredential.user?.getIdToken();
+
+      // 2. Get authentication tokens from Google Sign-In
+      final googleAuth = await googleUser.authentication;
+      final idToken = googleAuth.idToken;
 
       if (idToken == null) {
         developer.log('Google Sign-In failed: No ID token received');
         return null;
       }
 
+      // 3. Authenticate with Firebase Auth in the background
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: idToken,
+      );
+      final userCredential = await _firebaseAuth.signInWithCredential(credential);
       developer.log('Firebase Auth Sign-In success: ${userCredential.user?.email}');
 
-      // Exchange idToken for our JWT
+      // 4. Exchange idToken for our server JWT
       final response = await ApiService.instance.loginWithGoogle(idToken);
 
       if (response.statusCode == 200) {
@@ -103,6 +109,7 @@ class AuthService {
       }
     }
     await _firebaseAuth.signOut();
+    await _googleSignIn.signOut();
     await StorageService.instance.deleteToken();
     _currentUser = null;
   }
