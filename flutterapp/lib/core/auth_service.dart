@@ -57,6 +57,7 @@ class AuthService {
         await NotificationManager.sendTokenToServer();
         return _currentUser;
       }
+      developer.log('Google Sign-In failed: ${response.toString()}');
       return null;
     } catch (e) {
       developer.log('Google Sign-In Error', error: e);
