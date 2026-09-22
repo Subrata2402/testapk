@@ -52,11 +52,7 @@
 
         <receiver
             android:name=".InstallReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="app.testapk.com.INSTALL_STATUS" />
-            </intent-filter>
-        </receiver>
+            android:exported="false" />
 
         <service
             android:name=".DownloadService"

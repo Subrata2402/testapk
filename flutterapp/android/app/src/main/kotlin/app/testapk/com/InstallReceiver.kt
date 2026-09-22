@@ -32,7 +32,11 @@ class InstallReceiver : BroadcastReceiver() {
                 }
                 if (confirmIntent != null) {
                     confirmIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(confirmIntent)
+                    try {
+                        context.startActivity(confirmIntent)
+                    } catch (e: Exception) {
+                        Log.e("InstallReceiver", "Failed to start user action activity", e)
+                    }
                 }
             }
             PackageInstaller.STATUS_SUCCESS -> {
