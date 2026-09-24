@@ -89,6 +89,12 @@ String get kFeedbackSubmitButton => _l10n?.feedbackSubmitButton ?? 'Submit Feedb
 /// App List Empty State
 String get kAppListEmptyTitle => _l10n?.appListEmptyTitle ?? "You haven't been added\nto any app yet.";
 String get kAppListEmptySubtitle => _l10n?.appListEmptySubtitle ?? 'Ask a developer to invite you as a Tester.';
+String get kAppListEmptyDeveloperNoticeTitle => _l10n?.appListEmptyDeveloperNoticeTitle ?? 'Are you a Developer?';
+String get kAppListEmptyDeveloperNotice =>
+    _l10n?.appListEmptyDeveloperNotice ??
+    'Go to the web dashboard to register as a developer and add an application.';
+String get kOpenWebDashboardBtn => _l10n?.openWebDashboardBtn ?? 'Go to Web Dashboard';
+const String kWebDashboardUrl = 'https://testapk.clipboux.online/';
 
 /// App Bar
 String get kSignOutTooltip => _l10n?.signOutTooltip ?? 'Sign out';

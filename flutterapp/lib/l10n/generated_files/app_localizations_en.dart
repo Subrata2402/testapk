@@ -774,4 +774,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'Later';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'Are you a Developer?';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'Go to the web dashboard to register as a developer and add an application.';
+
+  @override
+  String get openWebDashboardBtn => 'Go to Web Dashboard';
 }

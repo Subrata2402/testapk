@@ -1515,6 +1515,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get laterBtnLabel;
+
+  /// No description provided for @appListEmptyDeveloperNoticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you a Developer?'**
+  String get appListEmptyDeveloperNoticeTitle;
+
+  /// No description provided for @appListEmptyDeveloperNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the web dashboard to register as a developer and add an application.'**
+  String get appListEmptyDeveloperNotice;
+
+  /// No description provided for @openWebDashboardBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Web Dashboard'**
+  String get openWebDashboardBtn;
 }
 
 class _AppLocalizationsDelegate

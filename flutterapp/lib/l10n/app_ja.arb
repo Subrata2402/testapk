@@ -247,5 +247,8 @@
   },
   "updateAvailableTitle": "アップデートが利用可能です",
   "updateAvailableDescription": "新しいバージョンのアプリが利用可能です。今すぐアップデートしますか？",
-  "laterBtnLabel": "後で"
+  "laterBtnLabel": "後で",
+  "appListEmptyDeveloperNoticeTitle": "デベロッパーですか？",
+  "appListEmptyDeveloperNotice": "Webダッシュボードにアクセスしてデベロッパーとして登録し、アプリケーションを追加してください。",
+  "openWebDashboardBtn": "Webダッシュボードへ移動"
 }

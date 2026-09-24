@@ -782,4 +782,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'Später';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'Sind Sie Entwickler?';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'Rufen Sie das Web-Dashboard auf, um sich als Entwickler zu registrieren und eine Anwendung hinzuzufügen.';
+
+  @override
+  String get openWebDashboardBtn => 'Zum Web-Dashboard';
 }

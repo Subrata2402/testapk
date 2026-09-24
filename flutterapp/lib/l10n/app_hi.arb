@@ -247,5 +247,8 @@
   },
   "updateAvailableTitle": "अपडेट उपलब्ध",
   "updateAvailableDescription": "ऐप का एक नया संस्करण उपलब्ध है। क्या आप अभी अपडेट करना चाहेंगे?",
-  "laterBtnLabel": "बाद में"
+  "laterBtnLabel": "बाद में",
+  "appListEmptyDeveloperNoticeTitle": "क्या आप एक डेवलपर हैं?",
+  "appListEmptyDeveloperNotice": "डेवलपर के रूप में पंजीकरण करने और एप्लिकेशन जोड़ने के लिए वेब डैशबोर्ड पर जाएं।",
+  "openWebDashboardBtn": "वेब डैशबोर्ड पर जाएं"
 }

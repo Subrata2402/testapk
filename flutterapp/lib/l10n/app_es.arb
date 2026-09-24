@@ -247,5 +247,8 @@
   },
   "updateAvailableTitle": "Actualización Disponible",
   "updateAvailableDescription": "Una nueva versión de la aplicación está disponible. ¿Desea actualizar ahora?",
-  "laterBtnLabel": "Más tarde"
+  "laterBtnLabel": "Más tarde",
+  "appListEmptyDeveloperNoticeTitle": "¿Eres desarrollador?",
+  "appListEmptyDeveloperNotice": "Ve al panel de control web para registrarte como desarrollador y agregar una aplicación.",
+  "openWebDashboardBtn": "Ir al panel web"
 }

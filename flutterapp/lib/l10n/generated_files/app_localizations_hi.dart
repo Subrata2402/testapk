@@ -776,4 +776,14 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'बाद में';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'क्या आप एक डेवलपर हैं?';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'डेवलपर के रूप में पंजीकरण करने और एप्लिकेशन जोड़ने के लिए वेब डैशबोर्ड पर जाएं।';
+
+  @override
+  String get openWebDashboardBtn => 'वेब डैशबोर्ड पर जाएं';
 }

@@ -744,4 +744,14 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get laterBtnLabel => '後で';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'デベロッパーですか？';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'Webダッシュボードにアクセスしてデベロッパーとして登録し、アプリケーションを追加してください。';
+
+  @override
+  String get openWebDashboardBtn => 'Webダッシュボードへ移動';
 }

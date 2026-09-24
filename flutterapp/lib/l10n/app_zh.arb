@@ -247,5 +247,8 @@
   },
   "updateAvailableTitle": "有可用更新",
   "updateAvailableDescription": "有新版本的应用可用。您现在要更新吗？",
-  "laterBtnLabel": "稍后"
+  "laterBtnLabel": "稍后",
+  "appListEmptyDeveloperNoticeTitle": "您是开发者吗？",
+  "appListEmptyDeveloperNotice": "前往 Web 控制台注册成为开发者并添加应用。",
+  "openWebDashboardBtn": "前往 Web 控制台"
 }

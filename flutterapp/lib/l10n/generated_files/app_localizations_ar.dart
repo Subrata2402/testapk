@@ -767,4 +767,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'لاحقاً';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'هل أنت مطور؟';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'انتقل إلى لوحة التحكم على الويب للتسجيل كمطور وإضافة تطبيق.';
+
+  @override
+  String get openWebDashboardBtn => 'الانتقال إلى لوحة التحكم';
 }
