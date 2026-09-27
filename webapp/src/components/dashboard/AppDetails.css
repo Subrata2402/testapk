@@ -67,6 +67,12 @@
   background: rgba(255, 255, 255, 0.01);
 }
 
+@media (max-width: 480px) {
+  .upload-zone {
+    padding: 28px 16px;
+  }
+}
+
 .upload-zone:hover,
 .upload-zone.dragging {
   border-color: var(--accent-primary);

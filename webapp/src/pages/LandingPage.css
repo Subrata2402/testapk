@@ -1,3 +1,6 @@
+/* =============================================
+   Landing Container
+   ============================================= */
 .landing-container {
   display: flex;
   flex-direction: column;
@@ -5,6 +8,16 @@
   padding: 40px 0;
 }
 
+@media (max-width: 768px) {
+  .landing-container {
+    gap: 24px;
+    padding: 24px 0;
+  }
+}
+
+/* =============================================
+   Hero Section
+   ============================================= */
 .hero-section {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -23,6 +36,20 @@
   }
 }
 
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-section {
+    padding: 16px 12px;
+    gap: 16px;
+  }
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -34,6 +61,13 @@
   display: flex;
   align-items: center;
   gap: 24px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 360px) {
+  .app-meta-header {
+    gap: 14px;
+  }
 }
 
 .app-icon-wrapper {
@@ -45,6 +79,15 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.3);
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .app-icon-wrapper {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+  }
 }
 
 .app-icon-svg {
@@ -63,6 +106,12 @@
   line-height: 1.1;
 }
 
+@media (max-width: 480px) {
+  .app-title-area h1 {
+    font-size: 2rem;
+  }
+}
+
 .package-name {
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -76,10 +125,29 @@
   color: var(--text-secondary);
 }
 
+@media (max-width: 480px) {
+  .app-description {
+    font-size: 1rem;
+  }
+}
+
 .hero-actions {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-actions .btn-lg,
+  .hero-actions a.btn-lg {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .btn-lg {
@@ -88,6 +156,16 @@
   border-radius: 12px;
 }
 
+@media (max-width: 480px) {
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* =============================================
+   Hero Stats
+   ============================================= */
 .hero-stats {
   display: flex;
   flex-direction: column;
@@ -98,6 +176,21 @@
   .hero-stats {
     flex-direction: row;
     justify-content: space-between;
+    gap: 10px;
+  }
+}
+
+/* At extreme narrowness, switch to 2-column grid so cards don't get crushed */
+@media (max-width: 380px) {
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  /* Third card spans full width */
+  .hero-stats .stat-card:last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -116,7 +209,14 @@
 @media (max-width: 768px) {
   .stat-card {
     flex: 1;
-    padding: 12px;
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stat-card {
+    flex: unset;
+    padding: 10px 8px;
   }
 }
 
@@ -142,6 +242,13 @@
   color: #ffffff;
 }
 
+@media (max-width: 480px) {
+  .stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+}
+
 .stat-label {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -149,7 +256,16 @@
   letter-spacing: 0.05em;
 }
 
-/* Landing Grid */
+@media (max-width: 480px) {
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0;
+  }
+}
+
+/* =============================================
+   Landing Grid (Specs + Sidebar)
+   ============================================= */
 .landing-grid {
   display: grid;
   grid-template-columns: 2.5fr 1fr;
@@ -160,15 +276,26 @@
 @media (max-width: 992px) {
   .landing-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
-.tabs-header {
+/* =============================================
+   Tabs (landing-specific overrides)
+   ============================================= */
+.landing-container .tabs-header {
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
   padding: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.landing-container .tabs-header::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-btn {
@@ -184,6 +311,8 @@
   gap: 8px;
   border-radius: 8px;
   transition: var(--transition-smooth);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab-btn:hover {
@@ -206,6 +335,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .tab-content {
+    padding: 16px;
+  }
+}
+
 .details-tab,
 .releases-tab {
   display: flex;
@@ -213,11 +348,21 @@
   gap: 24px;
 }
 
+/* =============================================
+   Screenshots
+   ============================================= */
 .screenshots-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 16px;
   margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 .screenshot-card {
@@ -258,6 +403,9 @@
   font-weight: 600;
 }
 
+/* =============================================
+   App Info / Specs
+   ============================================= */
 .app-info-specs {
   display: flex;
   flex-direction: column;
@@ -299,7 +447,9 @@
   color: #ffffff;
 }
 
-/* Releases Timeline */
+/* =============================================
+   Releases Timeline
+   ============================================= */
 .releases-timeline {
   display: flex;
   flex-direction: column;
@@ -341,6 +491,12 @@
   padding: 20px;
 }
 
+@media (max-width: 480px) {
+  .release-timeline-content {
+    padding: 14px;
+  }
+}
+
 .release-header {
   display: flex;
   justify-content: space-between;
@@ -354,6 +510,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .release-date {
@@ -374,6 +531,8 @@
   align-items: center;
   border-top: 1px solid var(--border-color);
   padding-top: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .release-size {
@@ -390,7 +549,9 @@
   border-radius: 6px;
 }
 
-/* Sidebar Widgets */
+/* =============================================
+   Sidebar Widgets
+   ============================================= */
 .landing-sidebar {
   display: flex;
   flex-direction: column;
@@ -402,6 +563,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .sidebar-widget {
+    padding: 16px;
+  }
 }
 
 .security-item {
@@ -446,7 +613,9 @@
   text-decoration: underline;
 }
 
-/* Landing Footer */
+/* =============================================
+   Landing Footer
+   ============================================= */
 .landing-footer {
   margin-top: 48px;
   padding: 24px 32px;
@@ -472,6 +641,7 @@
 .footer-right {
   display: flex;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 .footer-link {
@@ -490,17 +660,20 @@
   .landing-footer {
     flex-direction: column;
     text-align: center;
-    padding: 20px;
+    padding: 20px 16px;
     gap: 16px;
+    margin-top: 24px;
   }
 
   .footer-right {
-    flex-direction: column;
-    gap: 12px;
+    justify-content: center;
+    gap: 16px;
   }
 }
 
-/* Extracted from inline styles */
+/* =============================================
+   Hero Image / Icon Helpers
+   ============================================= */
 .hero-app-icon-wrapper {
   overflow: hidden;
   padding: 0;
@@ -516,9 +689,19 @@
   text-decoration: none;
 }
 
+/* =============================================
+   Landing Sections (Platform, OAuth, Purpose)
+   ============================================= */
 .landing-section {
   margin-top: 32px;
   margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .landing-section {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 }
 
 .landing-section-title {
@@ -528,10 +711,25 @@
   color: #ffffff;
 }
 
+@media (max-width: 480px) {
+  .landing-section-title {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+}
+
+/* Platform grid — 3 cards side-by-side */
 .platform-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+}
+
+@media (max-width: 480px) {
+  .platform-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .platform-link-btn {
@@ -539,10 +737,27 @@
   width: fit-content;
 }
 
+/* =============================================
+   OAuth Disclosure Section
+   ============================================= */
 .oauth-section {
   margin-top: 32px;
   margin-bottom: 32px;
   padding: 32px;
+}
+
+@media (max-width: 768px) {
+  .oauth-section {
+    padding: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .oauth-section {
+    padding: 16px;
+  }
 }
 
 .oauth-section-title {
@@ -553,6 +768,14 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .oauth-section-title {
+    font-size: 1.3rem;
+    gap: 8px;
+  }
 }
 
 .oauth-section-desc {
@@ -564,8 +787,15 @@
 
 .oauth-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
+}
+
+@media (max-width: 480px) {
+  .oauth-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
 
 .oauth-card {
@@ -573,6 +803,12 @@
   padding: 20px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 480px) {
+  .oauth-card {
+    padding: 14px;
+  }
 }
 
 .oauth-card-title {
@@ -591,10 +827,27 @@
   margin: 0;
 }
 
+/* =============================================
+   Purpose Section
+   ============================================= */
 .purpose-section {
   margin-top: 32px;
   margin-bottom: 32px;
   padding: 32px;
+}
+
+@media (max-width: 768px) {
+  .purpose-section {
+    padding: 24px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .purpose-section {
+    padding: 16px;
+  }
 }
 
 .purpose-section-title {
@@ -605,6 +858,14 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .purpose-section-title {
+    font-size: 1.3rem;
+    gap: 8px;
+  }
 }
 
 .purpose-section-desc {
@@ -621,6 +882,9 @@
   margin: 0;
 }
 
+/* =============================================
+   Misc helpers
+   ============================================= */
 .specs-about-desc {
   line-height: 1.6;
 }
@@ -641,4 +905,5 @@
 
 .security-widget-icon {
   margin-top: 2px;
+  flex-shrink: 0;
 }

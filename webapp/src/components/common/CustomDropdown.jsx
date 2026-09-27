@@ -17,7 +17,7 @@ export default function CustomDropdown({ options, value, onChange, placeholder =
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Format options to always be objects { value, label, icon }
+  // Format options to always be objects { value, label, flag?, icon? }
   const formattedOptions = options.map(opt => {
     if (typeof opt === 'string') {
       return { value: opt, label: opt };
@@ -36,8 +36,11 @@ export default function CustomDropdown({ options, value, onChange, placeholder =
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="trigger-content">
+          {selectedOption.flag && (
+            <span className="dropdown-flag">{selectedOption.flag}</span>
+          )}
           {SelectedIcon && <SelectedIcon size={16} className="dropdown-item-icon" />}
-          <span>{selectedOption.label}</span>
+          <span className="dropdown-label">{selectedOption.label}</span>
         </div>
         <Icons.ChevronDown size={16} className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
       </button>
@@ -57,6 +60,7 @@ export default function CustomDropdown({ options, value, onChange, placeholder =
                   setIsOpen(false);
                 }}
               >
+                {opt.flag && <span className="dropdown-flag">{opt.flag}</span>}
                 {ItemIcon && <ItemIcon size={16} className="dropdown-item-icon" />}
                 <span>{opt.label}</span>
                 {isSelected && <Icons.Check size={14} className="check-icon" />}

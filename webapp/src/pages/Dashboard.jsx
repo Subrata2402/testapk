@@ -11,6 +11,7 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
   const { appId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   React.useEffect(() => {
     if (!appId && location.pathname !== '/dashboard/create-app' && apps.length > 0) {
@@ -18,18 +19,41 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
     }
   }, [appId, apps, navigate, location.pathname]);
 
+  // Close mobile sidebar when route changes
+  React.useEffect(() => {
+    setIsMobileSidebarOpen(false);
+  }, [location.pathname]);
+
   const selectedApp = apps.find(app => (app._id === appId || app.id === appId));
+
+  const handleNavToApp = (id) => {
+    navigate(`/dashboard/apps/${id}`);
+    setIsMobileSidebarOpen(false);
+  };
+
+  const handleCreateAppClick = () => {
+    navigate('/dashboard/create-app');
+    setIsMobileSidebarOpen(false);
+  };
 
   return (
     <div className="dashboard-container animate-fade-in">
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div
+          className="sidebar-mobile-overlay"
+          onClick={() => setIsMobileSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="dashboard-sidebar glass-card">
+      <aside className={`dashboard-sidebar glass-card${isMobileSidebarOpen ? ' sidebar-mobile-open' : ''}`}>
         <div className="sidebar-header">
           <div className="logo-area">
             <Icons.Cpu size={24} className="logo-icon" />
             <span className="logo-text">APK Manager</span>
           </div>
-          <button className="btn btn-primary flex-center gap-2" onClick={() => navigate('/dashboard/create-app')}>
+          <button className="btn btn-primary flex-center gap-2" onClick={handleCreateAppClick}>
             <Icons.Plus size={16} />
             <span>{t('DASHBOARD.CREATE_APP')}</span>
           </button>
@@ -37,7 +61,6 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
 
         <nav className="sidebar-nav">
           <div className="nav-section">
-            {/* <span className="nav-section-title">Applications</span> */}
             <div className="apps-list mt-3">
               {apps.map((app) => {
                 const isSelected = app._id === appId || app.id === appId;
@@ -45,7 +68,7 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
                   <button
                     key={app._id || app.id}
                     className={`app-nav-item ${isSelected ? 'active' : ''}`}
-                    onClick={() => navigate(`/dashboard/apps/${app._id || app.id}`)}
+                    onClick={() => handleNavToApp(app._id || app.id)}
                   >
                     <div className="app-nav-icon-wrapper">
                       {app.icon && (app.icon.startsWith('data:') || app.icon.startsWith('http')) ? (
@@ -81,8 +104,8 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
                 )}
               </span>
               <span className="user-email">{user.email}</span>
-              <button 
-                onClick={onOpenDriveModal}
+              <button
+                onClick={() => { onOpenDriveModal(); setIsMobileSidebarOpen(false); }}
                 style={{
                   background: 'none',
                   border: 'none',
@@ -101,6 +124,7 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
             <button
               className="logout-btn"
               onClick={() => {
+                setIsMobileSidebarOpen(false);
                 showConfirm(
                   t('DASHBOARD.CONFIRM_LOGOUT'),
                   onLogout,
@@ -117,6 +141,26 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
 
       {/* Main Content Area */}
       <main className="dashboard-main">
+        {/* Mobile Top Bar */}
+        <div className="dashboard-mobile-topbar">
+          <button
+            className="mobile-sidebar-toggle"
+            onClick={() => setIsMobileSidebarOpen(true)}
+            aria-label="Open navigation"
+          >
+            <Icons.Menu size={20} />
+          </button>
+          <span className="mobile-topbar-title">
+            {selectedApp ? selectedApp.name : appId === 'about' ? 'About' : 'APK Manager'}
+          </span>
+          <button
+            className="btn btn-primary mobile-create-btn"
+            onClick={handleCreateAppClick}
+          >
+            <Icons.Plus size={16} />
+          </button>
+        </div>
+
         {appId === 'about' ? (
           <AboutPage showAlert={showAlert} downloadLink={downloadLink} />
         ) : selectedApp ? (
@@ -134,7 +178,6 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
             <p className="text-secondary">{t('DASHBOARD.WELCOME_DESC')}</p>
 
             <div className="quick-access-section">
-              {/* <h3>Quick Access</h3> */}
               <div className="quick-apps-grid">
                 {apps.map((app) => {
                   return (
