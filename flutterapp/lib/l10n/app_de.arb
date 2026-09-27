@@ -53,6 +53,7 @@
   "launchFailedMsg": "Anwendung konnte nicht gestartet werden",
   "launchErrorMsg": "Fehler beim Starten der App: ",
   "downloadingMsg": "Herunterladen… ",
+  "installingMsg": "Installieren…",
   "installUpdateBtnLabel": "Update installieren",
   "updateBtnLabel": "Aktualisieren",
   "openAppBtnLabel": "App öffnen",
@@ -246,5 +247,8 @@
   },
   "updateAvailableTitle": "Update verfügbar",
   "updateAvailableDescription": "Eine neue Version der App ist verfügbar. Möchten Sie jetzt aktualisieren?",
-  "laterBtnLabel": "Später"
+  "laterBtnLabel": "Später",
+  "appListEmptyDeveloperNoticeTitle": "Sind Sie Entwickler?",
+  "appListEmptyDeveloperNotice": "Rufen Sie das Web-Dashboard auf, um sich als Entwickler zu registrieren und eine Anwendung hinzuzufügen.",
+  "openWebDashboardBtn": "Zum Web-Dashboard"
 }

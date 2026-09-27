@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/utils/extensions.dart';
+import 'package:testapk/utils/extensions.dart';
 
 class GlassPanel extends StatelessWidget {
   final Widget child;

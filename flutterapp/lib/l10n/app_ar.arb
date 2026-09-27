@@ -53,6 +53,7 @@
   "launchFailedMsg": "فشل تشغيل التطبيق",
   "launchErrorMsg": "خطأ أثناء تشغيل التطبيق: ",
   "downloadingMsg": "جاري التنزيل… ",
+  "installingMsg": "جاري التثبيت…",
   "installUpdateBtnLabel": "تثبيت التحديث",
   "updateBtnLabel": "تحديث",
   "openAppBtnLabel": "فتح التطبيق",
@@ -246,5 +247,8 @@
   },
   "updateAvailableTitle": "التحديث متاح",
   "updateAvailableDescription": "يتوفر إصدار جديد من التطبيق. هل ترغب في التحديث الآن؟",
-  "laterBtnLabel": "لاحقاً"
+  "laterBtnLabel": "لاحقاً",
+  "appListEmptyDeveloperNoticeTitle": "هل أنت مطور؟",
+  "appListEmptyDeveloperNotice": "انتقل إلى لوحة التحكم على الويب للتسجيل كمطور وإضافة تطبيق.",
+  "openWebDashboardBtn": "الانتقال إلى لوحة التحكم"
 }

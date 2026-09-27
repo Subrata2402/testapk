@@ -333,5 +333,23 @@
     "CHECK_AGAIN": "التحقق مرة أخرى",
     "STILL_ACTIVE": "النظام لا يزال قيد الصيانة. يرجى المحاولة مرة أخرى لاحقًا.",
     "CHECK_FAILED": "فشل التحقق من حالة النظام. يرجى المحاولة مرة أخرى."
+  },
+  "SEO": {
+    "DEFAULT_TITLE": "TestAPK - منصة آمنة لتوزيع ملفات APK",
+    "DEFAULT_DESC": "TestAPK هي منصة آمنة لتوزيع ملفات APK لمطوري Android. اربط حساب Google Drive الخاص بك، وارفع ملفات APK، وشارك النسخ مع المختبرين.",
+    "FAQ_TITLE": "الأسئلة الشائعة - TestAPK",
+    "FAQ_DESC": "الأسئلة الشائعة حول TestAPK: التوزيع الذاتي لملفات APK، والتكامل مع Google Drive، والاختبار الآمن.",
+    "PRIVACY_TITLE": "سياسة الخصوصية - TestAPK",
+    "PRIVACY_DESC": "سياسة الخصوصية لـ TestAPK. تعرف على كيفية تعاملنا مع بياناتك والوصول إلى Google Drive بأمان.",
+    "TERMS_TITLE": "شروط الخدمة - TestAPK",
+    "TERMS_DESC": "شروط الخدمة لـ TestAPK. اقرأ الشروط والأحكام الخاصة باستخدام منصتنا.",
+    "DEVICE_TITLE": "تفويض الجهاز - TestAPK",
+    "DEVICE_DESC": "قم بتفويض جهاز Android الخاص بك لتنزيل وتثبيت النسخ من TestAPK.",
+    "DASHBOARD_TITLE": "لوحة التحكم - TestAPK",
+    "DASHBOARD_DESC": "إدارة تطبيقات Android، والإصدارات، وتكوين Google Drive على TestAPK.",
+    "CREATE_APP_TITLE": "إنشاء تطبيق - TestAPK",
+    "CREATE_APP_DESC": "إنشاء مساحة عمل جديدة لتطبيق Android على TestAPK.",
+    "APP_DETAILS_TITLE": "تفاصيل التطبيق - TestAPK",
+    "APP_DETAILS_DESC": "عرض الإصدارات، وتنزيل ملفات APK، وإدارة المختبرين لتطبيقك على TestAPK."
   }
 }

@@ -25,7 +25,7 @@ import 'app_localizations_zh.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/app_localizations.dart';
+/// import 'generated_files/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -429,6 +429,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Downloading… '**
   String get downloadingMsg;
+
+  /// No description provided for @installingMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Installing…'**
+  String get installingMsg;
 
   /// No description provided for @installUpdateBtnLabel.
   ///
@@ -1509,6 +1515,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get laterBtnLabel;
+
+  /// No description provided for @appListEmptyDeveloperNoticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you a Developer?'**
+  String get appListEmptyDeveloperNoticeTitle;
+
+  /// No description provided for @appListEmptyDeveloperNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the web dashboard to register as a developer and add an application.'**
+  String get appListEmptyDeveloperNotice;
+
+  /// No description provided for @openWebDashboardBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to Web Dashboard'**
+  String get openWebDashboardBtn;
 }
 
 class _AppLocalizationsDelegate

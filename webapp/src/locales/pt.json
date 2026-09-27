@@ -333,5 +333,23 @@
     "CHECK_AGAIN": "Verificar Novamente",
     "STILL_ACTIVE": "O sistema ainda está em manutenção. Por favor, tente novamente mais tarde.",
     "CHECK_FAILED": "Falha ao verificar o status do sistema. Por favor, tente novamente."
+  },
+  "SEO": {
+    "DEFAULT_TITLE": "TestAPK - Plataforma segura de distribuição de APK",
+    "DEFAULT_DESC": "TestAPK é uma plataforma segura de distribuição de APK para desenvolvedores Android. Conecte seu Google Drive, envie APKs e compartilhe compilações com testadores.",
+    "FAQ_TITLE": "Perguntas frequentes - TestAPK",
+    "FAQ_DESC": "Perguntas frequentes sobre o TestAPK: distribuição auto-hospedada de APK, integração com o Google Drive e testes seguros.",
+    "PRIVACY_TITLE": "Política de privacidade - TestAPK",
+    "PRIVACY_DESC": "Política de privacidade do TestAPK. Saiba como lidamos com seus dados e acesso ao Google Drive de forma segura.",
+    "TERMS_TITLE": "Termos de serviço - TestAPK",
+    "TERMS_DESC": "Termos de serviço do TestAPK. Leia os termos e condições para usar nossa plataforma.",
+    "DEVICE_TITLE": "Autorização do dispositivo - TestAPK",
+    "DEVICE_DESC": "Autorize seu dispositivo Android para baixar e instalar compilações do TestAPK.",
+    "DASHBOARD_TITLE": "Painel de controle - TestAPK",
+    "DASHBOARD_DESC": "Gerencie seus aplicativos Android, lançamentos e configuração do Google Drive no TestAPK.",
+    "CREATE_APP_TITLE": "Criar aplicativo - TestAPK",
+    "CREATE_APP_DESC": "Crie um novo espaço de trabalho para aplicativos Android no TestAPK.",
+    "APP_DETAILS_TITLE": "Detalhes do aplicativo - TestAPK",
+    "APP_DETAILS_DESC": "Veja lançamentos, baixe APKs e gerencie testadores para seu aplicativo no TestAPK."
   }
 }

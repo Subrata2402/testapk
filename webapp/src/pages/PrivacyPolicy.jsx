@@ -25,7 +25,7 @@ export default function PrivacyPolicy({ onBackToHome }) {
           <section>
             <h3>{t('PRIVACY.INFO_TITLE')}</h3>
             <p>{t('PRIVACY.ACCOUNT_INFO')}</p>
-            <p>{t('PRIVACY.DRIVE_INTEGRATION')}</p>
+            <p dangerouslySetInnerHTML={{ __html: t('PRIVACY.DRIVE_INTEGRATION') }}></p>
             <p>{t('PRIVACY.APP_METADATA')}</p>
           </section>
 

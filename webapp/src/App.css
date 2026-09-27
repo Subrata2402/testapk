@@ -187,22 +187,25 @@
   border-right: none;
   background: rgba(8, 7, 16, 0.8);
   padding: 12px 0;
-  height: 64px;
+  min-height: 56px;
+  height: auto;
   display: flex;
   align-items: center;
+  padding: 0 24px;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .nav-logo .logo-icon {
@@ -217,6 +220,12 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 380px) {
+  .nav-logo .logo-text {
+    font-size: 1rem;
+  }
 }
 
 .nav-app-selector {
@@ -241,6 +250,7 @@
   cursor: pointer;
 }
 
+/* Language dropdown — fixed width on desktop */
 .nav-actions .custom-dropdown {
   width: 140px;
 }
@@ -258,10 +268,41 @@
   left: auto;
 }
 
+/* Compact language dropdown on small phones — show flag + chevron only */
+@media (max-width: 480px) {
+  .nav-actions .custom-dropdown {
+    width: 72px;
+  }
+
+  /* Hide only the language name, keep the flag emoji */
+  .nav-actions .custom-dropdown .dropdown-label {
+    display: none;
+  }
+
+  .nav-actions .custom-dropdown .dropdown-trigger {
+    padding: 8px 10px;
+    gap: 4px;
+  }
+
+  /* Keep the dropdown menu wide enough to read flag + name */
+  .nav-actions .custom-dropdown .dropdown-menu {
+    width: 180px;
+    right: 0;
+    left: auto;
+  }
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 380px) {
+  .nav-actions {
+    gap: 6px;
+  }
 }
 
 .user-nav-profile {
@@ -272,6 +313,17 @@
   border: 1px solid var(--border-color);
   padding: 4px 12px 4px 4px;
   border-radius: 20px;
+}
+
+/* On very small screens hide the username, keep avatar only */
+@media (max-width: 400px) {
+  .user-nav-profile {
+    padding: 4px;
+  }
+
+  .user-nav-name {
+    display: none;
+  }
 }
 
 .user-nav-avatar {
@@ -297,4 +349,61 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  /* .main-content-container {
+    padding: 0;
+  } */
+}
+
+/* Logout Loading Overlay */
+.logout-overlay {
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.logout-state {
+  color: #ffffff;
+}
+
+.logout-title {
+  margin-top: 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.logout-subtext {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* =============================================
+   Navbar Sign In Button — mobile adjustments
+   ============================================= */
+.nav-signin-btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Below 480px: compact sign in button */
+@media (max-width: 480px) {
+  .nav-signin-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Below 400px: icon-only sign in button */
+@media (max-width: 400px) {
+  .nav-signin-btn {
+    padding: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-signin-text {
+    display: none;
+  }
 }

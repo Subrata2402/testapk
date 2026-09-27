@@ -51,8 +51,15 @@
 
 .about-content-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+}
+
+@media (max-width: 480px) {
+  .about-content-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .about-card {
@@ -61,6 +68,12 @@
   flex-direction: column;
   gap: 16px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .about-card {
+    padding: 18px;
+  }
 }
 
 .about-card:hover {

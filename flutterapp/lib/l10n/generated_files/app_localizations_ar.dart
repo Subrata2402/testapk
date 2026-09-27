@@ -171,6 +171,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get downloadingMsg => 'جاري التنزيل… ';
 
   @override
+  String get installingMsg => 'جاري التثبيت…';
+
+  @override
   String get installUpdateBtnLabel => 'تثبيت التحديث';
 
   @override
@@ -764,4 +767,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'لاحقاً';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'هل أنت مطور؟';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'انتقل إلى لوحة التحكم على الويب للتسجيل كمطور وإضافة تطبيق.';
+
+  @override
+  String get openWebDashboardBtn => 'الانتقال إلى لوحة التحكم';
 }

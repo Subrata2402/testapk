@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutterapp/core/api_client.dart';
-import 'package:flutterapp/core/api_endpoints.dart';
+import 'package:testapk/core/api_client.dart';
+import 'package:testapk/core/api_endpoints.dart';
 
 class ApiService {
   ApiService._();

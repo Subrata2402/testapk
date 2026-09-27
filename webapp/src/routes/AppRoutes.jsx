@@ -40,7 +40,7 @@ export default function AppRoutes({
         path="/privacy"
         element={
           <PrivacyPolicy
-            onBackToHome={() => navigate('/')}
+            onBackToHome={() => navigate(-1)}
           />
         }
       />
@@ -48,7 +48,7 @@ export default function AppRoutes({
         path="/terms"
         element={
           <TermsOfService
-            onBackToHome={() => navigate('/')}
+            onBackToHome={() => navigate(-1)}
           />
         }
       />
@@ -56,7 +56,7 @@ export default function AppRoutes({
         path="/faq"
         element={
           <FaqPage
-            onBackToHome={() => navigate('/')}
+            onBackToHome={() => navigate(-1)}
           />
         }
       />

@@ -2,14 +2,14 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterapp/core/api_service.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/models/app_model.dart';
-import 'package:flutterapp/models/release_model.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
-import 'package:flutterapp/widgets/custom_snack_bar.dart';
+import 'package:testapk/core/api_service.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/models/app_model.dart';
+import 'package:testapk/models/release_model.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/text_viewer.dart';
+import 'package:testapk/widgets/custom_snack_bar.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ReleaseActionButton extends StatefulWidget {
@@ -126,8 +126,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
 
   Future<File> _getApkFile() async {
     final dir = await getExternalStorageDirectory() ?? await getApplicationDocumentsDirectory();
-    final fileName =
-        '${widget.app.name.replaceAll(' ', '_')}_v${widget.release.version}_b${widget.release.buildNumber}.apk';
+    final fileName = '${widget.app.name.replaceAll(' ', '_')}_v${widget.release.version}_b${widget.release.buildNumber}.apk';
     return File('${dir.path}/$fileName');
   }
 
@@ -323,6 +322,8 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isAppInstalled) {
       if (_isUpdateAvailable) {
         return _isDownloaded ? AppColors.warning : AppColors.accent; // Amber or Purple
+      } else if (!_isDownloaded) {
+        return AppColors.accent; // Purple
       }
       return AppColors.success; // Green (Open)
     }
@@ -334,11 +335,13 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
       return '$kDownloadingMsg${(_downloadProgress * 100).toStringAsFixed(0)}%';
     }
     if (_isInstalling) {
-      return 'Installing...';
+      return kInstallingMsg;
     }
     if (_isAppInstalled) {
       if (_isUpdateAvailable) {
         return _isDownloaded ? kInstallUpdateBtnLabel : kUpdateBtnLabel;
+      } else if (!_isDownloaded) {
+        return kDownloadApkBtnLabel;
       }
       return kOpenAppBtnLabel;
     }
@@ -352,6 +355,8 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isAppInstalled) {
       if (_isUpdateAvailable) {
         return _isDownloaded ? Icons.install_mobile_rounded : Icons.system_update_alt_rounded;
+      } else if (!_isDownloaded) {
+        return Icons.download_rounded;
       }
       return Icons.open_in_new_rounded;
     }

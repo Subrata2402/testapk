@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/utils/extensions.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/utils/extensions.dart';
 
 class LoginLogoTile extends StatelessWidget {
   const LoginLogoTile({super.key});

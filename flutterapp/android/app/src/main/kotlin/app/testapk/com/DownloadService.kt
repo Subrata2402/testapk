@@ -1,4 +1,4 @@
-package com.testapk.app
+package app.testapk.com
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

@@ -176,6 +176,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get downloadingMsg => 'A transferir… ';
 
   @override
+  String get installingMsg => 'A instalar…';
+
+  @override
   String get installUpdateBtnLabel => 'Instalar Atualização';
 
   @override
@@ -777,4 +780,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get laterBtnLabel => 'Mais tarde';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => 'Você é um desenvolvedor?';
+
+  @override
+  String get appListEmptyDeveloperNotice =>
+      'Acesse o painel web para se registrar como desenvolvedor e adicionar um aplicativo.';
+
+  @override
+  String get openWebDashboardBtn => 'Ir para o painel web';
 }

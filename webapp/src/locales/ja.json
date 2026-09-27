@@ -333,5 +333,23 @@
     "CHECK_AGAIN": "再試行",
     "STILL_ACTIVE": "システムはまだメンテナンス中です。後ほどもう一度お試しください。",
     "CHECK_FAILED": "システムステータスの確認に失敗しました。もう一度お試しください。"
+  },
+  "SEO": {
+    "DEFAULT_TITLE": "TestAPK - 安全なAPK配信プラットフォーム",
+    "DEFAULT_DESC": "TestAPKは、Android開発者向けの安全なAPK配信プラットフォームです。Googleドライブを接続し、APKをアップロードして、テスターとビルドを共有します。",
+    "FAQ_TITLE": "よくある質問 - TestAPK",
+    "FAQ_DESC": "TestAPKに関するよくある質問：セルフホスト型APK配信、Googleドライブの統合、安全なテスト。",
+    "PRIVACY_TITLE": "プライバシーポリシー - TestAPK",
+    "PRIVACY_DESC": "TestAPKのプライバシーポリシー。データとGoogleドライブへのアクセスの安全な取り扱いについて説明します。",
+    "TERMS_TITLE": "利用規約 - TestAPK",
+    "TERMS_DESC": "TestAPKの利用規約。プラットフォームを利用するための利用規約をお読みください。",
+    "DEVICE_TITLE": "デバイスの認証 - TestAPK",
+    "DEVICE_DESC": "TestAPKからビルドをダウンロードしてインストールするために、Androidデバイスを認証します。",
+    "DASHBOARD_TITLE": "ダッシュボード - TestAPK",
+    "DASHBOARD_DESC": "TestAPKでAndroidアプリ、リリース、Googleドライブの設定を管理します。",
+    "CREATE_APP_TITLE": "アプリの作成 - TestAPK",
+    "CREATE_APP_DESC": "TestAPKで新しいAndroidアプリのワークスペースを作成します。",
+    "APP_DETAILS_TITLE": "アプリの詳細 - TestAPK",
+    "APP_DETAILS_DESC": "TestAPKでアプリのリリース表示、APKのダウンロード、テスターの管理を行います。"
   }
 }

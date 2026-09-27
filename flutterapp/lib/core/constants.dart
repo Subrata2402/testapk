@@ -1,7 +1,7 @@
-import 'package:flutterapp/core/navigation.dart';
-import 'package:flutterapp/l10n/app_localizations.dart';
+import 'package:testapk/core/navigation.dart';
+import 'package:testapk/l10n/generated_files/app_localizations.dart';
 
-const String kMethodChannelName = "com.testapk.app/app_launcher";
+const String kMethodChannelName = "app.testapk.com/app_launcher";
 
 /// API Base URL
 String kApiBaseUrl = "";
@@ -89,6 +89,12 @@ String get kFeedbackSubmitButton => _l10n?.feedbackSubmitButton ?? 'Submit Feedb
 /// App List Empty State
 String get kAppListEmptyTitle => _l10n?.appListEmptyTitle ?? "You haven't been added\nto any app yet.";
 String get kAppListEmptySubtitle => _l10n?.appListEmptySubtitle ?? 'Ask a developer to invite you as a Tester.';
+String get kAppListEmptyDeveloperNoticeTitle => _l10n?.appListEmptyDeveloperNoticeTitle ?? 'Are you a Developer?';
+String get kAppListEmptyDeveloperNotice =>
+    _l10n?.appListEmptyDeveloperNotice ??
+    'Go to the web dashboard to register as a developer and add an application.';
+String get kOpenWebDashboardBtn => _l10n?.openWebDashboardBtn ?? 'Go to Web Dashboard';
+const String kWebDashboardUrl = 'https://testapk.clipboux.online/';
 
 /// App Bar
 String get kSignOutTooltip => _l10n?.signOutTooltip ?? 'Sign out';
@@ -129,6 +135,7 @@ String get kDownloadedMsg => _l10n?.downloadedMsg ?? 'Downloaded: ';
 String get kLaunchFailedMsg => _l10n?.launchFailedMsg ?? 'Failed to launch application';
 String get kLaunchErrorMsg => _l10n?.launchErrorMsg ?? 'Error launching app: ';
 String get kDownloadingMsg => _l10n?.downloadingMsg ?? 'Downloading… ';
+String get kInstallingMsg => _l10n?.installingMsg ?? 'Installing…';
 String get kInstallUpdateBtnLabel => _l10n?.installUpdateBtnLabel ?? 'Install Update';
 String get kUpdateBtnLabel => _l10n?.updateBtnLabel ?? 'Update';
 String get kOpenAppBtnLabel => _l10n?.openAppBtnLabel ?? 'Open App';

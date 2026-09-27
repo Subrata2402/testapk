@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/glass_panel.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 

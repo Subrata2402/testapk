@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:326341519831:android:51d3c17265ff4a73a5c392",
+        "mobilesdk_app_id": "1:326341519831:android:cbbb7805601f00a4a5c392",
         "android_client_info": {
-          "package_name": "com.testapk.app"
+          "package_name": "app.testapk.com"
         }
       },
       "oauth_client": [],

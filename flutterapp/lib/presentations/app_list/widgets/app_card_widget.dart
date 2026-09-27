@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/app_colors.dart';
-import 'package:flutterapp/core/constants.dart';
-import 'package:flutterapp/models/app_model.dart';
-import 'package:flutterapp/utils/extensions.dart';
-import 'package:flutterapp/widgets/glass_panel.dart';
-import 'package:flutterapp/widgets/release_action_button.dart';
-import 'package:flutterapp/widgets/text_viewer.dart';
+import 'package:testapk/core/app_colors.dart';
+import 'package:testapk/core/constants.dart';
+import 'package:testapk/models/app_model.dart';
+import 'package:testapk/utils/extensions.dart';
+import 'package:testapk/widgets/glass_panel.dart';
+import 'package:testapk/widgets/release_action_button.dart';
+import 'package:testapk/widgets/text_viewer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppCard extends StatelessWidget {
@@ -96,6 +96,7 @@ class AppCard extends StatelessWidget {
             SizedBox(height: context.scale(12)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              spacing: context.scale(12),
               children: [
                 _buildCardStat(context, kLabelLatestVersion, latestRelease),
                 if (app.releases.isNotEmpty) ReleaseActionButton(app: app, release: app.releases.first, compact: true),
@@ -108,19 +109,21 @@ class AppCard extends StatelessWidget {
   }
 
   Widget _buildCardStat(BuildContext context, String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextViewer(
-          label.toUpperCase(),
-          fontSize: context.scale(9),
-          fontWeight: FontWeight.w600,
-          color: AppColors.textTertiary,
-          letterSpacing: 0.5,
-        ),
-        SizedBox(height: context.scale(2)),
-        TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
-      ],
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextViewer(
+            label.toUpperCase(),
+            fontSize: context.scale(9),
+            fontWeight: FontWeight.w600,
+            color: AppColors.textTertiary,
+            letterSpacing: 0.5,
+          ),
+          SizedBox(height: context.scale(2)),
+          TextViewer(value, fontSize: context.scale(12), fontWeight: FontWeight.w600, color: AppColors.textPrimary),
+        ],
+      ),
     );
   }
 }

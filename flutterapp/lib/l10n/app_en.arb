@@ -53,6 +53,7 @@
   "launchFailedMsg": "Failed to launch application",
   "launchErrorMsg": "Error launching app: ",
   "downloadingMsg": "Downloading… ",
+  "installingMsg": "Installing…",
   "installUpdateBtnLabel": "Install Update",
   "updateBtnLabel": "Update",
   "openAppBtnLabel": "Open App",
@@ -246,5 +247,8 @@
   },
   "updateAvailableTitle": "Update Available",
   "updateAvailableDescription": "A new version of the app is available. Would you like to update now?",
-  "laterBtnLabel": "Later"
+  "laterBtnLabel": "Later",
+  "appListEmptyDeveloperNoticeTitle": "Are you a Developer?",
+  "appListEmptyDeveloperNotice": "Go to the web dashboard to register as a developer and add an application.",
+  "openWebDashboardBtn": "Go to Web Dashboard"
 }

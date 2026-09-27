@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/core/constants.dart';
+import 'package:testapk/core/constants.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:flutterapp/widgets/custom_snack_bar.dart';
-import 'package:flutterapp/core/storage_service.dart';
-import 'package:flutterapp/core/navigation.dart';
-import 'package:flutterapp/presentations/maintenance/screens/maintenance_screen.dart';
+import 'package:testapk/widgets/custom_snack_bar.dart';
+import 'package:testapk/core/storage_service.dart';
+import 'package:testapk/core/navigation.dart';
+import 'package:testapk/presentations/maintenance/screens/maintenance_screen.dart';
 
 class ApiClient {
   late final Dio _dio;

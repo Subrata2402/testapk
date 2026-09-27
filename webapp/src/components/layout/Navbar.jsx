@@ -17,10 +17,11 @@ export default function Navbar({ user, onLoginClick }) {
         </div>
 
         <div className="nav-actions">
-          <CustomDropdown
+        <CustomDropdown
             options={languages.map((lang) => ({
               value: lang.code,
-              label: `${lang.flag}\u00A0\u00A0\u00A0\u00A0${lang.name}`,
+              label: lang.name,
+              flag: lang.flag,
             }))}
             value={language}
             onChange={changeLanguage}
@@ -32,8 +33,9 @@ export default function Navbar({ user, onLoginClick }) {
               <span className="user-nav-name">{user.name.split(' ')[0]}</span>
             </div>
           ) : (
-            <button className="btn btn-primary" onClick={onLoginClick}>
-              <Icons.LogIn size={16} /> {t('NAVBAR.SIGN_IN')}
+            <button className="btn btn-primary nav-signin-btn" onClick={onLoginClick}>
+              <Icons.LogIn size={16} />
+              <span className="nav-signin-text">{t('NAVBAR.SIGN_IN')}</span>
             </button>
           )}
         </div>

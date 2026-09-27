@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:flutterapp/core/constants.dart';
+import 'package:testapk/core/constants.dart';
 
 class ConfigService {
   static const MethodChannel _channel = MethodChannel(kMethodChannelName);

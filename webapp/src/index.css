@@ -45,6 +45,15 @@
   box-sizing: inherit;
 }
 
+html {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -107,7 +116,27 @@ p {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  /* padding: 0 24px; */
+}
+
+@media (max-width: 480px) {
+  /* .container {
+    padding: 0 16px;
+  } */
+
+  .global-navbar {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* .container {
+    padding: 0 12px;
+  } */
+
+  .global-navbar {
+    padding: 0 12px;
+  }
 }
 
 /* Glassmorphism Card */
@@ -321,6 +350,13 @@ p {
   margin-bottom: 16px;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tabs-header::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-btn {
@@ -336,6 +372,8 @@ p {
   gap: 8px;
   border-radius: 8px;
   transition: var(--transition-smooth);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab-btn:hover {
@@ -542,6 +580,12 @@ p {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 24px;
+}
+
+@media (max-width: 480px) {
+  .release-details-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .detail-item {

@@ -168,6 +168,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get downloadingMsg => '正在下载… ';
 
   @override
+  String get installingMsg => '正在安装…';
+
+  @override
   String get installUpdateBtnLabel => '安装更新';
 
   @override
@@ -730,4 +733,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get laterBtnLabel => '稍后';
+
+  @override
+  String get appListEmptyDeveloperNoticeTitle => '您是开发者吗？';
+
+  @override
+  String get appListEmptyDeveloperNotice => '前往 Web 控制台注册成为开发者并添加应用。';
+
+  @override
+  String get openWebDashboardBtn => '前往 Web 控制台';
 }
