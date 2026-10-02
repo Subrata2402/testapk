@@ -63,6 +63,7 @@ export const supportService = {
 
 export const adminService = {
   getStats: () => apiClient.get(ENDPOINTS.ADMIN.STATS),
+  getActivities: (params) => apiClient.get(ENDPOINTS.ADMIN.ACTIVITIES, { params }),
   getAllApps: () => apiClient.get(ENDPOINTS.ADMIN.APPS),
   getSystemHealth: () => apiClient.get(ENDPOINTS.ADMIN.HEALTH),
   getSettings: () => apiClient.get(ENDPOINTS.SETTINGS.BASE),

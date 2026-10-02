@@ -10,6 +10,7 @@ import UsersPage from '../pages/UsersPage';
 import ApplicationsPage from '../pages/ApplicationsPage';
 import SystemHealthPage from '../pages/SystemHealthPage';
 import SettingsPage from '../pages/SettingsPage';
+import ActivitiesPage from '../pages/ActivitiesPage';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -41,6 +42,7 @@ export default function AppRoutes() {
         }
       >
         <Route index element={<DashboardOverview />} />
+        <Route path="activities" element={<ActivitiesPage />} />
         <Route path="apps" element={<ApplicationsPage />} />
         <Route path="support" element={<SupportRequestsPage />} />
         <Route path="feedbacks" element={<FeedbackPage />} />

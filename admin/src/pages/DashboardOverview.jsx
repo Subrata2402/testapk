@@ -2,18 +2,51 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
-import { Smartphone, Mail, Users, Activity, Clock, MessageSquare } from 'lucide-react';
+import { Smartphone, Mail, Users, Activity, Clock, MessageSquare, Upload, UserPlus, ArrowRight } from 'lucide-react';
 import { adminService } from '../services/api';
 import TrendChart from '../components/analytics/TrendChart';
 import BarChart from '../components/analytics/BarChart';
 import DoughnutChart from '../components/analytics/DoughnutChart';
 import './DashboardOverview.css';
 
+function getActivityIcon(type) {
+  switch (type) {
+    case 'app_created':
+      return Smartphone;
+    case 'release_published':
+      return Upload;
+    case 'user_registered':
+      return UserPlus;
+    case 'support_created':
+      return Mail;
+    case 'feedback_submitted':
+      return MessageSquare;
+    default:
+      return Clock;
+  }
+}
+
+function formatRelativeTime(dateInput) {
+  if (!dateInput) return '';
+  const date = new Date(dateInput);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - date) / 1000);
+
+  if (diffInSeconds < 60) return 'Just now';
+  const mins = Math.floor(diffInSeconds / 60);
+  if (mins < 60) return `${mins} min${mins > 1 ? 's' : ''} ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days} day${days > 1 ? 's' : ''} ago`;
+  return date.toLocaleDateString();
+}
+
 export default function DashboardOverview() {
   const { user } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0, totalFeedbacks: 0 });
+  const [statsData, setStatsData] = useState({ totalApps: 0, newSupportRequests: 0, totalActiveUsers: 0, totalFeedbacks: 0, recentActivities: [] });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -133,13 +166,7 @@ export default function DashboardOverview() {
     }
   ];
 
-  // Placeholder activities
-  const activities = [
-    { id: 1, action: "App 'TestAPK Mobile' updated to v2.1.0", time: "10 mins ago", user: "admin" },
-    { id: 2, action: "New release 'Beta-v0.9' published for 'DemoApp'", time: "2 hours ago", user: "admin" },
-    { id: 3, action: "User 'john_doe' registered", time: "5 hours ago", user: "system" },
-    { id: 4, action: "App 'OldTestApp' deleted", time: "1 day ago", user: "admin" }
-  ];
+  const activities = statsData.recentActivities || [];
 
   return (
     <>
@@ -183,24 +210,36 @@ export default function DashboardOverview() {
 
       {/* Recent Activity Section */}
       <section className="activity-section glass-card animate-fade-in dashboard-activity-section-margin" style={{ animationDelay: '0.3s' }}>
-        <div className="section-header">
-          <Activity size={20} className="section-icon" />
-          <h3>{t('dashboard.recentActivity')}</h3>
+        <div className="section-header activity-section-header">
+          <div className="section-header-title">
+            <Activity size={20} className="section-icon" />
+            <h3>{t('dashboard.recentActivity')}</h3>
+          </div>
+          <button 
+            className="view-all-btn"
+            onClick={() => navigate('/dashboard/activities')}
+          >
+            <span>{t('dashboard.viewAll') || 'View All'}</span>
+            <ArrowRight size={14} />
+          </button>
         </div>
 
         <div className="activity-list">
           {activities.length > 0 ? (
-            activities.map((act) => (
-              <div key={act.id} className="activity-item">
-                <div className="activity-icon-wrapper">
-                  <Clock size={14} />
+            activities.map((act) => {
+              const IconComp = getActivityIcon(act.type);
+              return (
+                <div key={act.id} className="activity-item">
+                  <div className="activity-icon-wrapper">
+                    <IconComp size={14} />
+                  </div>
+                  <div className="activity-details">
+                    <p className="activity-action">{act.action}</p>
+                    <span className="activity-time">{formatRelativeTime(act.timestamp)} • by {act.user}</span>
+                  </div>
                 </div>
-                <div className="activity-details">
-                  <p className="activity-action">{act.action}</p>
-                  <span className="activity-time">{act.time} • by {act.user}</span>
-                </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p className="no-activity">{t('dashboard.noActivity')}</p>
           )}
