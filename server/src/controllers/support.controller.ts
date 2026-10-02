@@ -51,12 +51,58 @@ export const getSupportRequests = async (
       return;
     }
 
-    const requests = await Support.find().sort({ createdAt: -1 });
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 10;
+    const search = (req.query.search as string) || '';
+    const status = (req.query.status as string) || 'all';
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+
+    const query: any = {};
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+        { subject: { $regex: search, $options: 'i' } },
+        { message: { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    if (status && status !== 'all') {
+      query.status = status;
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query.createdAt.$lte = end;
+      }
+    }
+
+    const skip = (page - 1) * limit;
+
+    const [requests, total] = await Promise.all([
+      Support.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Support.countDocuments(query),
+    ]);
 
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
+      results: requests.length,
       data: {
         requests,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        },
       },
     });
   } catch (error) {

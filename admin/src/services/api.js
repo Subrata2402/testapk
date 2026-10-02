@@ -41,7 +41,7 @@ export const authService = {
 };
 
 export const userService = {
-  getAll: () => apiClient.get(ENDPOINTS.USERS.ALL),
+  getAll: (params) => apiClient.get(ENDPOINTS.USERS.ALL, { params }),
   getById: (id) => apiClient.get(ENDPOINTS.USERS.BY_ID(id)),
   updateStatus: (id, isDeleted) => apiClient.patch(ENDPOINTS.USERS.UPDATE_STATUS(id), { isDeleted }),
 };
@@ -57,14 +57,14 @@ export const appService = {
 };
 
 export const supportService = {
-  getRequests: () => apiClient.get(ENDPOINTS.SUPPORT.REQUESTS),
+  getRequests: (params) => apiClient.get(ENDPOINTS.SUPPORT.REQUESTS, { params }),
   updateStatus: (id, status) => apiClient.patch(ENDPOINTS.SUPPORT.UPDATE_STATUS(id), { status }),
 };
 
 export const adminService = {
   getStats: () => apiClient.get(ENDPOINTS.ADMIN.STATS),
   getActivities: (params) => apiClient.get(ENDPOINTS.ADMIN.ACTIVITIES, { params }),
-  getAllApps: () => apiClient.get(ENDPOINTS.ADMIN.APPS),
+  getAllApps: (params) => apiClient.get(ENDPOINTS.ADMIN.APPS, { params }),
   getSystemHealth: () => apiClient.get(ENDPOINTS.ADMIN.HEALTH),
   getSettings: () => apiClient.get(ENDPOINTS.SETTINGS.BASE),
   updateSettings: (settings) => apiClient.put(ENDPOINTS.SETTINGS.BASE, settings),
@@ -72,7 +72,7 @@ export const adminService = {
 };
 
 export const feedbackService = {
-  getFeedbacks: () => apiClient.get(ENDPOINTS.FEEDBACK.ALL),
+  getFeedbacks: (params) => apiClient.get(ENDPOINTS.FEEDBACK.ALL, { params }),
 };
 
 export default apiClient;

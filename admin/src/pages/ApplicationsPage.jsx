@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Smartphone, RefreshCw, Search, Calendar, ChevronUp, ChevronDown, X } from 'lucide-react';
+import { Smartphone, RefreshCw, Search, Calendar, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { adminService } from '../services/api';
 import CustomDatePicker from '../components/common/CustomDatePicker';
 import './ApplicationsPage.css';
@@ -10,17 +10,37 @@ export default function ApplicationsPage() {
   const [apps, setApps] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [sortField, setSortField] = useState('createdAt');
   const [sortDirection, setSortDirection] = useState('desc');
+  const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 });
 
-  const fetchApps = async () => {
+  // Debounce search input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  const fetchApps = async (page = 1) => {
     setIsLoading(true);
     try {
-      const response = await adminService.getAllApps();
+      const params = {
+        page,
+        limit: pagination.limit,
+        search: debouncedSearch,
+        startDate: startDate ? startDate.toISOString() : undefined,
+        endDate: endDate ? endDate.toISOString() : undefined,
+      };
+      const response = await adminService.getAllApps(params);
       if (response.status === 'success') {
-        setApps(response.data.apps);
+        setApps(response.data.apps || []);
+        if (response.data.pagination) {
+          setPagination(response.data.pagination);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch apps:', err);
@@ -30,8 +50,14 @@ export default function ApplicationsPage() {
   };
 
   useEffect(() => {
-    fetchApps();
-  }, []);
+    fetchApps(1);
+  }, [debouncedSearch, startDate, endDate]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= pagination.totalPages) {
+      fetchApps(newPage);
+    }
+  };
 
   const handleSort = (field) => {
     if (sortField === field) {
@@ -49,47 +75,13 @@ export default function ApplicationsPage() {
       : <ChevronDown size={14} className="sort-icon-active" />;
   };
 
-  const filteredApps = apps.filter(app => {
-    const name = app.name || '';
-    const packageName = app.packageName || '';
-    const owner = app.members?.find(m => m.role === 'Owner');
-    const ownerName = owner?.name || owner?.email || '';
-
-    const matchesSearch =
-      name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      packageName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      ownerName.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesDate = (() => {
-      if (!startDate && !endDate) return true;
-      const createdDate = new Date(app.createdAt);
-      createdDate.setHours(0, 0, 0, 0);
-
-      if (startDate) {
-        const start = new Date(startDate);
-        start.setHours(0, 0, 0, 0);
-        if (createdDate < start) return false;
-      }
-
-      if (endDate) {
-        const end = new Date(endDate);
-        end.setHours(23, 59, 59, 999);
-        if (createdDate > end) return false;
-      }
-
-      return true;
-    })();
-
-    return matchesSearch && matchesDate;
-  });
-
-  const sortedApps = [...filteredApps].sort((a, b) => {
+  const sortedApps = [...apps].sort((a, b) => {
     let aVal = a[sortField];
     let bVal = b[sortField];
 
     if (sortField === 'name') {
       aVal = (a.name || '').toLowerCase();
-      bVal = (b.name || '').toLowerCase();
+      bVal = (b.packageName || '').toLowerCase();
     } else if (sortField === 'packageName') {
       aVal = (a.packageName || '').toLowerCase();
       bVal = (b.packageName || '').toLowerCase();
@@ -119,7 +111,7 @@ export default function ApplicationsPage() {
           <h3>{t('apps.title') || 'Applications'}</h3>
         </div>
         <button
-          onClick={fetchApps}
+          onClick={() => fetchApps(pagination.page)}
           disabled={isLoading}
           className="btn btn-secondary btn-icon-only"
           title="Refresh"
@@ -195,75 +187,105 @@ export default function ApplicationsPage() {
           </table>
         </div>
       ) : sortedApps.length > 0 ? (
-        <div className="support-table-wrapper">
-          <table className="support-table">
-            <thead>
-              <tr>
-                <th onClick={() => handleSort('name')} className="apps-table-header-clickable">
-                  <div className="apps-table-header-content">
-                    {t('apps.name') || 'App Name'} {renderSortIcon('name')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('packageName')} className="apps-table-header-clickable">
-                  <div className="apps-table-header-content">
-                    {t('apps.packageName') || 'Package Name'} {renderSortIcon('packageName')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('owner')} className="apps-table-header-clickable">
-                  <div className="apps-table-header-content">
-                    {t('apps.owner') || 'Owner'} {renderSortIcon('owner')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('releasesCount')} className="apps-table-header-clickable">
-                  <div className="apps-table-header-content">
-                    {t('apps.releases') || 'Releases'} {renderSortIcon('releasesCount')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('createdAt')} className="apps-table-header-clickable">
-                  <div className="apps-table-header-content">
-                    {t('apps.createdDate') || 'Created Date'} {renderSortIcon('createdAt')}
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedApps.map((app) => {
-                const owner = app.members?.find(m => m.role === 'Owner');
-                return (
-                  <tr key={app._id}>
-                    <td>
-                      <div className="apps-name-cell">
-                        <div className="user-avatar apps-avatar">
-                          {app.icon ? (
-                            <img src={app.icon} alt={app.name} className="apps-avatar-img" />
-                          ) : (
-                            app.name?.[0]?.toUpperCase() || 'A'
-                          )}
+        <>
+          <div className="support-table-wrapper">
+            <table className="support-table">
+              <thead>
+                <tr>
+                  <th onClick={() => handleSort('name')} className="apps-table-header-clickable">
+                    <div className="apps-table-header-content">
+                      {t('apps.name') || 'App Name'} {renderSortIcon('name')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('packageName')} className="apps-table-header-clickable">
+                    <div className="apps-table-header-content">
+                      {t('apps.packageName') || 'Package Name'} {renderSortIcon('packageName')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('owner')} className="apps-table-header-clickable">
+                    <div className="apps-table-header-content">
+                      {t('apps.owner') || 'Owner'} {renderSortIcon('owner')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('releasesCount')} className="apps-table-header-clickable">
+                    <div className="apps-table-header-content">
+                      {t('apps.releases') || 'Releases'} {renderSortIcon('releasesCount')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('createdAt')} className="apps-table-header-clickable">
+                    <div className="apps-table-header-content">
+                      {t('apps.createdDate') || 'Created Date'} {renderSortIcon('createdAt')}
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedApps.map((app) => {
+                  const owner = app.members?.find(m => m.role === 'Owner');
+                  return (
+                    <tr key={app._id}>
+                      <td>
+                        <div className="apps-name-cell">
+                          <div className="user-avatar apps-avatar">
+                            {app.icon ? (
+                              <img src={app.icon} alt={app.name} className="apps-avatar-img" />
+                            ) : (
+                              app.name?.[0]?.toUpperCase() || 'A'
+                            )}
+                          </div>
+                          <span className="font-semibold">{app.name}</span>
                         </div>
-                        <span className="font-semibold">{app.name}</span>
-                      </div>
-                    </td>
-                    <td className="text-muted">{app.packageName}</td>
-                    <td>
-                      <div className="apps-owner-cell">
-                        <span className="font-semibold">{owner?.name || owner?.email?.split('@')[0]}</span>
-                        <span className="text-muted apps-owner-email">{owner?.email}</span>
-                      </div>
-                    </td>
-                    <td>
-                      <span className="badge badge-info apps-releases-badge">
-                        {app.releasesCount || 0}
-                      </span>
-                    </td>
-                    <td className="text-muted">
-                      {new Date(app.createdAt).toLocaleDateString()}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                      </td>
+                      <td className="text-muted">{app.packageName}</td>
+                      <td>
+                        <div className="apps-owner-cell">
+                          <span className="font-semibold">{owner?.name || owner?.email?.split('@')[0]}</span>
+                          <span className="text-muted apps-owner-email">{owner?.email}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <span className="badge badge-info apps-releases-badge">
+                          {app.releasesCount || 0}
+                        </span>
+                      </td>
+                      <td className="text-muted">
+                        {new Date(app.createdAt).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination Bar */}
+          {pagination.totalPages > 1 && (
+            <div className="pagination-bar apps-pagination-bar">
+              <span className="pagination-info">
+                Showing {(pagination.page - 1) * pagination.limit + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} applications
+              </span>
+              <div className="pagination-controls">
+                <button
+                  className="page-btn"
+                  disabled={pagination.page <= 1 || isLoading}
+                  onClick={() => handlePageChange(pagination.page - 1)}
+                >
+                  <ChevronLeft size={16} />
+                  <span>Prev</span>
+                </button>
+                <span className="page-current">Page {pagination.page} of {pagination.totalPages}</span>
+                <button
+                  className="page-btn"
+                  disabled={pagination.page >= pagination.totalPages || isLoading}
+                  onClick={() => handlePageChange(pagination.page + 1)}
+                >
+                  <span>Next</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div className="empty-state">
           <Smartphone size={48} className="empty-icon" />

@@ -215,15 +215,65 @@ export const getActivities = async (req: Request, res: Response, next: NextFunct
 
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const users = await User.find()
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 10;
+    const search = (req.query.search as string) || '';
+    const role = (req.query.role as string) || 'all';
+    const status = (req.query.status as string) || 'all';
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+
+    const query: any = {};
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    if (role && role !== 'all') {
+      query.role = role;
+    }
+
+    if (status === 'active') {
+      query.isDeleted = { $ne: true };
+    } else if (status === 'inactive') {
+      query.isDeleted = true;
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query.createdAt.$lte = end;
+      }
+    }
+
+    const total = await User.countDocuments(query);
+    const skip = (page - 1) * limit;
+
+    const users = await User.find(query)
       .select('-password')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
       results: users.length,
       data: {
-        users
+        users,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        }
       }
     });
   } catch (error) {
@@ -259,14 +309,48 @@ export const updateUserStatus = async (req: Request, res: Response, next: NextFu
 
 export const getAllApps = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const apps = await App.find()
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 10;
+    const search = (req.query.search as string) || '';
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+
+    const query: any = {};
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { packageName: { $regex: search, $options: 'i' } },
+        { 'members.email': { $regex: search, $options: 'i' } },
+        { 'members.name': { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query.createdAt.$lte = end;
+      }
+    }
+
+    const total = await App.countDocuments(query);
+    const skip = (page - 1) * limit;
+
+    const apps = await App.find(query)
       .populate({
         path: 'releases',
         options: { sort: { buildNumber: -1 } },
         perDocumentLimit: 1,
       })
       .populate('releasesCount')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     // Populate member names
     const emails = apps.flatMap(app => app.members.map((m: any) => m.email.toLowerCase()));
@@ -286,7 +370,13 @@ export const getAllApps = async (req: Request, res: Response, next: NextFunction
       status: STRINGS.COMMON.STATUS_SUCCESS,
       results: apps.length,
       data: {
-        apps: appsWithMemberNames
+        apps: appsWithMemberNames,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        }
       }
     });
   } catch (error) {
