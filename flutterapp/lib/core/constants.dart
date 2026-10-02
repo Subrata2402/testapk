@@ -197,6 +197,35 @@ String get kAboutPlatformInfoLabel => _l10n?.aboutPlatformInfoLabel ?? 'PLATFORM
 String get kAboutSupportChannelsLabel => _l10n?.aboutSupportChannelsLabel ?? 'SUPPORT CHANNELS';
 String get kAboutLaunchError => _l10n?.aboutLaunchError ?? 'Could not launch ';
 
+/// How It Works Screen
+String get kHowItWorksTitle => _l10n?.howItWorksTitle ?? 'How It Works';
+String get kHowItWorksSubtitle =>
+    _l10n?.howItWorksSubtitle ?? 'Learn how TestAPK distributes Android builds from developers to testers.';
+String get kHowItWorksStep1Title => _l10n?.howItWorksStep1Title ?? '1. App Setup & Integration';
+String get kHowItWorksStep1Desc =>
+    _l10n?.howItWorksStep1Desc ??
+    'Developers create applications on the Web Dashboard and connect Google Drive storage for hosting APK files securely.';
+String get kHowItWorksStep2Title => _l10n?.howItWorksStep2Title ?? '2. Uploading APK Builds';
+String get kHowItWorksStep2Desc =>
+    _l10n?.howItWorksStep2Desc ??
+    'Developers upload APK releases using the Web Portal or the TestAPK CLI tool directly from their terminal or CI/CD pipelines.';
+String get kHowItWorksStep3Title => _l10n?.howItWorksStep3Title ?? '3. Inviting Testers';
+String get kHowItWorksStep3Desc =>
+    _l10n?.howItWorksStep3Desc ??
+    'Developers add testers by email address to grant authorized access to specific application builds.';
+String get kHowItWorksStep4Title => _l10n?.howItWorksStep4Title ?? '4. Accept Invitation';
+String get kHowItWorksStep4Desc =>
+    _l10n?.howItWorksStep4Desc ??
+    'Invited testers sign in with Google OAuth in the Flutter app, view pending invitations, and accept them.';
+String get kHowItWorksStep5Title => _l10n?.howItWorksStep5Title ?? '5. Review Build Details';
+String get kHowItWorksStep5Desc =>
+    _l10n?.howItWorksStep5Desc ??
+    'Testers browse release history, view build numbers, minimum/target SDKs, file size, required permissions, and release notes.';
+String get kHowItWorksStep6Title => _l10n?.howItWorksStep6Title ?? '6. Download & Install';
+String get kHowItWorksStep6Desc =>
+    _l10n?.howItWorksStep6Desc ??
+    'APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.';
+
 /// Version Control / Updates
 String get kUpdateRequiredTitle => _l10n?.updateRequiredTitle ?? 'Update Required';
 String get kUpdateRequiredDescription =>

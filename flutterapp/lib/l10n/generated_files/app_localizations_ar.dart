@@ -777,4 +777,53 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'الانتقال إلى لوحة التحكم';
+
+  @override
+  String get howItWorksTitle => 'كيف يعمل التطبيق';
+
+  @override
+  String get howItWorksSubtitle =>
+      'تعرّف على كيفية توزيع TestAPK لإصدارات الأندرويد من المطورين إلى المختبرين.';
+
+  @override
+  String get howItWorksStep1Title => '1. إعداد التطبيق والربط';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'يقوم المطورون بإنشاء التطبيقات على لوحة التحكم الإلكترونية وربط تخزين Google Drive لاستضافة ملفات APK بأمان.';
+
+  @override
+  String get howItWorksStep2Title => '2. رفع إصدارات APK';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'يرفع المطورون إصدارات APK باستخدام بوابة الويب أو أداة TestAPK CLI مباشرة من موجه الأوامر أو خطوط التجميع.';
+
+  @override
+  String get howItWorksStep3Title => '3. دعوة المختبرين';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'يضيف المطورون المختبرين عبر البريد الإلكتروني لمنحهم صلاحية الوصول إلى إصدارات تطبيقات محددة.';
+
+  @override
+  String get howItWorksStep4Title => '4. قبول الدعوة';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'يسجل المختبرون المدعوون الدخول عبر Google OAuth في تطبيق الفلاتر، ويعرضون الدعوات المعلقة ويقبلونها.';
+
+  @override
+  String get howItWorksStep5Title => '5. مراجعة تفاصيل البناء';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'يتصفح المختبرون سجل الإصدارات، ورقم البناء، وإصدارات SDK الأدنى والمستهدفة، وحجم الملف، والأذونات المطلوبة، وملاحظات الإصدار.';
+
+  @override
+  String get howItWorksStep6Title => '6. التنزيل والتثبيت';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'يتم تنزيل ملفات APK بأمان من Google Drive مع متابعة التقدم في الوقت الفعلي وتشغيل مثبت الأندرويد مباشرة داخل التطبيق.';
 }

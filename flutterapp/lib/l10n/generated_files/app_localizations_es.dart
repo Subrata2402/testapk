@@ -791,4 +791,53 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Ir al panel web';
+
+  @override
+  String get howItWorksTitle => 'Cómo funciona';
+
+  @override
+  String get howItWorksSubtitle =>
+      'Aprenda cómo TestAPK distribuye compilaciones de Android desde desarrolladores hacia evaluadores.';
+
+  @override
+  String get howItWorksStep1Title => '1. Configuración e integración de la app';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'Los desarrolladores crean aplicaciones en el panel web y conectan el almacenamiento de Google Drive para alojar archivos APK de forma segura.';
+
+  @override
+  String get howItWorksStep2Title => '2. Carga de compilaciones APK';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'Los desarrolladores suben versiones APK mediante el portal web o la herramienta CLI de TestAPK directamente desde su terminal o pipelines CI/CD.';
+
+  @override
+  String get howItWorksStep3Title => '3. Invitación a evaluadores';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'Los desarrolladores añaden evaluadores por correo electrónico para otorgar acceso autorizado a compilaciones específicas.';
+
+  @override
+  String get howItWorksStep4Title => '4. Aceptar invitación';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'Los evaluadores invitados inician sesión con Google OAuth en la app Flutter, ven las invitaciones pendientes y las aceptan.';
+
+  @override
+  String get howItWorksStep5Title => '5. Revisar detalles de la compilación';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'Los evaluadores exploran el historial de lanzamientos, ven números de compilación, SDKs mínimos/objetivo, tamaño de archivo, permisos y notas de versión.';
+
+  @override
+  String get howItWorksStep6Title => '6. Descargar e instalar';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'Los archivos APK se descargan de forma segura desde Google Drive con progreso en tiempo real e inician el instalador de Android directamente en la app.';
 }

@@ -790,4 +790,53 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Ir para o painel web';
+
+  @override
+  String get howItWorksTitle => 'Como Funciona';
+
+  @override
+  String get howItWorksSubtitle =>
+      'Saiba como o TestAPK distribui builds do Android de desenvolvedores para testadores.';
+
+  @override
+  String get howItWorksStep1Title => '1. Configuração do App e Integração';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'Os desenvolvedores criam aplicações no Painel Web e conectam o armazenamento do Google Drive para hospedar arquivos APK com segurança.';
+
+  @override
+  String get howItWorksStep2Title => '2. Envio de Builds APK';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'Os desenvolvedores enviam versões APK usando o Portal Web ou a ferramenta TestAPK CLI diretamente do terminal ou pipelines de CI/CD.';
+
+  @override
+  String get howItWorksStep3Title => '3. Convite para Testadores';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'Os desenvolvedores adicionam testadores por e-mail para conceder acesso autorizado a builds específicos de aplicações.';
+
+  @override
+  String get howItWorksStep4Title => '4. Aceitar Convite';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'Os testadores convidados fazem login via Google OAuth no app Flutter, visualizam convites pendentes e os aceitam.';
+
+  @override
+  String get howItWorksStep5Title => '5. Analisar Detalhes do Build';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'Os testadores navegam pelo histórico de versões, veem números de build, SDKs mínimos/alvo, tamanho do arquivo, permissões e notas de versão.';
+
+  @override
+  String get howItWorksStep6Title => '6. Baixar e Instalar';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'Os APKs são baixados com segurança do Google Drive com progresso em tempo real e iniciam o instalador do Android diretamente no aplicativo.';
 }

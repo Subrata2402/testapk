@@ -742,4 +742,51 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => '前往 Web 控制台';
+
+  @override
+  String get howItWorksTitle => '工作原理';
+
+  @override
+  String get howItWorksSubtitle => '了解 TestAPK 如何将 Android 构建版本从开发者分发给测试人员。';
+
+  @override
+  String get howItWorksStep1Title => '1. 应用设置与集成';
+
+  @override
+  String get howItWorksStep1Desc =>
+      '开发者在 Web 控制面板上创建应用并连接 Google Drive 存储，以安全托管 APK 文件。';
+
+  @override
+  String get howItWorksStep2Title => '2. 上传 APK 构建版本';
+
+  @override
+  String get howItWorksStep2Desc =>
+      '开发者通过 Web 门户或 TestAPK CLI 工具直接从终端或 CI/CD 流水线上传 APK 版本。';
+
+  @override
+  String get howItWorksStep3Title => '3. 邀请测试人员';
+
+  @override
+  String get howItWorksStep3Desc => '开发者通过电子邮件地址添加测试人员，以授予对特定应用构建版本的访问权限。';
+
+  @override
+  String get howItWorksStep4Title => '4. 接受邀请';
+
+  @override
+  String get howItWorksStep4Desc =>
+      '受邀的测试人员在 Flutter 应用中通过 Google OAuth 登录，查看并接受待处理的邀请。';
+
+  @override
+  String get howItWorksStep5Title => '5. 查看构建版本详情';
+
+  @override
+  String get howItWorksStep5Desc =>
+      '测试人员浏览发布历史，查看构建版本号、最低/目标 SDK、文件大小、所需权限和发布说明。';
+
+  @override
+  String get howItWorksStep6Title => '6. 下载与安装';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'APK 文件可从 Google Drive 安全下载，具备实时进度显示，并在应用内直接触发 Android 安装程序。';
 }

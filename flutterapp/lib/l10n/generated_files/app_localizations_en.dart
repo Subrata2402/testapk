@@ -784,4 +784,53 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Go to Web Dashboard';
+
+  @override
+  String get howItWorksTitle => 'How It Works';
+
+  @override
+  String get howItWorksSubtitle =>
+      'Learn how TestAPK distributes Android builds from developers to testers.';
+
+  @override
+  String get howItWorksStep1Title => '1. App Setup & Integration';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'Developers create applications on the Web Dashboard and connect Google Drive storage for hosting APK files securely.';
+
+  @override
+  String get howItWorksStep2Title => '2. Uploading APK Builds';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'Developers upload APK releases using the Web Portal or the TestAPK CLI tool directly from their terminal or CI/CD pipelines.';
+
+  @override
+  String get howItWorksStep3Title => '3. Inviting Testers';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'Developers add testers by email address to grant authorized access to specific application builds.';
+
+  @override
+  String get howItWorksStep4Title => '4. Accept Invitation';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'Invited testers sign in with Google OAuth in the Flutter app, view pending invitations, and accept them.';
+
+  @override
+  String get howItWorksStep5Title => '5. Review Build Details';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'Testers browse release history, view build numbers, minimum/target SDKs, file size, required permissions, and release notes.';
+
+  @override
+  String get howItWorksStep6Title => '6. Download & Install';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.';
 }

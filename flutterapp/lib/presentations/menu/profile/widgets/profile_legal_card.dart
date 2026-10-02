@@ -9,6 +9,7 @@ import 'package:testapk/presentations/menu/feedback/screens/feedback_screen.dart
 import 'package:testapk/presentations/menu/support/screens/contact_support_screen.dart';
 import 'package:testapk/presentations/menu/language/screens/language_selector_screen.dart';
 import 'package:testapk/presentations/menu/faq/screens/faq_screen.dart';
+import 'package:testapk/presentations/menu/how_it_works/screens/how_it_works_screen.dart';
 import 'package:testapk/utils/extensions.dart';
 import 'package:testapk/widgets/legal_document_viewer.dart';
 import 'package:testapk/widgets/text_viewer.dart';
@@ -46,6 +47,15 @@ class ProfileLegalCard extends StatelessWidget {
                 label: kSupportTitle,
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ContactSupportScreen()));
+                },
+              ),
+              Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),
+              _legalRow(
+                context,
+                icon: Icons.help_outline_rounded,
+                label: AppLocalizations.of(context)?.howItWorksTitle ?? kHowItWorksTitle,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => const HowItWorksScreen()));
                 },
               ),
               Divider(color: Colors.white.withValues(alpha: 0.08), height: 0.8, thickness: 0.8),

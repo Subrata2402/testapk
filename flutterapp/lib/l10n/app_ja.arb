@@ -250,5 +250,19 @@
   "laterBtnLabel": "後で",
   "appListEmptyDeveloperNoticeTitle": "デベロッパーですか？",
   "appListEmptyDeveloperNotice": "Webダッシュボードにアクセスしてデベロッパーとして登録し、アプリケーションを追加してください。",
-  "openWebDashboardBtn": "Webダッシュボードへ移動"
+  "openWebDashboardBtn": "Webダッシュボードへ移動",
+  "howItWorksTitle": "アプリの使い方",
+  "howItWorksSubtitle": "TestAPKが開発者からテスターへAndroidビルドを配信する仕組みをご案内します。",
+  "howItWorksStep1Title": "1. アプリのセットアップと連携",
+  "howItWorksStep1Desc": "開発者はWebダッシュボードでアプリを作成し、Google Driveストレージを連携してAPKファイルを安全にホストします。",
+  "howItWorksStep2Title": "2. APKビルドのアップロード",
+  "howItWorksStep2Desc": "開発者はWebポータルまたはTestAPK CLIツールを使用して、ターミナルやCI/CDパイプラインから直接APKリリースをアップロードします。",
+  "howItWorksStep3Title": "3. テスターの招待",
+  "howItWorksStep3Desc": "開発者はメールアドレスでテスターを追加し、特定のアプリビルドへのアクセス権限を付与します。",
+  "howItWorksStep4Title": "4. 招待の承認",
+  "howItWorksStep4Desc": "招待されたテスターはFlutterアプリでGoogle OAuthを使用してサインインし、保留中の招待を確認して承認します。",
+  "howItWorksStep5Title": "5. ビルド詳細の確認",
+  "howItWorksStep5Desc": "テスターはリリース履歴を閲覧し、ビルド番号、最小/ターゲットSDK、ファイルサイズ、必要な権限、リリースノートを確認できます。",
+  "howItWorksStep6Title": "6. ダウンロードとインストール",
+  "howItWorksStep6Desc": "APKはGoogle Driveからリアルタイムの進捗表示付きで安全にダウンロードされ、アプリ内で直接Androidインストーラーを起動します。"
 }

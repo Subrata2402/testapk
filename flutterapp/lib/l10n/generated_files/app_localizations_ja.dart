@@ -754,4 +754,53 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Webダッシュボードへ移動';
+
+  @override
+  String get howItWorksTitle => 'アプリの使い方';
+
+  @override
+  String get howItWorksSubtitle =>
+      'TestAPKが開発者からテスターへAndroidビルドを配信する仕組みをご案内します。';
+
+  @override
+  String get howItWorksStep1Title => '1. アプリのセットアップと連携';
+
+  @override
+  String get howItWorksStep1Desc =>
+      '開発者はWebダッシュボードでアプリを作成し、Google Driveストレージを連携してAPKファイルを安全にホストします。';
+
+  @override
+  String get howItWorksStep2Title => '2. APKビルドのアップロード';
+
+  @override
+  String get howItWorksStep2Desc =>
+      '開発者はWebポータルまたはTestAPK CLIツールを使用して、ターミナルやCI/CDパイプラインから直接APKリリースをアップロードします。';
+
+  @override
+  String get howItWorksStep3Title => '3. テスターの招待';
+
+  @override
+  String get howItWorksStep3Desc =>
+      '開発者はメールアドレスでテスターを追加し、特定のアプリビルドへのアクセス権限を付与します。';
+
+  @override
+  String get howItWorksStep4Title => '4. 招待の承認';
+
+  @override
+  String get howItWorksStep4Desc =>
+      '招待されたテスターはFlutterアプリでGoogle OAuthを使用してサインインし、保留中の招待を確認して承認します。';
+
+  @override
+  String get howItWorksStep5Title => '5. ビルド詳細の確認';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'テスターはリリース履歴を閲覧し、ビルド番号、最小/ターゲットSDK、ファイルサイズ、必要な権限、リリースノートを確認できます。';
+
+  @override
+  String get howItWorksStep6Title => '6. ダウンロードとインストール';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'APKはGoogle Driveからリアルタイムの進捗表示付きで安全にダウンロードされ、アプリ内で直接Androidインストーラーを起動します。';
 }

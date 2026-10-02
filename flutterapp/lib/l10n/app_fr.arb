@@ -250,5 +250,19 @@
   "laterBtnLabel": "Plus tard",
   "appListEmptyDeveloperNoticeTitle": "Êtes-vous un développeur ?",
   "appListEmptyDeveloperNotice": "Accédez au tableau de bord Web pour vous inscrire en tant que développeur et ajouter une application.",
-  "openWebDashboardBtn": "Accéder au tableau de bord Web"
+  "openWebDashboardBtn": "Accéder au tableau de bord Web",
+  "howItWorksTitle": "Comment ça marche",
+  "howItWorksSubtitle": "Découvrez comment TestAPK distribue les builds Android des développeurs aux testeurs.",
+  "howItWorksStep1Title": "1. Configuration de l'application & Intégration",
+  "howItWorksStep1Desc": "Les développeurs créent des applications sur le tableau de bord Web et associent le stockage Google Drive pour héberger les fichiers APK en toute sécurité.",
+  "howItWorksStep2Title": "2. Envoi des builds APK",
+  "howItWorksStep2Desc": "Les développeurs téléversent les versions APK via le portail Web ou l'outil CLI TestAPK directement depuis leur terminal ou leurs pipelines CI/CD.",
+  "howItWorksStep3Title": "3. Invitation des testeurs",
+  "howItWorksStep3Desc": "Les développeurs ajoutent des testeurs par adresse e-mail pour accorder un accès autorisé à des builds d'applications spécifiques.",
+  "howItWorksStep4Title": "4. Accepter l'invitation",
+  "howItWorksStep4Desc": "Les testeurs invités se connectent via Google OAuth dans l'application Flutter, consultent les invitations en attente et les acceptent.",
+  "howItWorksStep5Title": "5. Examiner les détails du build",
+  "howItWorksStep5Desc": "Les testeurs parcourent l'historique des versions, consultent les numéros de build, les SDK minimaux/cibles, la taille du fichier, les autorisations et les notes de version.",
+  "howItWorksStep6Title": "6. Télécharger & Installer",
+  "howItWorksStep6Desc": "Les fichiers APK sont téléchargés en toute sécurité depuis Google Drive avec un suivi en temps réel et lancent l'installateur Android directement dans l'application."
 }

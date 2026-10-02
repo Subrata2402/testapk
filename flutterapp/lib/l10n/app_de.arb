@@ -250,5 +250,19 @@
   "laterBtnLabel": "Später",
   "appListEmptyDeveloperNoticeTitle": "Sind Sie Entwickler?",
   "appListEmptyDeveloperNotice": "Rufen Sie das Web-Dashboard auf, um sich als Entwickler zu registrieren und eine Anwendung hinzuzufügen.",
-  "openWebDashboardBtn": "Zum Web-Dashboard"
+  "openWebDashboardBtn": "Zum Web-Dashboard",
+  "howItWorksTitle": "Wie es funktioniert",
+  "howItWorksSubtitle": "Erfahren Sie, wie TestAPK Android-Builds von Entwicklern an Tester verteilt.",
+  "howItWorksStep1Title": "1. App-Einrichtung & Integration",
+  "howItWorksStep1Desc": "Entwickler erstellen Anwendungen im Web-Dashboard und verknüpfen Google Drive-Speicher für das sichere Hosting von APK-Dateien.",
+  "howItWorksStep2Title": "2. Hochladen von APK-Builds",
+  "howItWorksStep2Desc": "Entwickler laden APK-Releases über das Webportal oder das TestAPK-CLI-Tool direkt vom Terminal oder CI/CD-Pipelines hoch.",
+  "howItWorksStep3Title": "3. Einladen von Testern",
+  "howItWorksStep3Desc": "Entwickler fügen Tester per E-Mail-Adresse hinzu, um berechtigten Zugriff auf bestimmte Anwendungs-Builds zu gewähren.",
+  "howItWorksStep4Title": "4. Einladung annehmen",
+  "howItWorksStep4Desc": "Eingeladene Tester melden sich per Google OAuth in der Flutter-App an, sehen ausstehende Einladungen ein und nehmen diese an.",
+  "howItWorksStep5Title": "5. Build-Details überprüfen",
+  "howItWorksStep5Desc": "Tester durchsuchen den Versionsverlauf, sehen Build-Nummern, minimale/Ziel-SDKs, Dateigröße, erforderliche Berechtigungen und Versionshinweise.",
+  "howItWorksStep6Title": "6. Herunterladen & Installieren",
+  "howItWorksStep6Desc": "APKs werden sicher mit Echtzeit-Fortschritt von Google Drive heruntergeladen und starten direkt den Android-Installer in der App."
 }

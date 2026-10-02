@@ -1533,6 +1533,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to Web Dashboard'**
   String get openWebDashboardBtn;
+
+  /// No description provided for @howItWorksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How It Works'**
+  String get howItWorksTitle;
+
+  /// No description provided for @howItWorksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn how TestAPK distributes Android builds from developers to testers.'**
+  String get howItWorksSubtitle;
+
+  /// No description provided for @howItWorksStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'1. App Setup & Integration'**
+  String get howItWorksStep1Title;
+
+  /// No description provided for @howItWorksStep1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Developers create applications on the Web Dashboard and connect Google Drive storage for hosting APK files securely.'**
+  String get howItWorksStep1Desc;
+
+  /// No description provided for @howItWorksStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Uploading APK Builds'**
+  String get howItWorksStep2Title;
+
+  /// No description provided for @howItWorksStep2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Developers upload APK releases using the Web Portal or the TestAPK CLI tool directly from their terminal or CI/CD pipelines.'**
+  String get howItWorksStep2Desc;
+
+  /// No description provided for @howItWorksStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Inviting Testers'**
+  String get howItWorksStep3Title;
+
+  /// No description provided for @howItWorksStep3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Developers add testers by email address to grant authorized access to specific application builds.'**
+  String get howItWorksStep3Desc;
+
+  /// No description provided for @howItWorksStep4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Accept Invitation'**
+  String get howItWorksStep4Title;
+
+  /// No description provided for @howItWorksStep4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Invited testers sign in with Google OAuth in the Flutter app, view pending invitations, and accept them.'**
+  String get howItWorksStep4Desc;
+
+  /// No description provided for @howItWorksStep5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Review Build Details'**
+  String get howItWorksStep5Title;
+
+  /// No description provided for @howItWorksStep5Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Testers browse release history, view build numbers, minimum/target SDKs, file size, required permissions, and release notes.'**
+  String get howItWorksStep5Desc;
+
+  /// No description provided for @howItWorksStep6Title.
+  ///
+  /// In en, this message translates to:
+  /// **'6. Download & Install'**
+  String get howItWorksStep6Title;
+
+  /// No description provided for @howItWorksStep6Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.'**
+  String get howItWorksStep6Desc;
 }
 
 class _AppLocalizationsDelegate

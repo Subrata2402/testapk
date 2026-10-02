@@ -786,4 +786,53 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'वेब डैशबोर्ड पर जाएं';
+
+  @override
+  String get howItWorksTitle => 'यह कैसे काम करता है';
+
+  @override
+  String get howItWorksSubtitle =>
+      'जानें कि TestAPK डेवलपर्स से टेस्टर्स तक एंड्रॉइड बिल्ड कैसे वितरित करता है।';
+
+  @override
+  String get howItWorksStep1Title => '1. ऐप सेटअप और इंटीग्रेशन';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'डेवलपर्स वेब डैशबोर्ड पर एप्लिकेशन बनाते हैं और APK फ़ाइलों को सुरक्षित रूप से होस्ट करने के लिए Google Drive स्टोरेज कनेक्ट करते हैं।';
+
+  @override
+  String get howItWorksStep2Title => '2. APK बिल्ड अपलोड करना';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'डेवलपर्स वेब पोर्टल या TestAPK CLI टूल का उपयोग करके सीधे अपने टर्मिनल या CI/CD पाइपलाइन से APK रिलीज़ अपलोड करते हैं।';
+
+  @override
+  String get howItWorksStep3Title => '3. टेस्टर्स को आमंत्रित करना';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'डेवलपर्स विशिष्ट एप्लिकेशन बिल्ड तक अधिकृत पहुंच प्रदान करने के लिए ईमेल पते द्वारा टेस्टर्स को जोड़ते हैं।';
+
+  @override
+  String get howItWorksStep4Title => '4. निमंत्रण स्वीकार करना';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'आमंत्रित टेस्टर्स फ़्लटर ऐप में Google OAuth के साथ साइन इन करते हैं, लंबित निमंत्रण देखते हैं और उन्हें स्वीकार करते हैं।';
+
+  @override
+  String get howItWorksStep5Title => '5. बिल्ड विवरण की समीक्षा';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'टेस्टर्स रिलीज़ इतिहास ब्राउज़ करते हैं, बिल्ड नंबर, न्यूनतम/लक्ष्य SDK, फ़ाइल का आकार, आवश्यक अनुमतियां और रिलीज़ नोट्स देखते हैं।';
+
+  @override
+  String get howItWorksStep6Title => '6. डाउनलोड और इंस्टॉल';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'APK वास्तविक समय की प्रगति के साथ Google Drive से सुरक्षित रूप से डाउनलोड होते हैं और ऐप के भीतर ही सीधे एंड्रॉइड इंस्टॉलर को ट्रिगर करते हैं।';
 }
