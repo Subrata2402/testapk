@@ -13,7 +13,8 @@ import {
   Users,
   Smartphone,
   Activity,
-  Settings
+  Settings,
+  History
 } from 'lucide-react';
 import './DashboardPage.css';
 
@@ -40,6 +41,7 @@ export default function DashboardPage() {
     }
   };
 
+  const isActivitiesTab = location.pathname.includes('/dashboard/activities');
   const isAppsTab = location.pathname.includes('/dashboard/apps');
   const isSupportTab = location.pathname.includes('/dashboard/support');
   const isFeedbacksTab = location.pathname.includes('/dashboard/feedbacks');
@@ -48,6 +50,7 @@ export default function DashboardPage() {
   const isSettingsTab = location.pathname.includes('/dashboard/settings');
 
   const getHeaderTitle = () => {
+    if (isActivitiesTab) return 'System Activity Logs';
     if (isAppsTab) return t('apps.title') || 'Applications';
     if (isSupportTab) return t('support.title');
     if (isFeedbacksTab) return t('feedback.title');
@@ -74,6 +77,13 @@ export default function DashboardPage() {
           >
             <LayoutDashboard size={18} />
             <span>{t('dashboard.title')}</span>
+          </NavLink>
+          <NavLink
+            to="/dashboard/activities"
+            className={({ isActive }) => `nav-item-btn ${isActive ? 'active' : ''}`}
+          >
+            <History size={18} />
+            <span>{t('dashboard.activityLogs') || 'Activity Logs'}</span>
           </NavLink>
           <NavLink
             to="/dashboard/apps"

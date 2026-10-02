@@ -250,5 +250,19 @@
   "laterBtnLabel": "Mais tarde",
   "appListEmptyDeveloperNoticeTitle": "Você é um desenvolvedor?",
   "appListEmptyDeveloperNotice": "Acesse o painel web para se registrar como desenvolvedor e adicionar um aplicativo.",
-  "openWebDashboardBtn": "Ir para o painel web"
+  "openWebDashboardBtn": "Ir para o painel web",
+  "howItWorksTitle": "Como Funciona",
+  "howItWorksSubtitle": "Saiba como o TestAPK distribui builds do Android de desenvolvedores para testadores.",
+  "howItWorksStep1Title": "1. Configuração do App e Integração",
+  "howItWorksStep1Desc": "Os desenvolvedores criam aplicações no Painel Web e conectam o armazenamento do Google Drive para hospedar arquivos APK com segurança.",
+  "howItWorksStep2Title": "2. Envio de Builds APK",
+  "howItWorksStep2Desc": "Os desenvolvedores enviam versões APK usando o Portal Web ou a ferramenta TestAPK CLI diretamente do terminal ou pipelines de CI/CD.",
+  "howItWorksStep3Title": "3. Convite para Testadores",
+  "howItWorksStep3Desc": "Os desenvolvedores adicionam testadores por e-mail para conceder acesso autorizado a builds específicos de aplicações.",
+  "howItWorksStep4Title": "4. Aceitar Convite",
+  "howItWorksStep4Desc": "Os testadores convidados fazem login via Google OAuth no app Flutter, visualizam convites pendentes e os aceitam.",
+  "howItWorksStep5Title": "5. Analisar Detalhes do Build",
+  "howItWorksStep5Desc": "Os testadores navegam pelo histórico de versões, veem números de build, SDKs mínimos/alvo, tamanho do arquivo, permissões e notas de versão.",
+  "howItWorksStep6Title": "6. Baixar e Instalar",
+  "howItWorksStep6Desc": "Os APKs são baixados com segurança do Google Drive com progresso em tempo real e iniciam o instalador do Android diretamente no aplicativo."
 }

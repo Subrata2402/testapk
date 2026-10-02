@@ -792,4 +792,53 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Zum Web-Dashboard';
+
+  @override
+  String get howItWorksTitle => 'Wie es funktioniert';
+
+  @override
+  String get howItWorksSubtitle =>
+      'Erfahren Sie, wie TestAPK Android-Builds von Entwicklern an Tester verteilt.';
+
+  @override
+  String get howItWorksStep1Title => '1. App-Einrichtung & Integration';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'Entwickler erstellen Anwendungen im Web-Dashboard und verknüpfen Google Drive-Speicher für das sichere Hosting von APK-Dateien.';
+
+  @override
+  String get howItWorksStep2Title => '2. Hochladen von APK-Builds';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'Entwickler laden APK-Releases über das Webportal oder das TestAPK-CLI-Tool direkt vom Terminal oder CI/CD-Pipelines hoch.';
+
+  @override
+  String get howItWorksStep3Title => '3. Einladen von Testern';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'Entwickler fügen Tester per E-Mail-Adresse hinzu, um berechtigten Zugriff auf bestimmte Anwendungs-Builds zu gewähren.';
+
+  @override
+  String get howItWorksStep4Title => '4. Einladung annehmen';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'Eingeladene Tester melden sich per Google OAuth in der Flutter-App an, sehen ausstehende Einladungen ein und nehmen diese an.';
+
+  @override
+  String get howItWorksStep5Title => '5. Build-Details überprüfen';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'Tester durchsuchen den Versionsverlauf, sehen Build-Nummern, minimale/Ziel-SDKs, Dateigröße, erforderliche Berechtigungen und Versionshinweise.';
+
+  @override
+  String get howItWorksStep6Title => '6. Herunterladen & Installieren';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'APKs werden sicher mit Echtzeit-Fortschritt von Google Drive heruntergeladen und starten direkt den Android-Installer in der App.';
 }

@@ -22,6 +22,8 @@
       "totalFeedbacks": "Total Feedbacks"
     },
     "recentActivity": "Recent Activity",
+    "activityLogs": "Activity Logs",
+    "viewAll": "View All",
     "noActivity": "No recent activity found."
   },
   "support": {

@@ -9,13 +9,38 @@ export default function SupportRequestsPage() {
   const [supportRequests, setSupportRequests] = useState([]);
   const [isLoadingSupport, setIsLoadingSupport] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 });
 
-  const fetchSupportRequests = async () => {
+  // Debounce search input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  const fetchSupportRequests = async (page = 1) => {
     setIsLoadingSupport(true);
     try {
-      const response = await supportService.getRequests();
+      const params = {
+        page,
+        limit: pagination.limit,
+        search: debouncedSearch,
+        status: statusFilter,
+        startDate: startDate ? startDate.toISOString() : undefined,
+        endDate: endDate ? endDate.toISOString() : undefined,
+      };
+      const response = await supportService.getRequests(params);
       if (response.status === 'success') {
-        setSupportRequests(response.data.requests);
+        setSupportRequests(response.data.requests || []);
+        if (response.data.pagination) {
+          setPagination(response.data.pagination);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch support requests:', err);
@@ -25,8 +50,14 @@ export default function SupportRequestsPage() {
   };
 
   useEffect(() => {
-    fetchSupportRequests();
-  }, []);
+    fetchSupportRequests(1);
+  }, [debouncedSearch, statusFilter, startDate, endDate]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= pagination.totalPages) {
+      fetchSupportRequests(newPage);
+    }
+  };
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -46,9 +77,21 @@ export default function SupportRequestsPage() {
       <SupportList
         requests={supportRequests}
         isLoading={isLoadingSupport}
-        onRefresh={fetchSupportRequests}
+        onRefresh={() => fetchSupportRequests(pagination.page)}
         onViewDetails={setSelectedRequest}
         onStatusChange={handleStatusChange}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        statusFilter={statusFilter}
+        onStatusFilterChange={setStatusFilter}
+        startDate={startDate}
+        endDate={endDate}
+        onDateChange={(start, end) => {
+          setStartDate(start);
+          setEndDate(end);
+        }}
+        pagination={pagination}
+        onPageChange={handlePageChange}
         t={t}
       />
 

@@ -22,6 +22,7 @@ export const ENDPOINTS = {
   },
   ADMIN: {
     STATS: '/admin/stats',
+    ACTIVITIES: '/admin/activities',
     APPS: '/admin/apps',
     HEALTH: '/admin/health',
     CLEAR_LOGS: '/admin/logs',

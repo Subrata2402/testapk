@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { App } from '../models/app.model.js';
+import { Release } from '../models/release.model.js';
 import Support from '../models/support.model.js';
 import User from '../models/user.model.js';
 import { Feedback } from '../models/feedback.model.js';
@@ -8,12 +9,122 @@ import { AppError } from '../utils/appError.js';
 import { getSystemMetrics, readLastLines } from '../services/system.service.js';
 import mongoose from 'mongoose';
 
+interface ActivityItem {
+  id: string;
+  type: 'app_created' | 'release_published' | 'user_registered' | 'support_created' | 'feedback_submitted';
+  action: string;
+  user: string;
+  timestamp: Date;
+}
+
+async function fetchAggregatedActivities(limit: number = 20, typeFilter: string = 'all', searchQuery: string = ''): Promise<ActivityItem[]> {
+  const activities: ActivityItem[] = [];
+  const searchRegex = searchQuery ? new RegExp(searchQuery, 'i') : null;
+
+  // 1. Apps
+  if (typeFilter === 'all' || typeFilter === 'app_created') {
+    const apps = await App.find().sort({ createdAt: -1 }).limit(limit);
+    for (const app of apps) {
+      const action = `New app '${app.name}' registered`;
+      const owner = app.members?.find((m: any) => m.role === 'Owner')?.email || app.members?.[0]?.email || 'Developer';
+      const user = owner;
+      if (!searchRegex || searchRegex.test(action) || searchRegex.test(user)) {
+        activities.push({
+          id: `app_${app._id}`,
+          type: 'app_created',
+          action,
+          user,
+          timestamp: (app as any).createdAt || new Date(),
+        });
+      }
+    }
+  }
+
+  // 2. Releases
+  if (typeFilter === 'all' || typeFilter === 'release_published') {
+    const releases = await Release.find().populate('appId', 'name').sort({ createdAt: -1 }).limit(limit);
+    for (const rel of releases) {
+      const appName = (rel.appId as any)?.name || rel.appName || 'App';
+      const action = `Release v${rel.version} (Build #${rel.buildNumber}) published for '${appName}'`;
+      const user = rel.uploadedByName || rel.uploadedByEmail || 'Developer';
+      if (!searchRegex || searchRegex.test(action) || searchRegex.test(user)) {
+        activities.push({
+          id: `rel_${rel._id}`,
+          type: 'release_published',
+          action,
+          user,
+          timestamp: rel.createdAt || new Date(),
+        });
+      }
+    }
+  }
+
+  // 3. Users
+  if (typeFilter === 'all' || typeFilter === 'user_registered') {
+    const users = await User.find().sort({ createdAt: -1 }).limit(limit);
+    for (const u of users) {
+      const action = `User '${u.name || u.email}' registered`;
+      const user = u.email;
+      if (!searchRegex || searchRegex.test(action) || searchRegex.test(user)) {
+        activities.push({
+          id: `usr_${u._id}`,
+          type: 'user_registered',
+          action,
+          user,
+          timestamp: (u as any).createdAt || new Date(),
+        });
+      }
+    }
+  }
+
+  // 4. Support
+  if (typeFilter === 'all' || typeFilter === 'support_created') {
+    const supports = await Support.find().sort({ createdAt: -1 }).limit(limit);
+    for (const s of supports) {
+      const action = `Support request: '${s.subject}'`;
+      const user = s.email || s.name || 'User';
+      if (!searchRegex || searchRegex.test(action) || searchRegex.test(user)) {
+        activities.push({
+          id: `sup_${s._id}`,
+          type: 'support_created',
+          action,
+          user,
+          timestamp: (s as any).createdAt || new Date(),
+        });
+      }
+    }
+  }
+
+  // 5. Feedback
+  if (typeFilter === 'all' || typeFilter === 'feedback_submitted') {
+    const feedbacks = await Feedback.find().populate('userId', 'name email').sort({ createdAt: -1 }).limit(limit);
+    for (const f of feedbacks) {
+      const action = `Feedback submitted (${f.rating}★): '${f.title}'`;
+      const user = (f.userId as any)?.email || (f.userId as any)?.name || 'Tester';
+      if (!searchRegex || searchRegex.test(action) || searchRegex.test(user)) {
+        activities.push({
+          id: `fb_${f._id}`,
+          type: 'feedback_submitted',
+          action,
+          user,
+          timestamp: (f as any).createdAt || new Date(),
+        });
+      }
+    }
+  }
+
+  activities.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
+  return activities;
+}
+
 export const getDashboardStats = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const totalApps = await App.countDocuments();
     const newSupportRequests = await Support.countDocuments({ status: 'pending' });
     const totalActiveUsers = await User.countDocuments({ isDeleted: { $ne: true } });
     const totalFeedbacks = await Feedback.countDocuments();
+    const recentActivities = (await fetchAggregatedActivities(5)).slice(0, 5);
 
     // 1. User Registration Trend (last 7 days)
     const sevenDaysAgo = new Date();
@@ -59,6 +170,7 @@ export const getDashboardStats = async (req: Request, res: Response, next: NextF
         newSupportRequests,
         totalActiveUsers,
         totalFeedbacks,
+        recentActivities,
         analytics: {
           userTrend,
           ratingDistribution,
@@ -71,17 +183,97 @@ export const getDashboardStats = async (req: Request, res: Response, next: NextF
   }
 };
 
+export const getActivities = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 20;
+    const type = (req.query.type as string) || 'all';
+    const search = (req.query.search as string) || '';
+
+    const allMatching = await fetchAggregatedActivities(100, type, search);
+    const total = allMatching.length;
+    const startIndex = (page - 1) * limit;
+    const activities = allMatching.slice(startIndex, startIndex + limit);
+
+    res.status(200).json({
+      status: STRINGS.COMMON.STATUS_SUCCESS,
+      results: activities.length,
+      data: {
+        activities,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        }
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const users = await User.find()
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 10;
+    const search = (req.query.search as string) || '';
+    const role = (req.query.role as string) || 'all';
+    const status = (req.query.status as string) || 'all';
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+
+    const query: any = {};
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    if (role && role !== 'all') {
+      query.role = role;
+    }
+
+    if (status === 'active') {
+      query.isDeleted = { $ne: true };
+    } else if (status === 'inactive') {
+      query.isDeleted = true;
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query.createdAt.$lte = end;
+      }
+    }
+
+    const total = await User.countDocuments(query);
+    const skip = (page - 1) * limit;
+
+    const users = await User.find(query)
       .select('-password')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     res.status(200).json({
       status: STRINGS.COMMON.STATUS_SUCCESS,
       results: users.length,
       data: {
-        users
+        users,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        }
       }
     });
   } catch (error) {
@@ -117,14 +309,48 @@ export const updateUserStatus = async (req: Request, res: Response, next: NextFu
 
 export const getAllApps = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const apps = await App.find()
+    const page = parseInt(req.query.page as string, 10) || 1;
+    const limit = parseInt(req.query.limit as string, 10) || 10;
+    const search = (req.query.search as string) || '';
+    const startDate = req.query.startDate as string;
+    const endDate = req.query.endDate as string;
+
+    const query: any = {};
+
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { packageName: { $regex: search, $options: 'i' } },
+        { 'members.email': { $regex: search, $options: 'i' } },
+        { 'members.name': { $regex: search, $options: 'i' } },
+      ];
+    }
+
+    if (startDate || endDate) {
+      query.createdAt = {};
+      if (startDate) {
+        query.createdAt.$gte = new Date(startDate);
+      }
+      if (endDate) {
+        const end = new Date(endDate);
+        end.setHours(23, 59, 59, 999);
+        query.createdAt.$lte = end;
+      }
+    }
+
+    const total = await App.countDocuments(query);
+    const skip = (page - 1) * limit;
+
+    const apps = await App.find(query)
       .populate({
         path: 'releases',
         options: { sort: { buildNumber: -1 } },
         perDocumentLimit: 1,
       })
       .populate('releasesCount')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
 
     // Populate member names
     const emails = apps.flatMap(app => app.members.map((m: any) => m.email.toLowerCase()));
@@ -144,7 +370,13 @@ export const getAllApps = async (req: Request, res: Response, next: NextFunction
       status: STRINGS.COMMON.STATUS_SUCCESS,
       results: apps.length,
       data: {
-        apps: appsWithMemberNames
+        apps: appsWithMemberNames,
+        pagination: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit) || 1,
+        }
       }
     });
   } catch (error) {

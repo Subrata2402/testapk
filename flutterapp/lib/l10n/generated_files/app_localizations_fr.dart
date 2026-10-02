@@ -793,4 +793,54 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get openWebDashboardBtn => 'Accéder au tableau de bord Web';
+
+  @override
+  String get howItWorksTitle => 'Comment ça marche';
+
+  @override
+  String get howItWorksSubtitle =>
+      'Découvrez comment TestAPK distribue les builds Android des développeurs aux testeurs.';
+
+  @override
+  String get howItWorksStep1Title =>
+      '1. Configuration de l\'application & Intégration';
+
+  @override
+  String get howItWorksStep1Desc =>
+      'Les développeurs créent des applications sur le tableau de bord Web et associent le stockage Google Drive pour héberger les fichiers APK en toute sécurité.';
+
+  @override
+  String get howItWorksStep2Title => '2. Envoi des builds APK';
+
+  @override
+  String get howItWorksStep2Desc =>
+      'Les développeurs téléversent les versions APK via le portail Web ou l\'outil CLI TestAPK directement depuis leur terminal ou leurs pipelines CI/CD.';
+
+  @override
+  String get howItWorksStep3Title => '3. Invitation des testeurs';
+
+  @override
+  String get howItWorksStep3Desc =>
+      'Les développeurs ajoutent des testeurs par adresse e-mail pour accorder un accès autorisé à des builds d\'applications spécifiques.';
+
+  @override
+  String get howItWorksStep4Title => '4. Accepter l\'invitation';
+
+  @override
+  String get howItWorksStep4Desc =>
+      'Les testeurs invités se connectent via Google OAuth dans l\'application Flutter, consultent les invitations en attente et les acceptent.';
+
+  @override
+  String get howItWorksStep5Title => '5. Examiner les détails du build';
+
+  @override
+  String get howItWorksStep5Desc =>
+      'Les testeurs parcourent l\'historique des versions, consultent les numéros de build, les SDK minimaux/cibles, la taille du fichier, les autorisations et les notes de version.';
+
+  @override
+  String get howItWorksStep6Title => '6. Télécharger & Installer';
+
+  @override
+  String get howItWorksStep6Desc =>
+      'Les fichiers APK sont téléchargés en toute sécurité depuis Google Drive avec un suivi en temps réel et lancent l\'installateur Android directement dans l\'application.';
 }

@@ -250,5 +250,19 @@
   "laterBtnLabel": "Later",
   "appListEmptyDeveloperNoticeTitle": "Are you a Developer?",
   "appListEmptyDeveloperNotice": "Go to the web dashboard to register as a developer and add an application.",
-  "openWebDashboardBtn": "Go to Web Dashboard"
+  "openWebDashboardBtn": "Go to Web Dashboard",
+  "howItWorksTitle": "How It Works",
+  "howItWorksSubtitle": "Learn how TestAPK distributes Android builds from developers to testers.",
+  "howItWorksStep1Title": "1. App Setup & Integration",
+  "howItWorksStep1Desc": "Developers create applications on the Web Dashboard and connect Google Drive storage for hosting APK files securely.",
+  "howItWorksStep2Title": "2. Uploading APK Builds",
+  "howItWorksStep2Desc": "Developers upload APK releases using the Web Portal or the TestAPK CLI tool directly from their terminal or CI/CD pipelines.",
+  "howItWorksStep3Title": "3. Inviting Testers",
+  "howItWorksStep3Desc": "Developers add testers by email address to grant authorized access to specific application builds.",
+  "howItWorksStep4Title": "4. Accept Invitation",
+  "howItWorksStep4Desc": "Invited testers sign in with Google OAuth in the Flutter app, view pending invitations, and accept them.",
+  "howItWorksStep5Title": "5. Review Build Details",
+  "howItWorksStep5Desc": "Testers browse release history, view build numbers, minimum/target SDKs, file size, required permissions, and release notes.",
+  "howItWorksStep6Title": "6. Download & Install",
+  "howItWorksStep6Desc": "APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app."
 }

@@ -250,5 +250,19 @@
   "laterBtnLabel": "لاحقاً",
   "appListEmptyDeveloperNoticeTitle": "هل أنت مطور؟",
   "appListEmptyDeveloperNotice": "انتقل إلى لوحة التحكم على الويب للتسجيل كمطور وإضافة تطبيق.",
-  "openWebDashboardBtn": "الانتقال إلى لوحة التحكم"
+  "openWebDashboardBtn": "الانتقال إلى لوحة التحكم",
+  "howItWorksTitle": "كيف يعمل التطبيق",
+  "howItWorksSubtitle": "تعرّف على كيفية توزيع TestAPK لإصدارات الأندرويد من المطورين إلى المختبرين.",
+  "howItWorksStep1Title": "1. إعداد التطبيق والربط",
+  "howItWorksStep1Desc": "يقوم المطورون بإنشاء التطبيقات على لوحة التحكم الإلكترونية وربط تخزين Google Drive لاستضافة ملفات APK بأمان.",
+  "howItWorksStep2Title": "2. رفع إصدارات APK",
+  "howItWorksStep2Desc": "يرفع المطورون إصدارات APK باستخدام بوابة الويب أو أداة TestAPK CLI مباشرة من موجه الأوامر أو خطوط التجميع.",
+  "howItWorksStep3Title": "3. دعوة المختبرين",
+  "howItWorksStep3Desc": "يضيف المطورون المختبرين عبر البريد الإلكتروني لمنحهم صلاحية الوصول إلى إصدارات تطبيقات محددة.",
+  "howItWorksStep4Title": "4. قبول الدعوة",
+  "howItWorksStep4Desc": "يسجل المختبرون المدعوون الدخول عبر Google OAuth في تطبيق الفلاتر، ويعرضون الدعوات المعلقة ويقبلونها.",
+  "howItWorksStep5Title": "5. مراجعة تفاصيل البناء",
+  "howItWorksStep5Desc": "يتصفح المختبرون سجل الإصدارات، ورقم البناء، وإصدارات SDK الأدنى والمستهدفة، وحجم الملف، والأذونات المطلوبة، وملاحظات الإصدار.",
+  "howItWorksStep6Title": "6. التنزيل والتثبيت",
+  "howItWorksStep6Desc": "يتم تنزيل ملفات APK بأمان من Google Drive مع متابعة التقدم في الوقت الفعلي وتشغيل مثبت الأندرويد مباشرة داخل التطبيق."
 }

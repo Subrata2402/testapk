@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../context/LanguageContext';
-import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon, ChevronUp, ChevronDown, X } from 'lucide-react';
+import { Users, RefreshCw, Search, Calendar, Shield, User as UserIcon, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { userService } from '../services/api';
 import CustomDropdown from '../components/common/CustomDropdown';
 import CustomDatePicker from '../components/common/CustomDatePicker';
@@ -12,6 +12,7 @@ export default function UsersPage() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [roleFilter, setRoleFilter] = useState('all');
   const [startDate, setStartDate] = useState(null);
@@ -19,18 +20,49 @@ export default function UsersPage() {
   const [updatingStatusId, setUpdatingStatusId] = useState(null);
   const [sortField, setSortField] = useState('createdAt');
   const [sortDirection, setSortDirection] = useState('desc');
+  const [pagination, setPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 });
 
-  const fetchUsers = async () => {
+  // Debounce search input
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
+
+  const fetchUsers = async (page = 1) => {
     setIsLoading(true);
     try {
-      const response = await userService.getAll();
+      const params = {
+        page,
+        limit: pagination.limit,
+        search: debouncedSearch,
+        role: roleFilter,
+        status: statusFilter,
+        startDate: startDate ? startDate.toISOString() : undefined,
+        endDate: endDate ? endDate.toISOString() : undefined,
+      };
+      const response = await userService.getAll(params);
       if (response.status === 'success') {
-        setUsers(response.data.users);
+        setUsers(response.data.users || []);
+        if (response.data.pagination) {
+          setPagination(response.data.pagination);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch users:', err);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers(1);
+  }, [debouncedSearch, statusFilter, roleFilter, startDate, endDate]);
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= pagination.totalPages) {
+      fetchUsers(newPage);
     }
   };
 
@@ -50,10 +82,6 @@ export default function UsersPage() {
     }
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const statusOptions = [
     { value: 'all', label: t('users.allUsers') },
     { value: 'active', label: t('users.active') },
@@ -65,45 +93,6 @@ export default function UsersPage() {
     { value: 'admin', label: t('users.admin') },
     { value: 'user', label: t('users.user') }
   ];
-
-  const filteredUsers = users.filter(user => {
-    const name = user.name || '';
-    const email = user.email || '';
-    const matchesSearch =
-      name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      email.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesStatus =
-      statusFilter === 'all' ||
-      (statusFilter === 'active' && !user.isDeleted) ||
-      (statusFilter === 'inactive' && user.isDeleted);
-
-    const matchesRole =
-      roleFilter === 'all' ||
-      user.role === roleFilter;
-
-    const matchesDate = (() => {
-      if (!startDate && !endDate) return true;
-      const joinedDate = new Date(user.createdAt);
-      joinedDate.setHours(0, 0, 0, 0);
-
-      if (startDate) {
-        const start = new Date(startDate);
-        start.setHours(0, 0, 0, 0);
-        if (joinedDate < start) return false;
-      }
-
-      if (endDate) {
-        const end = new Date(endDate);
-        end.setHours(23, 59, 59, 999);
-        if (joinedDate > end) return false;
-      }
-
-      return true;
-    })();
-
-    return matchesSearch && matchesStatus && matchesRole && matchesDate;
-  });
 
   const handleSort = (field) => {
     if (sortField === field) {
@@ -121,7 +110,7 @@ export default function UsersPage() {
       : <ChevronDown size={14} className="sort-icon-active" />;
   };
 
-  const sortedUsers = [...filteredUsers].sort((a, b) => {
+  const sortedUsers = [...users].sort((a, b) => {
     let aVal = a[sortField];
     let bVal = b[sortField];
 
@@ -155,7 +144,7 @@ export default function UsersPage() {
           <h3>{t('users.title')}</h3>
         </div>
         <button
-          onClick={fetchUsers}
+          onClick={() => fetchUsers(pagination.page)}
           disabled={isLoading}
           className="btn btn-secondary btn-icon-only"
           title="Refresh"
@@ -251,91 +240,121 @@ export default function UsersPage() {
             </tbody>
           </table>
         </div>
-      ) : filteredUsers.length > 0 ? (
-        <div className="support-table-wrapper">
-          <table className="support-table">
-            <thead>
-              <tr>
-                <th onClick={() => handleSort('name')} className="users-table-header-clickable">
-                  <div className="users-table-header-content">
-                    {t('users.name')} {renderSortIcon('name')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('email')} className="users-table-header-clickable">
-                  <div className="users-table-header-content">
-                    {t('users.email')} {renderSortIcon('email')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('role')} className="users-table-header-clickable">
-                  <div className="users-table-header-content">
-                    {t('users.role')} {renderSortIcon('role')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('isDeleted')} className="users-table-header-clickable">
-                  <div className="users-table-header-content">
-                    {t('users.status')} {renderSortIcon('isDeleted')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('createdAt')} className="users-table-header-clickable">
-                  <div className="users-table-header-content">
-                    {t('users.joinedDate')} {renderSortIcon('createdAt')}
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedUsers.map((user) => (
-                <tr key={user._id}>
-                  <td>
-                    <div className="users-name-cell">
-                      <div className="user-avatar users-avatar-container">
-                        {user.picture ? (
-                          <img src={user.picture} alt={user.name} className="users-avatar-img" />
-                        ) : (
-                          user.name?.[0]?.toUpperCase() || 'U'
-                        )}
-                      </div>
-                      <span className="font-semibold">{user.name}</span>
+      ) : sortedUsers.length > 0 ? (
+        <>
+          <div className="support-table-wrapper">
+            <table className="support-table">
+              <thead>
+                <tr>
+                  <th onClick={() => handleSort('name')} className="users-table-header-clickable">
+                    <div className="users-table-header-content">
+                      {t('users.name')} {renderSortIcon('name')}
                     </div>
-                  </td>
-                  <td>
-                    <a href={`mailto:${user.email}`} className="text-link">
-                      {user.email}
-                    </a>
-                  </td>
-                  <td>
-                    <span className={`badge badge-${user.role === 'admin' ? 'danger' : 'primary'} users-role-badge`}>
-                      {user.role === 'admin' ? <Shield size={12} /> : <UserIcon size={12} />}
-                      {user.role === 'admin' ? t('users.admin') : t('users.user')}
-                    </span>
-                  </td>
-                  <td>
-                    <div className="users-status-cell">
-                      <Switch
-                        checked={!user.isDeleted}
-                        onChange={(checked) => handleStatusChange(user._id, !checked)}
-                        disabled={user.role === 'admin'}
-                        loading={updatingStatusId === user._id}
-                      />
-                      <span className={`badge badge-${user.isDeleted ? 'danger' : 'success'} users-status-badge`}>
-                        {user.isDeleted ? t('users.inactive') : t('users.active')}
-                      </span>
+                  </th>
+                  <th onClick={() => handleSort('email')} className="users-table-header-clickable">
+                    <div className="users-table-header-content">
+                      {t('users.email')} {renderSortIcon('email')}
                     </div>
-                  </td>
-                  <td className="text-muted">
-                    <div className="users-joined-cell">
-                      <Calendar size={14} />
-                      <span>{new Date(user.createdAt).toLocaleDateString()}</span>
+                  </th>
+                  <th onClick={() => handleSort('role')} className="users-table-header-clickable">
+                    <div className="users-table-header-content">
+                      {t('users.role')} {renderSortIcon('role')}
                     </div>
-                  </td>
+                  </th>
+                  <th onClick={() => handleSort('isDeleted')} className="users-table-header-clickable">
+                    <div className="users-table-header-content">
+                      {t('users.status')} {renderSortIcon('isDeleted')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('createdAt')} className="users-table-header-clickable">
+                    <div className="users-table-header-content">
+                      {t('users.joinedDate')} {renderSortIcon('createdAt')}
+                    </div>
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {sortedUsers.map((user) => (
+                  <tr key={user._id}>
+                    <td>
+                      <div className="users-name-cell">
+                        <div className="user-avatar users-avatar-container">
+                          {user.picture ? (
+                            <img src={user.picture} alt={user.name} className="users-avatar-img" />
+                          ) : (
+                            user.name?.[0]?.toUpperCase() || 'U'
+                          )}
+                        </div>
+                        <span className="font-semibold">{user.name}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <a href={`mailto:${user.email}`} className="text-link">
+                        {user.email}
+                      </a>
+                    </td>
+                    <td>
+                      <span className={`badge badge-${user.role === 'admin' ? 'danger' : 'primary'} users-role-badge`}>
+                        {user.role === 'admin' ? <Shield size={12} /> : <UserIcon size={12} />}
+                        {user.role === 'admin' ? t('users.admin') : t('users.user')}
+                      </span>
+                    </td>
+                    <td>
+                      <div className="users-status-cell">
+                        <Switch
+                          checked={!user.isDeleted}
+                          onChange={(checked) => handleStatusChange(user._id, !checked)}
+                          disabled={user.role === 'admin'}
+                          loading={updatingStatusId === user._id}
+                        />
+                        <span className={`badge badge-${user.isDeleted ? 'danger' : 'success'} users-status-badge`}>
+                          {user.isDeleted ? t('users.inactive') : t('users.active')}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="text-muted">
+                      <div className="users-joined-cell">
+                        <Calendar size={14} />
+                        <span>{new Date(user.createdAt).toLocaleDateString()}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination Bar */}
+          {pagination.totalPages > 1 && (
+            <div className="pagination-bar users-pagination-bar">
+              <span className="pagination-info">
+                Showing {(pagination.page - 1) * pagination.limit + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} users
+              </span>
+              <div className="pagination-controls">
+                <button
+                  className="page-btn"
+                  disabled={pagination.page <= 1 || isLoading}
+                  onClick={() => handlePageChange(pagination.page - 1)}
+                >
+                  <ChevronLeft size={16} />
+                  <span>Prev</span>
+                </button>
+                <span className="page-current">Page {pagination.page} of {pagination.totalPages}</span>
+                <button
+                  className="page-btn"
+                  disabled={pagination.page >= pagination.totalPages || isLoading}
+                  onClick={() => handlePageChange(pagination.page + 1)}
+                >
+                  <span>Next</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <p className="no-activity">
-          {users.length === 0 ? t('users.noUsers') : t('users.noUsers')}
+          {t('users.noUsers')}
         </p>
       )}
     </section>

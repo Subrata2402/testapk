@@ -1,28 +1,63 @@
 import React, { useState } from 'react';
-import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown, X } from 'lucide-react';
+import { Mail, RefreshCw, Eye, Search, Calendar, ChevronUp, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import CustomDatePicker from '../common/CustomDatePicker';
 import './SupportList.css';
 
-export default function SupportList({ requests, isLoading, onRefresh, onViewDetails, onStatusChange, t }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'pending' | 'resolved'
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+export default function SupportList({
+  requests,
+  isLoading,
+  onRefresh,
+  onViewDetails,
+  onStatusChange,
+  searchQuery: propsSearchQuery,
+  onSearchChange,
+  statusFilter: propsStatusFilter,
+  onStatusFilterChange,
+  startDate: propsStartDate,
+  endDate: propsEndDate,
+  onDateChange,
+  pagination,
+  onPageChange,
+  t
+}) {
+  const [localSearchQuery, setLocalSearchQuery] = useState('');
+  const [localStatusFilter, setLocalStatusFilter] = useState('all');
+  const [localStartDate, setLocalStartDate] = useState(null);
+  const [localEndDate, setLocalEndDate] = useState(null);
   const [updatingStatusId, setUpdatingStatusId] = useState(null);
 
-  // Filter requests
-  const filteredRequests = requests.filter(req => {
-    // Search filter
+  const searchQuery = propsSearchQuery !== undefined ? propsSearchQuery : localSearchQuery;
+  const handleSearchChange = (val) => {
+    if (onSearchChange) onSearchChange(val);
+    else setLocalSearchQuery(val);
+  };
+
+  const statusFilter = propsStatusFilter !== undefined ? propsStatusFilter : localStatusFilter;
+  const handleStatusFilterChange = (val) => {
+    if (onStatusFilterChange) onStatusFilterChange(val);
+    else setLocalStatusFilter(val);
+  };
+
+  const startDate = propsStartDate !== undefined ? propsStartDate : localStartDate;
+  const endDate = propsEndDate !== undefined ? propsEndDate : localEndDate;
+  const handleDateChange = (start, end) => {
+    if (onDateChange) onDateChange(start, end);
+    else {
+      setLocalStartDate(start);
+      setLocalEndDate(end);
+    }
+  };
+
+  // Client-side fallback filter if no server pagination is active
+  const filteredRequests = pagination ? requests : requests.filter(req => {
     const matchesSearch = 
       req.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       req.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       req.subject.toLowerCase().includes(searchQuery.toLowerCase());
 
-    // Status filter
     const matchesStatus = statusFilter === 'all' || req.status === statusFilter;
 
-    // Date filter
     const matchesDate = (() => {
       if (!startDate && !endDate) return true;
       const reqDate = new Date(req.createdAt);
@@ -137,12 +172,12 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
               type="text"
               placeholder={t('support.searchPlaceholder')}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               className="filter-input search-input"
             />
             {searchQuery && (
               <button 
-                onClick={() => setSearchQuery('')} 
+                onClick={() => handleSearchChange('')} 
                 className="search-clear-btn"
                 type="button"
               >
@@ -156,7 +191,7 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
               <CustomDropdown
                 options={statusFilterOptions}
                 value={statusFilter}
-                onChange={setStatusFilter}
+                onChange={handleStatusFilterChange}
                 placeholder={t('support.allStatuses')}
               />
             </div>
@@ -164,10 +199,7 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
             <CustomDatePicker
               startDate={startDate}
               endDate={endDate}
-              onChange={(start, end) => {
-                setStartDate(start);
-                setEndDate(end);
-              }}
+              onChange={handleDateChange}
               placeholder={t('users.startDate') + ' - ' + t('users.endDate')}
             />
           </div>
@@ -201,77 +233,107 @@ export default function SupportList({ requests, isLoading, onRefresh, onViewDeta
             </tbody>
           </table>
         </div>
-      ) : filteredRequests.length > 0 ? (
-        <div className="support-table-wrapper">
-          <table className="support-table">
-            <thead>
-              <tr>
-                <th onClick={() => handleSort('name')} className="support-th-sortable">
-                  <div className="support-th-content">
-                    {t('support.name')} {renderSortIcon('name')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('email')} className="support-th-sortable">
-                  <div className="support-th-content">
-                    {t('support.email')} {renderSortIcon('email')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('subject')} className="support-th-sortable">
-                  <div className="support-th-content">
-                    {t('support.subject')} {renderSortIcon('subject')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('createdAt')} className="support-th-sortable">
-                  <div className="support-th-content">
-                    {t('support.date')} {renderSortIcon('createdAt')}
-                  </div>
-                </th>
-                <th onClick={() => handleSort('status')} className="support-th-sortable">
-                  <div className="support-th-content">
-                    {t('support.status')} {renderSortIcon('status')}
-                  </div>
-                </th>
-                <th>{t('support.actions')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedRequests.map((req) => (
-                <tr key={req._id}>
-                  <td className="font-semibold">{req.name}</td>
-                  <td>
-                    <a href={`mailto:${req.email}`} className="text-link">
-                      {req.email}
-                    </a>
-                  </td>
-                  <td>{req.subject}</td>
-                  <td className="text-muted">
-                    {new Date(req.createdAt).toLocaleDateString()}
-                  </td>
-                  <td>
-                    <div className={`status-dropdown-cell ${req.status === 'pending' ? 'status-new' : 'status-closed'}`}>
-                      <CustomDropdown
-                        options={getStatusOptions(req.status)}
-                        value={req.status}
-                        onChange={(val) => handleStatusChange(req._id, val)}
-                        placeholder={t('support.status')}
-                        loading={updatingStatusId === req._id}
-                      />
+      ) : sortedRequests.length > 0 ? (
+        <>
+          <div className="support-table-wrapper">
+            <table className="support-table">
+              <thead>
+                <tr>
+                  <th onClick={() => handleSort('name')} className="support-th-sortable">
+                    <div className="support-th-content">
+                      {t('support.name')} {renderSortIcon('name')}
                     </div>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => onViewDetails(req)}
-                      className="btn btn-secondary btn-sm btn-action"
-                    >
-                      <Eye size={14} />
-                      <span>{t('support.view')}</span>
-                    </button>
-                  </td>
+                  </th>
+                  <th onClick={() => handleSort('email')} className="support-th-sortable">
+                    <div className="support-th-content">
+                      {t('support.email')} {renderSortIcon('email')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('subject')} className="support-th-sortable">
+                    <div className="support-th-content">
+                      {t('support.subject')} {renderSortIcon('subject')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('createdAt')} className="support-th-sortable">
+                    <div className="support-th-content">
+                      {t('support.date')} {renderSortIcon('createdAt')}
+                    </div>
+                  </th>
+                  <th onClick={() => handleSort('status')} className="support-th-sortable">
+                    <div className="support-th-content">
+                      {t('support.status')} {renderSortIcon('status')}
+                    </div>
+                  </th>
+                  <th>{t('support.actions')}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {sortedRequests.map((req) => (
+                  <tr key={req._id}>
+                    <td className="font-semibold">{req.name}</td>
+                    <td>
+                      <a href={`mailto:${req.email}`} className="text-link">
+                        {req.email}
+                      </a>
+                    </td>
+                    <td>{req.subject}</td>
+                    <td className="text-muted">
+                      {new Date(req.createdAt).toLocaleDateString()}
+                    </td>
+                    <td>
+                      <div className={`status-dropdown-cell ${req.status === 'pending' ? 'status-new' : 'status-closed'}`}>
+                        <CustomDropdown
+                          options={getStatusOptions(req.status)}
+                          value={req.status}
+                          onChange={(val) => handleStatusChange(req._id, val)}
+                          placeholder={t('support.status')}
+                          loading={updatingStatusId === req._id}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => onViewDetails(req)}
+                        className="btn btn-secondary btn-sm btn-action"
+                      >
+                        <Eye size={14} />
+                        <span>{t('support.view')}</span>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination Bar */}
+          {pagination && pagination.totalPages > 1 && (
+            <div className="pagination-bar support-pagination-bar">
+              <span className="pagination-info">
+                Showing {(pagination.page - 1) * pagination.limit + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} requests
+              </span>
+              <div className="pagination-controls">
+                <button
+                  className="page-btn"
+                  disabled={pagination.page <= 1 || isLoading}
+                  onClick={() => onPageChange(pagination.page - 1)}
+                >
+                  <ChevronLeft size={16} />
+                  <span>Prev</span>
+                </button>
+                <span className="page-current">Page {pagination.page} of {pagination.totalPages}</span>
+                <button
+                  className="page-btn"
+                  disabled={pagination.page >= pagination.totalPages || isLoading}
+                  onClick={() => onPageChange(pagination.page + 1)}
+                >
+                  <span>Next</span>
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <p className="no-activity">
           {requests.length === 0 ? t('support.noRequests') : t('support.noMatchingRequests')}
