@@ -5,13 +5,13 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 40px 0;
+  padding: 40px 24px;
 }
 
 @media (max-width: 768px) {
   .landing-container {
     gap: 24px;
-    padding: 24px 0;
+    padding: 24px 14px;
   }
 }
 

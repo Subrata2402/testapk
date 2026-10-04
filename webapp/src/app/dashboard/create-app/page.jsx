@@ -30,15 +30,17 @@ export default function CreateAppPage() {
   }
 
   return (
-    <Dashboard
-      user={user}
-      apps={apps}
-      onCreateApp={handleCreateApp}
-      onLogout={handleLogout}
-      onOpenDriveModal={() => setIsDriveModalOpen(true)}
-      showAlert={showAlert}
-      showConfirm={showConfirm}
-      downloadLink={downloadLink}
-    />
+    <React.Suspense fallback={null}>
+      <Dashboard
+        user={user}
+        apps={apps}
+        onCreateApp={handleCreateApp}
+        onLogout={handleLogout}
+        onOpenDriveModal={() => setIsDriveModalOpen(true)}
+        showAlert={showAlert}
+        showConfirm={showConfirm}
+        downloadLink={downloadLink}
+      />
+    </React.Suspense>
   );
 }

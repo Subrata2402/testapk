@@ -243,7 +243,7 @@ export function AppProvider({ children }) {
         if (data.status === 'success') {
           const createdApp = data.data.app;
           setApps([...apps, createdApp]);
-          router.push(`/dashboard/apps/${createdApp._id}`);
+          router.push(`/dashboard?appId=${createdApp._id}`);
           return true;
         } else {
           showAlert(data.message || t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');

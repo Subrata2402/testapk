@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 .next
+out
+.firebase
 *.local
 .env
 .env.local

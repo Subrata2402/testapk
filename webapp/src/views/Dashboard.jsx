@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useParams, useRouter, usePathname } from 'next/navigation';
+import { useParams, useRouter, usePathname, useSearchParams } from 'next/navigation';
 import * as Icons from 'lucide-react';
 import AppDetails from '../components/dashboard/AppDetails';
 import AboutPage from './AboutPage';
@@ -20,14 +20,17 @@ export default function Dashboard({
 }) {
   const { t } = useTranslation();
   const params = useParams();
-  const appId = propAppId || params?.appId;
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const rawAppId = propAppId || params?.appId || searchParams?.get('appId');
+  const appId = rawAppId || (pathname?.startsWith('/dashboard/apps/') ? pathname.replace('/dashboard/apps/', '') : null);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   React.useEffect(() => {
     if (!appId && pathname !== '/dashboard/create-app' && apps && apps.length > 0) {
-      router.replace(`/dashboard/apps/${apps[0]._id || apps[0].id}`);
+      router.replace(`/dashboard?appId=${apps[0]._id || apps[0].id}`);
     }
   }, [appId, apps, router, pathname]);
 
@@ -39,7 +42,7 @@ export default function Dashboard({
   const selectedApp = apps && apps.find(app => (app._id === appId || app.id === appId));
 
   const handleNavToApp = (id) => {
-    router.push(`/dashboard/apps/${id}`);
+    router.push(`/dashboard?appId=${id}`);
     setIsMobileSidebarOpen(false);
   };
 
@@ -200,7 +203,7 @@ export default function Dashboard({
                     <button
                       key={app._id || app.id}
                       className="quick-app-card glass-card"
-                      onClick={() => router.push(`/dashboard/apps/${app._id || app.id}`)}
+                      onClick={() => router.push(`/dashboard?appId=${app._id || app.id}`)}
                     >
                       {app.icon && (app.icon.startsWith('data:') || app.icon.startsWith('http')) ? (
                         <img src={app.icon} alt={app.name} className="quick-app-icon-img" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', marginBottom: '8px' }} />
