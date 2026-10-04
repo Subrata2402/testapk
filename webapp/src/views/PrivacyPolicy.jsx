@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
 import * as Icons from 'lucide-react';
-import './PrivacyPolicy.css';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from '../context/LanguageContext';
 
 export default function PrivacyPolicy({ onBackToHome }) {
+  const router = useRouter();
   const { t } = useTranslation();
+  const handleBack = onBackToHome || (() => router.back());
+
   return (
     <div className="policy-container flex-center">
       <div className="policy-card glass-panel animate-fade-in">
         <div className="policy-header">
-          <button className="btn-back flex-center" onClick={onBackToHome} aria-label="Go back">
+          <button className="btn-back flex-center" onClick={handleBack} aria-label="Go back">
             <Icons.ArrowLeft size={20} />
           </button>
           <h2>{t('PRIVACY.TITLE')}</h2>

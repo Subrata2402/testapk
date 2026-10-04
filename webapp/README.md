@@ -4,8 +4,7 @@ The web portal for the TestAPK Release Manager platform. It allows developers to
 
 ## Tech Stack
 
-- **Framework**: React (v19)
-- **Build Tool**: Vite
+- **Framework**: Next.js (App Router, v16+) & React (v19)
 - **Styling**: Vanilla CSS (with a modern glassmorphic design system)
 - **Icons**: Lucide React
 - **Authentication**: Google OAuth (`@react-oauth/google`)
@@ -25,12 +24,12 @@ The web portal for the TestAPK Release Manager platform. It allows developers to
 Create a `.env` file in the root of the `webapp` directory. You can use `.env.example` as a template:
 
 ```env
-VITE_API_URL=http://localhost:3000/api/v1
-VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
+API_URL=http://localhost:3000/api/v1
+GOOGLE_CLIENT_ID=your_google_client_id_here
 ```
 
 > [!IMPORTANT]
-> The `VITE_GOOGLE_CLIENT_ID` must match the client ID configured in the backend server and Google Cloud Console.
+> The `GOOGLE_CLIENT_ID` must match the client ID configured in the backend server and Google Cloud Console.
 
 ---
 
@@ -45,16 +44,16 @@ VITE_GOOGLE_CLIENT_ID=your_google_client_id_here
    ```bash
    npm run dev
    ```
-   The application will be available at `http://localhost:5173`.
+   The application will be available at `http://localhost:3000`.
 
 3. **Build for Production**:
    ```bash
    npm run build
    ```
 
-4. **Preview Production Build**:
+4. **Start Production Server**:
    ```bash
-   npm run preview
+   npm run start
    ```
 
 5. **Lint**:

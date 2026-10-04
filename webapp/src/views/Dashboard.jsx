@@ -1,40 +1,56 @@
+'use client';
+
 import React, { useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useRouter, usePathname } from 'next/navigation';
 import * as Icons from 'lucide-react';
 import AppDetails from '../components/dashboard/AppDetails';
 import AboutPage from './AboutPage';
-import './Dashboard.css';
 import { useTranslation } from '../context/LanguageContext';
 
-export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDriveModal, showAlert, showConfirm, downloadLink }) {
+export default function Dashboard({
+  user,
+  apps = [],
+  onCreateApp,
+  onLogout,
+  onOpenDriveModal,
+  showAlert,
+  showConfirm,
+  downloadLink,
+  appId: propAppId,
+}) {
   const { t } = useTranslation();
-  const { appId } = useParams();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const params = useParams();
+  const appId = propAppId || params?.appId;
+  const router = useRouter();
+  const pathname = usePathname();
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   React.useEffect(() => {
-    if (!appId && location.pathname !== '/dashboard/create-app' && apps.length > 0) {
-      navigate(`/dashboard/apps/${apps[0]._id || apps[0].id}`, { replace: true });
+    if (!appId && pathname !== '/dashboard/create-app' && apps && apps.length > 0) {
+      router.replace(`/dashboard/apps/${apps[0]._id || apps[0].id}`);
     }
-  }, [appId, apps, navigate, location.pathname]);
+  }, [appId, apps, router, pathname]);
 
   // Close mobile sidebar when route changes
   React.useEffect(() => {
     setIsMobileSidebarOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
-  const selectedApp = apps.find(app => (app._id === appId || app.id === appId));
+  const selectedApp = apps && apps.find(app => (app._id === appId || app.id === appId));
 
   const handleNavToApp = (id) => {
-    navigate(`/dashboard/apps/${id}`);
+    router.push(`/dashboard/apps/${id}`);
     setIsMobileSidebarOpen(false);
   };
 
   const handleCreateAppClick = () => {
-    navigate('/dashboard/create-app');
+    router.push('/dashboard/create-app');
     setIsMobileSidebarOpen(false);
   };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="dashboard-container animate-fade-in">
@@ -184,7 +200,7 @@ export default function Dashboard({ user, apps, onCreateApp, onLogout, onOpenDri
                     <button
                       key={app._id || app.id}
                       className="quick-app-card glass-card"
-                      onClick={() => navigate(`/dashboard/apps/${app._id || app.id}`)}
+                      onClick={() => router.push(`/dashboard/apps/${app._id || app.id}`)}
                     >
                       {app.icon && (app.icon.startsWith('data:') || app.icon.startsWith('http')) ? (
                         <img src={app.icon} alt={app.name} className="quick-app-icon-img" style={{ width: '24px', height: '24px', borderRadius: '4px', objectFit: 'cover', marginBottom: '8px' }} />

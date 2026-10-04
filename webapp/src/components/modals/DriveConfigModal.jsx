@@ -1,8 +1,9 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { userService } from '../../services/api';
-import './CreateAppModal.css'; // Reuse CreateAppModal styles
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function DriveConfigModal({ isOpen, onClose, user, showAlert, onDriveConfigured }) {

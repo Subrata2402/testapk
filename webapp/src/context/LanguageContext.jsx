@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import en from '../locales/en.json';
 import es from '../locales/es.json';
@@ -26,21 +28,30 @@ export const languages = [
 ];
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(() => {
-    return localStorage.getItem('language') || 'en';
-  });
+  const [language, setLanguage] = useState('en');
 
   useEffect(() => {
-    localStorage.setItem('language', language);
-    
-    // Handle RTL layout for Arabic
-    const currentLang = languages.find(l => l.code === language);
-    if (currentLang?.isRtl) {
-      document.documentElement.dir = 'rtl';
-      document.documentElement.lang = language;
-    } else {
-      document.documentElement.dir = 'ltr';
-      document.documentElement.lang = language;
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('language');
+      if (saved && translations[saved]) {
+        setLanguage(saved);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+      
+      // Handle RTL layout for Arabic
+      const currentLang = languages.find(l => l.code === language);
+      if (currentLang?.isRtl) {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = language;
+      } else {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = language;
+      }
     }
   }, [language]);
 

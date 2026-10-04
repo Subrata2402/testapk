@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
 import * as Icons from 'lucide-react';
-import './TermsOfService.css';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from '../context/LanguageContext';
 
 export default function TermsOfService({ onBackToHome }) {
+  const router = useRouter();
   const { t } = useTranslation();
+  const handleBack = onBackToHome || (() => router.back());
+
   return (
     <div className="terms-container flex-center">
       <div className="terms-card glass-panel animate-fade-in">
         <div className="terms-header">
-          <button className="btn-back flex-center" onClick={onBackToHome} aria-label="Go back">
+          <button className="btn-back flex-center" onClick={handleBack} aria-label="Go back">
             <Icons.ArrowLeft size={20} />
           </button>
           <h2>{t('TERMS.TITLE')}</h2>

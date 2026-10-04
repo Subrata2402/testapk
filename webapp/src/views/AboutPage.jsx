@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
-import './AboutPage.css';
 import { testapkDownloadLink } from '../constants';
 import { useTranslation } from '../context/LanguageContext';
 

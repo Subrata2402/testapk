@@ -1,14 +1,18 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import * as Icons from 'lucide-react';
 
 export default function HeroSection({ user, logoImg, appDetails, t, onLoginClick, testapkDownloadLink }) {
+  const logoSrc = typeof logoImg === 'object' && logoImg?.src ? logoImg.src : logoImg;
+
   return (
     <div className="hero-section glass-card">
       <div className="hero-content">
         <div className="app-meta-header">
           <div className="app-icon-wrapper hero-app-icon-wrapper">
-            <img src={logoImg} alt="TestAPK Logo" className="hero-app-icon-img" />
+            <img src={logoSrc} alt="TestAPK Logo" className="hero-app-icon-img" />
           </div>
           <div className="app-title-area">
             <h1>TestAPK</h1>
@@ -20,7 +24,7 @@ export default function HeroSection({ user, logoImg, appDetails, t, onLoginClick
 
         <div className="hero-actions">
           {user ? (
-            <Link to="/dashboard" className="btn btn-primary btn-lg flex-center gap-2 hero-link-btn">
+            <Link href="/dashboard" className="btn btn-primary btn-lg flex-center gap-2 hero-link-btn">
               <Icons.LayoutDashboard size={20} />
               <span>{t('LANDING.GO_TO_DASHBOARD')}</span>
             </Link>

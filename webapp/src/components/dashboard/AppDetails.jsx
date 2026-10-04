@@ -1,8 +1,9 @@
+'use client';
+
 import React, { useState, useRef } from 'react';
 import * as Icons from 'lucide-react';
 import CustomDropdown from '../common/CustomDropdown';
 import { appService, API_BASE_URL } from '../../services/api';
-import './AppDetails.css';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function AppDetails({ app, user, onUpdateApp, showAlert, showConfirm }) {

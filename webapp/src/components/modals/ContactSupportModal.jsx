@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
 import { supportService } from '../../services/api';
-import './ContactSupportModal.css';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function ContactSupportModal({ isOpen, onClose, user }) {

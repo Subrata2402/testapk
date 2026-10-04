@@ -1,0 +1,16 @@
+@import '../index.css';
+@import '../App.css';
+@import '../components/common/CustomDropdown.css';
+@import '../components/common/MaintenanceScreen.css';
+@import '../components/dashboard/AppDetails.css';
+@import '../components/modals/ContactSupportModal.css';
+@import '../components/modals/CreateAppModal.css';
+@import '../components/modals/GoogleLoginModal.css';
+@import '../views/AboutPage.css';
+@import '../views/ContactSupport.css';
+@import '../views/Dashboard.css';
+@import '../views/DeviceAuthPage.css';
+@import '../views/FaqPage.css';
+@import '../views/LandingPage.css';
+@import '../views/PrivacyPolicy.css';
+@import '../views/TermsOfService.css';

@@ -1,8 +1,9 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Wrench, RefreshCw } from 'lucide-react';
 import { settingService } from '../../services/api';
 import { useTranslation } from '../../context/LanguageContext';
-import './MaintenanceScreen.css';
 
 export default function MaintenanceScreen({ onMaintenanceEnd }) {
   const { t } = useTranslation();
