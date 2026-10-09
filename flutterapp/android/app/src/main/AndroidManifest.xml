@@ -9,8 +9,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <!-- Install packages (to open downloaded APK) -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <!-- Query all packages to check if app is installed -->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <!-- Post notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!-- Foreground Service permissions -->
@@ -62,6 +60,11 @@
     </application>
 
     <queries>
+        <!-- Package visibility to query installed version and launch applications -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>

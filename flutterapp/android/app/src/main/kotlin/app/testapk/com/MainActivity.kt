@@ -256,7 +256,11 @@ class MainActivity : FlutterActivity() {
         try {
             val packageInstaller = packageManager.packageInstaller
             val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
-            
+            params.setSize(file.length())
+            if (apkPackageName != null) {
+                params.setAppPackageName(apkPackageName)
+            }
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED)
             }
@@ -264,7 +268,7 @@ class MainActivity : FlutterActivity() {
             val sessionId = packageInstaller.createSession(params)
             val session = packageInstaller.openSession(sessionId)
 
-            val out = session.openWrite("TestAPKInstall", 0, file.length())
+            val out = session.openWrite("base.apk", 0, file.length())
             val inputStream = FileInputStream(file)
             val buffer = ByteArray(65536)
             var c: Int
