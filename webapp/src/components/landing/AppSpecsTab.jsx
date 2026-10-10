@@ -2,6 +2,7 @@
 
 import React from 'react';
 import * as Icons from 'lucide-react';
+import GooglePlayButton from '../common/GooglePlayButton';
 
 export default function AppSpecsTab({ appDetails, latestRelease, testapkDownloadLink, t }) {
   return (
@@ -13,14 +14,11 @@ export default function AppSpecsTab({ appDetails, latestRelease, testapkDownload
         </p>
       </div>
 
-      <a
-        href={`${testapkDownloadLink}`}
-        download="testapk.apk"
-        className="btn btn-primary btn-sm flex-center gap-2 mt-4 specs-download-btn"
-      >
-        <Icons.Download size={14} />
-        <span>{t('LANDING.DOWNLOAD_APK')}</span>
-      </a>
+      <GooglePlayButton
+        href={testapkDownloadLink}
+        size="sm"
+        className="mt-4 specs-download-btn"
+      />
 
       <div className="app-info-specs">
         <h3>{t('LANDING.TECHNICAL_SPECS')}</h3>

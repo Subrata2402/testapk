@@ -2,6 +2,7 @@
 
 import React from 'react';
 import * as Icons from 'lucide-react';
+import GooglePlayButton from '../common/GooglePlayButton';
 
 export default function PlatformComponents({ t, testapkDownloadLink }) {
   return (
@@ -60,14 +61,11 @@ export default function PlatformComponents({ t, testapkDownloadLink }) {
               <span><strong>{t('LANDING.VERSION_DETECTION_TITLE')}:</strong> {t('LANDING.VERSION_DETECTION_DESC')}</span>
             </li>
           </ul>
-          <a
-            href={`${testapkDownloadLink}`}
-            download="testapk.apk"
-            className="btn btn-primary btn-sm flex-center gap-2 mt-4 platform-link-btn"
-          >
-            <Icons.Download size={14} />
-            <span>{t('LANDING.DOWNLOAD_APK')}</span>
-          </a>
+          <GooglePlayButton
+            href={testapkDownloadLink}
+            size="sm"
+            className="mt-4 platform-link-btn"
+          />
         </div>
 
         {/* CLI Tool Card */}

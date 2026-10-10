@@ -144,7 +144,8 @@
   }
 
   .hero-actions .btn-lg,
-  .hero-actions a.btn-lg {
+  .hero-actions a.btn-lg,
+  .hero-actions .play-store-btn {
     width: 100%;
     justify-content: center;
   }

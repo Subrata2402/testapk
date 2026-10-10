@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import * as Icons from 'lucide-react';
+import GooglePlayButton from '../common/GooglePlayButton';
 
 export default function HeroSection({ user, logoImg, appDetails, t, onLoginClick, testapkDownloadLink }) {
   const logoSrc = typeof logoImg === 'object' && logoImg?.src ? logoImg.src : logoImg;
@@ -34,14 +35,11 @@ export default function HeroSection({ user, logoImg, appDetails, t, onLoginClick
               <span>{t('LANDING.SIGN_IN_PORTAL')}</span>
             </button>
           )}
-          <a
-            href={`${testapkDownloadLink}`}
-            download="testapk.apk"
-            className="btn btn-secondary btn-lg flex-center gap-2 hero-link-btn"
-          >
-            <Icons.Download size={20} />
-            <span>{t('LANDING.DOWNLOAD_COMPANION')}</span>
-          </a>
+          <GooglePlayButton
+            href={testapkDownloadLink}
+            size="lg"
+            className="hero-link-btn"
+          />
         </div>
       </div>
 
