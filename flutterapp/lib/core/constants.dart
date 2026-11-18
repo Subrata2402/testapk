@@ -333,7 +333,7 @@ String get kPrivacyPolicyPara6_4 =>
 String get kPrivacyPolicyTitle7 => _l10n?.privacyPolicyTitle7 ?? '7. Contact Us';
 String get kPrivacyPolicyPara7_1 =>
     _l10n?.privacyPolicyPara7_1 ??
-    'If you have any questions or concerns about this Privacy Policy, please contact us at subrata3250das@gmail.com.';
+    'If you have any questions or concerns about this Privacy Policy, please contact us at testapk@clipboux.online.';
 
 String get kTermsOfServiceLastUpdated => _l10n?.termsOfServiceLastUpdated ?? 'July 18, 2026';
 String get kTermsOfServiceTitle1 => _l10n?.termsOfServiceTitle1 ?? '1. Agreement to Terms';
@@ -374,4 +374,4 @@ String get kTermsOfServicePara7_1 =>
 String get kTermsOfServiceTitle8 => _l10n?.termsOfServiceTitle8 ?? '8. Contact Us';
 String get kTermsOfServicePara8_1 =>
     _l10n?.termsOfServicePara8_1 ??
-    'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.';
+    'If you have any questions about these Terms of Service, please contact us at testapk@clipboux.online.';

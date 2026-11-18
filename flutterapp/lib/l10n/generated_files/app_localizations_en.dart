@@ -605,7 +605,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyPolicyPara7_1 =>
-      'If you have any questions or concerns about this Privacy Policy, please contact us at subrata3250das@gmail.com.';
+      'If you have any questions or concerns about this Privacy Policy, please contact us at testapk@clipboux.online.';
 
   @override
   String get termsOfServiceLastUpdated => 'July 18, 2026';
@@ -679,7 +679,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsOfServicePara8_1 =>
-      'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.';
+      'If you have any questions about these Terms of Service, please contact us at testapk@clipboux.online.';
 
   @override
   String get faqTitle => 'Frequently Asked Questions';

@@ -1225,7 +1225,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyPolicyPara7_1.
   ///
   /// In en, this message translates to:
-  /// **'If you have any questions or concerns about this Privacy Policy, please contact us at subrata3250das@gmail.com.'**
+  /// **'If you have any questions or concerns about this Privacy Policy, please contact us at testapk@clipboux.online.'**
   String get privacyPolicyPara7_1;
 
   /// No description provided for @termsOfServiceLastUpdated.
@@ -1351,7 +1351,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsOfServicePara8_1.
   ///
   /// In en, this message translates to:
-  /// **'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.'**
+  /// **'If you have any questions about these Terms of Service, please contact us at testapk@clipboux.online.'**
   String get termsOfServicePara8_1;
 
   /// No description provided for @faqTitle.

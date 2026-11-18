@@ -575,7 +575,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get privacyPolicyPara7_1 =>
-      '如果您对本隐私政策有任何疑问或建议，请通过 subrata3250das@gmail.com 与我们联系。';
+      '如果您对本隐私政策有任何疑问或建议，请通过 testapk@clipboux.online 与我们联系。';
 
   @override
   String get termsOfServiceLastUpdated => '2026年7月18日';
@@ -645,7 +645,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get termsOfServicePara8_1 =>
-      '如果您对这些服务条款有任何疑问，请通过 subrata3250das@gmail.com 与我们联系。';
+      '如果您对这些服务条款有任何疑问，请通过 testapk@clipboux.online 与我们联系。';
 
   @override
   String get faqTitle => '常见问题';

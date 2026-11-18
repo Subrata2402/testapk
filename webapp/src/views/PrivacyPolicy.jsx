@@ -68,7 +68,7 @@ export default function PrivacyPolicy({ onBackToHome }) {
             <p>{t('PRIVACY.CONTACT_CONTENT')}</p>
             <p className="contact-email">
               <Icons.Mail size={16} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-              <a href="mailto:subrata3250das@gmail.com">subrata3250das@gmail.com</a>
+              <a href="mailto:testapk@clipboux.online">testapk@clipboux.online</a>
             </p>
           </section>
         </div>
