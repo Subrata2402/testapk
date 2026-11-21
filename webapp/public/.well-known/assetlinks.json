@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.testapk.com",
+      "sha256_cert_fingerprints": [
+        "CC:DA:07:30:73:8F:CB:4A:40:6E:6B:1E:AB:4C:D9:1C:83:22:C0:2D:88:FD:FE:51:7D:F8:79:B0:A6:1D:71:8F",
+        "C9:83:B7:5A:33:A1:EB:D1:27:FD:3C:D3:CB:F4:42:C7:AE:54:EB:F4:5C:48:5B:E7:CA:54:2A:07:84:08:E9:2D"
+      ]
+    }
+  }
+]
