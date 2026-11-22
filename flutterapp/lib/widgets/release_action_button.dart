@@ -384,9 +384,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     final double borderRadius = widget.compact ? context.scale(10.0) : context.scale(14.0);
 
     final Color primaryColor = _getButtonColor();
-    final String buttonText = _getButtonText();
     final IconData? buttonIcon = _getButtonIcon();
-    final VoidCallback? onTap = _getButtonOnTap();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -421,7 +419,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: onTap,
+                  onTap: _getButtonOnTap,
                   splashColor: Colors.white.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(borderRadius),
                   child: Padding(
@@ -444,7 +442,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
                         else if (buttonIcon != null)
                           Icon(buttonIcon, size: iconSize, color: Colors.white),
                         if (_isDownloading || _isInstalling || buttonIcon != null) SizedBox(width: context.scale(8)),
-                        TextViewer(buttonText, fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.white),
+                        TextViewer(_getButtonText(), fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.white),
                       ],
                     ),
                   ),

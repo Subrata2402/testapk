@@ -106,6 +106,7 @@
   "deleteLabel": "Eliminar",
   "deleteAccountConfirmTitle": "¿Eliminar Cuenta?",
   "deleteAccountConfirmMessage": "¿Está seguro de que desea eliminar su cuenta? Esta acción es permanente y no se puede deshacer.",
+  "deleteAccountReasonHint": "Motivo de la baja (opcional)",
   "deleteAccountSuccessMsg": "Cuenta eliminada con éxito",
   "deleteAccountErrorMsg": "Error al eliminar la cuenta",
   "errorUnexpected": "Ocurrió un error inesperado. Por favor, inténtelo de nuevo.",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. Revisar detalles de la compilación",
   "howItWorksStep5Desc": "Los evaluadores exploran el historial de lanzamientos, ven números de compilación, SDKs mínimos/objetivo, tamaño de archivo, permisos y notas de versión.",
   "howItWorksStep6Title": "6. Descargar e instalar",
-  "howItWorksStep6Desc": "Los archivos APK se descargan de forma segura desde Google Drive con progreso en tiempo real e inician el instalador de Android directamente en la app."
+  "howItWorksStep6Desc": "Los archivos APK se descargan de forma segura desde Google Drive con progreso en tiempo real e inician el instalador de Android directamente en la app.",
+  "deleteAccountSelectReasonTitle": "¿Por qué eliminas tu cuenta? (Opcional)",
+  "deleteAccountOtherHint": "Cuéntanos más (opcional)",
+  "deleteAccountWarningTitle": "Lamentamos que te vayas",
+  "deleteAccountWarningDesc": "Eliminar tu cuenta es permanente. Todos tus datos de perfil, versiones subidas e invitaciones de prueba se eliminarán y no se podrán recuperar.",
+  "deleteAccountButton": "Eliminar mi cuenta",
+  "deleteReasonNoLongerNeeded": "Ya no necesito esta aplicación",
+  "deleteReasonAlternativeFound": "Encontré una alternativa mejor",
+  "deleteReasonTechnicalIssues": "Problemas técnicos / errores",
+  "deleteReasonPrivacyConcerns": "Preocupaciones de privacidad o seguridad",
+  "deleteReasonTooDifficult": "Demasiado difícil de usar",
+  "deleteReasonOther": "Otro"
 }

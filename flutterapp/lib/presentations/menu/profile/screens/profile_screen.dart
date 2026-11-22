@@ -1,20 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:testapk/core/api_service.dart';
 import 'package:testapk/core/app_colors.dart';
-import 'package:testapk/core/auth_service.dart';
 import 'package:testapk/core/constants.dart';
 import 'package:testapk/l10n/generated_files/app_localizations.dart';
 import 'package:testapk/models/user_model.dart';
-import 'package:testapk/presentations/login/screens/login_screen.dart';
-import 'package:testapk/presentations/menu/profile/widgets/action_confirmation_dialog.dart';
+import 'package:testapk/presentations/menu/profile/screens/delete_account_screen.dart';
 import 'package:testapk/presentations/menu/profile/widgets/profile_avatar.dart';
 import 'package:testapk/presentations/menu/profile/widgets/profile_info_card.dart';
 import 'package:testapk/presentations/menu/profile/widgets/profile_delete_account_button.dart';
 import 'package:testapk/utils/extensions.dart';
 import 'package:testapk/widgets/orb.dart';
-import 'package:testapk/widgets/custom_snack_bar.dart';
 import 'package:testapk/widgets/text_viewer.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -22,60 +18,10 @@ class ProfileScreen extends StatelessWidget {
 
   const ProfileScreen({super.key, required this.user});
 
-  Future<void> _handleDeleteAccount(BuildContext context) async {
-    final confirmed = await showGeneralDialog<bool>(
-      context: context,
-      barrierDismissible: true,
-      barrierLabel: 'Dismiss',
-      barrierColor: Colors.black.withValues(alpha: 0.5),
-      transitionDuration: const Duration(milliseconds: 300),
-      pageBuilder: (context, anim1, anim2) => const SizedBox.shrink(),
-      transitionBuilder: (context, anim1, anim2, child) {
-        final curve = CurvedAnimation(parent: anim1, curve: Curves.easeOutBack);
-        return ScaleTransition(
-          scale: curve,
-          child: FadeTransition(
-            opacity: anim1,
-            child: ActionConfirmationDialog(
-              title: kDeleteAccountConfirmTitle,
-              message: kDeleteAccountConfirmMessage,
-              confirmLabel: kDeleteLabel,
-              icon: Icons.delete_forever_rounded,
-            ),
-          ),
-        );
-      },
+  void _navigateToDeleteAccount(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const DeleteAccountScreen()),
     );
-
-    if (confirmed == true) {
-      if (!context.mounted) return;
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (ctx) => const Center(child: CircularProgressIndicator(color: AppColors.accent)),
-      );
-
-      try {
-        final response = await ApiService.instance.deleteAccount();
-        if (response.statusCode == 200) {
-          await AuthService.instance.signOut(localOnly: true);
-          if (context.mounted) {
-            Navigator.of(context).pop(); // Dismiss the loading dialog
-            CustomSnackBar.show(context, kDeleteAccountSuccessMsg, type: CustomSnackBarType.success);
-            Navigator.of(
-              context,
-            ).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginScreen()), (_) => false);
-          }
-        } else {
-          throw Exception(kDeleteAccountErrorMsg);
-        }
-      } catch (e) {
-        if (context.mounted) {
-          Navigator.of(context).pop(); // Dismiss the loading dialog
-          CustomSnackBar.show(context, '$kErrorPrefix${e.toString()}', type: CustomSnackBarType.error);
-        }
-      }
-    }
   }
 
   @override
@@ -206,7 +152,7 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(height: context.scale(32)),
 
                         // Delete Account button
-                        ProfileDeleteAccountButton(onTap: () => _handleDeleteAccount(context)),
+                        ProfileDeleteAccountButton(onTap: () => _navigateToDeleteAccount(context)),
                       ],
                     ),
                   ),

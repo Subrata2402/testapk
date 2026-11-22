@@ -344,6 +344,9 @@ class AppLocalizationsEs extends AppLocalizations {
       '¿Está seguro de que desea eliminar su cuenta? Esta acción es permanente y no se puede deshacer.';
 
   @override
+  String get deleteAccountReasonHint => 'Motivo de la baja (opcional)';
+
+  @override
   String get deleteAccountSuccessMsg => 'Cuenta eliminada con éxito';
 
   @override
@@ -840,4 +843,40 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'Los archivos APK se descargan de forma segura desde Google Drive con progreso en tiempo real e inician el instalador de Android directamente en la app.';
+
+  @override
+  String get deleteAccountSelectReasonTitle =>
+      '¿Por qué eliminas tu cuenta? (Opcional)';
+
+  @override
+  String get deleteAccountOtherHint => 'Cuéntanos más (opcional)';
+
+  @override
+  String get deleteAccountWarningTitle => 'Lamentamos que te vayas';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      'Eliminar tu cuenta es permanente. Todos tus datos de perfil, versiones subidas e invitaciones de prueba se eliminarán y no se podrán recuperar.';
+
+  @override
+  String get deleteAccountButton => 'Eliminar mi cuenta';
+
+  @override
+  String get deleteReasonNoLongerNeeded => 'Ya no necesito esta aplicación';
+
+  @override
+  String get deleteReasonAlternativeFound => 'Encontré una alternativa mejor';
+
+  @override
+  String get deleteReasonTechnicalIssues => 'Problemas técnicos / errores';
+
+  @override
+  String get deleteReasonPrivacyConcerns =>
+      'Preocupaciones de privacidad o seguridad';
+
+  @override
+  String get deleteReasonTooDifficult => 'Demasiado difícil de usar';
+
+  @override
+  String get deleteReasonOther => 'Otro';
 }

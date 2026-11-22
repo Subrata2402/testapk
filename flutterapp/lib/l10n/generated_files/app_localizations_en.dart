@@ -343,6 +343,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Are you sure you want to delete your account? This action is permanent and cannot be undone.';
 
   @override
+  String get deleteAccountReasonHint => 'Reason for leaving (optional)';
+
+  @override
   String get deleteAccountSuccessMsg => 'Account deleted successfully';
 
   @override
@@ -833,4 +836,39 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.';
+
+  @override
+  String get deleteAccountSelectReasonTitle =>
+      'Why are you deleting your account? (Optional)';
+
+  @override
+  String get deleteAccountOtherHint => 'Please tell us more (optional)';
+
+  @override
+  String get deleteAccountWarningTitle => 'We\'re sorry to see you go';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      'Deleting your account is permanent. All your profile data, uploaded releases, and testing invitations will be removed and cannot be recovered.';
+
+  @override
+  String get deleteAccountButton => 'Delete My Account';
+
+  @override
+  String get deleteReasonNoLongerNeeded => 'I no longer need this app';
+
+  @override
+  String get deleteReasonAlternativeFound => 'Found a better alternative';
+
+  @override
+  String get deleteReasonTechnicalIssues => 'Technical issues / bugs';
+
+  @override
+  String get deleteReasonPrivacyConcerns => 'Privacy or security concerns';
+
+  @override
+  String get deleteReasonTooDifficult => 'Too difficult to use';
+
+  @override
+  String get deleteReasonOther => 'Other';
 }

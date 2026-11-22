@@ -106,6 +106,7 @@
   "deleteLabel": "删除",
   "deleteAccountConfirmTitle": "删除账号？",
   "deleteAccountConfirmMessage": "您确定要删除您的账号吗？此操作是永久性的，且无法撤销。",
+  "deleteAccountReasonHint": "离开的原因（可选）",
   "deleteAccountSuccessMsg": "账号删除成功",
   "deleteAccountErrorMsg": "删除账号失败",
   "errorUnexpected": "发生意外错误。请重试。",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. 查看构建版本详情",
   "howItWorksStep5Desc": "测试人员浏览发布历史，查看构建版本号、最低/目标 SDK、文件大小、所需权限和发布说明。",
   "howItWorksStep6Title": "6. 下载与安装",
-  "howItWorksStep6Desc": "APK 文件可从 Google Drive 安全下载，具备实时进度显示，并在应用内直接触发 Android 安装程序。"
+  "howItWorksStep6Desc": "APK 文件可从 Google Drive 安全下载，具备实时进度显示，并在应用内直接触发 Android 安装程序。",
+  "deleteAccountSelectReasonTitle": "您为什么要删除账号？（可选）",
+  "deleteAccountOtherHint": "请告诉我们更多信息（可选）",
+  "deleteAccountWarningTitle": "很遗憾看到您离开",
+  "deleteAccountWarningDesc": "删除账号是永久性的。您的所有个人资料数据、已上传的版本和测试邀请都将被删除且无法恢复。",
+  "deleteAccountButton": "删除我的账号",
+  "deleteReasonNoLongerNeeded": "我不再需要此应用",
+  "deleteReasonAlternativeFound": "找到了更好的替代方案",
+  "deleteReasonTechnicalIssues": "技术问题 / 错误",
+  "deleteReasonPrivacyConcerns": "隐私或安全问题",
+  "deleteReasonTooDifficult": "太难使用",
+  "deleteReasonOther": "其他"
 }

@@ -106,6 +106,7 @@
   "deleteLabel": "हटाएं",
   "deleteAccountConfirmTitle": "खाता हटाएं?",
   "deleteAccountConfirmMessage": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई स्थायी है और इसे पूर्ववत नहीं किया जा सकता।",
+  "deleteAccountReasonHint": "छोड़ने का कारण (वैकल्पिक)",
   "deleteAccountSuccessMsg": "खाता सफलतापूर्वक हटा दिया गया",
   "deleteAccountErrorMsg": "खाता हटाने में विफल",
   "errorUnexpected": "एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. बिल्ड विवरण की समीक्षा",
   "howItWorksStep5Desc": "टेस्टर्स रिलीज़ इतिहास ब्राउज़ करते हैं, बिल्ड नंबर, न्यूनतम/लक्ष्य SDK, फ़ाइल का आकार, आवश्यक अनुमतियां और रिलीज़ नोट्स देखते हैं।",
   "howItWorksStep6Title": "6. डाउनलोड और इंस्टॉल",
-  "howItWorksStep6Desc": "APK वास्तविक समय की प्रगति के साथ Google Drive से सुरक्षित रूप से डाउनलोड होते हैं और ऐप के भीतर ही सीधे एंड्रॉइड इंस्टॉलर को ट्रिगर करते हैं।"
+  "howItWorksStep6Desc": "APK वास्तविक समय की प्रगति के साथ Google Drive से सुरक्षित रूप से डाउनलोड होते हैं और ऐप के भीतर ही सीधे एंड्रॉइड इंस्टॉलर को ट्रिगर करते हैं।",
+  "deleteAccountSelectReasonTitle": "आप अपना खाता क्यों हटा रहे हैं? (वैकल्पिक)",
+  "deleteAccountOtherHint": "कृपया हमें और बताएं (वैकल्पिक)",
+  "deleteAccountWarningTitle": "हमें आपको जाते हुए देखकर खेद है",
+  "deleteAccountWarningDesc": "अपना खाता हटाना स्थायी है। आपका सारा प्रोफ़ाइल डेटा, अपलोड की गई रिलीज़ और परीक्षण आमंत्रण हटा दिए जाएंगे और उन्हें पुनर्प्राप्त नहीं किया जा सकता।",
+  "deleteAccountButton": "मेरा खाता हटाएं",
+  "deleteReasonNoLongerNeeded": "मुझे अब इस ऐप की आवश्यकता नहीं है",
+  "deleteReasonAlternativeFound": "एक बेहतर विकल्प मिल गया",
+  "deleteReasonTechnicalIssues": "तकनीकी समस्याएं / बग",
+  "deleteReasonPrivacyConcerns": "गोपनीयता या सुरक्षा संबंधी चिंताएं",
+  "deleteReasonTooDifficult": "उपयोग करने में बहुत कठिन",
+  "deleteReasonOther": "अन्य"
 }

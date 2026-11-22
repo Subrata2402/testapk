@@ -337,6 +337,9 @@ class AppLocalizationsAr extends AppLocalizations {
       'هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء دائم ولا يمكن التراجع عنه.';
 
   @override
+  String get deleteAccountReasonHint => 'سبب المغادرة (اختياري)';
+
+  @override
   String get deleteAccountSuccessMsg => 'تم حذف الحساب بنجاح';
 
   @override
@@ -826,4 +829,39 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'يتم تنزيل ملفات APK بأمان من Google Drive مع متابعة التقدم في الوقت الفعلي وتشغيل مثبت الأندرويد مباشرة داخل التطبيق.';
+
+  @override
+  String get deleteAccountSelectReasonTitle =>
+      'لماذا تقوم بحذف حسابك؟ (اختياري)';
+
+  @override
+  String get deleteAccountOtherHint => 'يرجى إخبارنا بالمزيد (اختياري)';
+
+  @override
+  String get deleteAccountWarningTitle => 'نأسف لرؤيتك تغادر';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      'حذف حسابك نهائي. ستتم إزالة جميع بيانات ملفك الشخصي والإصدارات التي تم تحميلها ودعوات الاختبار ولن يمكن استردادها.';
+
+  @override
+  String get deleteAccountButton => 'حذف حسابي';
+
+  @override
+  String get deleteReasonNoLongerNeeded => 'لم أعد بحاجة إلى هذا التطبيق';
+
+  @override
+  String get deleteReasonAlternativeFound => 'وجدت بديلاً أفضل';
+
+  @override
+  String get deleteReasonTechnicalIssues => 'مشاكل تقنية / أخطاء';
+
+  @override
+  String get deleteReasonPrivacyConcerns => 'مخاوف تتعلق بالخصوصية أو الأمان';
+
+  @override
+  String get deleteReasonTooDifficult => 'صعب الاستخدام للغاية';
+
+  @override
+  String get deleteReasonOther => 'أخرى';
 }

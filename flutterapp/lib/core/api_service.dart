@@ -71,8 +71,11 @@ class ApiService {
     });
   }
 
-  Future<Response> deleteAccount() {
-    return _client.delete(ApiEndpoints.deleteMe);
+  Future<Response> deleteAccount({String? reason}) {
+    return _client.delete(
+      ApiEndpoints.deleteMe,
+      data: reason != null && reason.trim().isNotEmpty ? {'reason': reason.trim()} : null,
+    );
   }
 
   Future<Response> getPublicSettings() {

@@ -112,8 +112,8 @@ class ApiClient {
     return _dio.post(path, data: body);
   }
 
-  Future<Response> delete(String path) async {
-    return _dio.delete(path);
+  Future<Response> delete(String path, {Map<String, dynamic>? data}) async {
+    return _dio.delete(path, data: data);
   }
 
   void _handleDioError(DioException e) {

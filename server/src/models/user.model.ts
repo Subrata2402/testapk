@@ -14,6 +14,7 @@ export interface IUser extends Document {
   password?: string;
   fcmTokens?: string[];
   isDeleted: boolean;
+  deleteReason?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -66,6 +67,10 @@ const userSchema = new Schema<IUser>(
     isDeleted: {
       type: Boolean,
       default: false,
+    },
+    deleteReason: {
+      type: String,
+      trim: true,
     },
   },
   {

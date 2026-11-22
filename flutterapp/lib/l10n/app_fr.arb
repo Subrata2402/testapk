@@ -106,6 +106,7 @@
   "deleteLabel": "Supprimer",
   "deleteAccountConfirmTitle": "Supprimer le compte ?",
   "deleteAccountConfirmMessage": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est permanente et ne peut pas être annulée.",
+  "deleteAccountReasonHint": "Raison du départ (facultatif)",
   "deleteAccountSuccessMsg": "Compte supprimé avec succès",
   "deleteAccountErrorMsg": "Échec de la suppression du compte",
   "errorUnexpected": "Une erreur inattendue est survenue. Veuillez réessayer.",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. Examiner les détails du build",
   "howItWorksStep5Desc": "Les testeurs parcourent l'historique des versions, consultent les numéros de build, les SDK minimaux/cibles, la taille du fichier, les autorisations et les notes de version.",
   "howItWorksStep6Title": "6. Télécharger & Installer",
-  "howItWorksStep6Desc": "Les fichiers APK sont téléchargés en toute sécurité depuis Google Drive avec un suivi en temps réel et lancent l'installateur Android directement dans l'application."
+  "howItWorksStep6Desc": "Les fichiers APK sont téléchargés en toute sécurité depuis Google Drive avec un suivi en temps réel et lancent l'installateur Android directement dans l'application.",
+  "deleteAccountSelectReasonTitle": "Pourquoi supprimez-vous votre compte ? (Facultatif)",
+  "deleteAccountOtherHint": "Dites-nous en plus (facultatif)",
+  "deleteAccountWarningTitle": "Nous sommes désolés de vous voir partir",
+  "deleteAccountWarningDesc": "La suppression de votre compte est définitive. Toutes vos données de profil, versions téléchargées et invitations de test seront supprimées et ne pourront pas être récupérées.",
+  "deleteAccountButton": "Supprimer mon compte",
+  "deleteReasonNoLongerNeeded": "Je n'ai plus besoin de cette application",
+  "deleteReasonAlternativeFound": "J'ai trouvé une meilleure alternative",
+  "deleteReasonTechnicalIssues": "Problèmes techniques / bugs",
+  "deleteReasonPrivacyConcerns": "Préoccupations concernant la confidentialité ou la sécurité",
+  "deleteReasonTooDifficult": "Trop difficile à utiliser",
+  "deleteReasonOther": "Autre"
 }

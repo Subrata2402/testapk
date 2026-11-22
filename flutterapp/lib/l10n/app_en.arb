@@ -106,6 +106,7 @@
   "deleteLabel": "Delete",
   "deleteAccountConfirmTitle": "Delete Account?",
   "deleteAccountConfirmMessage": "Are you sure you want to delete your account? This action is permanent and cannot be undone.",
+  "deleteAccountReasonHint": "Reason for leaving (optional)",
   "deleteAccountSuccessMsg": "Account deleted successfully",
   "deleteAccountErrorMsg": "Failed to delete account",
   "errorUnexpected": "An unexpected error occurred. Please try again.",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. Review Build Details",
   "howItWorksStep5Desc": "Testers browse release history, view build numbers, minimum/target SDKs, file size, required permissions, and release notes.",
   "howItWorksStep6Title": "6. Download & Install",
-  "howItWorksStep6Desc": "APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app."
+  "howItWorksStep6Desc": "APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.",
+  "deleteAccountSelectReasonTitle": "Why are you deleting your account? (Optional)",
+  "deleteAccountOtherHint": "Please tell us more (optional)",
+  "deleteAccountWarningTitle": "We're sorry to see you go",
+  "deleteAccountWarningDesc": "Deleting your account is permanent. All your profile data, uploaded releases, and testing invitations will be removed and cannot be recovered.",
+  "deleteAccountButton": "Delete My Account",
+  "deleteReasonNoLongerNeeded": "I no longer need this app",
+  "deleteReasonAlternativeFound": "Found a better alternative",
+  "deleteReasonTechnicalIssues": "Technical issues / bugs",
+  "deleteReasonPrivacyConcerns": "Privacy or security concerns",
+  "deleteReasonTooDifficult": "Too difficult to use",
+  "deleteReasonOther": "Other"
 }

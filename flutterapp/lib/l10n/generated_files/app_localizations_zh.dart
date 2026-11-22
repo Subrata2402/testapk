@@ -327,6 +327,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteAccountConfirmMessage => '您确定要删除您的账号吗？此操作是永久性的，且无法撤销。';
 
   @override
+  String get deleteAccountReasonHint => '离开的原因（可选）';
+
+  @override
   String get deleteAccountSuccessMsg => '账号删除成功';
 
   @override
@@ -789,4 +792,38 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'APK 文件可从 Google Drive 安全下载，具备实时进度显示，并在应用内直接触发 Android 安装程序。';
+
+  @override
+  String get deleteAccountSelectReasonTitle => '您为什么要删除账号？（可选）';
+
+  @override
+  String get deleteAccountOtherHint => '请告诉我们更多信息（可选）';
+
+  @override
+  String get deleteAccountWarningTitle => '很遗憾看到您离开';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      '删除账号是永久性的。您的所有个人资料数据、已上传的版本和测试邀请都将被删除且无法恢复。';
+
+  @override
+  String get deleteAccountButton => '删除我的账号';
+
+  @override
+  String get deleteReasonNoLongerNeeded => '我不再需要此应用';
+
+  @override
+  String get deleteReasonAlternativeFound => '找到了更好的替代方案';
+
+  @override
+  String get deleteReasonTechnicalIssues => '技术问题 / 错误';
+
+  @override
+  String get deleteReasonPrivacyConcerns => '隐私或安全问题';
+
+  @override
+  String get deleteReasonTooDifficult => '太难使用';
+
+  @override
+  String get deleteReasonOther => '其他';
 }

@@ -106,6 +106,7 @@
   "deleteLabel": "حذف",
   "deleteAccountConfirmTitle": "حذف الحساب؟",
   "deleteAccountConfirmMessage": "هل أنت متأكد أنك تريد حذف حسابك؟ هذا الإجراء دائم ولا يمكن التراجع عنه.",
+  "deleteAccountReasonHint": "سبب المغادرة (اختياري)",
   "deleteAccountSuccessMsg": "تم حذف الحساب بنجاح",
   "deleteAccountErrorMsg": "فشل حذف الحساب",
   "errorUnexpected": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
@@ -264,5 +265,16 @@
   "howItWorksStep5Title": "5. مراجعة تفاصيل البناء",
   "howItWorksStep5Desc": "يتصفح المختبرون سجل الإصدارات، ورقم البناء، وإصدارات SDK الأدنى والمستهدفة، وحجم الملف، والأذونات المطلوبة، وملاحظات الإصدار.",
   "howItWorksStep6Title": "6. التنزيل والتثبيت",
-  "howItWorksStep6Desc": "يتم تنزيل ملفات APK بأمان من Google Drive مع متابعة التقدم في الوقت الفعلي وتشغيل مثبت الأندرويد مباشرة داخل التطبيق."
+  "howItWorksStep6Desc": "يتم تنزيل ملفات APK بأمان من Google Drive مع متابعة التقدم في الوقت الفعلي وتشغيل مثبت الأندرويد مباشرة داخل التطبيق.",
+  "deleteAccountSelectReasonTitle": "لماذا تقوم بحذف حسابك؟ (اختياري)",
+  "deleteAccountOtherHint": "يرجى إخبارنا بالمزيد (اختياري)",
+  "deleteAccountWarningTitle": "نأسف لرؤيتك تغادر",
+  "deleteAccountWarningDesc": "حذف حسابك نهائي. ستتم إزالة جميع بيانات ملفك الشخصي والإصدارات التي تم تحميلها ودعوات الاختبار ولن يمكن استردادها.",
+  "deleteAccountButton": "حذف حسابي",
+  "deleteReasonNoLongerNeeded": "لم أعد بحاجة إلى هذا التطبيق",
+  "deleteReasonAlternativeFound": "وجدت بديلاً أفضل",
+  "deleteReasonTechnicalIssues": "مشاكل تقنية / أخطاء",
+  "deleteReasonPrivacyConcerns": "مخاوف تتعلق بالخصوصية أو الأمان",
+  "deleteReasonTooDifficult": "صعب الاستخدام للغاية",
+  "deleteReasonOther": "أخرى"
 }
