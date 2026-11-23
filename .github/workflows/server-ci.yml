@@ -41,13 +41,21 @@ jobs:
     needs: validate
     if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && github.event_name == 'push'
     runs-on: ubuntu-latest
+    environment:
+      name: Production
 
     steps:
       - name: Trigger Render Deploy Hook
-        # Optional: Only triggers if RENDER_DEPLOY_HOOK secret is set in GitHub Repo Secrets
         if: env.RENDER_DEPLOY_HOOK != ''
         env:
           RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
         run: |
           echo "Triggering Render deployment..."
           curl -f -X POST "$RENDER_DEPLOY_HOOK"
+
+      - name: Deploy notice
+        if: env.RENDER_DEPLOY_HOOK == ''
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          echo "No RENDER_DEPLOY_HOOK secret provided. Render native auto-deploy will deploy changes on push."
