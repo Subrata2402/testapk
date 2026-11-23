@@ -251,7 +251,7 @@ export function AppProvider({ children }) {
         }
       } catch (err) {
         console.error('Failed to create app:', err);
-        showAlert(t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
+        showAlert(err.message || t('DASHBOARD.CREATE_APP_FAILED'), 'Error', 'error');
         return false;
       }
     }
