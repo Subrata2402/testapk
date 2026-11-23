@@ -44,11 +44,12 @@ jobs:
         run: npm run lint
 
   # ==========================================
-  # CI/CD: Build & Deploy to Firebase Hosting
+  # CD: Deploy Preview Channel (Pull Requests)
   # ==========================================
-  build-and-deploy:
-    name: Build & Deploy
+  deploy-preview:
+    name: Deploy Preview
     needs: lint-and-validate
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -72,9 +73,7 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
         run: npm run build
 
-      # Deploy preview URL for Pull Requests
       - name: Deploy Preview to Firebase Hosting
-        if: github.event_name == 'pull_request'
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -82,9 +81,41 @@ jobs:
           projectId: testapk-24
           entryPoint: ./webapp
 
-      # Deploy to Production (live) on merge to main
+  # ==========================================
+  # CD: Deploy Live / Production (Main Branch)
+  # ==========================================
+  deploy-production:
+    name: Deploy Live to Firebase Hosting
+    needs: lint-and-validate
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: webapp-production
+      url: ${{ steps.deploy_live.outputs.details_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'webapp/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js Static Export
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+          API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+        run: npm run build
+
       - name: Deploy Live to Firebase Hosting
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        id: deploy_live
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
