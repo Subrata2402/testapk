@@ -1,0 +1,92 @@
+name: Admin CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'admin/**'
+      - '.github/workflows/admin-ci-cd.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'admin/**'
+      - '.github/workflows/admin-ci-cd.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ./admin
+
+jobs:
+  # ==========================================
+  # CI: Test & Lint
+  # ==========================================
+  lint-and-validate:
+    name: Lint & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'admin/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter (Oxlint)
+        run: npm run lint
+
+  # ==========================================
+  # CI/CD: Build & Deploy to Firebase Hosting
+  # ==========================================
+  build-and-deploy:
+    name: Build & Deploy
+    needs: lint-and-validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'admin/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vite SPA
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL || secrets.NEXT_PUBLIC_API_URL }}
+          API_URL: ${{ secrets.VITE_API_URL || secrets.NEXT_PUBLIC_API_URL }}
+        run: npm run build:prod
+
+      # Deploy preview URL for Pull Requests
+      - name: Deploy Preview to Firebase Hosting
+        if: github.event_name == 'pull_request'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TESTAPK_24 }}
+          projectId: testapk-24
+          entryPoint: ./admin
+
+      # Deploy to Production (live) on merge to main
+      - name: Deploy Live to Firebase Hosting
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TESTAPK_24 }}
+          projectId: testapk-24
+          channelId: live
+          entryPoint: ./admin
