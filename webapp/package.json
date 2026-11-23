@@ -1,5 +1,6 @@
 {
-  "name": "webapp",
+  "name": "TestAPK Web Application",
+  "description": "The web portal for the TestAPK Release Manager platform. It allows developers to create applications, configure Google Drive storage, invite testers, and view release history. It also hosts the Device Authorization Flow page for CLI authentication.",
   "private": true,
   "version": "0.0.0",
   "type": "module",

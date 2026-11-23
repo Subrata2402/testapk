@@ -1,5 +1,6 @@
 {
-  "name": "admin",
+  "name": "TestAPK Admin Panel",
+  "description": "The admin panel for the TestAPK Release Manager platform. It provides a user-friendly interface for managing and monitoring the application's functionality.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
