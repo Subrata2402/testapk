@@ -1,0 +1,53 @@
+name: Server CI/CD
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'server/**'
+      - '.github/workflows/server-ci.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'server/**'
+
+jobs:
+  validate:
+    name: Validate & Build Server
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: server/package.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: TypeScript Build Check
+        run: npm run build
+
+  deploy:
+    name: Trigger Render Deployment
+    needs: validate
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Render Deploy Hook
+        # Optional: Only triggers if RENDER_DEPLOY_HOOK secret is set in GitHub Repo Secrets
+        if: env.RENDER_DEPLOY_HOOK != ''
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          echo "Triggering Render deployment..."
+          curl -f -X POST "$RENDER_DEPLOY_HOOK"
