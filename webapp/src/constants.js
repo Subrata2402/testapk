@@ -1,1 +1,1 @@
-export const testapkDownloadLink = "https://github.com/Subrata2402/testapk/releases/download/v1.0.0%2B3/testapk_v1.0.0+3.apk";
+export const testapkDownloadLink = "https://play.google.com/store/apps/details?id=app.testapk.com";

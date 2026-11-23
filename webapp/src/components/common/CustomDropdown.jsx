@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as Icons from 'lucide-react';
-import './CustomDropdown.css';
 
 export default function CustomDropdown({ options, value, onChange, placeholder = 'Select option' }) {
   const [isOpen, setIsOpen] = useState(false);

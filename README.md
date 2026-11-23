@@ -45,9 +45,9 @@ The backend API server built with Node.js, TypeScript, and Express.
 - **Technologies**: Express, Mongoose, Google APIs, Zod, Helmet.
 
 ### 2. [Webapp](./webapp)
-The developer web portal built with React and Vite.
+The developer web portal built with Next.js (App Router) and React.
 - **Key Features**: Google Sign-In, application management dashboard, Google Drive integration setup, tester invitation management, and CLI device authorization flow.
-- **Technologies**: React, Vite, Vanilla CSS (Glassmorphic UI), Lucide Icons.
+- **Technologies**: Next.js, React, Vanilla CSS (Glassmorphic UI), Lucide Icons.
 
 ### 3. [Admin](./admin)
 The administrator dashboard built with React and Vite.
@@ -98,7 +98,7 @@ The tester mobile application built with Flutter.
    ```bash
    cd ../webapp
    cp .env.example .env
-   # Edit .env with your VITE_API_URL and VITE_GOOGLE_CLIENT_ID
+   # Edit .env with your API_URL and GOOGLE_CLIENT_ID
    npm install
    npm run dev
    ```
@@ -106,7 +106,7 @@ The tester mobile application built with Flutter.
 5. **Configure and Run the Admin Dashboard**:
    ```bash
    cd ../admin
-   # Configure your VITE_API_URL in environment files
+   # Configure your API_URL in environment files
    npm install
    npm run dev
    ```

@@ -1,14 +1,17 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function SEOManager() {
-  const location = useLocation();
+  const pathname = usePathname();
   const { t } = useTranslation();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     // 1. Get current path and normalize it (remove trailing slash unless it's root)
-    let path = location.pathname;
+    let path = pathname || '/';
     if (path.endsWith('/') && path.length > 1) {
       path = path.slice(0, -1);
     }
@@ -84,7 +87,7 @@ export default function SEOManager() {
       }
       tag.setAttribute('content', content);
     });
-  }, [location, t]);
+  }, [pathname, t]);
 
   return null;
 }

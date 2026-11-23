@@ -4,30 +4,28 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "dev:local": "vite --host --mode development",
-    "dev:staging": "vite --host --mode staging",
-    "dev:prod": "vite --host --mode production",
-    "build": "vite build",
-    "build:local": "vite build --mode development",
-    "build:staging": "vite build --mode staging",
-    "build:prod": "vite build --mode production",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "dev": "next dev -p 5173",
+    "dev:local": "next dev -p 5173",
+    "dev:staging": "next dev -p 5173",
+    "dev:prod": "next dev -p 5173",
+    "build": "next build",
+    "build:local": "next build",
+    "build:staging": "next build",
+    "build:prod": "next build",
+    "start": "next start -p 5173",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@react-oauth/google": "^0.13.5",
     "axios": "^1.7.9",
     "lucide-react": "^1.24.0",
+    "next": "^16.3.8",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-router-dom": "^7.18.1"
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "oxlint": "^1.71.0",
-    "vite": "^8.1.1"
+    "oxlint": "^1.71.0"
   }
 }

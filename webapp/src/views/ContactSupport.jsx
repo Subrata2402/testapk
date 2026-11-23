@@ -1,13 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { supportService, userService } from '../services/api';
-import './ContactSupport.css';
 import { useTranslation } from '../context/LanguageContext';
 
 export default function ContactSupport({ user }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -68,7 +69,7 @@ export default function ContactSupport({ user }) {
   return (
     <div className="contact-container container flex-center">
       <div className="contact-card glass-card animate-fade-in">
-        <button className="back-btn flex-center gap-2" onClick={() => navigate('/')}>
+        <button className="back-btn flex-center gap-2" onClick={() => router.push('/')}>
           <Icons.ArrowLeft size={16} />
           <span>{t('CONTACT.BACK_TO_HOME')}</span>
         </button>

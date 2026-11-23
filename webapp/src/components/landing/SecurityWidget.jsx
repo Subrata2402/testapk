@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import * as Icons from 'lucide-react';
 

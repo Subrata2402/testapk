@@ -748,6 +748,12 @@ abstract class AppLocalizations {
   /// **'Are you sure you want to delete your account? This action is permanent and cannot be undone.'**
   String get deleteAccountConfirmMessage;
 
+  /// No description provided for @deleteAccountReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason for leaving (optional)'**
+  String get deleteAccountReasonHint;
+
   /// No description provided for @deleteAccountSuccessMsg.
   ///
   /// In en, this message translates to:
@@ -1225,7 +1231,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyPolicyPara7_1.
   ///
   /// In en, this message translates to:
-  /// **'If you have any questions or concerns about this Privacy Policy, please contact us at subrata3250das@gmail.com.'**
+  /// **'If you have any questions or concerns about this Privacy Policy, please contact us at testapk@clipboux.online.'**
   String get privacyPolicyPara7_1;
 
   /// No description provided for @termsOfServiceLastUpdated.
@@ -1351,7 +1357,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsOfServicePara8_1.
   ///
   /// In en, this message translates to:
-  /// **'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.'**
+  /// **'If you have any questions about these Terms of Service, please contact us at testapk@clipboux.online.'**
   String get termsOfServicePara8_1;
 
   /// No description provided for @faqTitle.
@@ -1617,6 +1623,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'APKs download securely from Google Drive with real-time progress and trigger the Android installer directly in the app.'**
   String get howItWorksStep6Desc;
+
+  /// No description provided for @deleteAccountSelectReasonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are you deleting your account? (Optional)'**
+  String get deleteAccountSelectReasonTitle;
+
+  /// No description provided for @deleteAccountOtherHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Please tell us more (optional)'**
+  String get deleteAccountOtherHint;
+
+  /// No description provided for @deleteAccountWarningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re sorry to see you go'**
+  String get deleteAccountWarningTitle;
+
+  /// No description provided for @deleteAccountWarningDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting your account is permanent. All your profile data, uploaded releases, and testing invitations will be removed and cannot be recovered.'**
+  String get deleteAccountWarningDesc;
+
+  /// No description provided for @deleteAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete My Account'**
+  String get deleteAccountButton;
+
+  /// No description provided for @deleteReasonNoLongerNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'I no longer need this app'**
+  String get deleteReasonNoLongerNeeded;
+
+  /// No description provided for @deleteReasonAlternativeFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Found a better alternative'**
+  String get deleteReasonAlternativeFound;
+
+  /// No description provided for @deleteReasonTechnicalIssues.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical issues / bugs'**
+  String get deleteReasonTechnicalIssues;
+
+  /// No description provided for @deleteReasonPrivacyConcerns.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy or security concerns'**
+  String get deleteReasonPrivacyConcerns;
+
+  /// No description provided for @deleteReasonTooDifficult.
+  ///
+  /// In en, this message translates to:
+  /// **'Too difficult to use'**
+  String get deleteReasonTooDifficult;
+
+  /// No description provided for @deleteReasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get deleteReasonOther;
 }
 
 class _AppLocalizationsDelegate

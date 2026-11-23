@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ENDPOINTS } from './endpoints';
 
-export const API_BASE_URL = import.meta.env.VITE_API_URL;
+export const API_BASE_URL = 'https://testapkapi.clipboux.online/api/v1';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -9,13 +9,15 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      
+      const language = localStorage.getItem('language') || 'en';
+      config.headers['Accept-Language'] = language;
     }
-    
-    const language = localStorage.getItem('language') || 'en';
-    config.headers['Accept-Language'] = language;
     
     return config;
   },
@@ -29,7 +31,7 @@ apiClient.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    if (error.response?.status === 503) {
+    if (typeof window !== 'undefined' && error.response?.status === 503) {
       window.dispatchEvent(new CustomEvent('maintenance-mode'));
     }
     const message = error.response?.data?.message || error.message || 'API request failed';

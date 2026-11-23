@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
 import * as Icons from 'lucide-react';
-import './TermsOfService.css';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from '../context/LanguageContext';
 
 export default function TermsOfService({ onBackToHome }) {
+  const router = useRouter();
   const { t } = useTranslation();
+  const handleBack = onBackToHome || (() => router.back());
+
   return (
     <div className="terms-container flex-center">
       <div className="terms-card glass-panel animate-fade-in">
         <div className="terms-header">
-          <button className="btn-back flex-center" onClick={onBackToHome} aria-label="Go back">
+          <button className="btn-back flex-center" onClick={handleBack} aria-label="Go back">
             <Icons.ArrowLeft size={20} />
           </button>
           <h2>{t('TERMS.TITLE')}</h2>
@@ -59,7 +64,7 @@ export default function TermsOfService({ onBackToHome }) {
             <p>{t('TERMS.CONTACT_CONTENT')}</p>
             <p className="contact-email">
               <Icons.Mail size={16} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-              <a href="mailto:subrata3250das@gmail.com">subrata3250das@gmail.com</a>
+              <a href="mailto:testapk@clipboux.online">testapk@clipboux.online</a>
             </p>
           </section>
         </div>

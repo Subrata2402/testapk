@@ -9,8 +9,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <!-- Install packages (to open downloaded APK) -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <!-- Query all packages to check if app is installed -->
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <!-- Post notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!-- Foreground Service permissions -->
@@ -39,6 +37,19 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!-- App Links: Opens app for https://testapk.clipboux.online -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="testapk.clipboux.online" />
+            </intent-filter>
+            <meta-data
+                android:name="flutter_deeplinking_enabled"
+                android:value="true" />
         </activity>
         <!-- Required for flutter_secure_storage -->
         <meta-data
@@ -62,6 +73,11 @@
     </application>
 
     <queries>
+        <!-- Package visibility to query installed version and launch applications -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>

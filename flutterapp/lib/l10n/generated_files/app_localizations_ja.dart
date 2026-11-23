@@ -331,6 +331,9 @@ class AppLocalizationsJa extends AppLocalizations {
       'アカウントを削除してもよろしいですか？この操作は永続的であり、元に戻すことはできません。';
 
   @override
+  String get deleteAccountReasonHint => '退会の理由（任意）';
+
+  @override
   String get deleteAccountSuccessMsg => 'アカウントが正常に削除されました';
 
   @override
@@ -581,7 +584,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get privacyPolicyPara7_1 =>
-      'このプライバシーポリシーに関するご質問やご不明な点がございましたら、subrata3250das@gmail.comまでお問い合わせください。';
+      'このプライバシーポリシーに関するご質問やご不明な点がございましたら、testapk@clipboux.onlineまでお問い合わせください。';
 
   @override
   String get termsOfServiceLastUpdated => '2026年7月18日';
@@ -652,7 +655,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get termsOfServicePara8_1 =>
-      'これらの利用規約についてご質問がある場合は、subrata3250das@gmail.comまでお問い合わせください。';
+      'これらの利用規約についてご質問がある場合は、testapk@clipboux.onlineまでお問い合わせください。';
 
   @override
   String get faqTitle => 'よくある質問';
@@ -803,4 +806,38 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'APKはGoogle Driveからリアルタイムの進捗表示付きで安全にダウンロードされ、アプリ内で直接Androidインストーラーを起動します。';
+
+  @override
+  String get deleteAccountSelectReasonTitle => 'アカウントを削除する理由は何ですか？（任意）';
+
+  @override
+  String get deleteAccountOtherHint => '詳しく教えてください（任意）';
+
+  @override
+  String get deleteAccountWarningTitle => '退会されるのは残念です';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      'アカウントの削除は元に戻せません。すべてのプロフィールデータ、アップロードされたリリース、テスト招待が削除され、復元できなくなります。';
+
+  @override
+  String get deleteAccountButton => 'アカウントを削除する';
+
+  @override
+  String get deleteReasonNoLongerNeeded => 'このアプリが不要になった';
+
+  @override
+  String get deleteReasonAlternativeFound => 'より良い代替アプリを見つけた';
+
+  @override
+  String get deleteReasonTechnicalIssues => '技術的な問題 / バグ';
+
+  @override
+  String get deleteReasonPrivacyConcerns => 'プライバシーまたはセキュリティの懸念';
+
+  @override
+  String get deleteReasonTooDifficult => '使いにくすぎる';
+
+  @override
+  String get deleteReasonOther => 'その他';
 }

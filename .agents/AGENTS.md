@@ -53,15 +53,17 @@ The backend API server built with Node.js, TypeScript, and Express. It manages m
 ### 🌐 2. Developer Webapp (`/webapp`)
 The web portal where developers register apps, manage tester invitations, configure Google Drive storage, and authorize CLI devices.
 
-- **Tech Stack**: React (v19), Vite, Vanilla CSS (Glassmorphic UI), Lucide Icons, Axios, `@react-oauth/google`.
+- **Tech Stack**: Next.js (App Router, v16+), React (v19), Vanilla CSS (Glassmorphic UI), Lucide Icons, Axios, `@react-oauth/google`.
 - **Key Directories**:
-  - `src/components/`: Reusable UI components (e.g., CustomDropdown, GlassCard).
-  - `src/pages/`: Page views (Dashboard, AppDetails, Profile, Login, Contact).
+  - `src/app/`: Next.js App Router routes and layouts.
+  - `src/views/`: Page views and screens (Dashboard, LandingPage, PrivacyPolicy, etc.).
+  - `src/components/`: Reusable UI components (e.g., CustomDropdown, Modals).
   - `src/services/`: API client and endpoint definitions.
-  - `src/context/`: React context (e.g., LanguageContext).
+  - `src/context/`: React context (e.g., LanguageContext, AppContext).
 - **Key Commands**:
   - Run dev server: `npm run dev`
   - Build: `npm run build`
+  - Start production server: `npm run start`
   - Lint: `npm run lint`
 - **Configuration**: `.env` (copied from `.env.example`).
 

@@ -1,0 +1,15 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.testapk.com",
+      "sha256_cert_fingerprints": [
+        "CC:DA:07:30:73:8F:CB:4A:40:6E:6B:1E:AB:4C:D9:1C:83:22:C0:2D:88:FD:FE:51:7D:F8:79:B0:A6:1D:71:8F",
+        "C9:83:B7:5A:33:A1:EB:D1:27:FD:3C:D3:CB:F4:42:C7:AE:54:EB:F4:5C:48:5B:E7:CA:54:2A:07:84:08:E9:2D",
+        "33:D5:43:C1:8D:84:97:61:72:09:5F:39:6E:3B:5B:81:C6:B7:22:03:3A:2D:7A:C0:D5:0F:E3:F4:CC:D2:24:FB",
+        "C9:06:27:D1:32:19:12:1C:69:04:F4:EC:AE:BA:8B:82:5E:89:57:9D:96:27:0D:15:37:F5:15:EE:76:64:21:92"
+      ]
+    }
+  }
+]

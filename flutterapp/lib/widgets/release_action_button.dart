@@ -37,7 +37,9 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
   AppLifecycleState _lifecycleState = AppLifecycleState.resumed;
 
   bool get _isAppInstalled => _installedVersionCode > -1;
-  bool get _isUpdateAvailable => _isAppInstalled && !(_installedVersionCode >= widget.release.buildNumber);
+  bool get _isSameVersionInstalled => _isAppInstalled && _installedVersionCode == widget.release.buildNumber;
+  bool get _isUpdateAvailable => _isAppInstalled && widget.release.buildNumber > _installedVersionCode;
+  bool get _isOlderVersion => _isAppInstalled && widget.release.buildNumber < _installedVersionCode;
 
   @override
   void initState() {
@@ -319,13 +321,14 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isInstalling) {
       return AppColors.info; // Blue
     }
-    if (_isAppInstalled) {
-      if (_isUpdateAvailable) {
-        return _isDownloaded ? AppColors.warning : AppColors.accent; // Amber or Purple
-      } else if (!_isDownloaded) {
-        return AppColors.accent; // Purple
-      }
+    if (_isSameVersionInstalled) {
       return AppColors.success; // Green (Open)
+    }
+    if (_isUpdateAvailable) {
+      return _isDownloaded ? AppColors.warning : AppColors.accent; // Amber or Purple
+    }
+    if (_isOlderVersion) {
+      return _isDownloaded ? AppColors.warning : AppColors.info; // Amber or Blue
     }
     return _isDownloaded ? AppColors.warning : AppColors.info; // Amber or Blue
   }
@@ -337,13 +340,14 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isInstalling) {
       return kInstallingMsg;
     }
-    if (_isAppInstalled) {
-      if (_isUpdateAvailable) {
-        return _isDownloaded ? kInstallUpdateBtnLabel : kUpdateBtnLabel;
-      } else if (!_isDownloaded) {
-        return kDownloadApkBtnLabel;
-      }
+    if (_isSameVersionInstalled) {
       return kOpenAppBtnLabel;
+    }
+    if (_isUpdateAvailable) {
+      return _isDownloaded ? kInstallUpdateBtnLabel : kUpdateBtnLabel;
+    }
+    if (_isOlderVersion) {
+      return _isDownloaded ? kInstallApkBtnLabel : kDownloadApkBtnLabel;
     }
     return _isDownloaded ? kInstallApkBtnLabel : kDownloadApkBtnLabel;
   }
@@ -352,13 +356,14 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isDownloading || _isInstalling) {
       return null;
     }
-    if (_isAppInstalled) {
-      if (_isUpdateAvailable) {
-        return _isDownloaded ? Icons.install_mobile_rounded : Icons.system_update_alt_rounded;
-      } else if (!_isDownloaded) {
-        return Icons.download_rounded;
-      }
+    if (_isSameVersionInstalled) {
       return Icons.open_in_new_rounded;
+    }
+    if (_isUpdateAvailable) {
+      return _isDownloaded ? Icons.install_mobile_rounded : Icons.system_update_alt_rounded;
+    }
+    if (_isOlderVersion) {
+      return _isDownloaded ? Icons.install_mobile_rounded : Icons.download_rounded;
     }
     return _isDownloaded ? Icons.install_mobile_rounded : Icons.download_rounded;
   }
@@ -367,11 +372,14 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     if (_isDownloading || _isInstalling) {
       return null;
     }
-    if (_isAppInstalled) {
-      if (_isUpdateAvailable) {
-        return _isDownloaded ? _installApk : _downloadApk;
-      }
+    if (_isSameVersionInstalled) {
       return _launchApp;
+    }
+    if (_isUpdateAvailable) {
+      return _isDownloaded ? _installApk : _downloadApk;
+    }
+    if (_isOlderVersion) {
+      return _isDownloaded ? _installApk : _downloadApk;
     }
     return _isDownloaded ? _installApk : _downloadApk;
   }
@@ -384,9 +392,8 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
     final double borderRadius = widget.compact ? context.scale(10.0) : context.scale(14.0);
 
     final Color primaryColor = _getButtonColor();
-    final String buttonText = _getButtonText();
     final IconData? buttonIcon = _getButtonIcon();
-    final VoidCallback? onTap = _getButtonOnTap();
+    final VoidCallback? buttonOnTap = _getButtonOnTap();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -421,7 +428,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: onTap,
+                  onTap: buttonOnTap,
                   splashColor: Colors.white.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(borderRadius),
                   child: Padding(
@@ -444,7 +451,7 @@ class _ReleaseActionButtonState extends State<ReleaseActionButton> with WidgetsB
                         else if (buttonIcon != null)
                           Icon(buttonIcon, size: iconSize, color: Colors.white),
                         if (_isDownloading || _isInstalling || buttonIcon != null) SizedBox(width: context.scale(8)),
-                        TextViewer(buttonText, fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.white),
+                        TextViewer(_getButtonText(), fontSize: fontSize, fontWeight: FontWeight.w600, color: Colors.white),
                       ],
                     ),
                   ),

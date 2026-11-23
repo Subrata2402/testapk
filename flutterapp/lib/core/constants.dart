@@ -260,11 +260,26 @@ String get kSignOutConfirmMessage =>
 String get kDeleteLabel => _l10n?.deleteLabel ?? 'Delete';
 String get kCancel => _l10n?.cancel ?? 'Cancel';
 
-/// Delete Account Dialog
+/// Delete Account Screen
 String get kDeleteAccountConfirmTitle => _l10n?.deleteAccountConfirmTitle ?? 'Delete Account?';
 String get kDeleteAccountConfirmMessage =>
     _l10n?.deleteAccountConfirmMessage ??
     'Are you sure you want to delete your account? This action is permanent and cannot be undone.';
+String get kDeleteAccountReasonHint => _l10n?.deleteAccountReasonHint ?? 'Reason for leaving (optional)';
+String get kDeleteAccountSelectReasonTitle =>
+    _l10n?.deleteAccountSelectReasonTitle ?? 'Why are you deleting your account? (Optional)';
+String get kDeleteAccountOtherHint => _l10n?.deleteAccountOtherHint ?? 'Please tell us more (optional)';
+String get kDeleteAccountWarningTitle => _l10n?.deleteAccountWarningTitle ?? "We're sorry to see you go";
+String get kDeleteAccountWarningDesc =>
+    _l10n?.deleteAccountWarningDesc ??
+    'Deleting your account is permanent. All your profile data, uploaded releases, and testing invitations will be removed and cannot be recovered.';
+String get kDeleteAccountButton => _l10n?.deleteAccountButton ?? 'Delete My Account';
+String get kDeleteReasonNoLongerNeeded => _l10n?.deleteReasonNoLongerNeeded ?? 'I no longer need this app';
+String get kDeleteReasonAlternativeFound => _l10n?.deleteReasonAlternativeFound ?? 'Found a better alternative';
+String get kDeleteReasonTechnicalIssues => _l10n?.deleteReasonTechnicalIssues ?? 'Technical issues / bugs';
+String get kDeleteReasonPrivacyConcerns => _l10n?.deleteReasonPrivacyConcerns ?? 'Privacy or security concerns';
+String get kDeleteReasonTooDifficult => _l10n?.deleteReasonTooDifficult ?? 'Too difficult to use';
+String get kDeleteReasonOther => _l10n?.deleteReasonOther ?? 'Other';
 String get kDeleteAccountSuccessMsg => _l10n?.deleteAccountSuccessMsg ?? 'Account deleted successfully';
 String get kDeleteAccountErrorMsg => _l10n?.deleteAccountErrorMsg ?? 'Failed to delete account';
 
@@ -333,7 +348,7 @@ String get kPrivacyPolicyPara6_4 =>
 String get kPrivacyPolicyTitle7 => _l10n?.privacyPolicyTitle7 ?? '7. Contact Us';
 String get kPrivacyPolicyPara7_1 =>
     _l10n?.privacyPolicyPara7_1 ??
-    'If you have any questions or concerns about this Privacy Policy, please contact us at subrata3250das@gmail.com.';
+    'If you have any questions or concerns about this Privacy Policy, please contact us at testapk@clipboux.online.';
 
 String get kTermsOfServiceLastUpdated => _l10n?.termsOfServiceLastUpdated ?? 'July 18, 2026';
 String get kTermsOfServiceTitle1 => _l10n?.termsOfServiceTitle1 ?? '1. Agreement to Terms';
@@ -374,4 +389,4 @@ String get kTermsOfServicePara7_1 =>
 String get kTermsOfServiceTitle8 => _l10n?.termsOfServiceTitle8 ?? '8. Contact Us';
 String get kTermsOfServicePara8_1 =>
     _l10n?.termsOfServicePara8_1 ??
-    'If you have any questions about these Terms of Service, please contact us at subrata3250das@gmail.com.';
+    'If you have any questions about these Terms of Service, please contact us at testapk@clipboux.online.';

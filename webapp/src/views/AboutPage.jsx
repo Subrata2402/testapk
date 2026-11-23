@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
-import './AboutPage.css';
 import { testapkDownloadLink } from '../constants';
 import { useTranslation } from '../context/LanguageContext';
+import GooglePlayButton from '../components/common/GooglePlayButton';
 
 const GithubIcon = (props) => (
   <svg
@@ -142,14 +144,12 @@ export default function AboutPage({ showAlert, downloadLink }) {
                 <span><strong>{t('LANDING.VERSION_DETECTION_TITLE')}:</strong> {t('LANDING.VERSION_DETECTION_DESC')}</span>
               </li>
             </ul>
-            <a
-              href={`${apkLink}`}
-              className="btn btn-primary btn-sm flex-center gap-2 mt-4"
-              style={{ textDecoration: 'none', width: 'fit-content' }}
-            >
-              <Icons.Download size={14} />
-              <span>{t('LANDING.DOWNLOAD_APK')}</span>
-            </a>
+            <GooglePlayButton
+              href={apkLink}
+              size="sm"
+              className="mt-4"
+              style={{ width: 'fit-content' }}
+            />
           </div>
 
           {/* CLI Tool Card */}

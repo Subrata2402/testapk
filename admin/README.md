@@ -86,7 +86,7 @@ npm install
 ### 2. Environment Configuration
 Create or modify the environment files (`.env.development`, `.env.production`, `.env.staging`) in the root of the `admin` folder:
 ```env
-VITE_API_URL=http://localhost:3000/api/v1
+API_URL=http://localhost:3000/api/v1
 ```
 
 ### 3. Available Scripts

@@ -165,6 +165,8 @@ export const deleteMe = async (
       return;
     }
 
+    const { reason } = req.body || {};
+
     const user = await User.findById(req.user._id);
     if (!user) {
       res.status(404).json({
@@ -175,6 +177,9 @@ export const deleteMe = async (
     }
 
     user.isDeleted = true;
+    if (reason && typeof reason === 'string' && reason.trim()) {
+      user.deleteReason = reason.trim();
+    }
     await user.save();
 
     res.status(200).json({

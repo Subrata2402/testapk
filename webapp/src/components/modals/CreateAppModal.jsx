@@ -1,6 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
-import './CreateAppModal.css';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function CreateAppModal({ isOpen, onClose, onCreateApp, user, showAlert, onOpenDriveModal }) {

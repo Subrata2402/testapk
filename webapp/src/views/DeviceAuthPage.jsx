@@ -1,28 +1,32 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import * as Icons from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { deviceAuthService } from '../services/api';
-import './DeviceAuthPage.css';
 import { useTranslation } from '../context/LanguageContext';
-
-// States: 'checking' | 'form' | 'expired' | 'success'
 
 export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDashboard }) {
   const { t } = useTranslation();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [pageState, setPageState] = useState('checking');
   const [userCode, setUserCode] = useState('');
   const [isAuthorizing, setIsAuthorizing] = useState(false);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get('token');
+  const token = searchParams ? searchParams.get('token') : null;
+
+  const handleGoDashboard = onGoToDashboard || (() => router.replace('/dashboard'));
 
   useEffect(() => {
     const validateToken = async () => {
-      if (!token) {
+      const activeToken = token || (typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('token') : null);
+      if (!activeToken) {
         setPageState('expired');
         return;
       }
       try {
-        const data = await deviceAuthService.checkUrl(token);
+        const data = await deviceAuthService.checkUrl(activeToken);
         if (data.status === 'success') {
           setPageState('form');
         } else {
@@ -46,7 +50,7 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
       if (data.status === 'success') {
         setPageState('success');
         setTimeout(() => {
-          onGoToDashboard();
+          handleGoDashboard();
         }, 3000);
       } else {
         showAlert(data.message || t('DEVICE.ERROR'), 'Error', 'error');
@@ -95,8 +99,8 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
               <button
                 className="btn btn-primary w-100"
                 onClick={() => {
-                  window.history.pushState({}, '', '/');
-                  onGoToDashboard();
+                  if (typeof window !== 'undefined') window.history.pushState({}, '', '/');
+                  handleGoDashboard();
                 }}
               >
                 {t('LANDING.GO_TO_DASHBOARD')}
@@ -123,8 +127,8 @@ export default function DeviceAuthPage({ user, onLoginClick, showAlert, onGoToDa
             <button
               className="btn btn-secondary w-100"
               onClick={() => {
-                window.history.pushState({}, '', '/');
-                onGoToDashboard();
+                if (typeof window !== 'undefined') window.history.pushState({}, '', '/');
+                handleGoDashboard();
               }}
             >
               {t('LANDING.GO_TO_DASHBOARD')}

@@ -1,11 +1,16 @@
+'use client';
+
 import React, { useState } from 'react';
 import * as Icons from 'lucide-react';
-import './FaqPage.css';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from '../context/LanguageContext';
 
 export default function FaqPage({ onBackToHome }) {
+  const router = useRouter();
   const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
+
+  const handleBack = onBackToHome || (() => router.back());
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -84,7 +89,7 @@ export default function FaqPage({ onBackToHome }) {
     <div className="faq-container flex-center">
       <div className="faq-card glass-panel animate-fade-in">
         <div className="faq-header">
-          <button className="btn-back flex-center" onClick={onBackToHome} aria-label="Go back">
+          <button className="btn-back flex-center" onClick={handleBack} aria-label="Go back">
             <Icons.ArrowLeft size={20} />
           </button>
           <h2>{t('FAQ.TITLE')}</h2>

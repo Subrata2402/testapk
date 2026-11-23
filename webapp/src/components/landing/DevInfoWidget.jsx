@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import * as Icons from 'lucide-react';
 
 export default function DevInfoWidget({ t, onContactClick }) {
@@ -16,15 +18,15 @@ export default function DevInfoWidget({ t, onContactClick }) {
       </div>
       <div className="dev-info-item">
         <Icons.Shield size={16} />
-        <span><Link to="/privacy">{t('LANDING.PRIVACY_POLICY')}</Link></span>
+        <span><Link href="/privacy">{t('LANDING.PRIVACY_POLICY')}</Link></span>
       </div>
       <div className="dev-info-item">
         <Icons.FileText size={16} />
-        <span><Link to="/terms">{t('LANDING.TERMS_OF_SERVICE')}</Link></span>
+        <span><Link href="/terms">{t('LANDING.TERMS_OF_SERVICE')}</Link></span>
       </div>
       <div className="dev-info-item">
         <Icons.HelpCircle size={16} />
-        <span><Link to="/faq">{t('FAQ.TITLE')}</Link></span>
+        <span><Link href="/faq">{t('FAQ.TITLE')}</Link></span>
       </div>
     </div>
   );

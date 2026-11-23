@@ -342,6 +342,9 @@ class AppLocalizationsHi extends AppLocalizations {
       'क्या आप वाकई अपना खाता हटाना चाहते हैं? यह कार्रवाई स्थायी है और इसे पूर्ववत नहीं किया जा सकता।';
 
   @override
+  String get deleteAccountReasonHint => 'छोड़ने का कारण (वैकल्पिक)';
+
+  @override
   String get deleteAccountSuccessMsg => 'खाता सफलतापूर्वक हटा दिया गया';
 
   @override
@@ -606,7 +609,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get privacyPolicyPara7_1 =>
-      'यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न या चिंताएं हैं, तो कृपया हमसे subrata3250das@gmail.com पर संपर्क करें।';
+      'यदि आपके पास इस गोपनीयता नीति के बारे में कोई प्रश्न या चिंताएं हैं, तो कृपया हमसे testapk@clipboux.online पर संपर्क करें।';
 
   @override
   String get termsOfServiceLastUpdated => '18 जुलाई, 2026';
@@ -681,7 +684,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get termsOfServicePara8_1 =>
-      'यदि आपके पास इन सेवा की शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे subrata3250das@gmail.com पर संपर्क करें।';
+      'यदि आपके पास इन सेवा की शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे testapk@clipboux.online पर संपर्क करें।';
 
   @override
   String get faqTitle => 'अक्सर पूछे जाने वाले प्रश्न';
@@ -835,4 +838,40 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get howItWorksStep6Desc =>
       'APK वास्तविक समय की प्रगति के साथ Google Drive से सुरक्षित रूप से डाउनलोड होते हैं और ऐप के भीतर ही सीधे एंड्रॉइड इंस्टॉलर को ट्रिगर करते हैं।';
+
+  @override
+  String get deleteAccountSelectReasonTitle =>
+      'आप अपना खाता क्यों हटा रहे हैं? (वैकल्पिक)';
+
+  @override
+  String get deleteAccountOtherHint => 'कृपया हमें और बताएं (वैकल्पिक)';
+
+  @override
+  String get deleteAccountWarningTitle => 'हमें आपको जाते हुए देखकर खेद है';
+
+  @override
+  String get deleteAccountWarningDesc =>
+      'अपना खाता हटाना स्थायी है। आपका सारा प्रोफ़ाइल डेटा, अपलोड की गई रिलीज़ और परीक्षण आमंत्रण हटा दिए जाएंगे और उन्हें पुनर्प्राप्त नहीं किया जा सकता।';
+
+  @override
+  String get deleteAccountButton => 'मेरा खाता हटाएं';
+
+  @override
+  String get deleteReasonNoLongerNeeded => 'मुझे अब इस ऐप की आवश्यकता नहीं है';
+
+  @override
+  String get deleteReasonAlternativeFound => 'एक बेहतर विकल्प मिल गया';
+
+  @override
+  String get deleteReasonTechnicalIssues => 'तकनीकी समस्याएं / बग';
+
+  @override
+  String get deleteReasonPrivacyConcerns =>
+      'गोपनीयता या सुरक्षा संबंधी चिंताएं';
+
+  @override
+  String get deleteReasonTooDifficult => 'उपयोग करने में बहुत कठिन';
+
+  @override
+  String get deleteReasonOther => 'अन्य';
 }
